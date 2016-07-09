@@ -1,12 +1,20 @@
 //
 //  AppDelegate.m
-//  DRArtisan
+//  NormalCoder
 //
-//  Created by Jason on 7/9/16.
-//  Copyright © 2016 DR. All rights reserved.
+//  Created by Jason on 6/21/16.
+//  Copyright © 2016 JasCoder. All rights reserved.
 //
 
 #import "AppDelegate.h"
+
+#import "ViewController.h"
+
+#if kCoder_Ext
+
+#import "CorePrivate.h"
+
+#endif
 
 @interface AppDelegate ()
 
@@ -16,8 +24,49 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    _window = [[UIWindow alloc] initWithFrame:Jas_Screen_bounds];
+    _window.rootViewController = [[ViewController alloc] init];
+#if kCoder_Ext
+    // 该用法用于测试iOS版本升级后的测试
+    [self iosUpgradeTest];
+#endif
+    NSDictionary *demoDic = [self demoDic];
+    JasLog(@"%@",demoDic);
+    
+    NSArray *demoArr = [self demoArr];
+    JasLog(@"%@",demoArr);
+    
+    _window.backgroundColor = Jas_HexRGB(0xffffff);
+    [_window makeKeyAndVisible];
+    
     return YES;
+}
+
+- (void)iosUpgradeTest {
+    // JasError;
+    
+    // [CorePrivate jas_ipAddresses];
+    [CorePrivate jas_allInstalledApps];
+    
+    // [CorePrivate jas_prefrenceUUIDString];
+    
+    // [CorePrivate jas_hasInsertedSim];
+    
+    // [CorePrivate jas_hasInstalled:@"com.abc.dsafsaf"];
+    /*
+     测试用例:
+     "com.sinldo1.ihealth", 爱护健康 false
+     "com.sinldo.aihu",  分享医疗 false
+     删除再安装
+     "com.sinldo.aihu" true
+     "com.vf404.200",    false
+     "com.lq.jason889",  false
+     "com.abc.dsafsaf"   false
+     */
+    // [CorePrivate jas_hasRedownload:@"com.sinldo.aihu"];
+    // [CorePrivate jas_installTime:@"com.sinldo.aihu"];
+    // [CorePrivate jas_openAppWithBundleId:@"com.zplay.popstar2"];
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -40,6 +89,41 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+- (NSDictionary *)demoDic {
+    return  @{
+              @"code": @"0",
+              @"msg": @"成功",
+              @"data": @{@"god_comment": @[@{@"id": @"347",@"topic_id": @"225",@"user_id": @"87",@"content": @"啊",@"reply_num": @"5",@"create_date": @"1466502431",@"nickname": @"风一样的男子",@"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"}],@"comment_list": @{@"p": @2,@"total": @"15",@"data": @[@{
+                                                                                                                                                                                                                                                                                                                                                                                           @"id": @"351",
+                                                                                                                                                                                                                                                                                                                                                                                           @"topic_id": @"225",
+                                                                                                                                                                                                                                                                                                                                                                                           @"user_id": @"87",
+                                                                                                                                                                                                                                                                                                                                                                                           @"content": @"睡觉睡觉就是",
+                                                                                                                                                                                                                                                                                                                                                                                           @"reply_num":@"0",
+                                                                                                                                                                                                                                                                                                                                                                                           @"create_date": @"1466502443",
+                                                                                                                                                                                                                                                                                                                                                                                           @"nickname": @"风一样的男子",
+                                                                                                                                                                                                                                                                                                                                                                                           @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                                                                                                                                                                                                                                                                                                                                                                           },
+                                                                                                                                                                                                                                                                                                                                                                                       @{
+                                                                                                                                                                                                                                                                                                                                                                                           @"id": @"350",
+                                                                                                                                                                                                                                                                                                                                                                                           @"topic_id": @"225",
+                                                                                                                                                                                                                                                                                                                                                                                           @"user_id": @"87",
+                                                                                                                                                                                                                                                                                                                                                                                           @"content": @"只能是女神",
+                                                                                                                                                                                                                                                                                                                                                                                           @"reply_num": @"0",
+                                                                                                                                                                                                                                                                                                                                                                                           @"create_date": @"1466502440",
+                                                                                                                                                                                                                                                                                                                                                                                           @"nickname": @"风一样的男子",
+                                                                                                                                                                                                                                                                                                                                                                                           @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                                                                                                                                                                                                                                                                                                                                                                           }
+                                                                                                                                                                                                                                                                                                                                                                                       ]
+                                                                                                                                                                                                                                                                                                                                                   }
+                         }
+              };
+    
+}
+
+- (NSArray *)demoArr {
+    return @[@"天下大方安抚阿斯蒂芬阿斯蒂芬阿萨德发送到发",@[@"大法师法",@"dasfa",@"网大方阿萨德f"],@"asdfasd fdsfsda afsd ",@"未送达的三分王",@"dfasfas为爱对方"];
 }
 
 @end
