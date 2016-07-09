@@ -75,22 +75,22 @@
 // 数据源为简单模型对象数组
 - (NSArray *)defaultCellModelList {
     return @[
-             [JASDefaultCellModel objectWithDict:@{
+             [JASDefaultCellModel objWithDic:@{
                                                    @"id":@1,
                                                    @"title":@"c测试,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
-             [JASDefaultCellModel objectWithDict:@{
+             [JASDefaultCellModel objWithDic:@{
                                                    @"id":@2,
                                                    @"title":@"c测试,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
-             [JASDefaultCellModel objectWithDict:@{
+             [JASDefaultCellModel objWithDic:@{
                                                    @"id":@3,
                                                    @"title":@"c测试,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
-             [JASDefaultCellModel objectWithDict:@{
+             [JASDefaultCellModel objWithDic:@{
                                                    @"id":@4,
                                                    @"title":@"c测试,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"

@@ -1,0 +1,6 @@
+framework module DRCore {
+  umbrella header "DRCore.h"
+
+  export *
+  module * { export * }
+}

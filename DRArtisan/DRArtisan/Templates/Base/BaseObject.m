@@ -8,21 +8,44 @@
 
 #import "BaseObject.h"
 
-#define kNativeProperty(property)  ([property isKindOfClass:[NSArray class]] \
-                                || [property isKindOfClass:[NSDictionary class]] \
-                                || [property isKindOfClass:[NSNumber class]] \
-                                || [property isKindOfClass:[NSValue class]] \
-                                || [property isKindOfClass:[NSString class]])
+#define kFoundationProperty(property)   ([property isKindOfClass:[NSNumber class]]  \
+                                      || [property isKindOfClass:[NSValue class]]   \
+                                      || [property isKindOfClass:[NSString class]]) \
+                                      || [property isKindOfClass:[NSDate class]]    \
+                                      || [property isKindOfClass:[NSData class]]
+
+#define kCollectionProperty(property)   ([property isKindOfClass:[NSArray class]]      \
+                                      || [property isKindOfClass:[NSDictionary class]] \
+                                      || [property isKindOfClass:[NSSet class]])
+
+
 
 @implementation BaseObject
 
-+ (instancetype)objectWithDict:(NSDictionary *)dict {
++ (instancetype)objWithDic:(NSDictionary *)dic {
     
     id obj = [[self alloc] init];
     
     NSArray *propertyList = [self jas_propertyList];
     
     NSMutableDictionary *propertyDic = [NSMutableDictionary dictionaryWithCapacity:[propertyList  count]];
+    
+    // the Foundation class type solve step
+    if (kFoundationProperty(obj)) {
+        return obj = dic;
+    }
+    
+    // the Collection class type solve step
+//    if (kCollectionProperty(obj)) {
+//        for (id element in obj) {
+//            [[element class] objWithDic:element];
+//        }
+//    }
+    
+    for (id element in [propertyDic objectEnumerator]) {
+        [[[element nextObject] class] objWithDic:element];
+    }
+    
     
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
@@ -48,17 +71,21 @@
             id mapResult = [mapDic objectForKey:property];
             // the class property be mapped
             if(mapResult) {
-                // when properyt exist in UIKit.framework(like NSString,NS
-                if (kNativeProperty(dict[mapResult])) {
-                    [propertyDic setObject:dict[mapResult] forKey:property];
+                // when properyt exist in UIKit.framework(like NSString,NSNumber)
+                if (kFoundationProperty(dic[mapResult])) {
+                    [propertyDic setObject:dic[mapResult] forKey:property];
+                }else if(kCollectionProperty(dic[mapResult])){
+                    for (id element in dic[mapResult]) {
+                        [[element class] objWithDic:element];
+                    }
                 }else {
-                    [[dict[mapResult] class] objectWithDict:dict[mapResult]];
+                    [[dic[mapResult] class] objWithDic:dic[mapResult]];
                 }
                 
             }else {
                 //  the class property not map but in property list
                 if ([propertyList indexOfObject:property] != NSNotFound) {
-                    [propertyDic setObject:dict[property] forKey:property];
+                    [propertyDic setObject:dic[property] forKey:property];
                 }else {
 #if DEBUG
                     // the class property not in model which is from server

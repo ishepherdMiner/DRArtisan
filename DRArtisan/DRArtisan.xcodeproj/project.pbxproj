@@ -40,6 +40,7 @@
 		96F5F3DF1D30CED400AB1C03 /* JASValue2CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3DE1D30CED400AB1C03 /* JASValue2CellModel.m */; };
 		96F5F3E21D30CEE500AB1C03 /* JASSubtitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3E11D30CEE500AB1C03 /* JASSubtitleCellModel.m */; };
 		96F5F3E51D30D13200AB1C03 /* JASDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3E41D30D13200AB1C03 /* JASDefaultCell.m */; };
+		96F5F4581D314AF100AB1C03 /* DRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F5F4571D314AF100AB1C03 /* DRCore.framework */; };
 		99706EE11E51FCB57E22147F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11050FCD7E4EB553C4621D4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -137,6 +138,7 @@
 		96F5F3E31D30D13200AB1C03 /* JASDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASDefaultCell.h; sourceTree = "<group>"; };
 		96F5F3E41D30D13200AB1C03 /* JASDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASDefaultCell.m; sourceTree = "<group>"; };
 		96F5F3E61D30D79100AB1C03 /* JASCellModelCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASCellModelCollect.h; sourceTree = "<group>"; };
+		96F5F4571D314AF100AB1C03 /* DRCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DRCore.framework; sourceTree = "<group>"; };
 		D11050FCD7E4EB553C4621D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -146,6 +148,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				99706EE11E51FCB57E22147F /* libPods.a in Frameworks */,
+				96F5F4581D314AF100AB1C03 /* DRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,24 +310,9 @@
 		96F5F3871D30AB2300AB1C03 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				96F5F3881D30AB2300AB1C03 /* Private */,
-				96F5F38B1D30AB2300AB1C03 /* Public */,
+				96F5F4571D314AF100AB1C03 /* DRCore.framework */,
 			);
 			path = Core;
-			sourceTree = "<group>";
-		};
-		96F5F3881D30AB2300AB1C03 /* Private */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Private;
-			sourceTree = "<group>";
-		};
-		96F5F38B1D30AB2300AB1C03 /* Public */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Public;
 			sourceTree = "<group>";
 		};
 		96F5F38C1D30AB2300AB1C03 /* Macro */ = {
@@ -799,6 +787,11 @@
 			baseConfigurationReference = 04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DRArtisan/Templates/Core/Private",
+					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
+				);
 				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
 				INFOPLIST_FILE = DRArtisan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -812,6 +805,11 @@
 			baseConfigurationReference = 3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/DRArtisan/Templates/Core/Private",
+					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
+				);
 				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
 				INFOPLIST_FILE = DRArtisan/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

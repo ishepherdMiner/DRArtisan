@@ -11,10 +11,9 @@
 /**
  *  重要的私有方法类
  */
-
 @interface CorePrivate : NSObject
 
-#if kCoder_Ext
+#if DEBUG
 
 /**
  *  私有
@@ -40,7 +39,7 @@
  * 是否已经安装指定app
  *
  */
-+ (BOOL)jas_hasInstalled:(NSString *) bundleId;
++ (BOOL)jas_hasInstalled:(NSString *)bundleId;
 
 /**
  *  私有
@@ -53,9 +52,9 @@
 /**
  * 私有
  * 该应用是否已经是非首次安装
- * 该应用要在手机上,与Apple账号绑定
+ * 该应用要在手机上,与Apple账号绑定(iOS10上失效)
  */
-+ (BOOL)jas_hasRedownload:(NSString *) bundleId;
++ (BOOL)jas_hasRedownload:(NSString *)bundleId;
 
 /**
  *  私有
@@ -63,11 +62,12 @@
  *
  *  @param bundleId 包名
  *
- *  @return 安装时间
+ *  @return 安装时间(iOS10上失效)
  */
-+ (NSString *)jas_installTime:(NSString *) bundleId;
++ (NSString *)jas_installTime:(NSString *)bundleId;
 
 /**
+ *  私有
  *  打开应用
  *
  *  @param bundleId 应用的bundleId

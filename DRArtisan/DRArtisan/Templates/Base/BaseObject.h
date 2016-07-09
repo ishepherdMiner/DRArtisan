@@ -65,7 +65,7 @@
 /**
  *  字典转模型方法
  */
-+ (instancetype)objectWithDict:(NSDictionary *)dict;
++ (instancetype)objWithDic:(NSDictionary *)dict;
 
 
 @end

@@ -9,12 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-
-#if kCoder_Ext
-
-#import "CorePrivate.h"
-
-#endif
+#import <DRCore/DRCore.h>
 
 @interface AppDelegate ()
 
@@ -27,6 +22,7 @@
     
     _window = [[UIWindow alloc] initWithFrame:Jas_Screen_bounds];
     _window.rootViewController = [[ViewController alloc] init];
+    
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试
     // [self iosUpgradeTest];
