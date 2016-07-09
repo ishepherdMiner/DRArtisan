@@ -22,7 +22,6 @@
 		96F5F3B21D30AB2300AB1C03 /* MultidimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3811D30AB2300AB1C03 /* MultidimensionTableView.m */; };
 		96F5F3B31D30AB2300AB1C03 /* SingledimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3831D30AB2300AB1C03 /* SingledimensionTableView.m */; };
 		96F5F3B41D30AB2300AB1C03 /* SingledimensionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3851D30AB2300AB1C03 /* SingledimensionTableViewCell.m */; };
-		96F5F3B51D30AB2300AB1C03 /* CorePrivate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F38A1D30AB2300AB1C03 /* CorePrivate.m */; };
 		96F5F3B61D30AB2300AB1C03 /* NSArray+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3931D30AB2300AB1C03 /* NSArray+Coder.m */; };
 		96F5F3B71D30AB2300AB1C03 /* NSData+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3951D30AB2300AB1C03 /* NSData+Coder.m */; };
 		96F5F3B81D30AB2300AB1C03 /* NSDate+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3971D30AB2300AB1C03 /* NSDate+Coder.m */; };
@@ -96,8 +95,6 @@
 		96F5F3841D30AB2300AB1C03 /* SingledimensionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingledimensionTableViewCell.h; sourceTree = "<group>"; };
 		96F5F3851D30AB2300AB1C03 /* SingledimensionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingledimensionTableViewCell.m; sourceTree = "<group>"; };
 		96F5F3861D30AB2300AB1C03 /* TableViewCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCollect.h; sourceTree = "<group>"; };
-		96F5F3891D30AB2300AB1C03 /* CorePrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CorePrivate.h; sourceTree = "<group>"; };
-		96F5F38A1D30AB2300AB1C03 /* CorePrivate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CorePrivate.m; sourceTree = "<group>"; };
 		96F5F38D1D30AB2300AB1C03 /* GlobalConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConst.h; sourceTree = "<group>"; };
 		96F5F38E1D30AB2300AB1C03 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
 		96F5F3911D30AB2300AB1C03 /* CategoryCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CategoryCollect.h; sourceTree = "<group>"; };
@@ -319,8 +316,6 @@
 		96F5F3881D30AB2300AB1C03 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				96F5F3891D30AB2300AB1C03 /* CorePrivate.h */,
-				96F5F38A1D30AB2300AB1C03 /* CorePrivate.m */,
 			);
 			path = Private;
 			sourceTree = "<group>";
@@ -644,7 +639,6 @@
 				96F5F3B81D30AB2300AB1C03 /* NSDate+Coder.m in Sources */,
 				96F5F3AF1D30AB2300AB1C03 /* BaseTableViewCell.m in Sources */,
 				96F5F3B41D30AB2300AB1C03 /* SingledimensionTableViewCell.m in Sources */,
-				96F5F3B51D30AB2300AB1C03 /* CorePrivate.m in Sources */,
 				96F5F3AE1D30AB2300AB1C03 /* AbstractBaseTableView.m in Sources */,
 				96F5F3E21D30CEE500AB1C03 /* JASSubtitleCellModel.m in Sources */,
 				96F5F3B31D30AB2300AB1C03 /* SingledimensionTableView.m in Sources */,
