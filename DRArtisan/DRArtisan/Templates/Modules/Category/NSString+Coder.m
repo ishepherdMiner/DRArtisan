@@ -91,8 +91,12 @@
                                withString:@" "
                                   options:NSLiteralSearch
                                     range:NSMakeRange(0, [outputStr length])];
-    
+
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > 90000
+    return [outputStr stringByRemovingPercentEncoding];
+#else
     return [outputStr stringByReplacingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+#endif
 }
 
 @end

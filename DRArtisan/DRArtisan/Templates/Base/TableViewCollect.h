@@ -12,4 +12,6 @@
 #import "SingledimensionTableView.h"
 #import "MultidimensionTableView.h"
 
+#import "JASDefaultCell.h"
+
 #endif /* TableViewCollect_h */

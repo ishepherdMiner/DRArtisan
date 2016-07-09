@@ -11,36 +11,6 @@
 
 const char* propertiesKey = "md5(bundleId)_propertiesKey";
 
-+ (instancetype)objectWithDict:(NSDictionary *)dict {
-    
-    id obj = [[self alloc] init];
-    
-    NSArray *properties = [self jas_propertyList];
-    
-    // Is exist high prior custom map model?
-//    if ([obj respondsToSelector:@selector(mapperModel)]) {
-//        NSDictionary *propertyDic = [obj performSelector:@selector(modelMapper)];
-//        NSMutableArray *propertiesM = [NSMutableArray arrayWithCapacity:[properties count]];
-//        for(NSString *key in properties) {
-//            if ([propertyDic objectForKey:key]) {
-//                [propertiesM addObject:propertyDic[key]];
-//            }
-//        }
-//        properties = [propertiesM copy];
-//    }
-    
-    // 遍历属性数组
-    for (NSString *key in properties) {
-        // 判断字典中是否包含这个key
-        if (dict[key] != nil) {
-            // 使用 KVC 设置数值
-            [obj setValue:dict[key] forKeyPath:key];
-        }
-    }
-    
-    return obj;
-}
-
 + (NSArray *)jas_propertyList {
     
     // 0. 判断是否存在关联对象，如果存在，直接返回

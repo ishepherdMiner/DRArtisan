@@ -29,13 +29,13 @@
     _window.rootViewController = [[ViewController alloc] init];
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试
-    [self iosUpgradeTest];
+    // [self iosUpgradeTest];
 #endif
-    NSDictionary *demoDic = [self demoDic];
-    JasLog(@"%@",demoDic);
-    
-    NSArray *demoArr = [self demoArr];
-    JasLog(@"%@",demoArr);
+//    NSDictionary *demoDic = [self demoDic];
+//    JasLog(@"%@",demoDic);
+//    
+//    NSArray *demoArr = [self demoArr];
+//    JasLog(@"%@",demoArr);
     
     _window.backgroundColor = Jas_HexRGB(0xffffff);
     [_window makeKeyAndVisible];

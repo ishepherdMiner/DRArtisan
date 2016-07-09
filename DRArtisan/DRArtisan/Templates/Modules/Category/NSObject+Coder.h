@@ -9,11 +9,6 @@
 @interface NSObject (Coder)
 
 /**
- *  字典转模型方法
- */
-+ (instancetype)objectWithDict:(NSDictionary *)dict;
-
-/**
  *  返回类的属性列表
  */
 + (NSArray *)jas_propertyList;
