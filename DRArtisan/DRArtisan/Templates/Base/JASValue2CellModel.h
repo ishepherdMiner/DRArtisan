@@ -6,9 +6,9 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "BaseObject.h"
+#import "JASBaseCellModel.h"
 
-@interface JASValue2CellModel : BaseObject
+@interface JASValue2CellModel : JASBaseCellModel
 
 /// cell的标识id
 @property (nonatomic,copy) NSString *title_id;

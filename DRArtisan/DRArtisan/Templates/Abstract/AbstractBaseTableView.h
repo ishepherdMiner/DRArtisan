@@ -18,14 +18,15 @@
     NSArray *_dataList;
 }
 
-@property (nonatomic,weak,readonly,nullable) Class cellClass;
-@property (nonatomic,copy,readonly,nullable) NSString *identifier;
-@property (nonatomic,strong,nullable) NSArray *dataList;
+@property (nonatomic,weak,readonly) Class cellClass;
+@property (nonatomic,copy,readonly) NSString *identifier;
+@property (nonatomic,strong) NSArray *dataList;
+@property (nonatomic,weak) id<BaseTableViewProtocol> vcDelegate;
 
 /// 为了快捷显示系统的UITableViewCell而设置的属性
 @property (nonatomic,assign) UITableViewCellStyle cellStyle;
 
 /// 使用类名做复用ID的注册方法
-- (void)registerClass:(nullable Class)cellClass;
+- (void)registerClass:(Class)cellClass;
 
 @end

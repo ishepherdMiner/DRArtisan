@@ -9,12 +9,12 @@
 #ifndef TableViewCollect_h
 #define TableViewCollect_h
 
+#import "BaseTableView.h"
 #import "SingledimensionTableView.h"
 #import "MultidimensionTableView.h"
+#import "FlexibleHeightTableView.h"
 
-#import "JASDefaultCell.h"
-#import "JASValue1Cell.h"
-#import "JASValue2Cell.h"
-#import "JASSubtitleCell.h"
+#import "JASCellModelCollect.h"
+#import "JASCellCollect.h"
 
 #endif /* TableViewCollect_h */

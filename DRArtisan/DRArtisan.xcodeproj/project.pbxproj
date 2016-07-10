@@ -10,6 +10,9 @@
 		963ED3BE1D32448A0071BECF /* JASValue1Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED3BD1D32448A0071BECF /* JASValue1Cell.m */; };
 		963ED3C11D3245A70071BECF /* JASValue2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED3C01D3245A70071BECF /* JASValue2Cell.m */; };
 		963ED3C41D3246760071BECF /* JASSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED3C31D3246760071BECF /* JASSubtitleCell.m */; };
+		963ED3CC1D32AC2D0071BECF /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED3CB1D32AC2D0071BECF /* BaseTableView.m */; };
+		963ED3D01D32BEEB0071BECF /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED3CF1D32BEEB0071BECF /* FlexibleHeightTableView.m */; };
+		963ED3D61D32C8CA0071BECF /* JASBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED3D51D32C8CA0071BECF /* JASBaseCellModel.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -24,7 +27,6 @@
 		96F5F3B11D30AB2300AB1C03 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F37F1D30AB2300AB1C03 /* BaseViewController.m */; };
 		96F5F3B21D30AB2300AB1C03 /* MultidimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3811D30AB2300AB1C03 /* MultidimensionTableView.m */; };
 		96F5F3B31D30AB2300AB1C03 /* SingledimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3831D30AB2300AB1C03 /* SingledimensionTableView.m */; };
-		96F5F3B41D30AB2300AB1C03 /* SingledimensionTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3851D30AB2300AB1C03 /* SingledimensionTableViewCell.m */; };
 		96F5F3B61D30AB2300AB1C03 /* NSArray+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3931D30AB2300AB1C03 /* NSArray+Coder.m */; };
 		96F5F3B71D30AB2300AB1C03 /* NSData+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3951D30AB2300AB1C03 /* NSData+Coder.m */; };
 		96F5F3B81D30AB2300AB1C03 /* NSDate+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3971D30AB2300AB1C03 /* NSDate+Coder.m */; };
@@ -75,6 +77,13 @@
 		963ED3C01D3245A70071BECF /* JASValue2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue2Cell.m; sourceTree = "<group>"; };
 		963ED3C21D3246760071BECF /* JASSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSubtitleCell.h; sourceTree = "<group>"; };
 		963ED3C31D3246760071BECF /* JASSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSubtitleCell.m; sourceTree = "<group>"; };
+		963ED3CA1D32AC2D0071BECF /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		963ED3CB1D32AC2D0071BECF /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		963ED3CE1D32BEEB0071BECF /* FlexibleHeightTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightTableView.h; sourceTree = "<group>"; };
+		963ED3CF1D32BEEB0071BECF /* FlexibleHeightTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightTableView.m; sourceTree = "<group>"; };
+		963ED3D41D32C8CA0071BECF /* JASBaseCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASBaseCellModel.h; sourceTree = "<group>"; };
+		963ED3D51D32C8CA0071BECF /* JASBaseCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASBaseCellModel.m; sourceTree = "<group>"; };
+		963ED3D71D32CDA20071BECF /* JASCellCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASCellCollect.h; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -104,8 +113,6 @@
 		96F5F3811D30AB2300AB1C03 /* MultidimensionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultidimensionTableView.m; sourceTree = "<group>"; };
 		96F5F3821D30AB2300AB1C03 /* SingledimensionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingledimensionTableView.h; sourceTree = "<group>"; };
 		96F5F3831D30AB2300AB1C03 /* SingledimensionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingledimensionTableView.m; sourceTree = "<group>"; };
-		96F5F3841D30AB2300AB1C03 /* SingledimensionTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingledimensionTableViewCell.h; sourceTree = "<group>"; };
-		96F5F3851D30AB2300AB1C03 /* SingledimensionTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingledimensionTableViewCell.m; sourceTree = "<group>"; };
 		96F5F3861D30AB2300AB1C03 /* TableViewCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TableViewCollect.h; sourceTree = "<group>"; };
 		96F5F38D1D30AB2300AB1C03 /* GlobalConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConst.h; sourceTree = "<group>"; };
 		96F5F38E1D30AB2300AB1C03 /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
@@ -212,6 +219,17 @@
 				96F5F45D1D3150A900AB1C03 /* CommentModel.m */,
 			);
 			name = Demo;
+			sourceTree = "<group>";
+		};
+		963ED3CD1D32B8B60071BECF /* Cluster */ = {
+			isa = PBXGroup;
+			children = (
+				96F5F3801D30AB2300AB1C03 /* MultidimensionTableView.h */,
+				96F5F3811D30AB2300AB1C03 /* MultidimensionTableView.m */,
+				96F5F3821D30AB2300AB1C03 /* SingledimensionTableView.h */,
+				96F5F3831D30AB2300AB1C03 /* SingledimensionTableView.m */,
+			);
+			name = Cluster;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
@@ -427,10 +445,11 @@
 			isa = PBXGroup;
 			children = (
 				96F5F3861D30AB2300AB1C03 /* TableViewCollect.h */,
-				96F5F3801D30AB2300AB1C03 /* MultidimensionTableView.h */,
-				96F5F3811D30AB2300AB1C03 /* MultidimensionTableView.m */,
-				96F5F3821D30AB2300AB1C03 /* SingledimensionTableView.h */,
-				96F5F3831D30AB2300AB1C03 /* SingledimensionTableView.m */,
+				963ED3CA1D32AC2D0071BECF /* BaseTableView.h */,
+				963ED3CB1D32AC2D0071BECF /* BaseTableView.m */,
+				963ED3CE1D32BEEB0071BECF /* FlexibleHeightTableView.h */,
+				963ED3CF1D32BEEB0071BECF /* FlexibleHeightTableView.m */,
+				963ED3CD1D32B8B60071BECF /* Cluster */,
 				96F5F3C31D30ABE600AB1C03 /* UITableViewCell */,
 			);
 			name = UITableView;
@@ -440,8 +459,7 @@
 			isa = PBXGroup;
 			children = (
 				96F5F3C71D30BF1C00AB1C03 /* Models */,
-				96F5F3841D30AB2300AB1C03 /* SingledimensionTableViewCell.h */,
-				96F5F3851D30AB2300AB1C03 /* SingledimensionTableViewCell.m */,
+				963ED3D71D32CDA20071BECF /* JASCellCollect.h */,
 				96F5F3E31D30D13200AB1C03 /* JASDefaultCell.h */,
 				96F5F3E41D30D13200AB1C03 /* JASDefaultCell.m */,
 				963ED3BC1D32448A0071BECF /* JASValue1Cell.h */,
@@ -458,6 +476,8 @@
 			isa = PBXGroup;
 			children = (
 				96F5F3E61D30D79100AB1C03 /* JASCellModelCollect.h */,
+				963ED3D41D32C8CA0071BECF /* JASBaseCellModel.h */,
+				963ED3D51D32C8CA0071BECF /* JASBaseCellModel.m */,
 				96F5F3D71D30CEBD00AB1C03 /* JASDefaultCellModel.h */,
 				96F5F3D81D30CEBD00AB1C03 /* JASDefaultCellModel.m */,
 				96F5F3DA1D30CECA00AB1C03 /* JASValue1CellModel.h */,
@@ -656,11 +676,11 @@
 				96F5F3B21D30AB2300AB1C03 /* MultidimensionTableView.m in Sources */,
 				963ED3BE1D32448A0071BECF /* JASValue1Cell.m in Sources */,
 				96F5F3D91D30CEBD00AB1C03 /* JASDefaultCellModel.m in Sources */,
+				963ED3D61D32C8CA0071BECF /* JASBaseCellModel.m in Sources */,
 				96F5F3B71D30AB2300AB1C03 /* NSData+Coder.m in Sources */,
 				96F5F3DF1D30CED400AB1C03 /* JASValue2CellModel.m in Sources */,
 				96F5F3B81D30AB2300AB1C03 /* NSDate+Coder.m in Sources */,
 				96F5F3AF1D30AB2300AB1C03 /* BaseTableViewCell.m in Sources */,
-				96F5F3B41D30AB2300AB1C03 /* SingledimensionTableViewCell.m in Sources */,
 				96F5F3AE1D30AB2300AB1C03 /* AbstractBaseTableView.m in Sources */,
 				96F5F3E21D30CEE500AB1C03 /* JASSubtitleCellModel.m in Sources */,
 				96F5F3B31D30AB2300AB1C03 /* SingledimensionTableView.m in Sources */,
@@ -671,6 +691,7 @@
 				96F5F3B01D30AB2300AB1C03 /* BaseNavigationController.m in Sources */,
 				96F5F3BB1D30AB2300AB1C03 /* NSString+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
+				963ED3CC1D32AC2D0071BECF /* BaseTableView.m in Sources */,
 				96F5F3DC1D30CECA00AB1C03 /* JASValue1CellModel.m in Sources */,
 				96F5F3BA1D30AB2300AB1C03 /* NSObject+Coder.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
@@ -684,6 +705,7 @@
 				96F5F3C11D30AB2300AB1C03 /* CircleProgressBar.m in Sources */,
 				96E72F081D30A26000D5A3A9 /* main.m in Sources */,
 				963ED3C41D3246760071BECF /* JASSubtitleCell.m in Sources */,
+				963ED3D01D32BEEB0071BECF /* FlexibleHeightTableView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

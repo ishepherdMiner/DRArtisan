@@ -11,6 +11,7 @@
 @implementation SingledimensionTableView
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
     BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
     static int i = 0;
     if (cell == nil) {

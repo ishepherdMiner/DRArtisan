@@ -7,7 +7,6 @@
 //
 
 #import "ViewController.h"
-#import "JASCellModelCollect.h"
 #import "DemoModel.h"
 #import "CommentModel.h"
 
@@ -15,13 +14,14 @@
 
 @property (nonatomic,weak) SingledimensionTableView *table_v;
 
+@property (nonatomic, weak) BaseTableView *base_table_v;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self subtitleCellDemo];
+    [self baseTableViewDemo];
 }
 
 // 数据源为一维数组对象
@@ -40,6 +40,19 @@
     
     // 添加到父视图
     [self.view addSubview:_table_v = table_v];
+}
+
+- (void)baseTableViewDemo {
+    // 创建TableView
+    BaseTableView *base_table_v = [FlexibleHeightTableView tableViewWithFrame:fRect(0, 0, Jas_Screen_width, Jas_Screen_height) style:UITableViewStylePlain dataList:[self defaultCellModelList]];
+    // 注册cell对象(要求实现:setModel:方法)
+    [base_table_v registerClass:[JASDefaultCell class]];
+    
+    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+    base_table_v.cellStyle = UITableViewCellStyleDefault;
+    
+    // 添加到父视图
+    [self.view addSubview:_base_table_v = base_table_v];
 }
 
 #pragma mark - Demo
@@ -105,6 +118,8 @@
     
     // 设置cell的内容类型,默认为UITableViewCellDefault(option)
     table_v.cellStyle = UITableViewCellStyleSubtitle;
+    
+    //
     
     // 提供数据源
     // table_v.dataList = [self defaultCellModelList];

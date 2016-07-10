@@ -9,6 +9,7 @@
 #import "AbstractBaseTableView.h"
 
 #define kSingleLineSection 1
+#define kDefaultCellHeight 60
 
 @interface AbstractBaseTableView ()
 
@@ -39,6 +40,15 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     AbstractMethodNotImplemented();
+}
+
+- (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.vcDelegate) {
+        if ([self.vcDelegate respondsToSelector:@selector(tableView:estimatedHeightForRowAtIndexPath:)]) {
+            [self.vcDelegate tableView:tableView estimatedHeightForRowAtIndexPath:indexPath];
+        }
+    }
+    return kDefaultCellHeight;
 }
 
 - (void)registerClass:(nullable Class)cellClass {

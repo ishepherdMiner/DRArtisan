@@ -57,8 +57,8 @@
  *  Requires the following
  *      When the server can provide the client is not the same field of KVC capacity   OK
  *      Just Returns need to map attributes dictionary                                 OK
- *      3.能实现递归性质的调用
- *      4.对类型不符时有一定兼容能力
+ *      3.能实现递归性质的调用      目前还没有能力实现
+ *      4.对类型不符时有一定兼容能力 目前还没有能力实现
  */
 @interface BaseObject : NSObject <BaseObjectProtocol>
 

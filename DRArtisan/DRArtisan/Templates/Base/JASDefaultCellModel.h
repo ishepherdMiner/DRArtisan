@@ -6,12 +6,12 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "BaseObject.h"
+#import "JASBaseCellModel.h"
 
 /**
  *  默认类型的cell模型对象
  */
-@interface JASDefaultCellModel : BaseObject
+@interface JASDefaultCellModel : JASBaseCellModel
 
 /// cell的标识id
 @property (nonatomic,copy) NSString *title_id;
@@ -21,5 +21,6 @@
 
 /// cell的图片地址
 @property (nonatomic,copy) NSString *icon;
+
 
 @end
