@@ -10,4 +10,8 @@
 
 @implementation JASSubtitleCellModel
 
+- (NSDictionary *)mapperProperties {
+    return @{@"icon":@"image"};
+}
+
 @end

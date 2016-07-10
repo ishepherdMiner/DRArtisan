@@ -13,5 +13,8 @@
 #import "MultidimensionTableView.h"
 
 #import "JASDefaultCell.h"
+#import "JASValue1Cell.h"
+#import "JASValue2Cell.h"
+#import "JASSubtitleCell.h"
 
 #endif /* TableViewCollect_h */

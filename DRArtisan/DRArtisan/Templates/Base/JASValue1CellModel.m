@@ -10,4 +10,10 @@
 
 @implementation JASValue1CellModel
 
+- (NSDictionary *)mapperProperties {
+    return @{
+             @"title_id":@"id"
+           };
+}
+
 @end

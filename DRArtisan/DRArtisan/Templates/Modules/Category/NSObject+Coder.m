@@ -67,13 +67,16 @@ const char* propertiesKey = "md5(bundleId)_propertiesKey";
             if(mapResult) {
                 [propertyDic setValue:dic[mapResult] forKey:property];
             }else {
-                //  the class property not map but in property list
+                
+                // the class property not map but in property list
+                // 1.Developer forget to map
+                // 2.model property named is the same as server field
                 if ([propertyList indexOfObject:property] != NSNotFound) {
-                    [propertyDic setObject:dic[property] forKey:property];
+                    [propertyDic setValue:dic[property] forKey:property];
                 }else {
 #if DEBUG
                     // the class property not in model which is from server
-                    JasLog(@"the %@ property %@ not in model wihich is from server.",obj,property);
+                    JasLog(@"the %@ property %@ not in model wihich is from server.",obj,property);                    
 #endif
                 }
             }
@@ -90,6 +93,8 @@ const char* propertiesKey = "md5(bundleId)_propertiesKey";
             id mapResult = [dic objectForKey:property];
             if(mapResult){
                 [obj setValue:mapResult forKey:property];
+            }else {
+                [obj setValue:[NSNull null] forKey:property];
             }
         }
     }

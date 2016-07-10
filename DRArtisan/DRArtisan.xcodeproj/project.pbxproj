@@ -201,6 +201,19 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		963ED3C51D32485A0071BECF /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				96E72F0C1D30A26000D5A3A9 /* ViewController.h */,
+				96E72F0D1D30A26000D5A3A9 /* ViewController.m */,
+				96F5F4591D31502200AB1C03 /* DemoModel.h */,
+				96F5F45A1D31502200AB1C03 /* DemoModel.m */,
+				96F5F45C1D3150A900AB1C03 /* CommentModel.h */,
+				96F5F45D1D3150A900AB1C03 /* CommentModel.m */,
+			);
+			name = Demo;
+			sourceTree = "<group>";
+		};
 		96E72EFA1D30A26000D5A3A9 = {
 			isa = PBXGroup;
 			children = (
@@ -273,15 +286,10 @@
 		96E72F6E1D30A3C900D5A3A9 /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				963ED3C51D32485A0071BECF /* Demo */,
 				96E72F091D30A26000D5A3A9 /* AppDelegate.h */,
 				96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */,
-				96E72F0C1D30A26000D5A3A9 /* ViewController.h */,
-				96E72F0D1D30A26000D5A3A9 /* ViewController.m */,
 				96E72F0F1D30A26000D5A3A9 /* Main.storyboard */,
-				96F5F4591D31502200AB1C03 /* DemoModel.h */,
-				96F5F45A1D31502200AB1C03 /* DemoModel.m */,
-				96F5F45C1D3150A900AB1C03 /* CommentModel.h */,
-				96F5F45D1D3150A900AB1C03 /* CommentModel.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";

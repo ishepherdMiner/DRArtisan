@@ -21,7 +21,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self singledimensionTableViewDemo];
+    [self subtitleCellDemo];
 }
 
 // 数据源为一维数组对象
@@ -30,66 +30,108 @@
     SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Jas_Screen_width, Jas_Screen_height) style:UITableViewStylePlain];
     
     // 注册cell对象(要求实现:setModel:方法)
-    [table_v registerClass:[JASDefaultCell class]];
+    [table_v registerClass:[JASValue1Cell class]];
     
     // 设置cell的内容类型,默认为UITableViewCellDefault(option)
-    // table_v.cellStyle = UITableViewCellStyleSubtitle;
+     table_v.cellStyle = UITableViewCellStyleValue1;
     
     // 提供数据源
-    table_v.dataList = [self moreDicList];
-    
-    // table_v.dataList = [self stringMoreList];
-    // table_v.dataList = [self modelList];
+    table_v.dataList = [self stringList];
     
     // 添加到父视图
     [self.view addSubview:_table_v = table_v];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
+#pragma mark - Demo
+- (void)defaultCellDemo {
+    // 创建列表视图并设置位置
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Jas_Screen_width, Jas_Screen_height) style:UITableViewStylePlain];
+    
+    // 注册cell对象(要求实现:setModel:方法)
+    [table_v registerClass:[JASDefaultCell class]];
+    
+    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+    // table_v.cellStyle = UITableViewCellStyleValue1;
+    
+    // 提供数据源
+    table_v.dataList = [self defaultCellModelList];
+    
+    // 添加到父视图
+    [self.view addSubview:_table_v = table_v];
+}
+
+- (void)value1CellDemo {
+    // 创建列表视图并设置位置
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Jas_Screen_width, Jas_Screen_height) style:UITableViewStylePlain];
+    
+    // 注册cell对象(要求实现:setModel:方法)
+    [table_v registerClass:[JASValue1Cell class]];
+    
+    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+    table_v.cellStyle = UITableViewCellStyleValue1;
+    
+    // 提供数据源
+    // table_v.dataList = [self defaultCellModelList];
+    table_v.dataList = [self value1CellModelList];
+    
+    // 添加到父视图
+    [self.view addSubview:_table_v = table_v];
+}
+
+- (void)value2CellDemo {
+    // 创建列表视图并设置位置
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Jas_Screen_width, Jas_Screen_height) style:UITableViewStylePlain];
+    
+    // 注册cell对象(要求实现:setModel:方法)
+    [table_v registerClass:[JASValue2Cell class]];
+    
+    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+    table_v.cellStyle = UITableViewCellStyleValue2;
+    
+    // 提供数据源
+    // table_v.dataList = [self defaultCellModelList];
+    table_v.dataList = [self value1CellModelList];
+    
+    // 添加到父视图
+    [self.view addSubview:_table_v = table_v];
+}
+
+- (void)subtitleCellDemo {
+    // 创建列表视图并设置位置
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Jas_Screen_width, Jas_Screen_height) style:UITableViewStylePlain];
+    
+    // 注册cell对象(要求实现:setModel:方法)
+    [table_v registerClass:[JASSubtitleCell class]];
+    
+    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+    table_v.cellStyle = UITableViewCellStyleSubtitle;
+    
+    // 提供数据源
+    // table_v.dataList = [self defaultCellModelList];
+    table_v.dataList = [self subtitleCellModelList];
+    
+    // 添加到父视图
+    [self.view addSubview:_table_v = table_v];
 }
 
 #pragma mark - dataSource
-
-// 数据源为字符串数组
-- (NSArray *)stringList {
-    return @[@"Single",@"Two",@"Three",@"Single",@"Two",@"Three",@"Single",@"Two",@"Three"];
-}
-
-// 数据源为字典数组
-- (NSArray *)dicList {
-    return @[
-             @{
-                 @"title":@"title_test1",
-                 @"desc":@"desc_test1",
-                 },
-             @{
-                 @"title":@"title_test2",
-                 @"desc":@"desc_test2",
-                 },
-             @{
-                 @"title":@"title_test3",
-                 @"desc":@"desc_test3",
-                 }
-             ];
-}
 
 // 字典转模型
 - (NSArray *)defaultCellModelList {
     return @[
              [JASDefaultCellModel objWithDic:@{
                                                    @"id":@1,
-                                                   @"title":@"c测试,测试...",
+                                                   @"title":@"c测试,234...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
              [JASDefaultCellModel objWithDic:@{
                                                    @"id":@2,
-                                                   @"title":@"c测试,测试...",
+                                                   @"title":@"c测试,2342...c测试,2342...c测试,2342...c测试,2342...c测试,2342...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
              [JASDefaultCellModel objWithDic:@{
                                                    @"id":@3,
-                                                   @"title":@"c测试,测试...",
+                                                   @"title":@"cfads,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
              [JASDefaultCellModel objWithDic:@{
@@ -97,6 +139,64 @@
                                                    @"title":@"c测试,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
+             ];
+}
+
+- (NSArray *)value1CellModelList {
+    return @[
+             [JASValue1CellModel objWithDic:@{
+                                              @"id":@1,
+                                              @"title":@"c测试,234...",
+                                              @"blue_title":@"忘掉了挨个打算暗示"
+                                              }
+             ],
+             [JASValue1CellModel objWithDic:@{
+                                              @"id":@1,
+                                              @"title":@"c测试,234...",
+                                              @"blue_title":@"忘掉了挨个打算暗示"
+                                              }
+              ],
+             [JASValue1CellModel objWithDic:@{
+                                              @"id":@1,
+                                              @"title":@"c测试,234...",
+                                              @"blue_title":@"忘掉了挨个打算暗示"
+                                              }
+              ],
+             [JASValue1CellModel objWithDic:@{
+                                              @"id":@1,
+                                              @"title":@"c测试,234...",
+                                              @"blue_title":@"忘掉了挨个打算暗示"
+                                              }
+              ],
+            ];
+}
+
+- (NSArray *)subtitleCellModelList {
+    return @[
+             [JASSubtitleCellModel objWithDic:@{
+                                                @"id":@1,
+                                                @"title":@"c测试,234...",
+                                                @"blue_title":@"忘掉了挨个打算暗示",
+                                                @"image":@"fadsfadsfadsfadsfadsfdsa"
+                                                }],
+             [JASSubtitleCellModel objWithDic:@{
+                                                @"id":@1,
+                                                @"title":@"c测试,234...",
+                                                @"blue_title":@"忘掉了挨个打算暗示",
+                                                @"image":@"fadsfadsfadsfadsfadsfdsa"
+                                                }],
+             [JASSubtitleCellModel objWithDic:@{
+                                                @"id":@1,
+                                                @"title":@"c测试,234...",
+                                                @"blue_title":@"忘掉了挨个打算暗示",
+                                                @"image":@"fadsfadsfadsfadsfadsfdsa"
+                                                }],
+             [JASSubtitleCellModel objWithDic:@{
+                                                @"id":@1,
+                                                @"title":@"c测试,234...",
+                                                @"blue_title":@"忘掉了挨个打算暗示",
+                                                @"image":@"fadsfadsfadsfadsfadsfdsa"
+                                                }],
              ];
 }
 
@@ -186,5 +286,28 @@
     
 }
 
+
+// 数据源为字符串数组
+- (NSArray *)stringList {
+    return @[@"Single",@"Two",@"Three",@"Single",@"Two",@"Three",@"Single",@"Two",@"Three"];
+}
+
+// 数据源为字典数组
+- (NSArray *)dicList {
+    return @[
+             @{
+                 @"title":@"title_test1",
+                 @"desc":@"desc_test1",
+                 },
+             @{
+                 @"title":@"title_test2",
+                 @"desc":@"desc_test2",
+                 },
+             @{
+                 @"title":@"title_test3",
+                 @"desc":@"desc_test3",
+                 }
+             ];
+}
 
 @end

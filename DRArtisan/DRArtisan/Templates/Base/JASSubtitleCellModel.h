@@ -9,6 +9,7 @@
 #import "BaseObject.h"
 
 @interface JASSubtitleCellModel : BaseObject
+
 /// cell的标识id
 @property (nonatomic,copy) NSString *title_id;
 
@@ -20,4 +21,5 @@
 
 /// cell的icon
 @property (nonatomic,copy) NSString *icon;
+
 @end
