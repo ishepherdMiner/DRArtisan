@@ -8,6 +8,8 @@
 
 #import "ViewController.h"
 #import "JASCellModelCollect.h"
+#import "DemoModel.h"
+#import "CommentModel.h"
 
 @interface ViewController ()
 
@@ -34,7 +36,7 @@
     // table_v.cellStyle = UITableViewCellStyleSubtitle;
     
     // 提供数据源
-    table_v.dataList = [self defaultCellModelList];
+    table_v.dataList = [self moreDicList];
     
     // table_v.dataList = [self stringMoreList];
     // table_v.dataList = [self modelList];
@@ -72,7 +74,7 @@
              ];
 }
 
-// 数据源为简单模型对象数组
+// 字典转模型
 - (NSArray *)defaultCellModelList {
     return @[
              [JASDefaultCellModel objWithDic:@{
@@ -96,6 +98,92 @@
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
              ];
+}
+
+- (NSArray *)moreLowDicList {
+    return @[[CommentModel objWithDic:@{
+                                               @"id": @"347",
+                                               @"topic_id": @"225",
+                                               @"user_id": @"87",
+                                               @"content": @"啊",
+                                               @"reply_num": @"5",
+                                               @"create_date": @"1466502431",
+                                               @"nickname": @"风一样的男子",
+                                               @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                               
+                                     }],
+             [CommentModel objWithDic:@{
+                                     
+                                               @"id": @"348",
+                                               @"topic_id": @"225",
+                                               @"user_id": @"87",
+                                               @"content": @"啊",
+                                               @"reply_num": @"5",
+                                               @"create_date": @"1466502431",
+                                               @"nickname": @"风一样的男子",
+                                               @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                               
+                                     }]
+             
+             
+             ];
+}
+
+- (NSArray *)moreDicList {
+    return @[[DemoModel objWithDic:@{@"god_comment":
+                                        @{
+                                              @"id": @"347",
+                                              @"topic_id": @"225",
+                                              @"user_id": @"87",
+                                              @"content": @"啊",
+                                              @"reply_num": @"5",
+                                              @"create_date": @"1466502431",
+                                              @"nickname": @"风一样的男子",
+                                              @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                         }
+                                     }],
+             [DemoModel objWithDic:@{@"god_comment":
+                                         @{
+                                               @"id": @"348",
+                                               @"topic_id": @"225",
+                                               @"user_id": @"87",
+                                               @"content": @"啊",
+                                               @"reply_num": @"5",
+                                               @"create_date": @"1466502431",
+                                               @"nickname": @"风一样的男子",
+                                               @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                            }
+                                     }]
+
+             
+             ];
+    /*
+    return @[@{@"god_comment": @[@{@"id": @"347",@"topic_id": @"225",@"user_id": @"87",@"content": @"啊",@"reply_num": @"5",@"create_date": @"1466502431",@"nickname": @"风一样的男子",@"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"}],@"comment_list": @{@"p": @2,@"total": @"15",@"data": @[@{
+                                                                                                                                                                                                                                                                                                                                                                                              @"id": @"351",
+                                                                                                                                                                                                                                                                                                                                                                                              @"topic_id": @"225",
+                                                                                                                                                                                                                                                                                                                                                                                              @"user_id": @"87",
+                                                                                                                                                                                                                                                                                                                                                                                              @"content": @"睡觉睡觉就是",
+                                                                                                                                                                                                                                                                                                                                                                                              @"reply_num":@"0",
+                                                                                                                                                                                                                                                                                                                                                                                              @"create_date": @"1466502443",
+                                                                                                                                                                                                                                                                                                                                                                                              @"nickname": @"风一样的男子",
+                                                                                                                                                                                                                                                                                                                                                                                              @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                                                                                                                                                                                                                                                                                                                                                                              },
+                                                                                                                                                                                                                                                                                                                                                                                          @{
+                                                                                                                                                                                                                                                                                                                                                                                              @"id": @"350",
+                                                                                                                                                                                                                                                                                                                                                                                              @"topic_id": @"225",
+                                                                                                                                                                                                                                                                                                                                                                                              @"user_id": @"87",
+                                                                                                                                                                                                                                                                                                                                                                                              @"content": @"只能是女神",
+                                                                                                                                                                                                                                                                                                                                                                                              @"reply_num": @"0",
+                                                                                                                                                                                                                                                                                                                                                                                              @"create_date": @"1466502440",
+                                                                                                                                                                                                                                                                                                                                                                                              @"nickname": @"风一样的男子",
+                                                                                                                                                                                                                                                                                                                                                                                              @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
+                                                                                                                                                                                                                                                                                                                                                                                              }
+                                                                                                                                                                                                                                                                                                                                                                                          ]
+                                                                                                                                                                                                                                                                                                                                                      }
+                            }
+                 ];
+     */
+    
 }
 
 

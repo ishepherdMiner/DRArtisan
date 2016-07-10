@@ -12,6 +12,8 @@
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
 
+#import "BaseObject.h"
+
 #import "TableViewCollect.h"
 
 

@@ -41,6 +41,8 @@
 		96F5F3E21D30CEE500AB1C03 /* JASSubtitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3E11D30CEE500AB1C03 /* JASSubtitleCellModel.m */; };
 		96F5F3E51D30D13200AB1C03 /* JASDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F3E41D30D13200AB1C03 /* JASDefaultCell.m */; };
 		96F5F4581D314AF100AB1C03 /* DRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96F5F4571D314AF100AB1C03 /* DRCore.framework */; };
+		96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45A1D31502200AB1C03 /* DemoModel.m */; };
+		96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45D1D3150A900AB1C03 /* CommentModel.m */; };
 		99706EE11E51FCB57E22147F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11050FCD7E4EB553C4621D4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -139,6 +141,10 @@
 		96F5F3E41D30D13200AB1C03 /* JASDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASDefaultCell.m; sourceTree = "<group>"; };
 		96F5F3E61D30D79100AB1C03 /* JASCellModelCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASCellModelCollect.h; sourceTree = "<group>"; };
 		96F5F4571D314AF100AB1C03 /* DRCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DRCore.framework; sourceTree = "<group>"; };
+		96F5F4591D31502200AB1C03 /* DemoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModel.h; sourceTree = "<group>"; };
+		96F5F45A1D31502200AB1C03 /* DemoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModel.m; sourceTree = "<group>"; };
+		96F5F45C1D3150A900AB1C03 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
+		96F5F45D1D3150A900AB1C03 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
 		D11050FCD7E4EB553C4621D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -263,6 +269,10 @@
 				96E72F0C1D30A26000D5A3A9 /* ViewController.h */,
 				96E72F0D1D30A26000D5A3A9 /* ViewController.m */,
 				96E72F0F1D30A26000D5A3A9 /* Main.storyboard */,
+				96F5F4591D31502200AB1C03 /* DemoModel.h */,
+				96F5F45A1D31502200AB1C03 /* DemoModel.m */,
+				96F5F45C1D3150A900AB1C03 /* CommentModel.h */,
+				96F5F45D1D3150A900AB1C03 /* CommentModel.m */,
 			);
 			name = Main;
 			sourceTree = "<group>";
@@ -636,8 +646,10 @@
 				96F5F3BD1D30AB2300AB1C03 /* UIDevice+Coder.m in Sources */,
 				96F5F3B01D30AB2300AB1C03 /* BaseNavigationController.m in Sources */,
 				96F5F3BB1D30AB2300AB1C03 /* NSString+Coder.m in Sources */,
+				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				96F5F3DC1D30CECA00AB1C03 /* JASValue1CellModel.m in Sources */,
 				96F5F3BA1D30AB2300AB1C03 /* NSObject+Coder.m in Sources */,
+				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
 				96F5F3E51D30D13200AB1C03 /* JASDefaultCell.m in Sources */,
 				96F5F3BE1D30AB2300AB1C03 /* UIImage+Coder.m in Sources */,
