@@ -32,7 +32,6 @@
         self.accessoryType = UITableViewCellAccessoryNone;
     }
     
-    CGFloat title_h = [_title_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].height;
     model.cell_h = 60;
 }
 

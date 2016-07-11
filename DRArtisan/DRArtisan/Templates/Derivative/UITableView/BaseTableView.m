@@ -22,6 +22,13 @@
         if (kFoundationProperty(dataList.firstObject)) {
             obj.customSetter = true;
         }
+        
+        if([self isSubclassOfClass:[MultidimensionTableView class]]){
+            if (kFoundationProperty([dataList.firstObject firstObject])) {
+                obj.customSetter = true;
+            }
+        }
+        
         obj.dataList = dataList;
         return obj;
     }
