@@ -19,6 +19,9 @@
     // if self is subclass of BaseTableView
     if([self isSubclassOfClass:[MultidimensionTableView class]] || [self isSubclassOfClass:[SingledimensionTableView class]]) {
         BaseTableView *obj = [[self alloc] initWithFrame:frame style:style];
+        if (kFoundationProperty(dataList.firstObject)) {
+            obj.customSetter = true;
+        }
         obj.dataList = dataList;
         return obj;
     }
@@ -27,6 +30,7 @@
     BaseTableView *base_table_v = [dataList.firstObject isKindOfClass:[NSArray class]] ?
         [[MultidimensionTableView alloc] initWithFrame:frame style:style] :
         [[SingledimensionTableView alloc] initWithFrame:frame style:style];
+    base_table_v.customSetter = true;
     base_table_v.dataList = dataList;
     return base_table_v;
 }

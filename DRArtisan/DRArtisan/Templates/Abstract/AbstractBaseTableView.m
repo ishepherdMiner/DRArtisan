@@ -58,6 +58,17 @@
     self.identifier = NSStringFromClass([self class]);
 }
 
+#pragma mark - Wait to improve
+- (JASBaseCellModel *)packFoundationClass:(id)obj {
+    JASBaseCellModel *model = [[JASBaseCellModel alloc] init];
+    if ([obj isKindOfClass:[NSString class]]) {
+        model.b_string = obj;
+    }else if([obj isKindOfClass:[NSNumber class]]){
+        model.b_number = obj;
+    }else{return obj;}
+    return model;
+}
+
 #pragma mark - override
 - (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
     [super registerClass:cellClass forCellReuseIdentifier:identifier];

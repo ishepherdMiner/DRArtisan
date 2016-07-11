@@ -8,6 +8,16 @@
 
 #import <Foundation/Foundation.h>
 
+#define kFoundationProperty(property)   ([property isKindOfClass:[NSNumber class]]  \
+|| [property isKindOfClass:[NSValue class]]   \
+|| [property isKindOfClass:[NSString class]]) \
+|| [property isKindOfClass:[NSDate class]]    \
+|| [property isKindOfClass:[NSData class]]
+
+#define kCollectionProperty(property)   ([property isKindOfClass:[NSArray class]]      \
+|| [property isKindOfClass:[NSDictionary class]] \
+|| [property isKindOfClass:[NSSet class]])
+
 @protocol BaseObjectProtocol <NSObject>
 
 @optional

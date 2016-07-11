@@ -9,12 +9,36 @@
 #ifndef BaseCollect_h
 #define BaseCollect_h
 
+#import "BaseObject.h"
+
+// Cell Model
+#import "JASBaseCellModel.h"
+#import "JASDefaultCellModel.h"
+#import "JASValue1CellModel.h"
+#import "JASValue2CellModel.h"
+#import "JASSubtitleCellModel.h"
+#import "SetMealCellModel.h"
+
+// ViewController
 #import "BaseViewController.h"
 #import "BaseNavigationController.h"
 
-#import "BaseObject.h"
+// TableView
+#import "BaseTableView.h"
+#import "SingledimensionTableView.h"
+#import "MultidimensionTableView.h"
+#import "FlexibleHeightTableView.h"
+#import "FlexibleHeightMultiTableView.h"
 
-#import "TableViewCollect.h"
+// Cell
+#import "BaseTableViewCell.h"
+#import "JASDefaultCell.h"
+#import "JASValue1Cell.h"
+#import "JASValue2Cell.h"
+#import "JASSubtitleCell.h"
+
+// From flow project
+#import "SetMealTableViewCell.h"
 
 
 

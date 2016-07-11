@@ -11,7 +11,7 @@
 
 /**
  *  满足以下条件时可以使用:
- *     1:cell的内容用系统的即可满足
+ *     1:cell的内容比较简单,使用系统的,或是直接
  *     2.cell的高度用属性设置即可满足
  *     3.不需要定义tableview的header view 或 footer view
  *
@@ -82,5 +82,6 @@
 + (instancetype)tableViewWithFrame:(CGRect)frame
                              style:(UITableViewStyle)style
                           dataList:(NSArray *)dataList;
+
 
 @end

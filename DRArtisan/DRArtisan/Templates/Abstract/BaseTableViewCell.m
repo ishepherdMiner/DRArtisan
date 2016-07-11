@@ -15,7 +15,7 @@
 //    return [super initWithStyle:style reuseIdentifier:reuseIdentifier];
 //}
 
-- (void)setModel:(id)model {
+- (void)setModel:(JASBaseCellModel *)model {
     AbstractMethodNotImplemented();
 }
 

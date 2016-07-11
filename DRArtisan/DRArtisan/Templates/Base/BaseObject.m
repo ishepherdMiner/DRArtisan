@@ -8,16 +8,6 @@
 
 #import "BaseObject.h"
 
-#define kFoundationProperty(property)   ([property isKindOfClass:[NSNumber class]]  \
-|| [property isKindOfClass:[NSValue class]]   \
-|| [property isKindOfClass:[NSString class]]) \
-|| [property isKindOfClass:[NSDate class]]    \
-|| [property isKindOfClass:[NSData class]]
-
-#define kCollectionProperty(property)   ([property isKindOfClass:[NSArray class]]      \
-|| [property isKindOfClass:[NSDictionary class]] \
-|| [property isKindOfClass:[NSSet class]])
-
 @implementation BaseObject
 
 + (instancetype)objWithDic:(NSDictionary *)dic {
@@ -103,12 +93,12 @@
     return obj;
 }
 
-
-- (NSString *)description {
-    NSMutableString *descM = [NSMutableString stringWithFormat:@"<%@ %p>\n",self,self];
-    for (NSString *property in [[self class] jas_propertyList]) {
-        [descM appendString:[NSString stringWithFormat:@"%@ => %@",property,[self valueForKey:property]]];
-    }
-    return descM;
-}
+//
+//- (NSString *)description {
+//    NSMutableString *descM = [NSMutableString stringWithFormat:@"<%@ %p>\n",self,self];
+//    for (NSString *property in [[self class] jas_propertyList]) {
+//        [descM appendString:[NSString stringWithFormat:@"%@ => %@",property,[self valueForKey:property]]];
+//    }
+//    return descM;
+//}
 @end
