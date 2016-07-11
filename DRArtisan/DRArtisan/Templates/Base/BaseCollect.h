@@ -37,9 +37,13 @@
 #import "JASValue2Cell.h"
 #import "JASSubtitleCell.h"
 
+// PickerView
+#import "BasePickerView.h"
+
+#import "JASTableViewController.h"
+
 // From flow project
 #import "SetMealTableViewCell.h"
-
 
 
 #endif /* BaseCollect_h */

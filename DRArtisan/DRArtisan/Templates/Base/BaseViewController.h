@@ -8,10 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol BaseTableViewProtocol;
+@protocol BaseTableViewDelegate;
 
 @interface BaseViewController : UIViewController
 
-@property (nonatomic,strong) id<BaseTableViewProtocol> table_v_impl;
+@property (nonatomic,strong) id<BaseTableViewDelegate> table_v_impl;
 
 @end

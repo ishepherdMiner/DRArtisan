@@ -8,6 +8,6 @@
 
 #import "MultidimensionTableView.h"
 
-@interface SetMealTableView : FlexibleHeightMultiTableView <UIPickerViewDataSource,UIPickerViewDelegate>
+@interface SetMealTableView : FlexibleHeightMultiTableView
 
 @end
