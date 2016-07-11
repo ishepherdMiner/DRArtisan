@@ -24,7 +24,7 @@
     
     // 设置导航栏的字体的颜色,字体大小等
     NSDictionary *navigationBarStyle = @{
-                                         NSForegroundColorAttributeName:Jas_HexRGB(0xffffff),
+                                         NSForegroundColorAttributeName:HexRGB(0xffffff),
                                          NSFontAttributeName:[UIFont boldSystemFontOfSize:20]
                                        };
     

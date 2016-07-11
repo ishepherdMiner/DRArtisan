@@ -17,16 +17,16 @@
  *  Version 1.0
  *  Create Date 20160617
  */
-#define Jas_HexRGB(rgbValue)  [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue &0xFF00) >> 8))/255.0 blue:((float)(rgbValue &0xFF))/255.0 alpha:1.0]
+#define HexRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue &0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
-#define DEFAULT_COLOR Jas_HexRGB(0x59a7ff)
+#define DEFAULT_COLOR HexRGB(0x59a7ff)
 
 // 字体色调
 // 文字-浅颜色 日期,placeholder的字体
-#define DEFAULT_LIGTH_COLOR  Jas_HexRGB(0xa6a6a6)
+#define DEFAULT_LIGTH_COLOR  HexRGB(0xa6a6a6)
 
 // 文字-默认颜色
-#define DEFAULT_FONT_COLOR   Jas_HexRGB(0x2d2a2a)
+#define DEFAULT_FONT_COLOR   HexRGB(0x2d2a2a)
 
 // 是否开启私有方法 
 #define kCoder_Ext  1

@@ -28,6 +28,7 @@
  *  @return a JASBaseCellModel object
  */
 - (JASBaseCellModel *)packFoundationClass:(id)obj;
+
 @end
 
 @interface AbstractBaseTableView : UITableView <BaseTableViewProtocol>{

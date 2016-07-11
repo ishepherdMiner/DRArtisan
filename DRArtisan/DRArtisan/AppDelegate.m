@@ -20,7 +20,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
-    _window = [[UIWindow alloc] initWithFrame:Jas_Screen_bounds];
+    _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
     _window.rootViewController = [[ViewController alloc] init];
     
 #if kCoder_Ext
@@ -33,7 +33,7 @@
 //    NSArray *demoArr = [self demoArr];
 //    JasLog(@"%@",demoArr);
     
-    _window.backgroundColor = Jas_HexRGB(0xffffff);
+    _window.backgroundColor = HexRGB(0xffffff);
     [_window makeKeyAndVisible];
     
     return YES;

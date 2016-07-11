@@ -8,8 +8,6 @@
 
 #import "SetMealTableViewCell.h"
 
-#define kMeal_Section_Num   3
-
 @interface SetMealTableViewCell ()
 
 @property (nonatomic,weak) UILabel *title_v;
@@ -26,10 +24,14 @@
     self.title_v.text = model.b_string;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    if ([[self.owned_table_v locWithModel:model] section] == kMeal_Section_Num - 1) {
+    if ([[self.owned_table_v locWithModel:model] section] == kTwo) {
         self.cell_type = MealCellTypeCenter;
         self.title_v.textColor = DEFAULT_COLOR;
         self.accessoryType = UITableViewCellAccessoryNone;
+    }
+    
+    for(NSString *arg in [[NSProcessInfo processInfo] arguments]) {
+        JasLog(@"%@",arg);
     }
     
     model.cell_h = 60;
@@ -62,8 +64,8 @@
     _title_v.frame = fRect(_title_v.x, self.contentView.centerY - title_s.height * 0.5, title_s.width, title_s.height);
     
     CGSize desc_field_s = [_desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:15]];
-    _desc_field_v.frame = fRect(Jas_Screen_width - 50, self.contentView.centerY - desc_field_s.height * 0.5, desc_field_s.width, desc_field_s.height);
-    
+    _desc_field_v.frame = fRect(Screen_width - 50, self.contentView.centerY - desc_field_s.height * 0.5, desc_field_s.width, desc_field_s.height);
+    _desc_field_v.text = @"test";
 }
 
 @end

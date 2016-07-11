@@ -59,8 +59,8 @@
  *  @version 1.0
  *  @date    20160617
  */
-#define Jas_device_version [[UIDevice currentDevice] systemVersion]
-#define Jas_device_version_newer(version) [Jas_device_version compare:version options: NSNumericSearch] != NSOrderedAscending
+#define device_version [[UIDevice currentDevice] systemVersion]
+#define device_version_newer(version) [device_version compare:version options: NSNumericSearch] != NSOrderedAscending
 
 /**
  *  Setting device bounds const
@@ -71,16 +71,16 @@
  *  1.add Status,Navbar,Tabbar height const
  *  2.add iphone5 proporiton
  */
-#define Jas_Screen_bounds  [UIScreen mainScreen].bounds
-#define Jas_Screen_size [UIScreen mainScreen].bounds.size
-#define Jas_Screen_height [UIScreen mainScreen].bounds.size.height
-#define Jas_Screen_width [UIScreen mainScreen].bounds.size.width
-#define Jas_Screen_scale [UIScreen mainScreen].scale
-#define Jas_Status_bar_height 20
-#define Jas_Nav_bar_height 64
-#define Jas_Tab_bar_height 49
-#define Jas_Proportion_iPhone5_w  Jas_Screen_width / 320.0f
-#define Jas_Proporiton_iPhone5_h  Jas_Screen_height / 568.0f
+#define Screen_bounds         [UIScreen mainScreen].bounds
+#define Screen_size           [UIScreen mainScreen].bounds.size
+#define Screen_height         [UIScreen mainScreen].bounds.size.height
+#define Screen_width          [UIScreen mainScreen].bounds.size.width
+#define Screen_scale          [UIScreen mainScreen].scale
+#define Status_bar_height     20
+#define Nav_bar_height        64
+#define Tab_bar_height        49
+#define Proportion_iPhone5_w  Screen_width / 320.0f
+#define Proporiton_iPhone5_h  Screen_height / 568.0f
 
 /**
  * Setting abstract class need implemented
@@ -90,4 +90,22 @@
                                reason:[NSString stringWithFormat:@"You must override %@ in a subclass.", NSStringFromSelector(_cmd)] \
                              userInfo:nil]
 
+/**
+ *  Setting constant numbers
+ */
+#define kZero  0
+#define kOne   1
+#define kTwo   2
+#define kThree 3
+#define kFour  4
+#define kFive  5
+#define kSix   6
+#define kSeven 7
+#define kEight 8
+#define kNine  9
+#define kTen  10
+
 #endif /* GlobalConst_h */
+
+
+

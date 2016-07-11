@@ -46,6 +46,15 @@
     return [self tableView:tableView cellForRowAtIndexPath:indexPath];
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // if you want to return height in viewcontroller,please set self.vcDelegate = viewcontroller...
+    if(self.vcDelegate){
+        if([self.vcDelegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]){
+            return [self.vcDelegate tableView:tableView didSelectRowAtIndexPath:indexPath];
+        }
+    }
+}
+
 
 
 @end

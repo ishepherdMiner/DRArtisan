@@ -11,9 +11,9 @@
 @interface SetMealCellModel : JASBaseCellModel
 
 /// 标题(周期是多少等...)
-@property (nonatomic, copy) NSString *meal_title;
+@property (nonatomic, copy) NSString *meal_question;
 
 /// 对应的内容
-@property (nonatomic,copy) NSString *meal_desc;
+@property (nonatomic,copy) NSString *meal_answer;
 
 @end

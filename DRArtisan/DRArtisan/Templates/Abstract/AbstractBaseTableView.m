@@ -8,7 +8,6 @@
 
 #import "AbstractBaseTableView.h"
 
-#define kSingleLineSection 1
 #define kDefaultCellHeight 60
 
 @interface AbstractBaseTableView ()
@@ -31,7 +30,7 @@
 
 #pragma mark - UITableView Protocol
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return kSingleLineSection;
+    return kOne;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
