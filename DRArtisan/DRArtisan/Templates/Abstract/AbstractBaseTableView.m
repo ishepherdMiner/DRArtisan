@@ -23,9 +23,11 @@
     
     NSAssert(![self isMemberOfClass:[AbstractBaseTableView class]], @"AbstractBaseTableView is an abstract class, you should not instantiate it directly.");
     
-    self.dataSource = self;
-    self.delegate = self;
-    return [super initWithFrame:frame style:style];
+    if (self = [super initWithFrame:frame style:style]) {
+        self.dataSource = self;
+        self.delegate = self;
+    }
+    return self;
 }
 
 #pragma mark - UITableView Protocol

@@ -87,6 +87,7 @@
  */
 @property (nonatomic,assign) UITableViewCellStyle cellStyle;
 
+
 /**
  *  register tableview cell class and set a reuse id which equal to classname
  *

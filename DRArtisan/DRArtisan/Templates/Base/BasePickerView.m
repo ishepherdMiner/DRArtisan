@@ -77,7 +77,9 @@
 - (void)pickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component
 {
     if ([self.pickerDelegate respondsToSelector:@selector(didSelectedPickerView:didSelectRow:inComponent:RowText:)]) {
-        [self.pickerDelegate didSelectedPickerView:self didSelectRow:row inComponent:component RowText:_dataList[component][row]];
+        
+        BOOL isMulti = [_dataList.firstObject isKindOfClass:[NSArray class]];
+        [self.pickerDelegate didSelectedPickerView:self didSelectRow:row inComponent:isMulti ? component:0 RowText:isMulti ? _dataList[component][row]:_dataList[row]];
     }
 }
 

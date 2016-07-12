@@ -9,5 +9,9 @@
 #import "MultidimensionTableView.h"
 
 @interface SetMealTableView : FlexibleHeightMultiTableView
+/**
+ *  UIAlertController block
+ */
+@property (nonatomic,copy) void ((^alertBlock)(UIViewController *));
 
 @end

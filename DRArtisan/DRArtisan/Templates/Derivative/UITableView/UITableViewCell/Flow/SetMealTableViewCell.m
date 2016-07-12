@@ -18,20 +18,18 @@
 
 @implementation SetMealTableViewCell
 
-- (void)setModel:(JASBaseCellModel *)model {
+- (void)setModel:(SetMealCellModel *)model {
     _model = model;
     
-    self.title_v.text = model.b_string;
+    self.title_v.text = model.meal_question;
+    self.desc_field_v.text = model.meal_answer;
+    
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
     if ([[self.owned_table_v locWithModel:model] section] == kTwo) {
         self.cell_type = MealCellTypeCenter;
         self.title_v.textColor = DEFAULT_COLOR;
         self.accessoryType = UITableViewCellAccessoryNone;
-    }
-    
-    for(NSString *arg in [[NSProcessInfo processInfo] arguments]) {
-        JasLog(@"%@",arg);
     }
     
     model.cell_h = 60;
@@ -46,6 +44,9 @@
         self.cell_type = MealCellTypeLeft;
         
         UITextField *desc_field_v = [[UITextField alloc] init];
+        desc_field_v.font = [UIFont systemFontOfSize:17];
+        desc_field_v.textAlignment = NSTextAlignmentRight;
+        desc_field_v.userInteractionEnabled = false;
         
         [self.contentView addSubview:_desc_field_v = desc_field_v];
         [self.contentView addSubview:_title_v = title_v];
@@ -63,9 +64,13 @@
     }
     _title_v.frame = fRect(_title_v.x, self.contentView.centerY - title_s.height * 0.5, title_s.width, title_s.height);
     
-    CGSize desc_field_s = [_desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:15]];
-    _desc_field_v.frame = fRect(Screen_width - 50, self.contentView.centerY - desc_field_s.height * 0.5, desc_field_s.width, desc_field_s.height);
-    _desc_field_v.text = @"test";
+    CGSize desc_field_s = [_desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]];
+    _desc_field_v.frame = fRect(Screen_width - desc_field_s.width - 40, self.contentView.centerY - desc_field_s.height * 0.5, desc_field_s.width + 5, desc_field_s.height);
+    
+    UIView *mask_v = [[UIView alloc] initWithFrame:_desc_field_v.frame];
+    mask_v.userInteractionEnabled = false;
+    mask_v.backgroundColor = [UIColor clearColor];
+    [self.contentView addSubview:mask_v];
 }
 
 @end
