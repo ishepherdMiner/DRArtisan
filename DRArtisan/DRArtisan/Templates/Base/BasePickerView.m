@@ -8,6 +8,8 @@
 
 #import "BasePickerView.h"
 
+#define kDefaultRowHeight 40
+
 @implementation BasePickerView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -34,25 +36,41 @@
 
 // pickerView 列数
 - (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-    return [_dataList count];
+    if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
+        return [_dataList count];
+    }
+    return kOne;
 }
 
 // pickerView 每列个数
 - (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
 {
-    return [_dataList[component] count];
+    if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
+        return [_dataList[component] count];
+    }
+    return [_dataList count];
 }
 
 //返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
 -(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
 {
-    return [_dataList[component] objectAtIndex:row];
+    if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
+        return [_dataList[component] objectAtIndex:row];
+    }
+    return _dataList[row];
 }
 
 // 每列宽度
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
-    return self.frame.size.width/[self.dataList count];
+    if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
+        return self.frame.size.width/[self.dataList count];
+    }
+    return self.frame.size.width;
+}
+
+- (CGFloat)pickerView:(UIPickerView *)pickerView rowHeightForComponent:(NSInteger)component {
+    return kDefaultRowHeight;
 }
 
 // 返回选中的行

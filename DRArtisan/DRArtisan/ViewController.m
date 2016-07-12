@@ -27,7 +27,7 @@
 // 数据源为一维数组对象
 - (void)singledimensionTableViewDemo {
     // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0,Screen_width, Screen_height) style:UITableViewStylePlain];
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero, kZero,Screen_width, Screen_height) style:UITableViewStylePlain];
     
     // 注册cell对象(要求实现:setModel:方法)
     [table_v registerClass:[JASValue1Cell class]];
@@ -44,7 +44,7 @@
 
 - (void)baseTableViewDemo {
     // 创建TableView
-    BaseTableView *base_table_v = [FlexibleHeightTableView tableViewWithFrame:fRect(0, 0, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self defaultCellModelList]];
+    BaseTableView *base_table_v = [FlexibleHeightTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self defaultCellModelList]];
     // 注册cell对象(要求实现:setModel:方法)
     [base_table_v registerClass:[JASDefaultCell class]];
     
@@ -58,7 +58,7 @@
 #pragma mark - Demo
 - (void)defaultCellDemo {
     // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Screen_width, Screen_height) style:UITableViewStylePlain];
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
     
     // 注册cell对象(要求实现:setModel:方法)
     [table_v registerClass:[JASDefaultCell class]];
@@ -75,7 +75,7 @@
 
 - (void)value1CellDemo {
     // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Screen_width, Screen_height) style:UITableViewStylePlain];
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero,Screen_width, Screen_height) style:UITableViewStylePlain];
     
     // 注册cell对象(要求实现:setModel:方法)
     [table_v registerClass:[JASValue1Cell class]];
@@ -93,7 +93,7 @@
 
 - (void)value2CellDemo {
     // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Screen_width, Screen_height) style:UITableViewStylePlain];
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
     
     // 注册cell对象(要求实现:setModel:方法)
     [table_v registerClass:[JASValue2Cell class]];
@@ -111,7 +111,7 @@
 
 - (void)subtitleCellDemo {
     // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(0, 0, Screen_width, Screen_height) style:UITableViewStylePlain];
+    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
     
     // 注册cell对象(要求实现:setModel:方法)
     [table_v registerClass:[JASSubtitleCell class]];

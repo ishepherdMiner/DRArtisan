@@ -18,18 +18,19 @@
  *  Setting switch service
  *
  *  @author  WangDL
- *  @version 1.0
- *  @date    20160706
+ *  @version 1.1
+ *  @date    20160712
  */
 #if DEBUG
     #define JasLog(...) NSLog(@"\nJAS:" __VA_ARGS__)
     #define JasBaseURL  @""
     #define JasError    JasLog(@"\n\tclass => %@ \n\tfunction => %s",self,__func__)
+    #define JasFrame    JasLog(@"\n\tframe => %@",NSStringFromClass([self class]))
 #else
     #define JasLog(...) {}
     #define JasBaseURL  @""
     #define JasError    {}
-
+    #define JasFrame    {}
 #endif
 
 /**
