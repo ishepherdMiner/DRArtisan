@@ -8,64 +8,56 @@
 
 #import "UIDevice+Coder.h"
 
-#import <mach/mach.h>  // CPU使用率
+#import <mach/mach.h>  
 #import <sys/sysctl.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/mount.h>
 #import <CoreMotion/CoreMotion.h>
 #import <CoreLocation/CoreLocation.h>
+#import <CoreTelephony/CTTelephonyNetworkInfo.h>
+#import <CoreTelephony/CTCarrier.h>
 #import <objc/message.h>
-
-
-// #import <mach/processor_info.h>
-// #include <sys/socket.h> // Per msqr
-// #include <sys/sysctl.h>
-// #include <net/if.h>
-// #include <net/if_dl.h>
-// #import <mach/mach_host.h>
-// #import <sys/types.h>
-// #import <sys/param.h>
-// #import <sys/stat.h>
 
 @implementation UIDevice (Coder)
 
-- (void) jas_logInfo {
++ (void)jas_logInfo {
     JasLog(@"%f",[self jas_cpuUsage]);
     [self jas_cpuType];
     
     [self jas_wifi];
-    JasLog(@"%tu",[self jas_availableMemory]);
-    JasLog(@"%f",[self freeMemoryBytes] / 1024.0 / 1024.0);
+    JasLog(@"%tu",[self jas_freeMemory]);
+    JasLog(@"%f",[self jas_freeMemoryBytes] / 1024.0 / 1024.0);
     
     JasLog(@"%fG",[self jas_totalMemory] / 1024.0 / 1024.0 / 1024.0);
-    JasLog(@"%fM",[self jas_freeDiskSpace] / 1024.0 / 1024.0);
-    JasLog(@"%fM",[self jas_totalDiskSpace] / 1024.0 / 1024.0);
-    [self jas_hardDisk];
+    JasLog(@"%fM",[self jas_freeHardDiskSpace] / 1024.0 / 1024.0);
+    JasLog(@"%fM",[self jas_totalHardDiskSpace] / 1024.0 / 1024.0);
+    [self jas_hardDiskStatus];
     [self jas_sersor];
 }
 
-- (void) jas_sersor {
++ (void)jas_sersor {
     // 方向感应器
     CMMotionManager *motionManager = [[CMMotionManager alloc] init];
     if([motionManager isAccelerometerAvailable]){
-        JasLog(@"加速感应器");
+        JasLog(@"有加速感应器");
     }
     if([motionManager isGyroAvailable]) {
-        JasLog(@"三轴陀螺仪");
+        JasLog(@"有三轴陀螺仪");
     }
     
-    //距离传感器 设置了可以,但是状体还是NO就代表没有距离传感器
+    // 距离传感器 A Boolean value indicating whether the proximity
+    // sensor is close to the user (YES) or not (NO).
     [UIDevice currentDevice].proximityMonitoringEnabled = YES;
     if([[UIDevice currentDevice] proximityState]) {
-        JasLog(@"距离感应器");
+        JasLog(@"有距离感应器");
     }
     // 位置感应器
     if ([CLLocationManager headingAvailable]) {
-        JasLog(@"位置感应器");
+        JasLog(@"有位置感应器");
     }
     // 磁力计
     if ([motionManager isMagnetometerAvailable]) {
-        JasLog(@"磁力计");
+        JasLog(@"有磁力计");
     }
 }
 
@@ -73,7 +65,7 @@
 /**
  *  CPU使用率
  */
-- (CGFloat) jas_cpuUsage {
++ (CGFloat)jas_cpuUsage {
     kern_return_t kr;
     task_info_data_t tinfo;
     mach_msg_type_number_t task_info_count;
@@ -81,7 +73,7 @@
     task_info_count = TASK_INFO_MAX;
     kr = task_info(mach_task_self(), TASK_BASIC_INFO, (task_info_t)tinfo, &task_info_count);
     if (kr != KERN_SUCCESS) {
-        return -1;
+        return +1;
     }
     
     task_basic_info_t      basic_info;
@@ -99,7 +91,7 @@
     // get threads in the task
     kr = task_threads(mach_task_self(), &thread_list, &thread_count);
     if (kr != KERN_SUCCESS) {
-        return -1;
+        return +1;
     }
     if (thread_count > 0)
         stat_thread += thread_count;
@@ -115,7 +107,7 @@
         kr = thread_info(thread_list[j], THREAD_BASIC_INFO,
                          (thread_info_t)thinfo, &thread_info_count);
         if (kr != KERN_SUCCESS) {
-            return -1;
+            return +1;
         }
         
         basic_info_th = (thread_basic_info_t)thinfo;
@@ -130,15 +122,14 @@
     
     kr = vm_deallocate(mach_task_self(), (vm_offset_t)thread_list, thread_count * sizeof(thread_t));
     assert(kr == KERN_SUCCESS);
+    JasLog(@"tot_cpu => %f",tot_cpu);
     return tot_cpu;
 }
 
 /**
  * cpu 类型
  */
-- (void) jas_cpuType {
-    //    host_basic_info_data_t  hostInfo;
-    //    JasLog(@"%zd",hostInfo.cpu_type);
++ (void)jas_cpuType {
     host_basic_info_data_t hostInfo;
     mach_msg_type_number_t infoCount;
     
@@ -167,7 +158,7 @@
     }
 }
 
-- (void) jas_hardDisk {
++ (void)jas_hardDiskStatus {
     NSDictionary *dic = [[NSFileManager defaultManager] attributesOfItemAtPath:@"/" error:NULL];
     JasLog(@"%@",dic);
 }
@@ -175,7 +166,7 @@
 /**
  * wifi信息
  */
-- (void) jas_wifi {
++ (void)jas_wifi {
     NSString *ssid = @"Not Found";
     NSString *macIp = @"Not Found";
     CFArrayRef myArray = CNCopySupportedInterfaces();
@@ -194,7 +185,7 @@
 /**
  * 屏幕分辨率
  */
-- (void) jas_screenDimension {
++ (void)jas_screenDimension {
     CGSize  screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat screenScale = [UIScreen mainScreen].scale;
     JasLog(@"Height = %f, Width = %f",screenScale * screenSize.height,screenScale * screenSize.width);
@@ -203,7 +194,7 @@
 /**
  * 可用内存
  */
-- (NSUInteger)jas_availableMemory{
++ (NSUInteger)jas_freeMemory{
     vm_statistics_data_t vmStats;
     mach_msg_type_number_t infoCount = HOST_VM_INFO_COUNT;
     kern_return_t kernReturn = host_statistics(mach_host_self(),
@@ -215,13 +206,14 @@
         return NSNotFound;
     }
     
+    JasLog(@"freeMemory =>%f",((vm_page_size *vmStats.free_count) / 1024.0) / 1024.0);
     return ((vm_page_size *vmStats.free_count) / 1024.0) / 1024.0;
 }
 
 /**
  * 可用内存
  */
-- (NSUInteger)freeMemoryBytes{
++ (NSUInteger)jas_freeMemoryBytes{
     mach_port_t           host_port = mach_host_self();
     mach_msg_type_number_t   host_size = sizeof(vm_statistics_data_t) / sizeof(integer_t);
     vm_size_t               pagesize;
@@ -234,46 +226,159 @@
     // natural_t   mem_used = (vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * pagesize;
     natural_t mem_free = (natural_t)(vm_stat.free_count * pagesize);
     // natural_t   mem_total = mem_used + mem_free;
-    
+    JasLog(@"mem_free => %f",mem_free / 1024.0 / 1024.0);
     return mem_free;
 }
 
 /**
  * 总内存
  */
-- (NSUInteger)jas_totalMemory {
++ (NSUInteger)jas_totalMemory {
+   JasLog(@"totalMemory => %f",[self sysInfo:HW_PHYSMEM] / 1024.0 / 1024.0);
    return [self sysInfo:HW_PHYSMEM];
 }
 
 /**
  * 可用硬盘空间
  */
-- (long long)jas_freeDiskSpace{
++ (long long)jas_freeHardDiskSpace{
     struct statfs buf;
-    long long freespace;
-    freespace = 0;
+    long long freeHardDiskSpace;
+    freeHardDiskSpace = 0;
     if(statfs("/private/var", &buf) >= 0){
-        freespace = (long long)buf.f_bsize * buf.f_bfree;
+        freeHardDiskSpace = (long long)buf.f_bsize * buf.f_bfree;
     }
-    return freespace;
+    JasLog(@"freeHardDiskSpace =>%lld(%fM,%fG)",freeHardDiskSpace,freeHardDiskSpace / 1024.0/ 1024.0,freeHardDiskSpace / 1024.0 / 1024.0 / 1024.0);
+    
+    return freeHardDiskSpace;
 }
 
 /**
  * 总硬盘空间
  */
-- (long long)jas_totalDiskSpace{
++ (long long)jas_totalHardDiskSpace{
     struct statfs buf;
-    long long totalspace;
-    totalspace = 0;
+    long long totalHardDiskSpace;
+    totalHardDiskSpace = 0;
     if(statfs("/private/var", &buf) >= 0){
-        totalspace = (long long)buf.f_bsize * buf.f_blocks;
+        totalHardDiskSpace = (long long)buf.f_bsize * buf.f_blocks;
     }
-    return totalspace;
+    JasLog(@"totalHardDiskSpace =>%lld(%fM,%fG)",totalHardDiskSpace,totalHardDiskSpace / 1024.0/ 1024.0,totalHardDiskSpace / 1024.0 / 1024.0 / 1024.0);
+    return totalHardDiskSpace;
+}
+
+/**
+ *  获取广告标示符
+ */
++ (NSString *)jas_adid {
+    NSBundle *b = [NSBundle bundleWithPath:@"/System/Library/Frameworks/AdSupport.framework"];
+    [b load];
+    Class cls = NSClassFromString(@"ASIdentifierManager");
+    id obj = [cls valueForKey:@"sharedManager"];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
+    if (![obj respondsToSelector:@selector(advertisingIdentifier)]) {return @"";}
+    else {
+        id adver = [obj performSelector:@selector(advertisingIdentifier)];
+        NSString *adId = [adver valueForKey:@"UUIDString"];
+#pragma clang diagnostic pop
+        // NSString *adId = [[[ASIdentifierManager sharedManager] advertisingIdentifier] UUIDString];
+        
+        if (adId==nil||[adId isEqualToString:@""]||[adId isEqualToString:@"(null)"]) {
+            adId=@"";
+        }
+        JasLog(@"adId => %@",adId);
+        return adId;
+    }
+}
+
++ (NSString *)jas_idfv {
+    JasLog(@"idfv => %@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]);
+    return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
+}
+
++ (CGFloat)jas_screen_brightness{
+    return [[UIScreen mainScreen] brightness];
+}
+
++ (NSUInteger)jas_battery_status {
+    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+    UIDeviceBatteryState battery_state = [UIDevice currentDevice].batteryState;
+    return battery_state;
+}
+
++ (CGFloat)jas_battery_left {
+    [UIDevice currentDevice].batteryMonitoringEnabled = YES;
+    return [UIDevice currentDevice].batteryLevel;
+}
+
++ (NSString *)jas_system_running_time {
+    NSProcessInfo *info=[NSProcessInfo processInfo];
+    JasLog(@"system_running_time => %@",@(info.systemUptime / 86400.0).stringValue);
+    return @(info.systemUptime / 86400.0).stringValue;
+}
+
++ (NSString *)jas_system_start_time {
+    // 获取系统自开机算起的累计时间
+    NSProcessInfo *info = [NSProcessInfo processInfo] ;
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval curtime=[dat timeIntervalSince1970];
+    JasLog(@"start_time => %@",[[NSString alloc] initWithFormat:@"%ld", (long)curtime - (long)info.systemUptime]);
+    return [[NSString alloc] initWithFormat:@"%ld", (long)curtime - (long)info.systemUptime];
+}
+
++ (DeviceDirect)jas_device_direct{
+    UIInterfaceOrientation orientation = [[UIApplication sharedApplication] statusBarOrientation];
+    
+    // 竖屏
+    if (orientation == UIInterfaceOrientationPortrait || orientation == UIInterfaceOrientationPortraitUpsideDown) {
+        return DeviceDirectVer;
+    }
+    else{
+        // 横屏
+        return DeviceDirectHor;
+    }
+}
+
++ (NSString *)jas_bundleId {
+    return [[NSBundle mainBundle] bundleIdentifier];
+}
+
++ (NSString*)jas_language {
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    NSArray* languages = [defaults objectForKey:@"AppleLanguages"];
+    NSString* currentLanguage = [languages objectAtIndex:0];
+    return currentLanguage;
+}
+
++ (NSString *)jas_isp {
+    CTTelephonyNetworkInfo *netInfo = [[CTTelephonyNetworkInfo alloc] init];
+    CTCarrier *carrier = [netInfo subscriberCellularProvider];
+    // NSString *string=[carrier mobileCountryCode ];
+    NSString *carrierCode;
+    
+    if (carrier == nil) {
+        carrierCode = @"WL";
+    }
+    
+    else {
+        carrierCode = [carrier carrierName];
+        if([@"中国移动" isEqualToString:carrierCode]) {
+            return @"CM";
+        } else if([@"中国联通" isEqualToString:carrierCode]) {
+            return @"CU";
+        } else if([@"中国电信" isEqualToString:carrierCode]) {
+            return @"CT";
+        } else
+            return @"NO";
+    }
+    
+    return carrierCode;
 }
 
 #pragma mark sysctl utils
 
-- (NSUInteger)sysInfo:(uint) typeSpecifier {
++ (NSUInteger)sysInfo:(uint) typeSpecifier {
     size_t size = sizeof(int);
     int results;
     int mib[2] = {CTL_HW, typeSpecifier};
@@ -284,7 +389,7 @@
 /**
  * 获取系统信息
  */
-- (NSString *)sysInfoByName:(char *)typeSpecifier {
++ (NSString *)sysInfoByName:(char *)typeSpecifier {
     size_t size;
     sysctlbyname(typeSpecifier, NULL, &size, NULL, 0);
     

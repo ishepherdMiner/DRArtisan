@@ -33,6 +33,9 @@
 //    NSArray *demoArr = [self demoArr];
 //    JasLog(@"%@",demoArr);
     
+    // 测试设备信息相关的方法
+    
+    
     _window.backgroundColor = HexRGB(0xffffff);
     [_window makeKeyAndVisible];
     
