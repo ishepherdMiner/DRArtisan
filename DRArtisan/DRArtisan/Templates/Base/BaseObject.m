@@ -10,6 +10,7 @@
 #import <objc/message.h>
 @implementation BaseObject
 
+
 + (instancetype)objWithDic:(NSDictionary *)dic {
     
     id obj = [[self alloc] init];

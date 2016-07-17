@@ -18,6 +18,17 @@
 || [property isKindOfClass:[NSDictionary class]] \
 || [property isKindOfClass:[NSSet class]])
 
+#define SingletonClassMethod(classname) \
++ (instancetype)shared##classname { \
+static id instance; \
+static dispatch_once_t onceToken; \
+dispatch_once(&onceToken, ^{ \
+    instance = [[self alloc] init]; \
+}); \
+return instance; \
+}
+
+
 @protocol BaseObjectProtocol <NSObject>
 
 @optional

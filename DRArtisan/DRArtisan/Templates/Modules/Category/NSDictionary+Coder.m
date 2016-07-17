@@ -10,18 +10,17 @@
 
 @implementation NSDictionary (Coder)
 
-//- (NSString *)descriptionWithLocale:(id)locale{
-//    NSMutableString *strM = [NSMutableString stringWithString:@"{\n"];
-//    [self enumerateKeysAndObjectsUsingBlock:^(id key, id obj, BOOL *stop) {
-//        if ([obj isKindOfClass:NSDictionary.class]) {
-//            [self descriptionWithLocale:nil];
-//        }
-//        NSString *pair = [NSString stringWithFormat:@"    %@ = %@ \n",key,obj];
-//        [strM appendString:pair];
-//    }];
-//    [strM appendString:@"}"];
-//    return strM;
-//}
+
+- (NSDictionary *)splitUrlQuery:(NSURL *)url {
+    NSArray *qS = [url.query componentsSeparatedByString:@"&"];
+    
+    NSMutableDictionary *qSDicM = [NSMutableDictionary dictionaryWithCapacity:qS.count];
+    [qS enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        NSArray *paramPair = [obj componentsSeparatedByString:@"="];
+        [qSDicM setObject:paramPair.lastObject forKey:paramPair.firstObject];
+    }];
+    return [qSDicM copy];
+}
 
 #if DEBUG
 - (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level {

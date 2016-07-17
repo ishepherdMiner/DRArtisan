@@ -496,6 +496,7 @@
 		963ED7741D34666C0071BECF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				966AFA411D3BFB8700227E51 /* PayChecker */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -562,6 +563,13 @@
 				966AFA3E1D3BF33600227E51 /* Waver.m */,
 			);
 			path = Waver;
+			sourceTree = "<group>";
+		};
+		966AFA411D3BFB8700227E51 /* PayChecker */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = PayChecker;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
