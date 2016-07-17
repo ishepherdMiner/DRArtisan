@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		9611CDB01D3B58A500E47DE7 /* DSNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDAD1D3B58A500E47DE7 /* DSNumberLabel.m */; };
 		9611CDB11D3B58A500E47DE7 /* NJDBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */; };
+		9611CDB41D3B59E300E47DE7 /* JASUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDB31D3B59E300E47DE7 /* JASUtils.m */; };
 		963ED77A1D34666C0071BECF /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7181D34666C0071BECF /* AbstractBaseTableView.m */; };
 		963ED77B1D34666C0071BECF /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED71C1D34666C0071BECF /* BaseTableViewCell.m */; };
 		963ED77C1D34666C0071BECF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7201D34666C0071BECF /* BaseNavigationController.m */; };
@@ -83,6 +84,8 @@
 		9611CDAD1D3B58A500E47DE7 /* DSNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNumberLabel.m; sourceTree = "<group>"; };
 		9611CDAE1D3B58A500E47DE7 /* NJDBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJDBezierCurve.h; sourceTree = "<group>"; };
 		9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJDBezierCurve.m; sourceTree = "<group>"; };
+		9611CDB21D3B59E300E47DE7 /* JASUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASUtils.h; sourceTree = "<group>"; };
+		9611CDB31D3B59E300E47DE7 /* JASUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASUtils.m; sourceTree = "<group>"; };
 		963ED7171D34666C0071BECF /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		963ED7181D34666C0071BECF /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		963ED7191D34666C0071BECF /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -504,6 +507,8 @@
 		963ED7791D34666C0071BECF /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9611CDB21D3B59E300E47DE7 /* JASUtils.h */,
+				9611CDB31D3B59E300E47DE7 /* JASUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -769,6 +774,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9611CDB41D3B59E300E47DE7 /* JASUtils.m in Sources */,
 				963ED7951D34666C0071BECF /* NSDate+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				963ED7871D34666C0071BECF /* SetMealCellModel.m in Sources */,
