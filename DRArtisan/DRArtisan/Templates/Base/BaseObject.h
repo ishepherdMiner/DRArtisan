@@ -77,5 +77,5 @@
  */
 + (instancetype)objWithDic:(NSDictionary *)dict;
 
-
++ (void)jas_test;
 @end

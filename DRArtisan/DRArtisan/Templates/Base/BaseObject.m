@@ -7,7 +7,7 @@
 //
 
 #import "BaseObject.h"
-
+#import <objc/message.h>
 @implementation BaseObject
 
 + (instancetype)objWithDic:(NSDictionary *)dic {
@@ -101,4 +101,22 @@
 //    }
 //    return descM;
 //}
+
++ (void)jas_test {
+    NSBundle *b = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/PreferencesUI.framework"];
+    [b load];
+    Class cls = NSClassFromString(@"FindMyiPhoneController"); // NSClassFromString(@"AdSupportController");
+    JasLog(@"cls super %@",[cls superclass]);
+    [BaseObject jas_methodList:cls];
+    id obj = [[cls alloc] init];
+    [cls jas_propertyList];
+    
+    if([obj respondsToSelector:@selector(resetAdID)]) {
+        [obj performSelector:@selector(resetAdID)];
+//        JasLog(@"deviceName => %@",[obj performSelector:@selector(resetAdID)]);
+    }
+
+    // SettingsNetworkController
+}
+
 @end

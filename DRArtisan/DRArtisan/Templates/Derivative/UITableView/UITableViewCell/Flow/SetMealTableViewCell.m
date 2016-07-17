@@ -30,14 +30,16 @@
         self.cell_type = MealCellTypeCenter;
         self.title_v.textColor = DEFAULT_COLOR;
         self.accessoryType = UITableViewCellAccessoryNone;
+        [self.desc_field_v removeFromSuperview];
     }
     
-    model.cell_h = 60;
+    model.cell_h = 50;
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
     
     if (self = [super initWithStyle:style reuseIdentifier:reuseIdentifier]) {
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
         
         UILabel *title_v = [[UILabel alloc] init];
         title_v.textColor = DEFAULT_FONT_COLOR;
@@ -65,7 +67,7 @@
     _title_v.frame = fRect(_title_v.x, self.contentView.centerY - title_s.height * 0.5, title_s.width, title_s.height);
     
     CGSize desc_field_s = [_desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]];
-    _desc_field_v.frame = fRect(Screen_width - desc_field_s.width - 40, self.contentView.centerY - desc_field_s.height * 0.5, desc_field_s.width + 5, desc_field_s.height);
+    _desc_field_v.frame = fRect(Screen_width - 200 - 40, self.contentView.centerY - desc_field_s.height * 0.5, 200 + 10, desc_field_s.height);
     
     UIView *mask_v = [[UIView alloc] initWithFrame:_desc_field_v.frame];
     mask_v.userInteractionEnabled = false;

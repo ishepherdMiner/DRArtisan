@@ -13,6 +13,8 @@
 @property (nonatomic,weak) UIPickerView *picker_v;
 @property (nonatomic,weak) UIToolbar *accessory_v;
 
+@property (nonatomic,strong) NSArray <UIView *> *unit_v_list;
+
 @property (nonatomic,weak) UIView *mask_v;
 
 /// 当前cell的索引
@@ -33,6 +35,8 @@
         [mask_v addGestureRecognizer:tap];
 //        mask_v.alpha = 0;
         [self addSubview:_mask_v = mask_v];
+        
+        
     }
     return self;
 }
@@ -60,7 +64,7 @@
             
             // 套餐周期
             
-            // Wil log appear follow infomation in sometines
+            // Wil log appear follow infomation in sometimes
             // http://blog.csdn.net/x567851326/article/details/51251655
             // _BSMachError: (os/kern) invalid capability (20)
             // _BSMachError: (os/kern) invalid name (15)
@@ -88,6 +92,10 @@
             meal_cell_v.desc_field_v.userInteractionEnabled = true;
             meal_cell_v.desc_field_v.returnKeyType = UIReturnKeyDone;
             meal_cell_v.desc_field_v.delegate = self;
+            meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
+//            meal_cell_v.desc_field_v.clearButtonMode = UITextFieldViewModeWhileEditing;
+            
+            meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
             [meal_cell_v.desc_field_v becomeFirstResponder];
             
         }
@@ -96,7 +104,9 @@
            // 调整流量
            SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
            meal_cell_v.desc_field_v.userInteractionEnabled = true;
-            meal_cell_v.desc_field_v.delegate = self;
+           meal_cell_v.desc_field_v.delegate = self;
+           meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
+           meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
            [meal_cell_v.desc_field_v becomeFirstResponder];
         }
     }else if(indexPath.section == kTwo) {
@@ -131,76 +141,87 @@
             SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
             meal_cell_v.desc_field_v.userInteractionEnabled = true;
             meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
-            UIView *accessory_v = [[UIView alloc] initWithFrame:fRect(0, 0, Screen_width, 40)];
-//            if(meal_cell_v.desc_field_v.isEditing) {
-//                self.mask_v.alpha = 0.5;
-//            }
-            accessory_v.backgroundColor = HexRGB(0xf0f0f0);
-            meal_cell_v.desc_field_v.inputAccessoryView = accessory_v;
             [meal_cell_v.desc_field_v becomeFirstResponder];
         });
     }
 }
 
 #pragma mark -Events
+/// PickerView的代理方法
 - (void)didSelectedPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component RowText:(NSString *)text {
     SetMealTableViewCell *cell = [self cellForRowAtIndexPath:_cur_index];
     cell.desc_field_v.text = text;
 }
 
+/// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
 - (void)maskAction:(UIGestureRecognizer *)tap {
     [self endEditing:true];
     [_picker_v removeFromSuperview];
     _picker_v = nil;
-    _mask_v.alpha = 0.0;
-//    self.mask_v = nil;
+    [UIView animateWithDuration:0.5 animations:^{        
+        _mask_v.alpha = 0.0;
+    }];
 }
 
-#pragma mark lazyload
-//- (UIView *)mask_v {
-//    if(_mask_v == nil) {
-//        UIView *mask_v = [[UIView alloc] initWithFrame:self.bounds];
-//        mask_v.backgroundColor = HexRGB(0x000000);
-//        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(maskAction:)];
-//        [mask_v addGestureRecognizer:tap];
-//        _mask_v = mask_v;
-//    }
-//    return _mask_v;
-//}
+- (void)unitClick:(UIButton *)sender {
+    for (UIButton *unit_v in _unit_v_list) {
+        if (unit_v == sender) {
+            unit_v.selected = true;
+        }else {
+            unit_v.selected = false;
+        }
+    }
+}
 
-//- (void)textFieldDidBeginEditing:(UITextField *)textField {
-//    UITableViewCell *cell = (UITableViewCell *) [[textField superview] superview];
-//    NSIndexPath *indexPath = [self indexPathForCell:cell];
-//    [self scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//}
+- (void)submitClick:(UIButton *)sender {
+    UIButton *unit_v = (UIButton *)_unit_v_list.firstObject;
+    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:_cur_index];
+    if(unit_v.selected) {
+        cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
+    }else {
+        cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
+    }
+    // cell.desc_field_v.x -= [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
+    // cell.desc_field_v.w = [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
+    [self maskAction:nil];
+    
+}
 
-#pragma mark - Deprecated
-// pickerView 列数
-//- (NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
-//    return [_dataList count];
-//}
-//
-//// pickerView 每列个数
-//- (NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component
-//{
-//    return [_dataList[component] count];
-//}
-//
-//- (NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
-//    return @"title";
-//}
-
-//                BasePickerView *picker_v = [[BasePickerView alloc] initWithFrame:fRect(0, Screen_height - 200, Screen_width, 200)];
-//                picker_v.dataList = @[@[@"每 1",@"每 2",@"每 3",@"每 4",@"每 5",@"每1",@"每2",@"每 7",@"每 8",@"每 9",@"每 10",@"每 11",@"每 12"],@[@"日",@"周",@"月",@"年"]];
-//                SetMealTableViewCell *meal_cell_v = [tableView cellForRowAtIndexPath:indexPath];
-//                meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
-//                [meal_cell_v.desc_field_v becomeFirstResponder];
-
-//                UIPickerView *picker_v = [[UIPickerView alloc] init];
-//                picker_v.delegate = self;
-//                picker_v.dataSource = self;
-//                SetMealTableViewCell *meal_cell_v = [tableView cellForRowAtIndexPath:indexPath];
-//                meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
-//                [meal_cell_v.desc_field_v becomeFirstResponder];
+#pragma mark - lazyload
+- (UIToolbar *)accessory_v {
+    if (_accessory_v == nil) {
+        UIToolbar *accessory_v = [[UIToolbar alloc] initWithFrame:fRect(0, 0, Screen_width, 40)];
+        
+        UIButton *mb_unit_btn = [[UIButton alloc] initWithFrame:fRect(0, 0, accessory_v.w * 0.33, accessory_v.h)];
+        mb_unit_btn.backgroundColor = HexRGB(0x888888);
+        [mb_unit_btn setTitle:@"MB" forState:UIControlStateNormal];
+        [mb_unit_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [mb_unit_btn setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+        [mb_unit_btn addTarget:self action:@selector(unitClick:) forControlEvents:UIControlEventTouchUpInside];
+        mb_unit_btn.selected = true;
+        
+        UIButton *gb_unit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.33, 0, accessory_v.w * 0.33, accessory_v.h)];
+        gb_unit_btn.backgroundColor = HexRGB(0x888888);
+        [gb_unit_btn setTitle:@"GB" forState:UIControlStateNormal];
+        [gb_unit_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
+        [gb_unit_btn setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
+        [gb_unit_btn addTarget:self action:@selector(unitClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        // 完成按钮
+        UIButton *submit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.66, 0, accessory_v.w * 0.34, accessory_v.h)];
+        submit_btn.backgroundColor = HexRGB(0x888888);
+        [submit_btn setTitle:@"完成" forState:UIControlStateNormal];
+        [submit_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+        [submit_btn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        [accessory_v addSubview:mb_unit_btn];
+        [accessory_v addSubview:gb_unit_btn];
+        [accessory_v addSubview:submit_btn];
+        
+        _unit_v_list = [NSArray arrayWithObjects:mb_unit_btn,gb_unit_btn, nil];
+        return accessory_v;
+    }
+    return _accessory_v;
+}
 
 @end

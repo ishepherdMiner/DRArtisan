@@ -168,6 +168,11 @@ typedef NS_ENUM(NSUInteger,DeviceDirect){
  */
 + (NSString *)jas_idfv;
 
-
+/**
+ *  是否越狱
+ *
+ *  @return 是否越狱
+ */
++ (BOOL)jas_broken;
 
 @end

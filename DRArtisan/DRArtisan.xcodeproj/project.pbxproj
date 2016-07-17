@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9611CDB01D3B58A500E47DE7 /* DSNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDAD1D3B58A500E47DE7 /* DSNumberLabel.m */; };
+		9611CDB11D3B58A500E47DE7 /* NJDBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */; };
 		963ED77A1D34666C0071BECF /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7181D34666C0071BECF /* AbstractBaseTableView.m */; };
 		963ED77B1D34666C0071BECF /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED71C1D34666C0071BECF /* BaseTableViewCell.m */; };
 		963ED77C1D34666C0071BECF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7201D34666C0071BECF /* BaseNavigationController.m */; };
@@ -77,6 +79,10 @@
 /* Begin PBXFileReference section */
 		04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9611CDAC1D3B58A500E47DE7 /* DSNumberLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DSNumberLabel.h; sourceTree = "<group>"; };
+		9611CDAD1D3B58A500E47DE7 /* DSNumberLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DSNumberLabel.m; sourceTree = "<group>"; };
+		9611CDAE1D3B58A500E47DE7 /* NJDBezierCurve.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NJDBezierCurve.h; sourceTree = "<group>"; };
+		9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJDBezierCurve.m; sourceTree = "<group>"; };
 		963ED7171D34666C0071BECF /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		963ED7181D34666C0071BECF /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		963ED7191D34666C0071BECF /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -221,6 +227,17 @@
 				3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		9611CDAB1D3B58A500E47DE7 /* JumpNumber */ = {
+			isa = PBXGroup;
+			children = (
+				9611CDAC1D3B58A500E47DE7 /* DSNumberLabel.h */,
+				9611CDAD1D3B58A500E47DE7 /* DSNumberLabel.m */,
+				9611CDAE1D3B58A500E47DE7 /* NJDBezierCurve.h */,
+				9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */,
+			);
+			path = JumpNumber;
 			sourceTree = "<group>";
 		};
 		963ED3C51D32485A0071BECF /* Demo */ = {
@@ -469,6 +486,7 @@
 		963ED7751D34666C0071BECF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				9611CDAB1D3B58A500E47DE7 /* JumpNumber */,
 				963ED7761D34666C0071BECF /* CircleProgressBar */,
 			);
 			path = Libs;
@@ -763,6 +781,7 @@
 				963ED77A1D34666C0071BECF /* AbstractBaseTableView.m in Sources */,
 				963ED7961D34666C0071BECF /* NSDictionary+Coder.m in Sources */,
 				963ED7901D34666C0071BECF /* JASValue2Cell.m in Sources */,
+				9611CDB01D3B58A500E47DE7 /* DSNumberLabel.m in Sources */,
 				963ED7911D34666C0071BECF /* JASValue2CellModel.m in Sources */,
 				963ED79A1D34666C0071BECF /* UIDevice+Coder.m in Sources */,
 				963ED7881D34666C0071BECF /* SetMealTableView.m in Sources */,
@@ -777,6 +796,7 @@
 				963ED7801D34666C0071BECF /* JASBaseCellModel.m in Sources */,
 				963ED78E1D34666C0071BECF /* JASValue1Cell.m in Sources */,
 				963ED7921D34666C0071BECF /* JASTableViewController.m in Sources */,
+				9611CDB11D3B58A500E47DE7 /* NJDBezierCurve.m in Sources */,
 				963ED7821D34666C0071BECF /* SingledimensionTableView.m in Sources */,
 				96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */,
 				963ED7851D34666C0071BECF /* FlexibleHeightMultiTableView.m in Sources */,

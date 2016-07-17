@@ -8,7 +8,7 @@
 
 #import "UIDevice+Coder.h"
 
-#import <mach/mach.h>  
+#import <mach/mach.h>
 #import <sys/sysctl.h>
 #import <SystemConfiguration/CaptiveNetwork.h>
 #import <sys/mount.h>
@@ -374,6 +374,10 @@
     }
     
     return carrierCode;
+}
+
++ (BOOL)jas_broken {
+    return false;
 }
 
 #pragma mark sysctl utils
