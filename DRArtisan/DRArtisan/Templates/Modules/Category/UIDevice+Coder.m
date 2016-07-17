@@ -378,6 +378,65 @@
 
 + (BOOL)jas_broken {
 #warning Waiting
+    /*
+    // 越狱检测增强 20151230
+    NSMutableDictionary * paramsTmp =[NSMutableDictionary dictionary];
+    NSMutableArray *conditions = [NSMutableArray arrayWithCapacity:4];
+    @try {
+        // 1、
+        NSURL *url = [NSURL URLWithString:@"cydia://package/com.fake.package"];
+        BOOL isOpen = [[UIApplication sharedApplication] canOpenURL:url];
+        conditions[0] = isOpen ? @"true":@"false";
+        JasLog(@"isOpen : %@", isOpen?@"TRUE":@"FALSE");
+        
+        //2、
+        NSArray *paths = [[NSArray alloc] initWithObjects:@"/Applications/Cydia.app",@"/var/cache/clutch.plist",@"/etc/clutch_cracked.plist",@"/var/cache/clutch_cracked.plist",@"/etc/clutch.conf",@"/private/var/lib/cydia",@"/private/var/tmp/cydia.log",@"/System/Library/LaunchDaemons/com.saurik.Cydia.Startup.plist",@"/System/Library/LaunchDaemons/com.ikey.bbot.plist",@"/private/var/stash",@"/private/var/lib/apt",@"/Library/MobileSubstrate/DynamicLibraries/LiveClock.plist",@"/Library/MobileSubstrate/DynamicLibraries/Veency.plist",@"/Applications/IntelliScreen.app",@"/Applications/MxTube.app",@"/Applications/SBSettings.app",@"/Applications/WinterBoard.app",@"/usr/libexec/sftp-server",@"/usr/bin/sshd",@"/usr/sbin/sshd",nil];
+        int num = 0;
+        struct stat sp;
+        for (NSString *path in paths) {
+            int res = stat([path UTF8String], &sp);
+            NSLog(@"isStat :%@，%d", res==0?@"TRUE":@"FALSE", res);
+            if (res == 0) {
+                num++;
+            }
+        }
+        if(num >=2){
+            conditions[1] = @"true";
+            NSLog(@"isPahtExits : %@",@"TRUE");
+        }else {
+            conditions[1] = @"false";
+            NSLog(@"isPahtExits : %@",@"FALSE");
+        }
+        
+        int res2 = system(0x0);
+        conditions[2] = res2 == 1? @"true" : @"false";
+        NSLog(@"isSystem : %@", res2==1?@"TRUE":@"FALSE");   //isSystem : 1, 0
+        
+        BOOL isDylib = false;
+        uint32_t count = _dyld_image_count();
+        for(uint32_t i=0;i<count;i++) {
+            const char *dyld = _dyld_get_image_name(i);
+            NSString *item = [[NSString alloc] initWithUTF8String:dyld];
+            if ([item rangeOfString:@"MobileSubstrate"].location !=NSNotFound) {
+                isDylib = true;
+                break;
+            }
+        }
+        conditions[3] = isDylib?@"true":@"false";
+        NSLog(@"isDylib : %@ ", isDylib?@"TRUE":@"FALSE");
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        for (NSString *condition in conditions) {
+            if ([@"true" isEqualToString:condition]) {
+                [paramsTmp setObject:@"true" forKey:@"jailbroken"];
+                break;
+            }
+        }
+    }
+     */
     return false;
 }
 

@@ -83,5 +83,17 @@
     self.center = point;
 }
 
+/** 水平居中 */
+- (void)alignHorizontal
+{
+    self.x = (self.superview.w - self.w) * 0.5;
+}
+
+/** 垂直居中 */
+- (void)alignVertical
+{
+    self.y = (self.superview.h - self.h) * 0.5;
+}
+
 
 @end
