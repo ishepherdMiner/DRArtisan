@@ -10,6 +10,8 @@
 #import "DemoModel.h"
 #import "CommentModel.h"
 #import "CustomBadge.h"
+#import <AVFoundation/AVFoundation.h>
+#import "Waver.h"
 
 @interface ViewController ()
 
@@ -18,24 +20,76 @@
 @property (nonatomic, weak) BaseTableView *base_table_v;
 
 @property (nonatomic,weak) UIView *badgeView;
+
+@property (nonatomic, strong) AVAudioRecorder *recorder;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BadgeStyle *style = [[BadgeStyle alloc] init];
-    style.badgeTextColor = [UIColor redColor];
-    style.badgeFrameColor = [UIColor greenColor];
-    style.badgeInsetColor = [UIColor yellowColor];
-    CustomBadge *badgeView = [CustomBadge customBadgeWithString:@"99" withStyle:style];
-    UIView *vbadgeView = [[UIView alloc] initWithFrame:fRect(80, 100,40, 40)];
-    vbadgeView.backgroundColor = HexRGB(0xff0000);
-    [self.view addSubview:_badgeView = vbadgeView];
-    [self.badgeView addSubview:badgeView];
+    
+    [self setupRecorder];
+    
+    self.view.backgroundColor = [UIColor grayColor];
+    
+    Waver * waver = [[Waver alloc] initWithFrame:CGRectMake(0, CGRectGetHeight(self.view.bounds)/2.0 - 50.0, CGRectGetWidth(self.view.bounds), 100.0)];
+    
+    waver.waverLevelCallback = ^(Waver * waver) {
+        
+        [self.recorder updateMeters];
+        
+        CGFloat normalizedValue = pow (10, [self.recorder averagePowerForChannel:0] / 40);
+        
+        waver.level = normalizedValue;
+        
+    };
+    [self.view addSubview:waver];
+
+    
+//    BadgeStyle *style = [[BadgeStyle alloc] init];
+//    style.badgeTextColor = [UIColor redColor];
+//    style.badgeFrameColor = [UIColor greenColor];
+//    style.badgeInsetColor = [UIColor yellowColor];
+//    CustomBadge *badgeView = [CustomBadge customBadgeWithString:@"99" withStyle:style];
+//    UIView *vbadgeView = [[UIView alloc] initWithFrame:fRect(80, 100,40, 40)];
+//    vbadgeView.backgroundColor = HexRGB(0xff0000);
+//    [self.view addSubview:_badgeView = vbadgeView];
+//    [self.badgeView addSubview:badgeView];
 
     // [self baseTableViewDemo];
 }
+
+-(void)setupRecorder
+{
+    NSURL *url = [NSURL fileURLWithPath:@"/dev/null"];
+    
+    NSDictionary *settings = @{AVSampleRateKey:          [NSNumber numberWithFloat: 44100.0],
+                               AVFormatIDKey:            [NSNumber numberWithInt: kAudioFormatAppleLossless],
+                               AVNumberOfChannelsKey:    [NSNumber numberWithInt: 2],
+                               AVEncoderAudioQualityKey: [NSNumber numberWithInt: AVAudioQualityMin]};
+    
+    NSError *error;
+    self.recorder = [[AVAudioRecorder alloc] initWithURL:url settings:settings error:&error];
+    
+    if(error) {
+        NSLog(@"Ups, could not create recorder %@", error);
+        return;
+    }
+    
+    [[AVAudioSession sharedInstance] setCategory:AVAudioSessionCategoryPlayAndRecord error:&error];
+    
+    if (error) {
+        NSLog(@"Error setting category: %@", [error description]);
+    }
+    
+    [self.recorder prepareToRecord];
+    [self.recorder setMeteringEnabled:YES];
+    [self.recorder record];
+    
+}
+
+
 
 // 数据源为一维数组对象
 - (void)singledimensionTableViewDemo {

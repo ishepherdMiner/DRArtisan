@@ -52,6 +52,14 @@
     return [paths objectAtIndex:0];
 }
 
+- (BOOL)fileIsExists {
+    NSFileManager *fileManager = [NSFileManager defaultManager];
+    if ([fileManager fileExistsAtPath:self]) {
+        return true;
+    }
+    return false;
+}
+
 @end
 
 

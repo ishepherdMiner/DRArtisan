@@ -71,12 +71,20 @@
 /**
  *  获得用户沙盒的路径
  *
- *  @param pathType (NSSearchPathForDirectoriesInDomains 第二个传NSUserDomainMask)
+ *  @param pathType (NSSearchPathForDirectoriesInDomains 第二个默认传NSUserDomainMask)
  *
  *  @return 返回沙盒文件夹路径
  */
 + (NSString *)dirPath:(NSSearchPathDirectory)pathType;
 
+/**
+ *  指定文件是否存在,如果只是判断存在性,可以用这个方法,只是简单的封装
+ *
+ *  @param path 文件路径
+ *
+ *  @return 该文件是否存在
+ */
+- (BOOL)fileIsExists;
 @end
 
 @interface NSString (url)

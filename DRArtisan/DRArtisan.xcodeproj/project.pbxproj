@@ -50,6 +50,7 @@
 		966AFA341D3BE8E600227E51 /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966AFA331D3BE8E600227E51 /* Encrypt.framework */; };
 		966AFA3A1D3BED2B00227E51 /* BadgeStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 966AFA371D3BED2B00227E51 /* BadgeStyle.m */; };
 		966AFA3B1D3BED2B00227E51 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 966AFA391D3BED2B00227E51 /* CustomBadge.m */; };
+		966AFA3F1D3BF33600227E51 /* Waver.m in Sources */ = {isa = PBXBuildFile; fileRef = 966AFA3E1D3BF33600227E51 /* Waver.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -173,6 +174,8 @@
 		966AFA371D3BED2B00227E51 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
 		966AFA381D3BED2B00227E51 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
 		966AFA391D3BED2B00227E51 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
+		966AFA3D1D3BF33600227E51 /* Waver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Waver.h; sourceTree = "<group>"; };
+		966AFA3E1D3BF33600227E51 /* Waver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waver.m; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -500,6 +503,7 @@
 		963ED7751D34666C0071BECF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				966AFA3C1D3BF33600227E51 /* Waver */,
 				966AFA351D3BED2B00227E51 /* Badge */,
 				9611CDAB1D3B58A500E47DE7 /* JumpNumber */,
 				963ED7761D34666C0071BECF /* CircleProgressBar */,
@@ -549,6 +553,15 @@
 				966AFA391D3BED2B00227E51 /* CustomBadge.m */,
 			);
 			path = Badge;
+			sourceTree = "<group>";
+		};
+		966AFA3C1D3BF33600227E51 /* Waver */ = {
+			isa = PBXGroup;
+			children = (
+				966AFA3D1D3BF33600227E51 /* Waver.h */,
+				966AFA3E1D3BF33600227E51 /* Waver.m */,
+			);
+			path = Waver;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
@@ -817,6 +830,7 @@
 				963ED7951D34666C0071BECF /* NSDate+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				963ED7871D34666C0071BECF /* SetMealCellModel.m in Sources */,
+				966AFA3F1D3BF33600227E51 /* Waver.m in Sources */,
 				963ED77E1D34666C0071BECF /* BasePickerView.m in Sources */,
 				963ED77F1D34666C0071BECF /* BaseViewController.m in Sources */,
 				963ED7971D34666C0071BECF /* NSObject+Coder.m in Sources */,
