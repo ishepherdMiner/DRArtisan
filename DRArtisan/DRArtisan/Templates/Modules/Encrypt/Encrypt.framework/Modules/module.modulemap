@@ -1,0 +1,6 @@
+framework module Encrypt {
+  umbrella header "Encrypt.h"
+
+  export *
+  module * { export * }
+}

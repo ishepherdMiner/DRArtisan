@@ -47,6 +47,7 @@
 		963ED79C1D34666C0071BECF /* UIView+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7711D34666C0071BECF /* UIView+Coder.m */; };
 		963ED79D1D34666C0071BECF /* UIViewController+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7731D34666C0071BECF /* UIViewController+Coder.m */; };
 		963ED79E1D34666C0071BECF /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7781D34666C0071BECF /* CircleProgressBar.m */; };
+		966AFA341D3BE8E600227E51 /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966AFA331D3BE8E600227E51 /* Encrypt.framework */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -165,6 +166,7 @@
 		963ED7731D34666C0071BECF /* UIViewController+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Coder.m"; sourceTree = "<group>"; };
 		963ED7771D34666C0071BECF /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
 		963ED7781D34666C0071BECF /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
+		966AFA331D3BE8E600227E51 /* Encrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Encrypt.framework; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				966AFA341D3BE8E600227E51 /* Encrypt.framework in Frameworks */,
 				99706EE11E51FCB57E22147F /* libPods.a in Frameworks */,
 				963ED7831D34666C0071BECF /* DRCore.framework in Frameworks */,
 			);
@@ -441,6 +444,8 @@
 		963ED75B1D34666C0071BECF /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				966AFA1A1D3BB9D900227E51 /* Network */,
+				966AFA191D3BB9D300227E51 /* Encrypt */,
 				963ED75C1D34666C0071BECF /* Category */,
 				963ED7741D34666C0071BECF /* Common */,
 				963ED7751D34666C0071BECF /* Libs */,
@@ -511,6 +516,21 @@
 				9611CDB31D3B59E300E47DE7 /* JASUtils.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		966AFA191D3BB9D300227E51 /* Encrypt */ = {
+			isa = PBXGroup;
+			children = (
+				966AFA331D3BE8E600227E51 /* Encrypt.framework */,
+			);
+			path = Encrypt;
+			sourceTree = "<group>";
+		};
+		966AFA1A1D3BB9D900227E51 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Network;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
@@ -966,6 +986,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core/Private",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
+					"$(PROJECT_DIR)/DRArtisan/Templates/Modules/Encrypt",
 				);
 				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
 				INFOPLIST_FILE = DRArtisan/Info.plist;
@@ -988,6 +1009,7 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core/Private",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
+					"$(PROJECT_DIR)/DRArtisan/Templates/Modules/Encrypt",
 				);
 				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
 				INFOPLIST_FILE = DRArtisan/Info.plist;
