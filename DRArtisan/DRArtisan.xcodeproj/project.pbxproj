@@ -48,6 +48,8 @@
 		963ED79D1D34666C0071BECF /* UIViewController+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7731D34666C0071BECF /* UIViewController+Coder.m */; };
 		963ED79E1D34666C0071BECF /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7781D34666C0071BECF /* CircleProgressBar.m */; };
 		966AFA341D3BE8E600227E51 /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 966AFA331D3BE8E600227E51 /* Encrypt.framework */; };
+		966AFA3A1D3BED2B00227E51 /* BadgeStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 966AFA371D3BED2B00227E51 /* BadgeStyle.m */; };
+		966AFA3B1D3BED2B00227E51 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 966AFA391D3BED2B00227E51 /* CustomBadge.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -167,6 +169,10 @@
 		963ED7771D34666C0071BECF /* CircleProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CircleProgressBar.h; sourceTree = "<group>"; };
 		963ED7781D34666C0071BECF /* CircleProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CircleProgressBar.m; sourceTree = "<group>"; };
 		966AFA331D3BE8E600227E51 /* Encrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Encrypt.framework; sourceTree = "<group>"; };
+		966AFA361D3BED2B00227E51 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
+		966AFA371D3BED2B00227E51 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
+		966AFA381D3BED2B00227E51 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
+		966AFA391D3BED2B00227E51 /* CustomBadge.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomBadge.m; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -494,6 +500,7 @@
 		963ED7751D34666C0071BECF /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				966AFA351D3BED2B00227E51 /* Badge */,
 				9611CDAB1D3B58A500E47DE7 /* JumpNumber */,
 				963ED7761D34666C0071BECF /* CircleProgressBar */,
 			);
@@ -531,6 +538,17 @@
 			children = (
 			);
 			path = Network;
+			sourceTree = "<group>";
+		};
+		966AFA351D3BED2B00227E51 /* Badge */ = {
+			isa = PBXGroup;
+			children = (
+				966AFA361D3BED2B00227E51 /* BadgeStyle.h */,
+				966AFA371D3BED2B00227E51 /* BadgeStyle.m */,
+				966AFA381D3BED2B00227E51 /* CustomBadge.h */,
+				966AFA391D3BED2B00227E51 /* CustomBadge.m */,
+			);
+			path = Badge;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
@@ -814,6 +832,7 @@
 				963ED7881D34666C0071BECF /* SetMealTableView.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
 				963ED79D1D34666C0071BECF /* UIViewController+Coder.m in Sources */,
+				966AFA3A1D3BED2B00227E51 /* BadgeStyle.m in Sources */,
 				963ED78F1D34666C0071BECF /* JASValue1CellModel.m in Sources */,
 				963ED7991D34666C0071BECF /* NSURL+Coder.m in Sources */,
 				963ED78B1D34666C0071BECF /* JASDefaultCellModel.m in Sources */,
@@ -836,6 +855,7 @@
 				963ED77D1D34666C0071BECF /* BaseObject.m in Sources */,
 				963ED7811D34666C0071BECF /* MultidimensionTableView.m in Sources */,
 				96E72F081D30A26000D5A3A9 /* main.m in Sources */,
+				966AFA3B1D3BED2B00227E51 /* CustomBadge.m in Sources */,
 				963ED7981D34666C0071BECF /* NSString+Coder.m in Sources */,
 				963ED78C1D34666C0071BECF /* JASSubtitleCell.m in Sources */,
 				963ED7861D34666C0071BECF /* FlexibleHeightTableView.m in Sources */,

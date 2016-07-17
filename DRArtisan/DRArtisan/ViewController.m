@@ -9,19 +9,32 @@
 #import "ViewController.h"
 #import "DemoModel.h"
 #import "CommentModel.h"
+#import "CustomBadge.h"
 
 @interface ViewController ()
 
 @property (nonatomic,weak) SingledimensionTableView *table_v;
 
 @property (nonatomic, weak) BaseTableView *base_table_v;
+
+@property (nonatomic,weak) UIView *badgeView;
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self baseTableViewDemo];
+    BadgeStyle *style = [[BadgeStyle alloc] init];
+    style.badgeTextColor = [UIColor redColor];
+    style.badgeFrameColor = [UIColor greenColor];
+    style.badgeInsetColor = [UIColor yellowColor];
+    CustomBadge *badgeView = [CustomBadge customBadgeWithString:@"99" withStyle:style];
+    UIView *vbadgeView = [[UIView alloc] initWithFrame:fRect(80, 100,40, 40)];
+    vbadgeView.backgroundColor = HexRGB(0xff0000);
+    [self.view addSubview:_badgeView = vbadgeView];
+    [self.badgeView addSubview:badgeView];
+
+    // [self baseTableViewDemo];
 }
 
 // 数据源为一维数组对象
