@@ -12,6 +12,7 @@
 #import "CategoryCollect.h"
 #import "BaseCollect.h"
 #import "AbstractCollect.h"
+#import "JASUtils.h"
 
 
 /**

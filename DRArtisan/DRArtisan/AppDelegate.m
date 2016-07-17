@@ -36,6 +36,8 @@
     // 测试设备信息相关的方法
     [BaseObject jas_test];
     
+    // [JASUtils logViewRecursive:_window];
+    
     _window.backgroundColor = HexRGB(0xffffff);
     [_window makeKeyAndVisible];
     

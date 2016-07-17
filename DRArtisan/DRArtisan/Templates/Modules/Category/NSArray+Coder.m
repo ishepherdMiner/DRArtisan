@@ -53,3 +53,53 @@
 }
 
 @end
+
+@implementation NSArray (Collection)
+
+- (NSArray *)interSet:(NSArray *)listB {
+    NSArray *listA = self;
+    NSMutableArray *listC = [NSMutableArray arrayWithCapacity:[listB count] + [listA count]];
+    for (id obj  in listB) {
+        if ([listA indexOfObject:obj] != NSNotFound) {
+            [listC addObject:obj];
+        }
+    }
+    return [listC copy];
+}
+
+
+- (NSArray *)unionSet:(NSArray *)listB {
+    NSArray *listA = self;
+    NSMutableArray *listC = [NSMutableArray arrayWithArray:listA];
+    for (id obj in listB) {
+        if ([listA indexOfObject:obj] == NSNotFound) {
+            [listC addObject:obj];
+        }
+    }
+    return [listC copy];
+}
+
+- (NSArray *)differenceSet:(NSArray *)listB {
+    NSArray *listA = self;
+    NSMutableArray *listC = [NSMutableArray arrayWithArray:listA];
+    for (id obj in listB) {
+        // belong B Set && belong A Set,remove it
+        if ([listA indexOfObject:obj] != NSNotFound) {
+            [listC removeObject:obj];
+        }
+    }
+    return [listC copy];
+}
+
+- (BOOL)isContains:(NSArray *)listB {
+    NSArray *listA = self;
+    for (id obj in listB) {
+        if ([listA indexOfObject:obj] == NSNotFound) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+@end
