@@ -45,7 +45,7 @@ const char* propertiesKey = "md5(bundleId)_propertiesKey";
         
         [arrayM addObject:[NSString stringWithUTF8String:cname]];
     }
-    // NSLog(@"%@", arrayM);
+    JasLog(@"%@", arrayM);
     
     // 释放属性数组
     free(list);

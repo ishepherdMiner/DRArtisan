@@ -10,6 +10,9 @@
 		9611CDB01D3B58A500E47DE7 /* DSNumberLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDAD1D3B58A500E47DE7 /* DSNumberLabel.m */; };
 		9611CDB11D3B58A500E47DE7 /* NJDBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */; };
 		9611CDB41D3B59E300E47DE7 /* JASUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9611CDB31D3B59E300E47DE7 /* JASUtils.m */; };
+		9626E9FE1D3D1BA400152DD1 /* JASSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9626E9FD1D3D1BA400152DD1 /* JASSession.m */; };
+		9626EA011D3D263D00152DD1 /* JASCircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9626EA001D3D263D00152DD1 /* JASCircleShapeLayer.m */; };
+		9626EA041D3D326700152DD1 /* JASCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9626EA031D3D326700152DD1 /* JASCircleProgressView.m */; };
 		963ED77A1D34666C0071BECF /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7181D34666C0071BECF /* AbstractBaseTableView.m */; };
 		963ED77B1D34666C0071BECF /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED71C1D34666C0071BECF /* BaseTableViewCell.m */; };
 		963ED77C1D34666C0071BECF /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 963ED7201D34666C0071BECF /* BaseNavigationController.m */; };
@@ -90,6 +93,12 @@
 		9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NJDBezierCurve.m; sourceTree = "<group>"; };
 		9611CDB21D3B59E300E47DE7 /* JASUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASUtils.h; sourceTree = "<group>"; };
 		9611CDB31D3B59E300E47DE7 /* JASUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASUtils.m; sourceTree = "<group>"; };
+		9626E9FC1D3D1BA400152DD1 /* JASSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSession.h; sourceTree = "<group>"; };
+		9626E9FD1D3D1BA400152DD1 /* JASSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSession.m; sourceTree = "<group>"; };
+		9626E9FF1D3D263D00152DD1 /* JASCircleShapeLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASCircleShapeLayer.h; sourceTree = "<group>"; };
+		9626EA001D3D263D00152DD1 /* JASCircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASCircleShapeLayer.m; sourceTree = "<group>"; };
+		9626EA021D3D326700152DD1 /* JASCircleProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASCircleProgressView.h; sourceTree = "<group>"; };
+		9626EA031D3D326700152DD1 /* JASCircleProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASCircleProgressView.m; sourceTree = "<group>"; };
 		963ED7171D34666C0071BECF /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		963ED7181D34666C0071BECF /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		963ED7191D34666C0071BECF /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -253,6 +262,35 @@
 				9611CDAF1D3B58A500E47DE7 /* NJDBezierCurve.m */,
 			);
 			path = JumpNumber;
+			sourceTree = "<group>";
+		};
+		9626E9F91D3D1B5B00152DD1 /* CircularProgress */ = {
+			isa = PBXGroup;
+			children = (
+				9626E9FB1D3D1B7A00152DD1 /* View */,
+				9626E9FA1D3D1B7100152DD1 /* Model */,
+			);
+			path = CircularProgress;
+			sourceTree = "<group>";
+		};
+		9626E9FA1D3D1B7100152DD1 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				9626E9FC1D3D1BA400152DD1 /* JASSession.h */,
+				9626E9FD1D3D1BA400152DD1 /* JASSession.m */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		9626E9FB1D3D1B7A00152DD1 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				9626E9FF1D3D263D00152DD1 /* JASCircleShapeLayer.h */,
+				9626EA001D3D263D00152DD1 /* JASCircleShapeLayer.m */,
+				9626EA021D3D326700152DD1 /* JASCircleProgressView.h */,
+				9626EA031D3D326700152DD1 /* JASCircleProgressView.m */,
+			);
+			name = View;
 			sourceTree = "<group>";
 		};
 		963ED3C51D32485A0071BECF /* Demo */ = {
@@ -496,6 +534,7 @@
 		963ED7741D34666C0071BECF /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				9626E9F91D3D1B5B00152DD1 /* CircularProgress */,
 				966AFA411D3BFB8700227E51 /* PayChecker */,
 			);
 			path = Common;
@@ -840,9 +879,11 @@
 				963ED7871D34666C0071BECF /* SetMealCellModel.m in Sources */,
 				966AFA3F1D3BF33600227E51 /* Waver.m in Sources */,
 				963ED77E1D34666C0071BECF /* BasePickerView.m in Sources */,
+				9626EA041D3D326700152DD1 /* JASCircleProgressView.m in Sources */,
 				963ED77F1D34666C0071BECF /* BaseViewController.m in Sources */,
 				963ED7971D34666C0071BECF /* NSObject+Coder.m in Sources */,
 				963ED78A1D34666C0071BECF /* JASDefaultCell.m in Sources */,
+				9626E9FE1D3D1BA400152DD1 /* JASSession.m in Sources */,
 				963ED7841D34666C0071BECF /* BaseTableView.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
 				963ED77A1D34666C0071BECF /* AbstractBaseTableView.m in Sources */,
@@ -868,6 +909,7 @@
 				963ED7821D34666C0071BECF /* SingledimensionTableView.m in Sources */,
 				96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */,
 				963ED7851D34666C0071BECF /* FlexibleHeightMultiTableView.m in Sources */,
+				9626EA011D3D263D00152DD1 /* JASCircleShapeLayer.m in Sources */,
 				963ED79E1D34666C0071BECF /* CircleProgressBar.m in Sources */,
 				963ED7941D34666C0071BECF /* NSData+Coder.m in Sources */,
 				963ED77B1D34666C0071BECF /* BaseTableViewCell.m in Sources */,
