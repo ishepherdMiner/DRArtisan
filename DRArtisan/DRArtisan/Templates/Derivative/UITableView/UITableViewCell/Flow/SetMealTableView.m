@@ -8,9 +8,6 @@
 
 #import "SetMealTableView.h"
 
-#define kTotalCellNums 4
-#define kNewDecValues @[@"meal_cycle",@"settle_date",@"total_flow",@"used_flow"]
-
 @interface SetMealTableView () <BasePickerViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,weak) UIPickerView *picker_v;
@@ -27,6 +24,7 @@
 
 @implementation SetMealTableView
 
+#pragma mark - Lifecycle
 /// in order to kvo,so override parent method
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Why not set kvo in cell
@@ -49,17 +47,20 @@
         UIView *mask_v = [[UIView alloc] initWithFrame:self.bounds];
         mask_v.backgroundColor = [UIColor colorWithWhite:0 alpha:0.6]; // HexRGB(0x000000);
         mask_v.alpha = 0.0;
-//        mask_v.backgroundColor = [UIColor clearColor];
+        // mask_v.backgroundColor = [UIColor clearColor];
         // UIDeviceRGBColorSpace 0 0.478431 1 1
-        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(maskAction:)];
+        UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(maskClick:)];
         [mask_v addGestureRecognizer:tap];
-//        mask_v.alpha = 0;
         [self addSubview:_mask_v = mask_v];
-        
-        
     }
     return self;
 }
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
+
+#pragma mark - Events
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
@@ -81,14 +82,11 @@
 
     if(indexPath.section == kZero) {
         if (indexPath.row == kZero) {
-            
             // 套餐周期
-            
-            // Wil log appear follow infomation in sometimes
+            // Will log appear follow infomation in sometimes
             // http://blog.csdn.net/x567851326/article/details/51251655
             // _BSMachError: (os/kern) invalid capability (20)
             // _BSMachError: (os/kern) invalid name (15)
-            
             NSArray *picker_option_list = @[@[@"每 1 月",@"每 2 月",@"每 3 月",@"每 4 月",@"每 5 月",@"每 6 月",@"每 7 月",@"每 8 月",@"每 9 月",@"每 10 月",@"每 11 月",@"每 12 月"]];
             
             [self pickerViewWithList:picker_option_list indexPath:indexPath];
@@ -108,25 +106,12 @@
             
         }else if(indexPath.row == kTwo) {
             // 套餐流量
-            SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
-            meal_cell_v.desc_field_v.userInteractionEnabled = true;
-            meal_cell_v.desc_field_v.returnKeyType = UIReturnKeyDone;
-            meal_cell_v.desc_field_v.delegate = self;
-            meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
-//          meal_cell_v.desc_field_v.clearButtonMode = UITextFieldViewModeWhileEditing;
-            meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
-            [meal_cell_v.desc_field_v becomeFirstResponder];
-            
+            [self fieldViewWithIndexPath:indexPath];
         }
     }else if(indexPath.section == kOne) {
         if (indexPath.row == kZero) {
            // 调整流量
-           SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
-           meal_cell_v.desc_field_v.userInteractionEnabled = true;
-           meal_cell_v.desc_field_v.delegate = self;
-           meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
-           meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
-           [meal_cell_v.desc_field_v becomeFirstResponder];
+            [self fieldViewWithIndexPath:indexPath];
         }
     }else if(indexPath.section == kTwo) {
         if (indexPath.row == kZero) {
@@ -150,6 +135,16 @@
     }
 }
 
+- (void)fieldViewWithIndexPath:(NSIndexPath *)indexPath {
+    SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
+    meal_cell_v.desc_field_v.userInteractionEnabled = true;
+    meal_cell_v.desc_field_v.returnKeyType = UIReturnKeyDone;
+    meal_cell_v.desc_field_v.delegate = self;
+    meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
+    meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
+    [meal_cell_v.desc_field_v becomeFirstResponder];
+}
+
 - (void)pickerViewWithList:(NSArray *)dataList indexPath:(NSIndexPath *)indexPath {
     // lazyload
     if (_picker_v == nil) {
@@ -164,18 +159,7 @@
         });
     }
 }
-#pragma mark - Delegate 
-- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
-    if(_mask_v.alpha < 0.6){
-        [UIView animateWithDuration:0.5 animations:^{
-            _mask_v.alpha = 0.6;
-        }];
-    }
-    return true;
-}
 
-#pragma mark -Events
 /// PickerView的代理方法
 - (void)didSelectedPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component RowText:(NSString *)text {
     SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
@@ -183,11 +167,11 @@
 }
 
 /// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
-- (void)maskAction:(UIGestureRecognizer *)tap {
+- (void)maskClick:(UIGestureRecognizer *)tap {
     [self endEditing:true];
     [_picker_v removeFromSuperview];
     _picker_v = nil;
-    [UIView animateWithDuration:0.5 animations:^{        
+    [UIView animateWithDuration:0.5 animations:^{
         _mask_v.alpha = 0.0;
     }];
     
@@ -208,18 +192,37 @@
 - (void)submitClick:(UIButton *)sender {
     UIButton *unit_v = (UIButton *)_unit_v_list.firstObject;
     SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
+    // 需要把流量单位也保存到用户配置中
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
     if(unit_v.selected) {
         cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
+        [userDefaults setObject:@" M" forKey:@"flow_unit"];
     }else {
         cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
+        [userDefaults setObject:@" G" forKey:@"flow_unit"];
     }
+    
+    
     
     // cell.desc_field_v.x -= [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
     // cell.desc_field_v.w = [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
     
-    [self maskAction:nil];
+    [self maskClick:nil];
     
 }
+
+#pragma mark - UITextField Delegate
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if(_mask_v.alpha < 0.6){
+        [UIView animateWithDuration:0.5 animations:^{
+            _mask_v.alpha = 0.6;
+        }];
+    }
+    return true;
+}
+
+#pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
     JasLog(@"change => %@",change);
     //
@@ -248,16 +251,13 @@
     
     self.desc_dic = [desc_dicM copy];
 }
-#pragma mark - lifecycle 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
 
 #pragma mark - lazyload
 - (UIToolbar *)accessory_v {
     if (_accessory_v == nil) {
         UIToolbar *accessory_v = [[UIToolbar alloc] initWithFrame:fRect(0, 0, Screen_width, 40)];
         
+        // 单位:MB
         UIButton *mb_unit_btn = [[UIButton alloc] initWithFrame:fRect(0, 0, accessory_v.w * 0.33, accessory_v.h)];
         mb_unit_btn.backgroundColor = HexRGB(0x888888);
         [mb_unit_btn setTitle:@"MB" forState:UIControlStateNormal];
@@ -266,6 +266,7 @@
         [mb_unit_btn addTarget:self action:@selector(unitClick:) forControlEvents:UIControlEventTouchUpInside];
         mb_unit_btn.selected = true;
         
+        // 单位:GB
         UIButton *gb_unit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.33, 0, accessory_v.w * 0.33, accessory_v.h)];
         gb_unit_btn.backgroundColor = HexRGB(0x888888);
         [gb_unit_btn setTitle:@"GB" forState:UIControlStateNormal];

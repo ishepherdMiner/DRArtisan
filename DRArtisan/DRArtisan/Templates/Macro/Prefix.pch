@@ -11,6 +11,10 @@
 
 #import "GlobalConst.h"
 
+// description thing status
+#define StatusSuccess  kZero
+#define StatusFail     kNegativeOne
+
 /**
  *  Setting color const
  *  Author  WangDL
@@ -29,6 +33,29 @@
 
 // 文字-默认颜色
 #define DEFAULT_FONT_COLOR   HexRGB(0x2d2a2a)
+
+/**
+ *  Setting network status code const
+ *  Author  WangDL
+ *  Version 1.0
+ *  Create Date 20160617
+ */
+/// Success
+#define Network_success_code kZero
+
+/// Client error
+#define Network_client_error_low_code  400
+#define Network_client_error_high_code 499
+// #define Network_client_error_esp_codes @[<#Jas#>,<#Jas#>,<#Jas#>]
+
+/// Server error
+#define Network_server_error_low_code 500
+#define Network_server_error_high_code 599
+// #define Network_server_error_esp_codes @[<#Jas#>,<#Jas#>,<#Jas#>]
+
+/// Indicate
+#define Network_indicate_delay_normal_time 2.0
+#define Network_indicate_delay_more_tiem   3.0
 
 // 是否开启私有方法 
 #define kCoder_Ext  1

@@ -8,6 +8,16 @@
 
 #import "BaseObject.h"
 
+typedef NS_ENUM(NSUInteger,FlowUsageType){
+    FlowUsageTypeWifi,
+    FlowUsageTypeWwan
+};
+
+typedef NS_ENUM(NSUInteger,FlowDirectionType){
+    FlowDirectionTypeUp,
+    FlowDirectionTypeDown
+};
+
 @interface JASUtils : BaseObject
 
 #if DEBUG
@@ -27,5 +37,29 @@
 + (void)logViewCtrlRecursive:(UIViewController *)vc;
 
 #endif
+
+@end
+
+/**
+ *  网络相关的类方法
+ */
+@interface JASUtils (Network)
+
+/**
+ *  获取Wifi && WWAN的使用量(仅包含本次开机的)
+ *
+ *  @return 网络流量的数组
+ */
++ (NSArray *)dataCounter;
+
+/**
+ *  流量的使用情况(仅能计算本次开机的情况)
+ *
+ *  @param usageType  wifi/wwan
+ *  @param direction up/down(上行/下行)
+ *
+ *  @return 指定方式的流量使用情况
+ */
++ (NSString *)flowUsage:(FlowUsageType)usageType direction:(FlowDirectionType)directionType;
 
 @end

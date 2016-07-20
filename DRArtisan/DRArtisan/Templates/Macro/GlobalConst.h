@@ -24,7 +24,7 @@
  *  @date    20160712
  */
 #if DEBUG
-    #define JasLog(...) NSLog(@"\nJAS:" __VA_ARGS__)
+    #define JasLog(...)       NSLog(@"\nDebug:" __VA_ARGS__)
     #define JasBaseURL  @""
     #define JasError    JasLog(@"\n\tclass => %@ \n\tfunction => %s",self,__func__)
     #define JasFrame    JasLog(@"\n\tframe => %@",NSStringFromClass([self class]))
@@ -107,6 +107,8 @@
 #define kEight 8
 #define kNine  9
 #define kTen  10
+#define kNegativeOne -1
+#define kMoreMagnitude 1024.0
 
 #endif /* GlobalConst_h */
 
