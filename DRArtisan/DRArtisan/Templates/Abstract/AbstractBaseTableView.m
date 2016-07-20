@@ -44,9 +44,9 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView estimatedHeightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (self.vcDelegate) {
-        if ([self.vcDelegate respondsToSelector:@selector(tableView:estimatedHeightForRowAtIndexPath:)]) {
-            [self.vcDelegate tableView:tableView estimatedHeightForRowAtIndexPath:indexPath];
+    if (self.cdelegate) {
+        if ([self.cdelegate respondsToSelector:@selector(tableView:estimatedHeightForRowAtIndexPath:)]) {
+            [self.cdelegate tableView:tableView estimatedHeightForRowAtIndexPath:indexPath];
         }
     }
     return kDefaultCellHeight;

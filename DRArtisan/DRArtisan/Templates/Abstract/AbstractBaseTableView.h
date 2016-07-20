@@ -40,13 +40,13 @@
 @end
 
 /*
- *  目前扩展提供3种方式(vcDelegate有值 => 3,vcDeldate没有值 tDelegate有值 => 2, 两者都没有值 => 1)
+ *  目前扩展提供3种方式(cdelegate有值 => 3,vcDeldate没有值 tdelegate有值 => 2, 两者都没有值 => 1)
  *      1.纯粹继承项目中的某个tableview类(视图和视图控制器的耦合性低)
  *         1.1 在子类中实现数据源,代理等方法
  *         1.2 新建继承项目中的某个中cell类(实现setModel:方法)
  *         1.3 控制器仅负责视图的创建(提供数据源,frame等)与展现
- *       2.控制器遵守tDelegate,继承或直接使用项目中的tableView类(控制器和业务的联系可以比较紧密)
- *       3.控制器(继承JASTableViewController∫)遵守vcDelegate,继承或直接使用项目中的tableView(主要简化了tableview的数据源代理部分,其他与平时开发类似)
+ *       2.控制器遵守tdelegate,继承或直接使用项目中的tableView类(控制器和业务的联系可以比较紧密)
+ *       3.控制器(继承JASTableViewController∫)遵守cdelegate,继承或直接使用项目中的tableView(主要简化了tableview的数据源代理部分,其他与平时开发类似)
  */
 @interface AbstractBaseTableView : UITableView <BaseTableViewDelegate>{
     NSArray *_dataList;
@@ -70,12 +70,12 @@
 /**
  *  If you like use vc to become tableview delegate object,set it.
  */
-@property (nonatomic,weak) id<BaseTableViewDelegate> vcDelegate;
+@property (nonatomic,weak) id<BaseTableViewDelegate> cdelegate;
 
 /**
  *  只关注点击cell触发动作的代理,因为点击触发的操作与具体的业务有关
  */
-@property (nonatomic,weak) id<ServiceTableViewDelegate> tDelegate;
+@property (nonatomic,weak) id<ServiceTableViewDelegate> tdelegate;
 
 /**
  *  If need custom setter method

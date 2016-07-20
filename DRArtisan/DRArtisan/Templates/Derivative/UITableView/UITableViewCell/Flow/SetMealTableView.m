@@ -24,6 +24,17 @@
 
 @implementation SetMealTableView
 
+/// in order to kvo,so override parent method
+- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Why not set kvo in cell
+    // It won't work because the cells are being reused. So when the cell goes off the screen it's not deallocated, it goes to reuse pool.
+    // You shouldn't register notifications and KVO in cell. You should do it in table view controller instead and when the model changes you should update model and reload visible cells.
+    // http://stackoverflow.com/questions/25056942/instance-was-deallocated-while-key-value-observers-were-still-registered-with-it
+    SetMealTableViewCell *cell = [super cellForRowAtIndexPath:indexPath];
+    [cell.desc_field_v addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    return cell;
+}
+
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
         UIView *mask_v = [[UIView alloc] initWithFrame:self.bounds];
@@ -185,6 +196,13 @@
     // cell.desc_field_v.w = [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
     [self maskAction:nil];
     
+}
+- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    
+}
+#pragma mark - lifecycle 
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 #pragma mark - lazyload
