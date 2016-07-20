@@ -1052,13 +1052,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/DRArtisan/Templates/Core/Private",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Modules/Encrypt",
 				);
 				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
 				INFOPLIST_FILE = DRArtisan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lq.jason999;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1075,13 +1074,12 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"$(PROJECT_DIR)/DRArtisan/Templates/Core/Private",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Modules/Encrypt",
 				);
 				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
 				INFOPLIST_FILE = DRArtisan/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.lq.jason999;
 				PRODUCT_NAME = "$(TARGET_NAME)";

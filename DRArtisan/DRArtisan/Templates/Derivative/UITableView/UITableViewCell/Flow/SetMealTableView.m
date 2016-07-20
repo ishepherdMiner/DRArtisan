@@ -8,6 +8,9 @@
 
 #import "SetMealTableView.h"
 
+#define kTotalCellNums 4
+#define kNewDecValues @[@"meal_cycle",@"settle_date",@"total_flow",@"used_flow"]
+
 @interface SetMealTableView () <BasePickerViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,weak) UIPickerView *picker_v;
@@ -25,14 +28,20 @@
 @implementation SetMealTableView
 
 /// in order to kvo,so override parent method
-- (UITableViewCell *)cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     // Why not set kvo in cell
     // It won't work because the cells are being reused. So when the cell goes off the screen it's not deallocated, it goes to reuse pool.
     // You shouldn't register notifications and KVO in cell. You should do it in table view controller instead and when the model changes you should update model and reload visible cells.
     // http://stackoverflow.com/questions/25056942/instance-was-deallocated-while-key-value-observers-were-still-registered-with-it
-    SetMealTableViewCell *cell = [super cellForRowAtIndexPath:indexPath];
-    [cell.desc_field_v addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+    SetMealTableViewCell *cell = (SetMealTableViewCell *)[super tableView:tableView cellForRowAtIndexPath:indexPath];
+    for (UIView *sub_v in cell.contentView.subviews) {
+        if ([sub_v isKindOfClass:[UITextField class]]) {
+            [cell.desc_field_v addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+        }
+    }
+    
     return cell;
+
 }
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
@@ -60,7 +69,7 @@
     
 #if 0
     // When this click index not equal to last index and _picker_v not equal to nil
-    if (indexPath != _cur_index && _picker_v) {
+    if (indexPath != self.cur_index && _picker_v) {
         [[[UIApplication sharedApplication].delegate window] endEditing:true];
         [_picker_v removeFromSuperview];
         _picker_v = nil;
@@ -68,7 +77,7 @@
 #endif
     
     // recoard current  index
-    _cur_index = indexPath;
+    self.cur_index = indexPath;
 
     if(indexPath.section == kZero) {
         if (indexPath.row == kZero) {
@@ -104,8 +113,7 @@
             meal_cell_v.desc_field_v.returnKeyType = UIReturnKeyDone;
             meal_cell_v.desc_field_v.delegate = self;
             meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
-//            meal_cell_v.desc_field_v.clearButtonMode = UITextFieldViewModeWhileEditing;
-            
+//          meal_cell_v.desc_field_v.clearButtonMode = UITextFieldViewModeWhileEditing;
             meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
             [meal_cell_v.desc_field_v becomeFirstResponder];
             
@@ -156,11 +164,21 @@
         });
     }
 }
+#pragma mark - Delegate 
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
+    
+    if(_mask_v.alpha < 0.6){
+        [UIView animateWithDuration:0.5 animations:^{
+            _mask_v.alpha = 0.6;
+        }];
+    }
+    return true;
+}
 
 #pragma mark -Events
 /// PickerView的代理方法
 - (void)didSelectedPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component RowText:(NSString *)text {
-    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:_cur_index];
+    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
     cell.desc_field_v.text = text;
 }
 
@@ -172,6 +190,9 @@
     [UIView animateWithDuration:0.5 animations:^{        
         _mask_v.alpha = 0.0;
     }];
+    
+    // reset _cur_index
+    _cur_index = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
 - (void)unitClick:(UIButton *)sender {
@@ -186,19 +207,46 @@
 
 - (void)submitClick:(UIButton *)sender {
     UIButton *unit_v = (UIButton *)_unit_v_list.firstObject;
-    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:_cur_index];
+    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
     if(unit_v.selected) {
         cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
     }else {
         cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
     }
+    
     // cell.desc_field_v.x -= [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
     // cell.desc_field_v.w = [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
+    
     [self maskAction:nil];
     
 }
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
+    JasLog(@"change => %@",change);
+    //
+    NSMutableDictionary *desc_dicM = nil;
+    if(self.desc_dic){
+        desc_dicM = [self.desc_dic mutableCopy];
+    }else {
+        desc_dicM = [NSMutableDictionary dictionaryWithCapacity:kTotalCellNums];
+        [desc_dicM setObject:@"false" forKey:@"change"];
+    }
     
+    // - mark 功能点:从文件中读取当前的这一次,如果最终没有变化,不需要弹窗提示,对_desc_dic的change值重新赋值
+    
+    
+    if ([[desc_dicM objectForKey:@"change"] isEqualToString:@"false"]) {
+        [desc_dicM setObject:@"true" forKey:@"change"];
+    }
+    
+    // 找到具体是哪个cell的UITextField的值改变了
+    NSUInteger nums = [self numberOfRowsInSection:kZero]; // 第一组的rows的数量
+    
+    // 如果数量越界
+    BOOL transboundary = self.cur_index.row + self.cur_index.section * nums > kTotalCellNums;
+    [desc_dicM setObject:change[@"new"] forKey:transboundary ? kNewDecValues[kTotalCellNums - 1]:
+                                                               kNewDecValues[self.cur_index.row + self.cur_index.section * nums]];
+    
+    self.desc_dic = [desc_dicM copy];
 }
 #pragma mark - lifecycle 
 - (void)dealloc {
@@ -228,6 +276,7 @@
         // 完成按钮
         UIButton *submit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.66, 0, accessory_v.w * 0.34, accessory_v.h)];
         submit_btn.backgroundColor = HexRGB(0x888888);
+        submit_btn.titleLabel.font = [UIFont systemFontOfSize:13];
         [submit_btn setTitle:@"完成" forState:UIControlStateNormal];
         [submit_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [submit_btn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
