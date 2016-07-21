@@ -246,8 +246,8 @@
     
     // 如果数量越界
     BOOL transboundary = self.cur_index.row + self.cur_index.section * nums > kTotalCellNums;
-    [desc_dicM setObject:change[@"new"] forKey:transboundary ? kNewDecValues[kTotalCellNums - 1]:
-                                                               kNewDecValues[self.cur_index.row + self.cur_index.section * nums]];
+    [desc_dicM setObject:change[@"new"] forKey:transboundary ? kNewDescValues[kTotalCellNums - 1]:
+                                                               kNewDescValues[self.cur_index.row + self.cur_index.section * nums]];
     
     self.desc_dic = [desc_dicM copy];
 }

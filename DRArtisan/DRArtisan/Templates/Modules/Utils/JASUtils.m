@@ -44,7 +44,7 @@
 
 @implementation JASUtils (Network)
 
-+ (NSArray *)dataCounter {
++ (NSArray *)dataCounters {
 
     struct ifaddrs *addrs;
     const struct ifaddrs *cursor;
@@ -57,7 +57,7 @@
     
     NSString *name = @"";
     
-    if (getifaddrs(&addrs) == StatusSuccess){
+    if (getifaddrs(&addrs) == kStatusSuccess){
         cursor = addrs;
         while (cursor != NULL){
             name = [NSString stringWithFormat:@"%s",cursor->ifa_name];
@@ -95,25 +95,28 @@
     return @[@(WiFiSent), @(WiFiReceived),@(WWANSent),@(WWANReceived)];
 }
 
-+ (NSString *)flowUsage:(FlowUsageType)usageType direction:(FlowDirectionType)directionType {
++ (NSString *)flowUsage:(FlowUsageType)usageType direction:(FlowDirectionOption)directionOption {
+    double usage = 0.0;
     if (usageType == FlowUsageTypeWifi) {
-        if (directionType == FlowDirectionTypeUp) {
-            return [self unitConversion:[self dataCounter][kWiFiSent]];
-        }else {
-            return [self unitConversion:[self dataCounter][kWiFiReceived]];
+        if (directionOption & FlowDirectionOptionUp) {
+            usage += [[self unitConversion:[self dataCounters][kWiFiSent]] doubleValue];
+        }
+        if (directionOption & FlowDirectionOptionDown) {
+            usage += [[self unitConversion:[self dataCounters][kWiFiReceived]] doubleValue];
         }
     }else {
-        if (directionType == FlowDirectionTypeUp) {
-           return [self unitConversion:[self dataCounter][kWWANSent]];
-        }else {
-           return [self unitConversion:[self dataCounter][kWWANReceived]];
+        if (directionOption & FlowDirectionOptionUp) {
+           usage += [[self unitConversion:[self dataCounters][kWWANSent]] doubleValue];
+        }
+        if (directionOption & FlowDirectionOptionDown) {
+           usage += [[self unitConversion:[self dataCounters][kWWANReceived]] doubleValue];
         }
     }
+    return @(usage).stringValue;
 }
 
 + (NSString *)unitConversion:(NSNumber *)flow {
     return @([flow longLongValue] / kMoreMagnitude / kMoreMagnitude).stringValue;
-    
 }
 
 @end

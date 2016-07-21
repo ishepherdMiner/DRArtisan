@@ -11,53 +11,31 @@
 
 #import "GlobalConst.h"
 
-// description thing status
-#define StatusSuccess  kZero
-#define StatusFail     kNegativeOne
+#import "CategoryCollect.h"
+#import "BaseCollect.h"
+#import "AbstractCollect.h"
+#import "JASUtils.h"
 
 /**
- *  Setting color const
- *  Author  WangDL
- *  Version 1.0
- *  Create Date 20160617
+ *  Setting switch service
+ *
+ *  @author  WangDL
+ *  @version 1.1
+ *  @date    20160712
  */
-#define HexRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue &0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#if DEBUG
+    #define JasLog(...)       NSLog(@"\nDebug:" __VA_ARGS__)
+    #define JasBaseURL  @""
+    #define JasError    JasLog(@"\n\tclass => %@ \n\tfunction => %s",self,__func__)
+    #define JasFrame    JasLog(@"\n\tframe => %@",NSStringFromClass([self class]))
+#else
+    #define JasLog(...) {}
+    #define JasBaseURL  @""
+    #define JasError    {}
+    #define JasFrame    {}
+#endif
 
-#define RGBA(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
-
-#define DEFAULT_COLOR HexRGB(0x59a7ff)
-
-// 字体色调
-// 文字-浅颜色 日期,placeholder的字体
-#define DEFAULT_LIGTH_COLOR  HexRGB(0xa6a6a6)
-
-// 文字-默认颜色
-#define DEFAULT_FONT_COLOR   HexRGB(0x2d2a2a)
-
-/**
- *  Setting network status code const
- *  Author  WangDL
- *  Version 1.0
- *  Create Date 20160617
- */
-/// Success
-#define Network_success_code kZero
-
-/// Client error
-#define Network_client_error_low_code  400
-#define Network_client_error_high_code 499
-// #define Network_client_error_esp_codes @[<#Jas#>,<#Jas#>,<#Jas#>]
-
-/// Server error
-#define Network_server_error_low_code 500
-#define Network_server_error_high_code 599
-// #define Network_server_error_esp_codes @[<#Jas#>,<#Jas#>,<#Jas#>]
-
-/// Indicate
-#define Network_indicate_delay_normal_time 2.0
-#define Network_indicate_delay_more_tiem   3.0
-
-// 是否开启私有方法 
+// 是否开启私有方法
 #define kCoder_Ext  1
 
 #endif /* prefix_pch */

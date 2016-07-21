@@ -175,4 +175,11 @@ typedef NS_ENUM(NSUInteger,DeviceDirect){
  */
 + (BOOL)jas_broken;
 
+/**
+ *  设备modelName(需要定期更新)
+ *
+ *  @return 设备modelName
+ */
++ (NSString *)jas_machineModelName;
+
 @end

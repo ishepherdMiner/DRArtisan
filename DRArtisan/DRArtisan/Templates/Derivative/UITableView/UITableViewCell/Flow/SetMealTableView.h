@@ -9,7 +9,11 @@
 #import "MultidimensionTableView.h"
 
 #define kTotalCellNums 4
-#define kNewDecValues @[@"meal_cycle",@"settle_date",@"total_flow",@"used_flow"]
+#define kMealCycle  kZero
+#define kSettleDate kOne
+#define kTotalFlow  kTwo
+#define kUsedFlow   kThree
+#define kNewDescValues @[@"meal_cycle",@"settle_date",@"total_flow",@"used_flow"]
 
 @interface SetMealTableView : FlexibleHeightMultiTableView
 /**

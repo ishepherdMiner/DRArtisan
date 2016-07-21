@@ -13,9 +13,9 @@ typedef NS_ENUM(NSUInteger,FlowUsageType){
     FlowUsageTypeWwan
 };
 
-typedef NS_ENUM(NSUInteger,FlowDirectionType){
-    FlowDirectionTypeUp,
-    FlowDirectionTypeDown
+typedef NS_ENUM(NSUInteger,FlowDirectionOption){
+    FlowDirectionOptionUp = 1 << 0,
+    FlowDirectionOptionDown = 1 << 1
 };
 
 @interface JASUtils : BaseObject
@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger,FlowDirectionType){
  *
  *  @return 网络流量的数组
  */
-+ (NSArray *)dataCounter;
++ (NSArray *)dataCounters;
 
 /**
  *  流量的使用情况(仅能计算本次开机的情况)
@@ -60,6 +60,6 @@ typedef NS_ENUM(NSUInteger,FlowDirectionType){
  *
  *  @return 指定方式的流量使用情况
  */
-+ (NSString *)flowUsage:(FlowUsageType)usageType direction:(FlowDirectionType)directionType;
++ (NSString *)flowUsage:(FlowUsageType)usageType direction:(FlowDirectionOption)directionOption;
 
 @end
