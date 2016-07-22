@@ -73,6 +73,8 @@
 #define kEight 8
 #define kNine  9
 #define kTen  10
+#define kTwentyFour  24
+#define kSixty       60
 #define kNegativeOne -1
 #define kMoreMagnitude 1024.0
 
@@ -122,6 +124,22 @@
 #define Network_indicate_delay_normal_time 2.0
 #define Network_indicate_delay_more_tiem   3.0
 
+#define XCTAssertTrue(expression, format...) \
+    _XCTPrimitiveAssertTrue(expression, ## format)
+
+#define _XCTPrimitiveAssertTrue(expression, format...) \
+    ({ \
+        @try { \
+            BOOL _evaluatedExpression = !!(expression); \
+            if (!_evaluatedExpression) { \
+                _XCTRegisterFailure(_XCTFailureDescription(_XCTAssertion_True, 0, @#expression),format); \
+            } \
+        } \
+        @catch (id exception) { \
+            _XCTRegisterFailure(_XCTFailureDescription(_XCTAssertion_True, 1, @#expression, [exception reason]),format); \
+        }\
+    })
+
 // ============================================================================
 // Approach simplifies macro
 /**
@@ -164,6 +182,9 @@ return instance; \
 
 /// NavigationBar back
 #define SET_NAV_BTN(__arg__, __item__,__ftn__,__title__) UIButton * __arg__=[UIButton buttonWithType:UIButtonTypeCustom];__arg__.frame=CGRectMake(0, 0, 35, 20);[__arg__ setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];[__arg__ setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];[__arg__ addTarget:self action:@selector(__ftn__) forControlEvents:UIControlEventTouchUpInside];self.navigationItem.__item__=[[UIBarButtonItem alloc]initWithCustomView:__arg__];
+
+/// Calendar
+
 
 // ============================================================================
 

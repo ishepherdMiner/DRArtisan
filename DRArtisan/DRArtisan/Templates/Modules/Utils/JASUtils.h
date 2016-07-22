@@ -50,7 +50,7 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
  *
  *  @return 网络流量的数组
  */
-+ (NSArray *)dataCounters;
++ (NSArray *)flowCounters;
 
 /**
  *  流量的使用情况(仅能计算本次开机的情况)

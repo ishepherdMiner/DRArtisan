@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
+
 @interface NSDate (Coder)
 
 /**
@@ -62,5 +63,15 @@
  */
 + (NSString *)datestrFromDate:(NSDate *)date
                withDateFormat:(NSString *)format;
+
+/**
+ *  返回当前的日期信息
+ *
+ *  @return NSDateComponents
+ */
++ (NSDateComponents *)currentComponents;
+@end
+
+@interface NSDate (Deprecated)
 
 @end

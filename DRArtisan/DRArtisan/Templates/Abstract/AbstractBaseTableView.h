@@ -87,6 +87,10 @@
  */
 @property (nonatomic,assign) UITableViewCellStyle cellStyle;
 
+/**
+ *  the tableview cell reuse times;
+ */
+@property (nonatomic,assign) NSUInteger reuseCount;
 
 /**
  *  register tableview cell class and set a reuse id which equal to classname

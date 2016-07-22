@@ -59,4 +59,10 @@ static NSDateFormatter *dateFormatter;
     return [dateFormat stringFromDate:date];
 }
 
++ (NSDateComponents *)currentComponents {
+    NSDate *now = [NSDate date];
+    NSCalendar *cal = [NSCalendar currentCalendar];
+    return [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
+}
+
 @end

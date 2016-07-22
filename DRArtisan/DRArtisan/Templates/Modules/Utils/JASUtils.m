@@ -44,7 +44,7 @@
 
 @implementation JASUtils (Network)
 
-+ (NSArray *)dataCounters {
++ (NSArray *)flowCounters {
 
     struct ifaddrs *addrs;
     const struct ifaddrs *cursor;
@@ -99,17 +99,17 @@
     double usage = 0.0;
     if (usageType == FlowUsageTypeWifi) {
         if (directionOption & FlowDirectionOptionUp) {
-            usage += [[self unitConversion:[self dataCounters][kWiFiSent]] doubleValue];
+            usage += [[self unitConversion:[self flowCounters][kWiFiSent]] doubleValue];
         }
         if (directionOption & FlowDirectionOptionDown) {
-            usage += [[self unitConversion:[self dataCounters][kWiFiReceived]] doubleValue];
+            usage += [[self unitConversion:[self flowCounters][kWiFiReceived]] doubleValue];
         }
     }else {
         if (directionOption & FlowDirectionOptionUp) {
-           usage += [[self unitConversion:[self dataCounters][kWWANSent]] doubleValue];
+           usage += [[self unitConversion:[self flowCounters][kWWANSent]] doubleValue];
         }
         if (directionOption & FlowDirectionOptionDown) {
-           usage += [[self unitConversion:[self dataCounters][kWWANReceived]] doubleValue];
+           usage += [[self unitConversion:[self flowCounters][kWWANReceived]] doubleValue];
         }
     }
     return @(usage).stringValue;

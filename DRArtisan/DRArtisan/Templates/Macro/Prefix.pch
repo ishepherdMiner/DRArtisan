@@ -24,7 +24,11 @@
  *  @date    20160712
  */
 #if DEBUG
-    #define JasLog(...)       NSLog(@"\nDebug:" __VA_ARGS__)
+#define JasLog(fmt,...)       NSLog((@"\n[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt),\
+                              __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__); \
+                              fprintf(stderr,"\n\n");
+
+
     #define JasBaseURL  @""
     #define JasError    JasLog(@"\n\tclass => %@ \n\tfunction => %s",self,__func__)
     #define JasFrame    JasLog(@"\n\tframe => %@",NSStringFromClass([self class]))

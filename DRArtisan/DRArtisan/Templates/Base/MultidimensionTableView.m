@@ -21,11 +21,11 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
-    static int i = 0;
+    // static int i = 0;
     if (cell == nil) {
         cell = [[[[self cellClass] class] alloc] initWithStyle:self.cellStyle
                                                reuseIdentifier:NSStringFromClass([self class])];
-        JasLog(@"cell reuse => %d",i++);
+        JasLog(@"cell reuse => %zd",self.reuseCount++);
     }
     
     // Just for avoid reuse affect
