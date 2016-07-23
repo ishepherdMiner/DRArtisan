@@ -7,6 +7,12 @@
 #import "NSObject+Coder.h"
 #import <objc/runtime.h>
 
+@interface LogDealloc : NSObject
+
+@property (strong) NSString* message;
+
+@end
+
 @implementation NSObject (Coder)
 
 const char* propertiesKey = "md5(bundleId)_propertiesKey";
@@ -84,5 +90,21 @@ const char* propertiesKey = "md5(bundleId)_propertiesKey";
     free(methods);
 }
 
+static char __logDeallocAssociatedKey__;
+- (void)jas_logDealloc{
+    if( objc_getAssociatedObject( self, &__logDeallocAssociatedKey__ ) == nil ) {
+        LogDealloc* log = [[LogDealloc alloc] init];
+        log.message = NSStringFromClass( self.class );
+        objc_setAssociatedObject( self, &__logDeallocAssociatedKey__, log, OBJC_ASSOCIATION_RETAIN);
+    }
+}
+
+@end
+
+@implementation LogDealloc
+
+- (void)dealloc{
+    NSLog( @"dealloc: %@", self.message );
+}
 
 @end

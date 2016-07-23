@@ -22,7 +22,13 @@
  */
 + (void)jas_methodList:(Class )cls;
 
+/**
+ *  class释放时,进行输出提示,辅助内存泄露
+ */
+- (void)jas_logDealloc;
+
 @end
+
 
 @interface NSObject (Deprecated)
 
