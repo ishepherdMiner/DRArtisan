@@ -36,6 +36,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    UIView *btn = [self.view findViewRecursively:^BOOL(UIView *subview, BOOL *stop) {
+        if ([subview isKindOfClass:[UIButton class]]) {
+            return true;
+        }else {
+            return false;
+        }
+    }];
+    
     // 感觉作用不大,而且
     self.view.backgroundColor = RGBA(51/255.0, 73/255.0, 93/255.0, 1.0);
     self.session = [[JASSession alloc] init];

@@ -9,7 +9,19 @@
 #import "UIView+Coder.h"
 
 @implementation UIView (Coder)
-
+- (UIView*)findViewRecursively:(BOOL(^)(UIView* subview, BOOL* stop))recurse
+{
+    for( UIView* subview in self.subviews ) {
+        BOOL stop = true;
+        if(recurse(subview,&stop)) {
+            return [subview findViewRecursively:recurse];
+        } else if( stop ) {
+            return subview;
+        }
+    }
+    
+    return nil;
+}
 @end
 
 @implementation UIView (frame)
