@@ -94,6 +94,10 @@
     return obj;
 }
 
+- (void)dealloc {
+    [self jas_logDealloc];
+}
+
 //
 //- (NSString *)description {
 //    NSMutableString *descM = [NSMutableString stringWithFormat:@"<%@ %p>\n",self,self];

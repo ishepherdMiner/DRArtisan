@@ -20,6 +20,24 @@
 + (void)writeNewFileToPath:(id) file
                   WithPath:(NSString *)filePath
               WithFileName:(NSString *) fileName;
+
+#ifdef Add_Data_Zip_Capability
+/**
+ *  压缩
+ *
+ *  @return 压缩后的data数据
+ */
+- (NSData *)gzipInflate;
+
+/**
+ *  解压缩
+ *
+ *  @return 解压缩后的data数据
+ */
+- (NSData *)gzipDeflate;
+
+#endif
+
 @end
 
 

@@ -288,22 +288,22 @@
 // 字典转模型
 - (NSArray *)defaultCellModelList {
     return @[
-             [JASDefaultCellModel objWithDic:@{
+             [JASDefaultCellModel modelWithDic:@{
                                                    @"id":@1,
                                                    @"title":@"c测试,234...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
-             [JASDefaultCellModel objWithDic:@{
+             [JASDefaultCellModel modelWithDic:@{
                                                    @"id":@2,
                                                    @"title":@"c测试,2342...c测试,2342...c测试,2342...c测试,2342...c测试,2342...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
-             [JASDefaultCellModel objWithDic:@{
+             [JASDefaultCellModel modelWithDic:@{
                                                    @"id":@3,
                                                    @"title":@"cfads,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
                                                    }],
-             [JASDefaultCellModel objWithDic:@{
+             [JASDefaultCellModel modelWithDic:@{
                                                    @"id":@4,
                                                    @"title":@"c测试,测试...",
                                                    @"icon":@"http://www.baidu.comadsfadsfads"
@@ -313,25 +313,25 @@
 
 - (NSArray *)value1CellModelList {
     return @[
-             [JASValue1CellModel objWithDic:@{
+             [JASValue1CellModel modelWithDic:@{
                                               @"id":@1,
                                               @"title":@"c测试,234...",
                                               @"blue_title":@"忘掉了挨个打算暗示"
                                               }
              ],
-             [JASValue1CellModel objWithDic:@{
+             [JASValue1CellModel modelWithDic:@{
                                               @"id":@1,
                                               @"title":@"c测试,234...",
                                               @"blue_title":@"忘掉了挨个打算暗示"
                                               }
               ],
-             [JASValue1CellModel objWithDic:@{
+             [JASValue1CellModel modelWithDic:@{
                                               @"id":@1,
                                               @"title":@"c测试,234...",
                                               @"blue_title":@"忘掉了挨个打算暗示"
                                               }
               ],
-             [JASValue1CellModel objWithDic:@{
+             [JASValue1CellModel modelWithDic:@{
                                               @"id":@1,
                                               @"title":@"c测试,234...",
                                               @"blue_title":@"忘掉了挨个打算暗示"
@@ -342,25 +342,25 @@
 
 - (NSArray *)subtitleCellModelList {
     return @[
-             [JASSubtitleCellModel objWithDic:@{
+             [JASSubtitleCellModel modelWithDic:@{
                                                 @"id":@1,
                                                 @"title":@"c测试,234...",
                                                 @"blue_title":@"忘掉了挨个打算暗示",
                                                 @"image":@"fadsfadsfadsfadsfadsfdsa"
                                                 }],
-             [JASSubtitleCellModel objWithDic:@{
+             [JASSubtitleCellModel modelWithDic:@{
                                                 @"id":@1,
                                                 @"title":@"c测试,234...",
                                                 @"blue_title":@"忘掉了挨个打算暗示",
                                                 @"image":@"fadsfadsfadsfadsfadsfdsa"
                                                 }],
-             [JASSubtitleCellModel objWithDic:@{
+             [JASSubtitleCellModel modelWithDic:@{
                                                 @"id":@1,
                                                 @"title":@"c测试,234...",
                                                 @"blue_title":@"忘掉了挨个打算暗示",
                                                 @"image":@"fadsfadsfadsfadsfadsfdsa"
                                                 }],
-             [JASSubtitleCellModel objWithDic:@{
+             [JASSubtitleCellModel modelWithDic:@{
                                                 @"id":@1,
                                                 @"title":@"c测试,234...",
                                                 @"blue_title":@"忘掉了挨个打算暗示",
@@ -370,7 +370,7 @@
 }
 
 - (NSArray *)moreLowDicList {
-    return @[[CommentModel objWithDic:@{
+    return @[[CommentModel modelWithDic:@{
                                                @"id": @"347",
                                                @"topic_id": @"225",
                                                @"user_id": @"87",
@@ -381,7 +381,7 @@
                                                @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
                                                
                                      }],
-             [CommentModel objWithDic:@{
+             [CommentModel modelWithDic:@{
                                      
                                                @"id": @"348",
                                                @"topic_id": @"225",
@@ -399,7 +399,7 @@
 }
 
 - (NSArray *)moreDicList {
-    return @[[DemoModel objWithDic:@{@"god_comment":
+    return @[[DemoModel modelWithDic:@{@"god_comment":
                                         @{
                                               @"id": @"347",
                                               @"topic_id": @"225",
@@ -411,7 +411,7 @@
                                               @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
                                          }
                                      }],
-             [DemoModel objWithDic:@{@"god_comment":
+             [DemoModel modelWithDic:@{@"god_comment":
                                          @{
                                                @"id": @"348",
                                                @"topic_id": @"225",
