@@ -65,7 +65,7 @@
 /**
  *  字典转模型方法
  */
-+ (instancetype)objWithDic:(NSDictionary *)dict;
++ (instancetype)modelWithDic:(NSDictionary *)dict;
 
 + (void)jas_test;
 @end

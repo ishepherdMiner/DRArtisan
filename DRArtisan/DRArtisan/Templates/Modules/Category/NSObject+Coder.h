@@ -8,7 +8,7 @@
 
 @interface NSObject (Coder)
 
-// + (instancetype)objWithDic:(NSDictionary *)dic;
+// + (instancetype)modelWithDic:(NSDictionary *)dic;
 
 /**
  *  返回类的属性列表

@@ -33,22 +33,22 @@
     // 模型
     - (NSArray *)defaultCellModelList {
         return @[
-            [JASDefaultCellModel objWithDic:@{
+            [JASDefaultCellModel modelWithDic:@{
                  @"id":@1,
                  @"title":@"c测试,234...",
                  @"icon":@"http://www.baidu.comadsfadsfads"
             }],
-            [JASDefaultCellModel objWithDic:@{
+            [JASDefaultCellModel modelWithDic:@{
                  @"id":@2,
                  @"title":@"c测试,2342...c测试,2342...c测试,2342...c测试,2342...c测试,2342...",
                  @"icon":@"http://www.baidu.comadsfadsfads"
             }],
-            [JASDefaultCellModel objWithDic:@{
+            [JASDefaultCellModel modelWithDic:@{
                  @"id":@3,
                  @"title":@"cfads,测试...",
                  @"icon":@"http://www.baidu.comadsfadsfads"
             }],
-            [JASDefaultCellModel objWithDic:@{
+            [JASDefaultCellModel modelWithDic:@{
                  @"id":@4,
                  @"title":@"c测试,测试...",
                  @"icon":@"http://www.baidu.comadsfadsfads"

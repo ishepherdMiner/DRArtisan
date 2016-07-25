@@ -7,6 +7,7 @@
 //
 
 #import "SetMealTableView.h"
+#import "JasFlowAnalytical.h"
 
 @interface SetMealTableView () <BasePickerViewDelegate,UITextFieldDelegate>
 
@@ -133,7 +134,7 @@
     meal_cell_v.desc_field_v.userInteractionEnabled = true;
     meal_cell_v.desc_field_v.returnKeyType = UIReturnKeyDone;
     meal_cell_v.desc_field_v.delegate = self;
-    meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeNumberPad;
+    meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeDecimalPad;
     meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
     [meal_cell_v.desc_field_v becomeFirstResponder];
 }
@@ -187,12 +188,24 @@
     SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
     // 需要把流量单位也保存到用户配置中
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    if(unit_v.selected) {
-        cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
-        [userDefaults setObject:@" M" forKey:@"flow_unit"];
+    
+    // 调整使用量
+    if(_cur_index.section == kOne) {
+        if(unit_v.selected) {
+            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
+            [userDefaults setObject:@" M" forKey:kUsedFlowUnit];
+        }else {
+            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
+            [userDefaults setObject:@" G" forKey:kUsedFlowUnit];
+        }
     }else {
-        cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
-        [userDefaults setObject:@" G" forKey:@"flow_unit"];
+        if(unit_v.selected) {
+            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M/月"];
+            [userDefaults setObject:@" M/月" forKey:kFlowUnit];
+        }else {
+            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G/月"];
+            [userDefaults setObject:@" G/月" forKey:kFlowUnit];
+        }
     }
     
     

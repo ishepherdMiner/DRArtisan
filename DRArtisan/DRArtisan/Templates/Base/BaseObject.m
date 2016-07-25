@@ -11,7 +11,7 @@
 @implementation BaseObject
 
 
-+ (instancetype)objWithDic:(NSDictionary *)dic {
++ (instancetype)modelWithDic:(NSDictionary *)dic {
     
     id obj = [[self alloc] init];
     
@@ -26,7 +26,7 @@
     
     if (kCollectionProperty(obj)) {
         for (id element in obj) {
-            [element objWithDic:element];
+            [element modelWithDic:element];
         }
     }
     
