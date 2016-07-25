@@ -64,6 +64,12 @@
 
 @end
 
+@interface NSArray (CleanDescription)
+
+- (NSString *)cleanDescription;
+
+@end
+
 @interface NSArray (Deprecated)
 
 @end

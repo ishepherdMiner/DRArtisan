@@ -144,6 +144,24 @@
 
 @end
 
+@implementation NSString (CleanDescription)
+
+- (NSString *)cleanDescription
+{
+    NSString *result;
+    
+    if ([self rangeOfCharacterFromSet:[[NSCharacterSet alphanumericCharacterSet] invertedSet]].location == NSNotFound) {
+        result = self;
+    } else {
+        result = [NSString stringWithFormat:@"\"%@\"", self];
+    }
+    
+    return result;
+}
+
+@end
+
+
 @implementation NSString (encode)
 
 - (NSString *)base64encode {

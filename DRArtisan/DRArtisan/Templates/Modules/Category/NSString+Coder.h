@@ -55,6 +55,12 @@
 
 @end
 
+@interface NSString (CleanDescription)
+
+- (NSString *)cleanDescription;
+
+@end
+
 @interface NSString (file)
 
 /// .../sandbox/Document

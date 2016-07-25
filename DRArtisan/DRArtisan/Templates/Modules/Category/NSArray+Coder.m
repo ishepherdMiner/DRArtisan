@@ -105,3 +105,25 @@
 
 
 @end
+
+@implementation NSArray (CleanDescription)
+
+- (NSString *)cleanDescription
+{
+    NSString *result;
+    
+    NSMutableString *elements = [NSMutableString string];
+    for (id value in self) {
+        [elements appendFormat:@"%@, ", [value cleanDescription]];
+    }
+    NSUInteger length = [elements length];
+    if (length > 2) {
+        [elements deleteCharactersInRange:NSMakeRange(length - 2, 2)];
+    }
+    
+    result = [NSString stringWithFormat:@"(%@)", elements];
+    
+    return result;
+}
+
+@end

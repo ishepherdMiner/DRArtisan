@@ -90,3 +90,27 @@
 
 
 @end
+
+@implementation NSDictionary (CleanDescription)
+
+- (NSString *)cleanDescription
+{
+    NSString *result;
+    
+    NSMutableString *elements = [NSMutableString string];
+    for (id key in self) {
+        id value = [self objectForKey:key];
+        [elements appendFormat:@"%@ = %@; ", [key cleanDescription], [value cleanDescription]];
+    }
+    NSUInteger length = [elements length];
+    if (length) {
+        [elements deleteCharactersInRange:NSMakeRange(length - 1, 1)];
+    }
+    
+    result = [NSString stringWithFormat:@"{%@}", elements];
+    
+    return result;
+}
+
+@end
+

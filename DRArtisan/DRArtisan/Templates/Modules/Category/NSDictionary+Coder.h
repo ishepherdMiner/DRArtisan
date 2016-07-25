@@ -19,6 +19,11 @@
 
 @end
 
+@interface NSDictionary (CleanDescription)
+
+- (NSString *)cleanDescription;
+
+@end
 
 @interface NSDictionary (Deprecated)
 
