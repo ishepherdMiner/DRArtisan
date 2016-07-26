@@ -63,3 +63,15 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
 + (NSString *)flowUsage:(FlowUsageType)usageType direction:(FlowDirectionOption)directionOption;
 
 @end
+
+@interface JASUtils (Encrypt)
+
+/**
+ *  密码表
+ *
+ *  @return a string array
+ */
++ (NSArray *)encryptTable:(NSUInteger )length;
+
+@end
+

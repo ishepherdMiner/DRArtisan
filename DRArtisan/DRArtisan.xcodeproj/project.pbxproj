@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222B1D4827FB0028A835 /* TYWaterWaveView.m */; };
+		9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222D1D4827FB0028A835 /* TYWaveProgressView.m */; };
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
 		9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */; };
 		9639AA641D458EEB007719B0 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E91D458EEB007719B0 /* BaseTableViewCell.m */; };
@@ -88,6 +90,10 @@
 /* Begin PBXFileReference section */
 		04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9624222A1D4827FB0028A835 /* TYWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaterWaveView.h; sourceTree = "<group>"; };
+		9624222B1D4827FB0028A835 /* TYWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaterWaveView.m; sourceTree = "<group>"; };
+		9624222C1D4827FB0028A835 /* TYWaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaveProgressView.h; sourceTree = "<group>"; };
+		9624222D1D4827FB0028A835 /* TYWaveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaveProgressView.m; sourceTree = "<group>"; };
 		9625079B1D461A3100DFF32D /* NSNumber+Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Coder.h"; sourceTree = "<group>"; };
 		9625079C1D461A3100DFF32D /* NSNumber+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Coder.m"; sourceTree = "<group>"; };
 		9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
@@ -254,6 +260,17 @@
 				3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		962422291D4827FB0028A835 /* TYWaveProgressView */ = {
+			isa = PBXGroup;
+			children = (
+				9624222A1D4827FB0028A835 /* TYWaterWaveView.h */,
+				9624222B1D4827FB0028A835 /* TYWaterWaveView.m */,
+				9624222C1D4827FB0028A835 /* TYWaveProgressView.h */,
+				9624222D1D4827FB0028A835 /* TYWaveProgressView.m */,
+			);
+			path = TYWaveProgressView;
 			sourceTree = "<group>";
 		};
 		9639A9E21D458EEB007719B0 /* Templates */ = {
@@ -523,6 +540,7 @@
 		9639AA4E1D458EEB007719B0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				962422291D4827FB0028A835 /* TYWaveProgressView */,
 				965DB7181D46D06200C6546D /* BackgroundAudio */,
 				9639AA4F1D458EEB007719B0 /* Badge */,
 				9639AA541D458EEB007719B0 /* CircleProgressBar */,
@@ -890,6 +908,7 @@
 				9639AA6D1D458EEB007719B0 /* BaseTableView.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
 				965DB71B1D46D06200C6546D /* BackgroundAudioPlay.m in Sources */,
+				9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */,
 				9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */,
 				9639AA741D458EEB007719B0 /* JASDefaultCell.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
@@ -900,6 +919,7 @@
 				9639AA8A1D458EEB007719B0 /* JASSession.m in Sources */,
 				9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */,
 				9639AA911D458EEB007719B0 /* Waver.m in Sources */,
+				9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */,
 				9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */,
 				9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */,
 				9639AA801D458EEB007719B0 /* NSDictionary+Coder.m in Sources */,

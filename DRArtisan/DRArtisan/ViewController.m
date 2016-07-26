@@ -45,7 +45,7 @@
     }];
     
     JasLog(@"%@",[[[CommentModel alloc] init] jas_autoDescription]);
-    
+    JasLog(@"%@",[JASUtils encryptTable:224]);
     // 感觉作用不大,而且
     self.view.backgroundColor = RGBA(51/255.0, 73/255.0, 93/255.0, 1.0);
     self.session = [[JASSession alloc] init];
@@ -56,7 +56,7 @@
     CGFloat circle_progress_h = circle_progress_w;
     circle_progress_v.frame = fRect((Screen_width - circle_progress_w) * 0.5, 100, circle_progress_w, circle_progress_h);
     circle_progress_v.status = @"not start";
-    circle_progress_v.timeLimit = 3;
+    circle_progress_v.timeLimit = 900;
     circle_progress_v.elapsedTime = 0;
     
     [self.view addSubview:_circle_progress_v = circle_progress_v];

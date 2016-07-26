@@ -120,3 +120,27 @@
 }
 
 @end
+
+@implementation JASUtils (Encrypt)
+
++ (NSArray *)encryptTable:(NSUInteger )length {
+    NSArray *elements = @[@"0",@"1",@"2",@"3",@"4",
+                          @"5",@"6",@"7",@"8",@"9",
+                          @"a",@"b",@"c",@"d",@"e",
+                          @"f"];
+    NSMutableArray *tablesM = [NSMutableArray arrayWithCapacity:length];
+    for (int i = 0; i < length; ++i) {
+         int firstInt = arc4random() % [elements count];
+         int lastInt = arc4random() % [elements count];
+        NSString *tableElement = [NSString stringWithFormat:@"%@%@",elements[firstInt],elements[lastInt]];
+        if (i % 5 == 0) {
+            JasLog(@"\n");
+        }
+        JasLog(@"@%@",tableElement);
+        [tablesM addObject:tableElement];
+    }
+    
+    return [tablesM copy];
+}
+
+@end

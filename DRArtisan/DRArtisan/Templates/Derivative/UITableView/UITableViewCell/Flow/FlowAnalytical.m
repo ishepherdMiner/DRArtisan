@@ -21,6 +21,7 @@
 + (void)updateUseFlow{
     
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
+    
     // 获取本次开机使用流量的本地记录
     double theUse = [userDefaults doubleForKey:kThisUseFlow];
     

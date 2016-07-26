@@ -6,16 +6,30 @@
 //  Copyright © 2015年 刘瑞龙. All rights reserved.
 //
 #define kFirstSetting    @"firstSetting"        // 是否是首次
-#define kThisUseFlow     @"thisUseFlow"        // 本月使用的流量
-#define kAllUseFlow      @"allUseFlow"         // 本月总共使用的流量
+#define kThisUseFlow     @"thisUseFlow"         // 本月使用的流量
+#define kAllUseFlow      @"allUseFlow"          // 本月总共使用的流量
 #define kMonthChangeUse  @"monthChangeUseFlow"  // 当月份改变时,记录下本月使用的流量
 #define kAllFlow         @"allFlow"             // 套餐总流量
-#define kMonth           @"month"              // 记录更新月份
+#define kMonth           @"month"               // 记录更新月份
 #define kUsedFlowUnit    @"usedFlowUnit"        // 已经使用的流量单位(M/G)
 #define kFlowUnit        @"flowUnit"            // 套餐总流量的单位(M/月 | G/月)
 
 #import <Foundation/Foundation.h>
 
+/**
+ *  App界面:
+ *      首次:
+ *          输入套餐总流量与已使用的流量
+ *
+ *      N+1次:
+ *          退下界面: 显示已消耗的流量占比的视图
+ *          修改流量套餐与已使用的流量能正常显示
+ *      
+ *      月份切换时:能正常显示
+ *
+ *  Ext界面:
+ *
+ */
 @interface FlowAnalytical : NSObject
 
 /**
