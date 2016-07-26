@@ -9,7 +9,7 @@
 #import "AppDelegate.h"
 
 #import "ViewController.h"
-#import <DRCore/DRCore.h>
+//#import <DRCore/DRCore.h>
 
 @interface AppDelegate ()
 
@@ -49,7 +49,7 @@
     // JasError;
     
     // [CorePrivate jas_ipAddresses];
-    [CorePrivate jas_allInstalledApps];
+    // [CorePrivate jas_allInstalledApps];
     
     // [CorePrivate jas_prefrenceUUIDString];
     

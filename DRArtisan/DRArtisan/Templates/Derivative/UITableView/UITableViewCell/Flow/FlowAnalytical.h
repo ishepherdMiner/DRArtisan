@@ -5,22 +5,18 @@
 //  Created by 刘瑞龙 on 15/12/4.
 //  Copyright © 2015年 刘瑞龙. All rights reserved.
 //
-
-#define ThisUseFlow     @"thisUseFlow"         // 本月使用的流量
-#define AllUseFlow      @"allUseFlow"          // 总共使用的流量
-#define kMonthChangeUse  @"monthChangeUseFlow" // 暂时还不理解
-#define AllFlow         @"allFlow"             // 套餐总流量
-#define Month           @"month"               // 记录更新月份
-#define kUsedFlowUnit   @"usedFlowUnit"        // 已经使用的流量单位(M/G)
-#define kFlowUnit       @"flowUnit"            // 套餐总流量的单位(M/月 | G/月)
+#define kFirstSetting    @"firstSetting"        // 是否是首次
+#define kThisUseFlow     @"thisUseFlow"        // 本月使用的流量
+#define kAllUseFlow      @"allUseFlow"         // 本月总共使用的流量
+#define kMonthChangeUse  @"monthChangeUseFlow"  // 当月份改变时,记录下本月使用的流量
+#define kAllFlow         @"allFlow"             // 套餐总流量
+#define kMonth           @"month"              // 记录更新月份
+#define kUsedFlowUnit    @"usedFlowUnit"        // 已经使用的流量单位(M/G)
+#define kFlowUnit        @"flowUnit"            // 套餐总流量的单位(M/月 | G/月)
 
 #import <Foundation/Foundation.h>
 
-/**
- *  虽然写得不错,但是不太存粹,需要修改
- *  本质上可以看成对流量的增删改查
- */
-@interface JasFlowAnalytical : NSObject
+@interface FlowAnalytical : NSObject
 
 /**
 *  设置已使用的流量
@@ -32,7 +28,7 @@
 /**
  * @b 获取已经用的流量
  */
-+ (double)hasUsedFlow;
++ (NSString *)hasUsedFlow;
 
 /**
  *  设置流量套餐
@@ -44,7 +40,7 @@
 /**
  * @b 获取流量套餐
  */
-+ (double)allFlow;
++ (NSString *)allFlow;
 
 /**
  *  设置流量套餐更新周期

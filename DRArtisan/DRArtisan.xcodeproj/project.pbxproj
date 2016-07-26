@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
 		9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */; };
 		9639AA641D458EEB007719B0 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E91D458EEB007719B0 /* BaseTableViewCell.m */; };
 		9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */; };
@@ -16,11 +17,10 @@
 		9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F51D458EEB007719B0 /* JASBaseCellModel.m */; };
 		9639AA6A1D458EEB007719B0 /* MultidimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F71D458EEB007719B0 /* MultidimensionTableView.m */; };
 		9639AA6B1D458EEB007719B0 /* SingledimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F91D458EEB007719B0 /* SingledimensionTableView.m */; };
-		9639AA6C1D458EEB007719B0 /* DRCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9639A9FB1D458EEB007719B0 /* DRCore.framework */; };
 		9639AA6D1D458EEB007719B0 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA041D458EEB007719B0 /* BaseTableView.m */; };
 		9639AA6E1D458EEB007719B0 /* FlexibleHeightMultiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA061D458EEB007719B0 /* FlexibleHeightMultiTableView.m */; };
 		9639AA6F1D458EEB007719B0 /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA081D458EEB007719B0 /* FlexibleHeightTableView.m */; };
-		9639AA701D458EEB007719B0 /* JasFlowAnalytical.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA0C1D458EEB007719B0 /* JasFlowAnalytical.m */; };
+		9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA0C1D458EEB007719B0 /* FlowAnalytical.m */; };
 		9639AA711D458EEB007719B0 /* SetMealCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA0E1D458EEB007719B0 /* SetMealCellModel.m */; };
 		9639AA721D458EEB007719B0 /* SetMealTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA101D458EEB007719B0 /* SetMealTableView.m */; };
 		9639AA731D458EEB007719B0 /* SetMealTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA121D458EEB007719B0 /* SetMealTableViewCell.m */; };
@@ -47,7 +47,6 @@
 		9639AA881D458EEB007719B0 /* JASCircleProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA461D458EEB007719B0 /* JASCircleProgressView.m */; };
 		9639AA891D458EEB007719B0 /* JASCircleShapeLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA481D458EEB007719B0 /* JASCircleShapeLayer.m */; };
 		9639AA8A1D458EEB007719B0 /* JASSession.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA4A1D458EEB007719B0 /* JASSession.m */; };
-		9639AA8B1D458EEB007719B0 /* Encrypt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9639AA4D1D458EEB007719B0 /* Encrypt.framework */; };
 		9639AA8C1D458EEB007719B0 /* BadgeStyle.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA511D458EEB007719B0 /* BadgeStyle.m */; };
 		9639AA8D1D458EEB007719B0 /* CustomBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA531D458EEB007719B0 /* CustomBadge.m */; };
 		9639AA8E1D458EEB007719B0 /* CircleProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA561D458EEB007719B0 /* CircleProgressBar.m */; };
@@ -55,6 +54,7 @@
 		9639AA901D458EEB007719B0 /* NJDBezierCurve.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA5B1D458EEB007719B0 /* NJDBezierCurve.m */; };
 		9639AA911D458EEB007719B0 /* Waver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA5E1D458EEB007719B0 /* Waver.m */; };
 		9639AA921D458EEB007719B0 /* JASUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA621D458EEB007719B0 /* JASUtils.m */; };
+		965DB71B1D46D06200C6546D /* BackgroundAudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 965DB71A1D46D06200C6546D /* BackgroundAudioPlay.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -88,6 +88,8 @@
 /* Begin PBXFileReference section */
 		04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		9625079B1D461A3100DFF32D /* NSNumber+Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Coder.h"; sourceTree = "<group>"; };
+		9625079C1D461A3100DFF32D /* NSNumber+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Coder.m"; sourceTree = "<group>"; };
 		9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		9639A9E61D458EEB007719B0 /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -109,15 +111,14 @@
 		9639A9F71D458EEB007719B0 /* MultidimensionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultidimensionTableView.m; sourceTree = "<group>"; };
 		9639A9F81D458EEB007719B0 /* SingledimensionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingledimensionTableView.h; sourceTree = "<group>"; };
 		9639A9F91D458EEB007719B0 /* SingledimensionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingledimensionTableView.m; sourceTree = "<group>"; };
-		9639A9FB1D458EEB007719B0 /* DRCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = DRCore.framework; sourceTree = "<group>"; };
 		9639AA031D458EEB007719B0 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
 		9639AA041D458EEB007719B0 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		9639AA051D458EEB007719B0 /* FlexibleHeightMultiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightMultiTableView.h; sourceTree = "<group>"; };
 		9639AA061D458EEB007719B0 /* FlexibleHeightMultiTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightMultiTableView.m; sourceTree = "<group>"; };
 		9639AA071D458EEB007719B0 /* FlexibleHeightTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightTableView.h; sourceTree = "<group>"; };
 		9639AA081D458EEB007719B0 /* FlexibleHeightTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightTableView.m; sourceTree = "<group>"; };
-		9639AA0B1D458EEB007719B0 /* JasFlowAnalytical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JasFlowAnalytical.h; sourceTree = "<group>"; };
-		9639AA0C1D458EEB007719B0 /* JasFlowAnalytical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JasFlowAnalytical.m; sourceTree = "<group>"; };
+		9639AA0B1D458EEB007719B0 /* FlowAnalytical.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlowAnalytical.h; sourceTree = "<group>"; };
+		9639AA0C1D458EEB007719B0 /* FlowAnalytical.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlowAnalytical.m; sourceTree = "<group>"; };
 		9639AA0D1D458EEB007719B0 /* SetMealCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMealCellModel.h; sourceTree = "<group>"; };
 		9639AA0E1D458EEB007719B0 /* SetMealCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMealCellModel.m; sourceTree = "<group>"; };
 		9639AA0F1D458EEB007719B0 /* SetMealTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMealTableView.h; sourceTree = "<group>"; };
@@ -173,7 +174,6 @@
 		9639AA481D458EEB007719B0 /* JASCircleShapeLayer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASCircleShapeLayer.m; sourceTree = "<group>"; };
 		9639AA491D458EEB007719B0 /* JASSession.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSession.h; sourceTree = "<group>"; };
 		9639AA4A1D458EEB007719B0 /* JASSession.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSession.m; sourceTree = "<group>"; };
-		9639AA4D1D458EEB007719B0 /* Encrypt.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Encrypt.framework; sourceTree = "<group>"; };
 		9639AA501D458EEB007719B0 /* BadgeStyle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BadgeStyle.h; sourceTree = "<group>"; };
 		9639AA511D458EEB007719B0 /* BadgeStyle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BadgeStyle.m; sourceTree = "<group>"; };
 		9639AA521D458EEB007719B0 /* CustomBadge.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomBadge.h; sourceTree = "<group>"; };
@@ -188,6 +188,8 @@
 		9639AA5E1D458EEB007719B0 /* Waver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Waver.m; sourceTree = "<group>"; };
 		9639AA611D458EEB007719B0 /* JASUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASUtils.h; sourceTree = "<group>"; };
 		9639AA621D458EEB007719B0 /* JASUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASUtils.m; sourceTree = "<group>"; };
+		965DB7191D46D06200C6546D /* BackgroundAudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAudioPlay.h; sourceTree = "<group>"; };
+		965DB71A1D46D06200C6546D /* BackgroundAudioPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundAudioPlay.m; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -216,9 +218,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9639AA8B1D458EEB007719B0 /* Encrypt.framework in Frameworks */,
 				99706EE11E51FCB57E22147F /* libPods.a in Frameworks */,
-				9639AA6C1D458EEB007719B0 /* DRCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -307,7 +307,6 @@
 		9639A9FA1D458EEB007719B0 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				9639A9FB1D458EEB007719B0 /* DRCore.framework */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -403,8 +402,8 @@
 		9639AA0A1D458EEB007719B0 /* Flow */ = {
 			isa = PBXGroup;
 			children = (
-				9639AA0B1D458EEB007719B0 /* JasFlowAnalytical.h */,
-				9639AA0C1D458EEB007719B0 /* JasFlowAnalytical.m */,
+				9639AA0B1D458EEB007719B0 /* FlowAnalytical.h */,
+				9639AA0C1D458EEB007719B0 /* FlowAnalytical.m */,
 				9639AA0D1D458EEB007719B0 /* SetMealCellModel.h */,
 				9639AA0E1D458EEB007719B0 /* SetMealCellModel.m */,
 				9639AA0F1D458EEB007719B0 /* SetMealTableView.h */,
@@ -459,6 +458,8 @@
 				9639AA2C1D458EEB007719B0 /* CategoryCollect.h */,
 				9639AA2D1D458EEB007719B0 /* NSArray+Coder.h */,
 				9639AA2E1D458EEB007719B0 /* NSArray+Coder.m */,
+				9625079B1D461A3100DFF32D /* NSNumber+Coder.h */,
+				9625079C1D461A3100DFF32D /* NSNumber+Coder.m */,
 				9639AA2F1D458EEB007719B0 /* NSData+Coder.h */,
 				9639AA301D458EEB007719B0 /* NSData+Coder.m */,
 				9639AA311D458EEB007719B0 /* NSDate+Coder.h */,
@@ -515,7 +516,6 @@
 		9639AA4C1D458EEB007719B0 /* Encrypt */ = {
 			isa = PBXGroup;
 			children = (
-				9639AA4D1D458EEB007719B0 /* Encrypt.framework */,
 			);
 			path = Encrypt;
 			sourceTree = "<group>";
@@ -523,6 +523,7 @@
 		9639AA4E1D458EEB007719B0 /* Libs */ = {
 			isa = PBXGroup;
 			children = (
+				965DB7181D46D06200C6546D /* BackgroundAudio */,
 				9639AA4F1D458EEB007719B0 /* Badge */,
 				9639AA541D458EEB007719B0 /* CircleProgressBar */,
 				9639AA571D458EEB007719B0 /* JumpNumber */,
@@ -598,6 +599,15 @@
 				96F5F45D1D3150A900AB1C03 /* CommentModel.m */,
 			);
 			name = Demo;
+			sourceTree = "<group>";
+		};
+		965DB7181D46D06200C6546D /* BackgroundAudio */ = {
+			isa = PBXGroup;
+			children = (
+				965DB7191D46D06200C6546D /* BackgroundAudioPlay.h */,
+				965DB71A1D46D06200C6546D /* BackgroundAudioPlay.m */,
+			);
+			path = BackgroundAudio;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
@@ -879,6 +889,7 @@
 				9639AA721D458EEB007719B0 /* SetMealTableView.m in Sources */,
 				9639AA6D1D458EEB007719B0 /* BaseTableView.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
+				965DB71B1D46D06200C6546D /* BackgroundAudioPlay.m in Sources */,
 				9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */,
 				9639AA741D458EEB007719B0 /* JASDefaultCell.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
@@ -887,8 +898,9 @@
 				9639AA881D458EEB007719B0 /* JASCircleProgressView.m in Sources */,
 				9639AA861D458EEB007719B0 /* UIView+Coder.m in Sources */,
 				9639AA8A1D458EEB007719B0 /* JASSession.m in Sources */,
+				9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */,
 				9639AA911D458EEB007719B0 /* Waver.m in Sources */,
-				9639AA701D458EEB007719B0 /* JasFlowAnalytical.m in Sources */,
+				9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */,
 				9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */,
 				9639AA801D458EEB007719B0 /* NSDictionary+Coder.m in Sources */,
 				9639AA761D458EEB007719B0 /* JASSubtitleCell.m in Sources */,

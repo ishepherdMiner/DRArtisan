@@ -6,22 +6,14 @@
 //  Copyright © 2015年 刘瑞龙. All rights reserved.
 //
 
-#import "JasFlowAnalytical.h"
+#import "FlowAnalytical.h"
 
 #include <net/if.h>
 #include <ifaddrs.h>
 #include <net/if_dl.h>
 #include <arpa/inet.h>
 
-@interface JasFlowAnalytical ()
-
-// @property (nonatomic,strong) NSUserDefaults *userDefaults;
-
-@end
-
-@implementation JasFlowAnalytical
-
-// SingletonClassMethod(FlowAnalytical)
+@implementation FlowAnalytical
 
 /**
  *  更新流量统计
@@ -30,52 +22,54 @@
     
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
     // 获取本次开机使用流量的本地记录
-    double theUse = [userDefaults doubleForKey:ThisUseFlow];
+    double theUse = [userDefaults doubleForKey:kThisUseFlow];
     
     // 获取本次开机使用的流量
     double thisUse = [[JASUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
     
     // 获取所有使用量
-    double allUse = [userDefaults doubleForKey:AllUseFlow];
+    double allUse = [[userDefaults objectForKey:kAllUseFlow] doubleValue];
     
+    // 上次月份改变时,剩余流量
     double monthChangeUse = [userDefaults doubleForKey:kMonthChangeUse];
     
     if (monthChangeUse > 0) {
         if (thisUse > monthChangeUse) {
             // 更新全部使用流量
             double nowAllUse = allUse + thisUse - monthChangeUse;
-            nowAllUse = [[NSString stringWithFormat:@"%.2f",nowAllUse] doubleValue];
-            [userDefaults setDouble:nowAllUse forKey:AllUseFlow];
+            [userDefaults setObject:[NSString stringWithFormat:@"%.2f",nowAllUse] forKey:kAllUseFlow];
         }else if(thisUse < monthChangeUse){
             //
             [userDefaults setDouble:0.0 forKey:kMonthChangeUse];
-            [userDefaults setDouble:thisUse forKey:ThisUseFlow];
+            [userDefaults setObject:[NSString stringWithFormat:@"%.2f",thisUse] forKey:kThisUseFlow];
             
             // 更新全部使用的流量
             double nowAllUse = allUse + thisUse;
             nowAllUse = [[NSString stringWithFormat:@"%.2f",nowAllUse] doubleValue];
-            [userDefaults setDouble:nowAllUse forKey:AllUseFlow];
+            [userDefaults setDouble:nowAllUse forKey:kAllUseFlow];
         }
     }else{
         // 本次开机使用流量大于本地记录的流量
         if (thisUse > theUse) {
-            // 更新本地存储的本次开机流量
-            [userDefaults setDouble:thisUse forKey:ThisUseFlow];
-            
-            // 更新全部使用流量
-            double nowAllUse = allUse + thisUse - theUse;
-            nowAllUse = [[NSString stringWithFormat:@"%.2f",nowAllUse] doubleValue];
-            [userDefaults setDouble:nowAllUse forKey:AllUseFlow];
+            double nowAllUse = 0.0;
+            if ([userDefaults objectForKey:kFirstSetting]) {
+                // 更新本地存储的本次开机流量
+                [userDefaults setObject:[NSString stringWithFormat:@"%.2f",thisUse] forKey:kThisUseFlow];
+                // 更新全部使用流量
+                nowAllUse = allUse + thisUse - theUse;
+            }else {
+                nowAllUse = allUse;
+                [userDefaults setObject:@"true" forKey:kFirstSetting];
+                [userDefaults setObject:@(thisUse).stringValue forKey:kThisUseFlow];
+            }
+            [userDefaults setObject:[NSString stringWithFormat:@"%.2f",nowAllUse] forKey:kAllUseFlow];
         }else if (thisUse < theUse){
             // 当统计出本次开机使用的流量小于本地本次流量时, 说明开机重新启动
-            
             // 将本次开机流量同步到本地
-            [userDefaults setDouble:thisUse forKey:ThisUseFlow];
-            
+            [userDefaults setObject:[NSString stringWithFormat:@"%.2f",thisUse] forKey:kThisUseFlow];
             // 更新全部使用的流量
             double nowAllUse = allUse + thisUse;
-            nowAllUse = [[NSString stringWithFormat:@"%.2f",nowAllUse] doubleValue];
-            [userDefaults setDouble:nowAllUse forKey:AllUseFlow];
+            [userDefaults setObject:[NSString stringWithFormat:@"%.2f",nowAllUse] forKey:kAllUseFlow];
         }
     }
 }
@@ -87,9 +81,29 @@
  */
 + (void)setHasUsedFlow:(double)useFlow{
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    double approUseFlow = [[NSString stringWithFormat:@"%.2f",useFlow] doubleValue];
-    [userDefaults setDouble:approUseFlow forKey:AllUseFlow];
-    [userDefaults setObject:[NSString stringWithFormat:@"%.2f",useFlow] forKey:AllUseFlow];
+    useFlow -= [[userDefaults objectForKey:kThisUseFlow] doubleValue];
+    [userDefaults setObject:[NSString stringWithFormat:@"%.2f",useFlow] forKey:kAllUseFlow];
+}
+
+
+/**
+ *  获得用户已经使用的流量
+ *
+ *  @return 已经使用的流量
+ */
++ (NSString *)hasUsedFlow{
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
+    return [userDefaults objectForKey:kAllUseFlow];
+}
+
+/**
+ *  获得总的套餐数据
+ *
+ *  @return 总的套餐数据
+ */
++ (NSString *)allFlow{
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
+    return [userDefaults objectForKey:kAllFlow];
 }
 
 /**
@@ -99,48 +113,26 @@
  */
 + (void)setAllFlow:(double)allFlow{
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    double approAllFlow = [[NSString stringWithFormat:@"%.2f",allFlow] doubleValue];
-    [userDefaults setDouble:approAllFlow forKey:AllFlow];
-}
-
-+ (void)setMealCycle:(NSUInteger)cycleMonths {
-    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    [userDefaults setInteger:cycleMonths forKey:@"cycleMonths"];
-}
-
-+ (NSUInteger)mealCycle{
-    NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    return [userDefault integerForKey:@"cycleMonths"];
-}
-
-/**
- *  获得用户已经使用的流量
- *
- *  @return 已经使用的流量
- */
-+ (double)hasUsedFlow{
-    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    // return [userDefaults doubleForKey:AllUseFlow];
-    return [[userDefaults objectForKey:AllUseFlow] doubleValue];
-}
-
-/**
- *  获得总的套餐数据
- *
- *  @return 总的套餐数据
- */
-+ (double)allFlow{
-    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    return [userDefaults doubleForKey:AllFlow];
+    return [userDefaults setObject:[NSString stringWithFormat:@"%.2f",allFlow] forKey:kAllFlow];
 }
 
 + (void)setCurMonth:(NSInteger)month {
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    [userDefaults setInteger:month forKey:Month];
+    [userDefaults setObject:@(month).stringValue forKey:kMonth];
 }
 + (NSInteger)curMonth{
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    return [userDefaults integerForKey:Month];
+    return [[userDefaults objectForKey:kMonth] integerValue];
+}
+
++ (void)setMealCycle:(NSUInteger)cycleMonths {
+    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
+    [userDefaults setObject:@(cycleMonths) forKey:@"cycleMonths"];
+}
+
++ (NSUInteger)mealCycle{
+    NSUserDefaults *userDefault = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
+    return [[userDefault objectForKey:@"cycleMonths"] integerValue];
 }
 
 #pragma mark - 获得到下个月1号的天数
@@ -151,18 +143,18 @@
     comps.day = 1;
     
     // 当发现月份变化数量大于套餐的更新月份时, 所有已用数据清空
-    if (comps.month > [JasFlowAnalytical curMonth] + [JasFlowAnalytical mealCycle]) {
+    if (comps.month > [FlowAnalytical curMonth] + [FlowAnalytical mealCycle]) {
         NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-        [userDefaults setInteger:comps.month forKey:Month];
-        [userDefaults setDouble:0.0 forKey:AllUseFlow];
-        [userDefaults setDouble:0.0 forKey:ThisUseFlow];
+        [userDefaults setInteger:comps.month forKey:kMonth];
+        [userDefaults setObject:@"0.0" forKey:kAllUseFlow];
+        [userDefaults setObject:@"0.0" forKey:kThisUseFlow];
         
         // 获取本次开机使用的流量
         double thisUse = [[JASUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
         
-        // [JasFlowAnalytical getDataWithB:[arr[2] longLongValue] + [arr[3] longLongValue]];
+        // [FlowAnalytical getDataWithB:[arr[2] longLongValue] + [arr[3] longLongValue]];
         // 本次开机使用流量
-        [userDefaults setDouble:thisUse forKey:kMonthChangeUse];
+        [userDefaults setObject:[NSString stringWithFormat:@"%.2f",thisUse] forKey:kMonthChangeUse];
     }
     
     comps.month = comps.month + 1;
@@ -174,9 +166,9 @@
 }
 
 /// 刷新流量的日期
-+ (NSString *)refreshFlowDay {
-    return nil;
-}
+//+ (NSString *)refreshFlowDay {
+//    return nil;
+//}
 
 //- (NSUserDefaults *)userDefaults {
 //    if (!_userDefaults) {

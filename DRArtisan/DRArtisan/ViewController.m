@@ -44,7 +44,7 @@
         }
     }];
     
-    // JasLog(@"%@",[[[CommentModel alloc] init] jas_autoDescription]);
+    JasLog(@"%@",[[[CommentModel alloc] init] jas_autoDescription]);
     
     // 感觉作用不大,而且
     self.view.backgroundColor = RGBA(51/255.0, 73/255.0, 93/255.0, 1.0);

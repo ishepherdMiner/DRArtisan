@@ -7,7 +7,7 @@
 //
 
 #import "SetMealTableView.h"
-#import "JasFlowAnalytical.h"
+#import "FlowAnalytical.h"
 
 @interface SetMealTableView () <BasePickerViewDelegate,UITextFieldDelegate>
 
@@ -163,6 +163,9 @@
 /// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
 - (void)maskClick:(UIGestureRecognizer *)tap {
     [self endEditing:true];
+    
+    [self addUnit];
+    
     [_picker_v removeFromSuperview];
     _picker_v = nil;
     [UIView animateWithDuration:0.5 animations:^{
@@ -184,37 +187,37 @@
 }
 
 - (void)submitClick:(UIButton *)sender {
+    [self maskClick:nil];
+}
+
+/// 因为需要检测 - 所以目前只想到这样处理
+- (void)addUnit {
     UIButton *unit_v = (UIButton *)_unit_v_list.firstObject;
     SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
     // 需要把流量单位也保存到用户配置中
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    
     // 调整使用量
-    if(_cur_index.section == kOne) {
-        if(unit_v.selected) {
-            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
-            [userDefaults setObject:@" M" forKey:kUsedFlowUnit];
+    if(![cell.desc_field_v.text isEqualToString:@""]) {
+        if(_cur_index.section == kOne) {
+            if(unit_v.selected) {
+                cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
+                [userDefaults setObject:@" M" forKey:kUsedFlowUnit];
+            }else {
+                cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
+                [userDefaults setObject:@" G" forKey:kUsedFlowUnit];
+            }
         }else {
-            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
-            [userDefaults setObject:@" G" forKey:kUsedFlowUnit];
-        }
-    }else {
-        if(unit_v.selected) {
-            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M/月"];
-            [userDefaults setObject:@" M/月" forKey:kFlowUnit];
-        }else {
-            cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G/月"];
-            [userDefaults setObject:@" G/月" forKey:kFlowUnit];
+            if (_cur_index.row == kTwo && _cur_index.section == kZero){
+                if(unit_v.selected) {
+                    cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M/月"];
+                    [userDefaults setObject:@" M/月" forKey:kFlowUnit];
+                }else {
+                    cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G/月"];
+                    [userDefaults setObject:@" G/月" forKey:kFlowUnit];
+                }
+            }
         }
     }
-    
-    
-    
-    // cell.desc_field_v.x -= [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
-    // cell.desc_field_v.w = [cell.desc_field_v.text singleLineWithFont:[UIFont systemFontOfSize:17]].width;
-    
-    [self maskClick:nil];
-    
 }
 
 #pragma mark - UITextField Delegate
@@ -226,6 +229,25 @@
         }];
     }
     return true;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField {
+    // 如果发现_cur_index指向错误了,通过这里来修改,但从代码结构上看并不好
+    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
+    if (![cell.desc_field_v isEqual:textField]) {
+        cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
+        if (![cell.desc_field_v isEqual:textField]) {
+            cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
+            if ([cell.desc_field_v isEqual:textField]) {
+                _cur_index = [NSIndexPath indexPathForRow:0 inSection:1];
+            }else {
+                JasLog(@"不应该出现这个情况");
+            }
+            
+        }else {
+            _cur_index = [NSIndexPath indexPathForRow:2 inSection:0];
+        }
+    }
 }
 
 #pragma mark - KVO

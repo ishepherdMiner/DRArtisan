@@ -99,13 +99,11 @@ static char __logDeallocAssociatedKey__;
     }
 }
 
-- (NSString *)jas_autoDescription
-{
+- (NSString *)jas_autoDescription{
     return [NSString stringWithFormat:@"<%@: %p; %@>", NSStringFromClass([self class]), self, [self keyValueAutoDescription]];
 }
 
-- (NSString *)keyValueAutoDescription
-{
+- (NSString *)keyValueAutoDescription{
     NSMutableString *result = [NSMutableString string];
     
     dispatch_queue_t currentQueue = dispatch_get_current_queue();
@@ -127,6 +125,9 @@ static char __logDeallocAssociatedKey__;
             
             if (propertyName) {
                 id propertyValue = [self valueForKey:propertyName];
+                if (i % 3 == 0) {
+                    [result appendFormat:@"\n"];
+                }
                 [result appendFormat:@"%@ = %@; ", propertyName, [propertyValue jas_cleanDescription]];
             }
         }
@@ -148,8 +149,7 @@ static char __logDeallocAssociatedKey__;
 
 @implementation NSObject (CleanDescription)
 
-- (NSString *)jas_cleanDescription
-{
+- (NSString *)jas_cleanDescription{
     NSString *result;
     result = [self description];
     return result;
