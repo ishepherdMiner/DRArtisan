@@ -52,11 +52,9 @@
     return kDefaultCellHeight;
 }
 
-- (void)registerClass:(nullable Class)cellClass {
-    // 这句话会影响复用,对系统的cell类型来说,自定义的不影响
-    // [super registerClass:cellClass forCellReuseIdentifier:NSStringFromClass([self class])];
-    self.cellClass = cellClass;
-    self.identifier = NSStringFromClass([self class]);
+- (void)setCellClass:(Class)cellClass {
+    _cellClass = cellClass;
+    _identifier = NSStringFromClass([self class]);
 }
 
 #pragma mark - Wait to improve
@@ -71,10 +69,21 @@
 }
 
 #pragma mark - override
-- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
-    [super registerClass:cellClass forCellReuseIdentifier:identifier];
+//- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
+//    [super registerClass:cellClass forCellReuseIdentifier:identifier];
+//    self.cellClass = cellClass;
+//    self.identifier = identifier;
+//}
+
+@end
+
+@implementation AbstractBaseTableView (Deprecated)
+
+- (void)registerClass:(nullable Class)cellClass {
+    // 这句话会影响复用,对系统的cell类型来说,自定义的不影响
+    // [super registerClass:cellClass forCellReuseIdentifier:NSStringFromClass([self class])];
     self.cellClass = cellClass;
-    self.identifier = identifier;
+    self.identifier = NSStringFromClass([self class]);
 }
 
 @end

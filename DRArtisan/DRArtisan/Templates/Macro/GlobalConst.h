@@ -140,6 +140,9 @@
         }\
     })
 
+/// Type check is strict,if kTypecheck is equal to 1
+#define kTypecheck  kOne
+
 // ============================================================================
 // Approach simplifies macro
 /**
@@ -183,7 +186,8 @@ return instance; \
 /// NavigationBar back
 #define SET_NAV_BTN(__arg__, __item__,__ftn__,__title__) UIButton * __arg__=[UIButton buttonWithType:UIButtonTypeCustom];__arg__.frame=CGRectMake(0, 0, 35, 20);[__arg__ setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];[__arg__ setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];[__arg__ addTarget:self action:@selector(__ftn__) forControlEvents:UIControlEventTouchUpInside];self.navigationItem.__item__=[[UIBarButtonItem alloc]initWithCustomView:__arg__];
 
-/// Calendar
+#define NowTimestamp NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0]; \
+                    NSUInteger nowTimestamp = (NSUInteger)[date timeIntervalSince1970];
 
 
 // ============================================================================

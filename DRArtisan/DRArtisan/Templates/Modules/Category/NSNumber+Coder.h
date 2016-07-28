@@ -20,6 +20,16 @@
  */
 + (instancetype)randomNumber:(NSUInteger)from to:(NSUInteger)to;
 
+/**
+ *  create a random timestamp between from with to number (unit:second)
+ *
+ *  @param from before now timestamp `from` seconds
+ *  @param to   after now timestamp `to` seconds
+ *
+ *  @return a random timestamp from with to number
+ */
++ (instancetype)randomTimestamp:(NSUInteger)from to:(NSUInteger)to;
+
 @end
 
 @interface NSNumber (Deprecated)

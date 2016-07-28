@@ -19,6 +19,7 @@
 @protocol BaseTableViewDelegate <UITableViewDataSource,UITableViewDelegate>
 
 @optional
+
 /**
  *  Get the model location in tableview datasource
  *
@@ -92,11 +93,16 @@
  */
 @property (nonatomic,assign) NSUInteger reuseCount;
 
+@end
+
+@interface AbstractBaseTableView (Deprecated)
+
 /**
  *  register tableview cell class and set a reuse id which equal to classname
  *
  *  @param cellClass which class is tableview cell
  */
 - (void)registerClass:(Class)cellClass;
+
 
 @end

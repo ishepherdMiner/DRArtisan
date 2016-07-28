@@ -9,6 +9,7 @@
 #ifndef AbstractCollect_h
 #define AbstractCollect_h
 
-#import "AbstractTableViewCollect.h"
+#import "AbstractBaseTableView.h"
+#import "AbstractBaseCollectionView.h"
 
 #endif /* AbstractCollect_h */

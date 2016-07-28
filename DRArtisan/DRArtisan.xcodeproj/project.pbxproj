@@ -11,7 +11,6 @@
 		9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222D1D4827FB0028A835 /* TYWaveProgressView.m */; };
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
 		9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */; };
-		9639AA641D458EEB007719B0 /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E91D458EEB007719B0 /* BaseTableViewCell.m */; };
 		9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */; };
 		9639AA661D458EEB007719B0 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9EF1D458EEB007719B0 /* BaseObject.m */; };
 		9639AA671D458EEB007719B0 /* BasePickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F11D458EEB007719B0 /* BasePickerView.m */; };
@@ -19,21 +18,12 @@
 		9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F51D458EEB007719B0 /* JASBaseCellModel.m */; };
 		9639AA6A1D458EEB007719B0 /* MultidimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F71D458EEB007719B0 /* MultidimensionTableView.m */; };
 		9639AA6B1D458EEB007719B0 /* SingledimensionTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9F91D458EEB007719B0 /* SingledimensionTableView.m */; };
-		9639AA6D1D458EEB007719B0 /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA041D458EEB007719B0 /* BaseTableView.m */; };
 		9639AA6E1D458EEB007719B0 /* FlexibleHeightMultiTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA061D458EEB007719B0 /* FlexibleHeightMultiTableView.m */; };
 		9639AA6F1D458EEB007719B0 /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA081D458EEB007719B0 /* FlexibleHeightTableView.m */; };
 		9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA0C1D458EEB007719B0 /* FlowAnalytical.m */; };
 		9639AA711D458EEB007719B0 /* SetMealCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA0E1D458EEB007719B0 /* SetMealCellModel.m */; };
 		9639AA721D458EEB007719B0 /* SetMealTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA101D458EEB007719B0 /* SetMealTableView.m */; };
 		9639AA731D458EEB007719B0 /* SetMealTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA121D458EEB007719B0 /* SetMealTableViewCell.m */; };
-		9639AA741D458EEB007719B0 /* JASDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA141D458EEB007719B0 /* JASDefaultCell.m */; };
-		9639AA751D458EEB007719B0 /* JASDefaultCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA161D458EEB007719B0 /* JASDefaultCellModel.m */; };
-		9639AA761D458EEB007719B0 /* JASSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA181D458EEB007719B0 /* JASSubtitleCell.m */; };
-		9639AA771D458EEB007719B0 /* JASSubtitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA1A1D458EEB007719B0 /* JASSubtitleCellModel.m */; };
-		9639AA781D458EEB007719B0 /* JASValue1Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA1C1D458EEB007719B0 /* JASValue1Cell.m */; };
-		9639AA791D458EEB007719B0 /* JASValue1CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA1E1D458EEB007719B0 /* JASValue1CellModel.m */; };
-		9639AA7A1D458EEB007719B0 /* JASValue2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA201D458EEB007719B0 /* JASValue2Cell.m */; };
-		9639AA7B1D458EEB007719B0 /* JASValue2CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA221D458EEB007719B0 /* JASValue2CellModel.m */; };
 		9639AA7C1D458EEB007719B0 /* JASTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA261D458EEB007719B0 /* JASTableViewController.m */; };
 		9639AA7D1D458EEB007719B0 /* NSArray+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA2E1D458EEB007719B0 /* NSArray+Coder.m */; };
 		9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639AA301D458EEB007719B0 /* NSData+Coder.m */; };
@@ -65,6 +55,19 @@
 		96E72F161D30A26000D5A3A9 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 96E72F141D30A26000D5A3A9 /* LaunchScreen.storyboard */; };
 		96E72F211D30A26000D5A3A9 /* DRArtisanTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F201D30A26000D5A3A9 /* DRArtisanTests.m */; };
 		96E72F2C1D30A26000D5A3A9 /* DRArtisanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F2B1D30A26000D5A3A9 /* DRArtisanUITests.m */; };
+		96EDCB381D4A503A00F9DC3F /* BaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB371D4A503A00F9DC3F /* BaseCollectionView.m */; };
+		96EDCB3B1D4A50EE00F9DC3F /* BaseTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB3A1D4A50EE00F9DC3F /* BaseTableViewCell.m */; };
+		96EDCB3E1D4A51F400F9DC3F /* AbstractBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB3D1D4A51F400F9DC3F /* AbstractBaseCollectionView.m */; };
+		96EDCB411D4A572800F9DC3F /* BaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB401D4A572800F9DC3F /* BaseTableView.m */; };
+		96EDCB5A1D4A5F4500F9DC3F /* JASDefaultCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB4B1D4A5F4500F9DC3F /* JASDefaultCell.m */; };
+		96EDCB5B1D4A5F4500F9DC3F /* JASDefaultCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB4D1D4A5F4500F9DC3F /* JASDefaultCellModel.m */; };
+		96EDCB5C1D4A5F4500F9DC3F /* JASSubtitleCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB4F1D4A5F4500F9DC3F /* JASSubtitleCell.m */; };
+		96EDCB5D1D4A5F4500F9DC3F /* JASSubtitleCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB511D4A5F4500F9DC3F /* JASSubtitleCellModel.m */; };
+		96EDCB5E1D4A5F4500F9DC3F /* JASValue1Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB531D4A5F4500F9DC3F /* JASValue1Cell.m */; };
+		96EDCB5F1D4A5F4500F9DC3F /* JASValue1CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB551D4A5F4500F9DC3F /* JASValue1CellModel.m */; };
+		96EDCB601D4A5F4500F9DC3F /* JASValue2Cell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB571D4A5F4500F9DC3F /* JASValue2Cell.m */; };
+		96EDCB611D4A5F4500F9DC3F /* JASValue2CellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB591D4A5F4500F9DC3F /* JASValue2CellModel.m */; };
+		96EDCB641D4A5F9900F9DC3F /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB631D4A5F9900F9DC3F /* BaseCollectionViewCell.m */; };
 		96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45A1D31502200AB1C03 /* DemoModel.m */; };
 		96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45D1D3150A900AB1C03 /* CommentModel.m */; };
 		99706EE11E51FCB57E22147F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11050FCD7E4EB553C4621D4 /* libPods.a */; };
@@ -99,9 +102,6 @@
 		9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		9639A9E61D458EEB007719B0 /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
-		9639A9E71D458EEB007719B0 /* AbstractTableViewCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractTableViewCollect.h; sourceTree = "<group>"; };
-		9639A9E81D458EEB007719B0 /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
-		9639A9E91D458EEB007719B0 /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
 		9639A9EB1D458EEB007719B0 /* BaseCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollect.h; sourceTree = "<group>"; };
 		9639A9EC1D458EEB007719B0 /* BaseNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseNavigationController.h; sourceTree = "<group>"; };
 		9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseNavigationController.m; sourceTree = "<group>"; };
@@ -117,8 +117,6 @@
 		9639A9F71D458EEB007719B0 /* MultidimensionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MultidimensionTableView.m; sourceTree = "<group>"; };
 		9639A9F81D458EEB007719B0 /* SingledimensionTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SingledimensionTableView.h; sourceTree = "<group>"; };
 		9639A9F91D458EEB007719B0 /* SingledimensionTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SingledimensionTableView.m; sourceTree = "<group>"; };
-		9639AA031D458EEB007719B0 /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
-		9639AA041D458EEB007719B0 /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
 		9639AA051D458EEB007719B0 /* FlexibleHeightMultiTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightMultiTableView.h; sourceTree = "<group>"; };
 		9639AA061D458EEB007719B0 /* FlexibleHeightMultiTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightMultiTableView.m; sourceTree = "<group>"; };
 		9639AA071D458EEB007719B0 /* FlexibleHeightTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightTableView.h; sourceTree = "<group>"; };
@@ -131,22 +129,6 @@
 		9639AA101D458EEB007719B0 /* SetMealTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMealTableView.m; sourceTree = "<group>"; };
 		9639AA111D458EEB007719B0 /* SetMealTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SetMealTableViewCell.h; sourceTree = "<group>"; };
 		9639AA121D458EEB007719B0 /* SetMealTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SetMealTableViewCell.m; sourceTree = "<group>"; };
-		9639AA131D458EEB007719B0 /* JASDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASDefaultCell.h; sourceTree = "<group>"; };
-		9639AA141D458EEB007719B0 /* JASDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASDefaultCell.m; sourceTree = "<group>"; };
-		9639AA151D458EEB007719B0 /* JASDefaultCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASDefaultCellModel.h; sourceTree = "<group>"; };
-		9639AA161D458EEB007719B0 /* JASDefaultCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASDefaultCellModel.m; sourceTree = "<group>"; };
-		9639AA171D458EEB007719B0 /* JASSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSubtitleCell.h; sourceTree = "<group>"; };
-		9639AA181D458EEB007719B0 /* JASSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSubtitleCell.m; sourceTree = "<group>"; };
-		9639AA191D458EEB007719B0 /* JASSubtitleCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSubtitleCellModel.h; sourceTree = "<group>"; };
-		9639AA1A1D458EEB007719B0 /* JASSubtitleCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSubtitleCellModel.m; sourceTree = "<group>"; };
-		9639AA1B1D458EEB007719B0 /* JASValue1Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue1Cell.h; sourceTree = "<group>"; };
-		9639AA1C1D458EEB007719B0 /* JASValue1Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue1Cell.m; sourceTree = "<group>"; };
-		9639AA1D1D458EEB007719B0 /* JASValue1CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue1CellModel.h; sourceTree = "<group>"; };
-		9639AA1E1D458EEB007719B0 /* JASValue1CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue1CellModel.m; sourceTree = "<group>"; };
-		9639AA1F1D458EEB007719B0 /* JASValue2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue2Cell.h; sourceTree = "<group>"; };
-		9639AA201D458EEB007719B0 /* JASValue2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue2Cell.m; sourceTree = "<group>"; };
-		9639AA211D458EEB007719B0 /* JASValue2CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue2CellModel.h; sourceTree = "<group>"; };
-		9639AA221D458EEB007719B0 /* JASValue2CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue2CellModel.m; sourceTree = "<group>"; };
 		9639AA251D458EEB007719B0 /* JASTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASTableViewController.h; sourceTree = "<group>"; };
 		9639AA261D458EEB007719B0 /* JASTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASTableViewController.m; sourceTree = "<group>"; };
 		9639AA281D458EEB007719B0 /* GlobalConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GlobalConst.h; sourceTree = "<group>"; };
@@ -212,6 +194,32 @@
 		96E72F271D30A26000D5A3A9 /* DRArtisanUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DRArtisanUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F2B1D30A26000D5A3A9 /* DRArtisanUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DRArtisanUITests.m; sourceTree = "<group>"; };
 		96E72F2D1D30A26000D5A3A9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		96EDCB361D4A503A00F9DC3F /* BaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionView.h; sourceTree = "<group>"; };
+		96EDCB371D4A503A00F9DC3F /* BaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionView.m; sourceTree = "<group>"; };
+		96EDCB391D4A50EE00F9DC3F /* BaseTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewCell.h; sourceTree = "<group>"; };
+		96EDCB3A1D4A50EE00F9DC3F /* BaseTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewCell.m; sourceTree = "<group>"; };
+		96EDCB3C1D4A51F400F9DC3F /* AbstractBaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseCollectionView.h; sourceTree = "<group>"; };
+		96EDCB3D1D4A51F400F9DC3F /* AbstractBaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseCollectionView.m; sourceTree = "<group>"; };
+		96EDCB3F1D4A572800F9DC3F /* BaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableView.h; sourceTree = "<group>"; };
+		96EDCB401D4A572800F9DC3F /* BaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableView.m; sourceTree = "<group>"; };
+		96EDCB4A1D4A5F4500F9DC3F /* JASDefaultCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASDefaultCell.h; sourceTree = "<group>"; };
+		96EDCB4B1D4A5F4500F9DC3F /* JASDefaultCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASDefaultCell.m; sourceTree = "<group>"; };
+		96EDCB4C1D4A5F4500F9DC3F /* JASDefaultCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASDefaultCellModel.h; sourceTree = "<group>"; };
+		96EDCB4D1D4A5F4500F9DC3F /* JASDefaultCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASDefaultCellModel.m; sourceTree = "<group>"; };
+		96EDCB4E1D4A5F4500F9DC3F /* JASSubtitleCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSubtitleCell.h; sourceTree = "<group>"; };
+		96EDCB4F1D4A5F4500F9DC3F /* JASSubtitleCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSubtitleCell.m; sourceTree = "<group>"; };
+		96EDCB501D4A5F4500F9DC3F /* JASSubtitleCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASSubtitleCellModel.h; sourceTree = "<group>"; };
+		96EDCB511D4A5F4500F9DC3F /* JASSubtitleCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASSubtitleCellModel.m; sourceTree = "<group>"; };
+		96EDCB521D4A5F4500F9DC3F /* JASValue1Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue1Cell.h; sourceTree = "<group>"; };
+		96EDCB531D4A5F4500F9DC3F /* JASValue1Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue1Cell.m; sourceTree = "<group>"; };
+		96EDCB541D4A5F4500F9DC3F /* JASValue1CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue1CellModel.h; sourceTree = "<group>"; };
+		96EDCB551D4A5F4500F9DC3F /* JASValue1CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue1CellModel.m; sourceTree = "<group>"; };
+		96EDCB561D4A5F4500F9DC3F /* JASValue2Cell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue2Cell.h; sourceTree = "<group>"; };
+		96EDCB571D4A5F4500F9DC3F /* JASValue2Cell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue2Cell.m; sourceTree = "<group>"; };
+		96EDCB581D4A5F4500F9DC3F /* JASValue2CellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASValue2CellModel.h; sourceTree = "<group>"; };
+		96EDCB591D4A5F4500F9DC3F /* JASValue2CellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASValue2CellModel.m; sourceTree = "<group>"; };
+		96EDCB621D4A5F9900F9DC3F /* BaseCollectionViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewCell.h; sourceTree = "<group>"; };
+		96EDCB631D4A5F9900F9DC3F /* BaseCollectionViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewCell.m; sourceTree = "<group>"; };
 		96F5F4591D31502200AB1C03 /* DemoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoModel.h; sourceTree = "<group>"; };
 		96F5F45A1D31502200AB1C03 /* DemoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModel.m; sourceTree = "<group>"; };
 		96F5F45C1D3150A900AB1C03 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
@@ -289,12 +297,11 @@
 		9639A9E31D458EEB007719B0 /* Abstract */ = {
 			isa = PBXGroup;
 			children = (
+				9639A9E61D458EEB007719B0 /* AbstractCollect.h */,
 				9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */,
 				9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */,
-				9639A9E61D458EEB007719B0 /* AbstractCollect.h */,
-				9639A9E71D458EEB007719B0 /* AbstractTableViewCollect.h */,
-				9639A9E81D458EEB007719B0 /* BaseTableViewCell.h */,
-				9639A9E91D458EEB007719B0 /* BaseTableViewCell.m */,
+				96EDCB3C1D4A51F400F9DC3F /* AbstractBaseCollectionView.h */,
+				96EDCB3D1D4A51F400F9DC3F /* AbstractBaseCollectionView.m */,
 			);
 			path = Abstract;
 			sourceTree = "<group>";
@@ -303,20 +310,12 @@
 			isa = PBXGroup;
 			children = (
 				9639A9EB1D458EEB007719B0 /* BaseCollect.h */,
-				9639A9EC1D458EEB007719B0 /* BaseNavigationController.h */,
-				9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */,
 				9639A9EE1D458EEB007719B0 /* BaseObject.h */,
 				9639A9EF1D458EEB007719B0 /* BaseObject.m */,
-				9639A9F01D458EEB007719B0 /* BasePickerView.h */,
-				9639A9F11D458EEB007719B0 /* BasePickerView.m */,
-				9639A9F21D458EEB007719B0 /* BaseViewController.h */,
-				9639A9F31D458EEB007719B0 /* BaseViewController.m */,
-				9639A9F41D458EEB007719B0 /* JASBaseCellModel.h */,
-				9639A9F51D458EEB007719B0 /* JASBaseCellModel.m */,
-				9639A9F61D458EEB007719B0 /* MultidimensionTableView.h */,
-				9639A9F71D458EEB007719B0 /* MultidimensionTableView.m */,
-				9639A9F81D458EEB007719B0 /* SingledimensionTableView.h */,
-				9639A9F91D458EEB007719B0 /* SingledimensionTableView.m */,
+				96EDCB451D4A579000F9DC3F /* UIPickerView */,
+				96EDCB421D4A574A00F9DC3F /* UITableView */,
+				96EDCB471D4A5EFF00F9DC3F /* UICollectionView */,
+				96EDCB461D4A579D00F9DC3F /* UIViewController */,
 			);
 			path = Base;
 			sourceTree = "<group>";
@@ -381,8 +380,6 @@
 		9639AA021D458EEB007719B0 /* UITableView */ = {
 			isa = PBXGroup;
 			children = (
-				9639AA031D458EEB007719B0 /* BaseTableView.h */,
-				9639AA041D458EEB007719B0 /* BaseTableView.m */,
 				9639AA051D458EEB007719B0 /* FlexibleHeightMultiTableView.h */,
 				9639AA061D458EEB007719B0 /* FlexibleHeightMultiTableView.m */,
 				9639AA071D458EEB007719B0 /* FlexibleHeightTableView.h */,
@@ -396,22 +393,6 @@
 			isa = PBXGroup;
 			children = (
 				9639AA0A1D458EEB007719B0 /* Flow */,
-				9639AA131D458EEB007719B0 /* JASDefaultCell.h */,
-				9639AA141D458EEB007719B0 /* JASDefaultCell.m */,
-				9639AA151D458EEB007719B0 /* JASDefaultCellModel.h */,
-				9639AA161D458EEB007719B0 /* JASDefaultCellModel.m */,
-				9639AA171D458EEB007719B0 /* JASSubtitleCell.h */,
-				9639AA181D458EEB007719B0 /* JASSubtitleCell.m */,
-				9639AA191D458EEB007719B0 /* JASSubtitleCellModel.h */,
-				9639AA1A1D458EEB007719B0 /* JASSubtitleCellModel.m */,
-				9639AA1B1D458EEB007719B0 /* JASValue1Cell.h */,
-				9639AA1C1D458EEB007719B0 /* JASValue1Cell.m */,
-				9639AA1D1D458EEB007719B0 /* JASValue1CellModel.h */,
-				9639AA1E1D458EEB007719B0 /* JASValue1CellModel.m */,
-				9639AA1F1D458EEB007719B0 /* JASValue2Cell.h */,
-				9639AA201D458EEB007719B0 /* JASValue2Cell.m */,
-				9639AA211D458EEB007719B0 /* JASValue2CellModel.h */,
-				9639AA221D458EEB007719B0 /* JASValue2CellModel.m */,
 			);
 			path = UITableViewCell;
 			sourceTree = "<group>";
@@ -708,6 +689,102 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		96EDCB421D4A574A00F9DC3F /* UITableView */ = {
+			isa = PBXGroup;
+			children = (
+				96EDCB441D4A578000F9DC3F /* Models */,
+				96EDCB431D4A576E00F9DC3F /* Cell */,
+				96EDCB3F1D4A572800F9DC3F /* BaseTableView.h */,
+				96EDCB401D4A572800F9DC3F /* BaseTableView.m */,
+				9639A9F61D458EEB007719B0 /* MultidimensionTableView.h */,
+				9639A9F71D458EEB007719B0 /* MultidimensionTableView.m */,
+				9639A9F81D458EEB007719B0 /* SingledimensionTableView.h */,
+				9639A9F91D458EEB007719B0 /* SingledimensionTableView.m */,
+			);
+			name = UITableView;
+			sourceTree = "<group>";
+		};
+		96EDCB431D4A576E00F9DC3F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				96EDCB391D4A50EE00F9DC3F /* BaseTableViewCell.h */,
+				96EDCB3A1D4A50EE00F9DC3F /* BaseTableViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		96EDCB441D4A578000F9DC3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9639A9F41D458EEB007719B0 /* JASBaseCellModel.h */,
+				9639A9F51D458EEB007719B0 /* JASBaseCellModel.m */,
+				96EDCB4A1D4A5F4500F9DC3F /* JASDefaultCell.h */,
+				96EDCB4B1D4A5F4500F9DC3F /* JASDefaultCell.m */,
+				96EDCB4C1D4A5F4500F9DC3F /* JASDefaultCellModel.h */,
+				96EDCB4D1D4A5F4500F9DC3F /* JASDefaultCellModel.m */,
+				96EDCB4E1D4A5F4500F9DC3F /* JASSubtitleCell.h */,
+				96EDCB4F1D4A5F4500F9DC3F /* JASSubtitleCell.m */,
+				96EDCB501D4A5F4500F9DC3F /* JASSubtitleCellModel.h */,
+				96EDCB511D4A5F4500F9DC3F /* JASSubtitleCellModel.m */,
+				96EDCB521D4A5F4500F9DC3F /* JASValue1Cell.h */,
+				96EDCB531D4A5F4500F9DC3F /* JASValue1Cell.m */,
+				96EDCB541D4A5F4500F9DC3F /* JASValue1CellModel.h */,
+				96EDCB551D4A5F4500F9DC3F /* JASValue1CellModel.m */,
+				96EDCB561D4A5F4500F9DC3F /* JASValue2Cell.h */,
+				96EDCB571D4A5F4500F9DC3F /* JASValue2Cell.m */,
+				96EDCB581D4A5F4500F9DC3F /* JASValue2CellModel.h */,
+				96EDCB591D4A5F4500F9DC3F /* JASValue2CellModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		96EDCB451D4A579000F9DC3F /* UIPickerView */ = {
+			isa = PBXGroup;
+			children = (
+				9639A9F01D458EEB007719B0 /* BasePickerView.h */,
+				9639A9F11D458EEB007719B0 /* BasePickerView.m */,
+			);
+			name = UIPickerView;
+			sourceTree = "<group>";
+		};
+		96EDCB461D4A579D00F9DC3F /* UIViewController */ = {
+			isa = PBXGroup;
+			children = (
+				9639A9F21D458EEB007719B0 /* BaseViewController.h */,
+				9639A9F31D458EEB007719B0 /* BaseViewController.m */,
+				9639A9EC1D458EEB007719B0 /* BaseNavigationController.h */,
+				9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */,
+			);
+			name = UIViewController;
+			sourceTree = "<group>";
+		};
+		96EDCB471D4A5EFF00F9DC3F /* UICollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				96EDCB491D4A5F1500F9DC3F /* Models */,
+				96EDCB481D4A5F1100F9DC3F /* Cell */,
+				96EDCB361D4A503A00F9DC3F /* BaseCollectionView.h */,
+				96EDCB371D4A503A00F9DC3F /* BaseCollectionView.m */,
+			);
+			name = UICollectionView;
+			sourceTree = "<group>";
+		};
+		96EDCB481D4A5F1100F9DC3F /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				96EDCB621D4A5F9900F9DC3F /* BaseCollectionViewCell.h */,
+				96EDCB631D4A5F9900F9DC3F /* BaseCollectionViewCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		96EDCB491D4A5F1500F9DC3F /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -893,56 +970,59 @@
 				9639AA891D458EEB007719B0 /* JASCircleShapeLayer.m in Sources */,
 				9639AA7D1D458EEB007719B0 /* NSArray+Coder.m in Sources */,
 				9639AA8E1D458EEB007719B0 /* CircleProgressBar.m in Sources */,
-				9639AA781D458EEB007719B0 /* JASValue1Cell.m in Sources */,
 				9639AA731D458EEB007719B0 /* SetMealTableViewCell.m in Sources */,
 				9639AA851D458EEB007719B0 /* UIImage+Coder.m in Sources */,
-				9639AA7B1D458EEB007719B0 /* JASValue2CellModel.m in Sources */,
-				9639AA751D458EEB007719B0 /* JASDefaultCellModel.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				9639AA901D458EEB007719B0 /* NJDBezierCurve.m in Sources */,
+				96EDCB411D4A572800F9DC3F /* BaseTableView.m in Sources */,
 				9639AA671D458EEB007719B0 /* BasePickerView.m in Sources */,
 				9639AA681D458EEB007719B0 /* BaseViewController.m in Sources */,
-				9639AA771D458EEB007719B0 /* JASSubtitleCellModel.m in Sources */,
 				9639AA831D458EEB007719B0 /* NSURL+Coder.m in Sources */,
 				9639AA721D458EEB007719B0 /* SetMealTableView.m in Sources */,
-				9639AA6D1D458EEB007719B0 /* BaseTableView.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
 				965DB71B1D46D06200C6546D /* BackgroundAudioPlay.m in Sources */,
 				9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */,
 				9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */,
-				9639AA741D458EEB007719B0 /* JASDefaultCell.m in Sources */,
+				96EDCB5D1D4A5F4500F9DC3F /* JASSubtitleCellModel.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
+				96EDCB5A1D4A5F4500F9DC3F /* JASDefaultCell.m in Sources */,
 				9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */,
 				9639AA8C1D458EEB007719B0 /* BadgeStyle.m in Sources */,
 				9639AA881D458EEB007719B0 /* JASCircleProgressView.m in Sources */,
+				96EDCB5C1D4A5F4500F9DC3F /* JASSubtitleCell.m in Sources */,
+				96EDCB381D4A503A00F9DC3F /* BaseCollectionView.m in Sources */,
 				9639AA861D458EEB007719B0 /* UIView+Coder.m in Sources */,
 				9639AA8A1D458EEB007719B0 /* JASSession.m in Sources */,
 				9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */,
 				9639AA911D458EEB007719B0 /* Waver.m in Sources */,
 				9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */,
+				96EDCB641D4A5F9900F9DC3F /* BaseCollectionViewCell.m in Sources */,
+				96EDCB5E1D4A5F4500F9DC3F /* JASValue1Cell.m in Sources */,
 				9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */,
 				9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */,
+				96EDCB3B1D4A50EE00F9DC3F /* BaseTableViewCell.m in Sources */,
 				9639AA801D458EEB007719B0 /* NSDictionary+Coder.m in Sources */,
-				9639AA761D458EEB007719B0 /* JASSubtitleCell.m in Sources */,
+				96EDCB3E1D4A51F400F9DC3F /* AbstractBaseCollectionView.m in Sources */,
 				9639AA6B1D458EEB007719B0 /* SingledimensionTableView.m in Sources */,
 				9639AA711D458EEB007719B0 /* SetMealCellModel.m in Sources */,
-				9639AA7A1D458EEB007719B0 /* JASValue2Cell.m in Sources */,
+				96EDCB5F1D4A5F4500F9DC3F /* JASValue1CellModel.m in Sources */,
 				96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */,
 				9639AA6E1D458EEB007719B0 /* FlexibleHeightMultiTableView.m in Sources */,
-				9639AA641D458EEB007719B0 /* BaseTableViewCell.m in Sources */,
 				9639AA7C1D458EEB007719B0 /* JASTableViewController.m in Sources */,
 				9639AA811D458EEB007719B0 /* NSObject+Coder.m in Sources */,
+				96EDCB611D4A5F4500F9DC3F /* JASValue2CellModel.m in Sources */,
 				9639AA841D458EEB007719B0 /* UIDevice+Coder.m in Sources */,
 				9639AA661D458EEB007719B0 /* BaseObject.m in Sources */,
 				9639AA6A1D458EEB007719B0 /* MultidimensionTableView.m in Sources */,
 				9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */,
 				9639AA821D458EEB007719B0 /* NSString+Coder.m in Sources */,
 				96E72F081D30A26000D5A3A9 /* main.m in Sources */,
+				96EDCB601D4A5F4500F9DC3F /* JASValue2Cell.m in Sources */,
 				9639AA8F1D458EEB007719B0 /* DSNumberLabel.m in Sources */,
 				9639AA6F1D458EEB007719B0 /* FlexibleHeightTableView.m in Sources */,
 				9639AA8D1D458EEB007719B0 /* CustomBadge.m in Sources */,
 				9639AA7F1D458EEB007719B0 /* NSDate+Coder.m in Sources */,
-				9639AA791D458EEB007719B0 /* JASValue1CellModel.m in Sources */,
+				96EDCB5B1D4A5F4500F9DC3F /* JASDefaultCellModel.m in Sources */,
 				9639AA921D458EEB007719B0 /* JASUtils.m in Sources */,
 				9639AA871D458EEB007719B0 /* UIViewController+Coder.m in Sources */,
 			);
