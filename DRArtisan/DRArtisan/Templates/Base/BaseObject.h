@@ -68,4 +68,13 @@
 + (instancetype)modelWithDic:(NSDictionary *)dict;
 
 + (void)jas_test;
+
+/**
+ *  交换方法
+ *
+ *  @param cls              交换哪个类
+ *  @param originalSelector 类的原始方法的Sel指针
+ *  @param swizzledSelector 类的目标方法的Sel指针
+ */
++ (void)hookMethod:(Class)cls OriginSelector:(SEL)originalSelector SwizzledSelector:(SEL)swizzledSelector;
 @end

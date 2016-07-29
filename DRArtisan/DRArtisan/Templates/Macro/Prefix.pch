@@ -42,4 +42,8 @@
 // 是否开启私有方法
 #define kCoder_Ext  1
 
+/// Cabability Switch
+
+
+
 #endif /* prefix_pch */

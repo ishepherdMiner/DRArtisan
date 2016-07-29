@@ -129,17 +129,18 @@
                           @"a",@"b",@"c",@"d",@"e",
                           @"f"];
     NSMutableArray *tablesM = [NSMutableArray arrayWithCapacity:length];
+    NSMutableString *output = [NSMutableString string];
     for (int i = 0; i < length; ++i) {
          int firstInt = arc4random() % [elements count];
          int lastInt = arc4random() % [elements count];
-        NSString *tableElement = [NSString stringWithFormat:@"%@%@",elements[firstInt],elements[lastInt]];
-        if (i % 5 == 0) {
-            JasLog(@"\n");
+        NSString *tableElement = [NSString stringWithFormat:@"%@%@ ",elements[firstInt],elements[lastInt]];
+        if (i % 20 == 0) {
+            [output appendString:@"\n"];
         }
-        JasLog(@"@%@",tableElement);
+        [output appendString:tableElement];
         [tablesM addObject:tableElement];
     }
-    
+    JasLog(@"%@",output);
     return [tablesM copy];
 }
 
