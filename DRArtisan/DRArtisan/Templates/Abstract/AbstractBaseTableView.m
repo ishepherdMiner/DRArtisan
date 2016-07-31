@@ -13,7 +13,7 @@
 @interface AbstractBaseTableView ()
 
 @property (nonatomic,copy,nullable) NSString *identifier;
-@property (nonatomic,weak,nullable) Class cellClass;
+@property (nonatomic,strong,nullable) Class cellClass;
 
 @end
 @implementation AbstractBaseTableView
@@ -36,7 +36,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.dataList.count;
+    return [self.dataList count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -52,9 +52,10 @@
     return kDefaultCellHeight;
 }
 
-- (void)setCellClass:(Class)cellClass {
-    _cellClass = cellClass;
-    _identifier = NSStringFromClass([self class]);
+- (void)registerClass:(nullable Class)cellClass {
+    self.cellClass = cellClass;
+    self.identifier = NSStringFromClass([self class]);
+    [self registerClass:cellClass forCellReuseIdentifier:self.identifier];
 }
 
 #pragma mark - Wait to improve
@@ -68,22 +69,5 @@
     return model;
 }
 
-#pragma mark - override
-//- (void)registerClass:(nullable Class)cellClass forCellReuseIdentifier:(NSString *)identifier {
-//    [super registerClass:cellClass forCellReuseIdentifier:identifier];
-//    self.cellClass = cellClass;
-//    self.identifier = identifier;
-//}
-
 @end
 
-@implementation AbstractBaseTableView (Deprecated)
-
-- (void)registerClass:(nullable Class)cellClass {
-    // 这句话会影响复用,对系统的cell类型来说,自定义的不影响
-    // [super registerClass:cellClass forCellReuseIdentifier:NSStringFromClass([self class])];
-    self.cellClass = cellClass;
-    self.identifier = NSStringFromClass([self class]);
-}
-
-@end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+/**
+ * 关于UICollectionView的基本介绍
+ *  http://www.jianshu.com/p/b0d03c40fd65
+ */
 @interface BaseCollectionView : AbstractBaseCollectionView
 
 /**

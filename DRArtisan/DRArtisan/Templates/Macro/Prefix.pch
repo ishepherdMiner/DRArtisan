@@ -9,8 +9,11 @@
 #ifndef prefix_pch
 #define prefix_pch
 
-#import "GlobalConst.h"
+/// Cabability Switch
+// if you define it, you should manual link libz.x.x.x.tbd framework at present
+// #define Add_Data_Zip_Capability
 
+#import "GlobalConst.h"
 #import "CategoryCollect.h"
 #import "BaseCollect.h"
 #import "AbstractCollect.h"
@@ -38,12 +41,6 @@
     #define JasError    {}
     #define JasFrame    {}
 #endif
-
-// 是否开启私有方法
-#define kCoder_Ext  1
-
-/// Cabability Switch
-
 
 
 #endif /* prefix_pch */

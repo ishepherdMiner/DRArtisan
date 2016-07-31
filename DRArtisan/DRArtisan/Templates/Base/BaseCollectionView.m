@@ -29,6 +29,7 @@
     BaseCollectionView *obj = [[BaseCollectionView alloc] initWithFrame:frame collectionViewLayout:style];
     
     obj.singleDimension = true;
+    // Require any element is NSArray class object
     if (kTypecheck == kStrict) {
         for (id subList in dataList) {
             if (![subList isKindOfClass:[NSArray class]]) {
@@ -36,6 +37,7 @@
             }
         }
     }else if(kTypecheck == kSlack) {
+        // Require first element is NSArray class object
         if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
             obj.singleDimension = false;
         }
@@ -47,19 +49,27 @@
 }
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.isSingleDimension ? 1 : [self.dataList count];
+    return self.isSingleDimension ?
+        [super numberOfSectionsInCollectionView:collectionView] : [self.dataList count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.isSingleDimension ? [self.dataList count] : [self.dataList[section] count];
+    return self.isSingleDimension ?
+        [super collectionView:collectionView numberOfItemsInSection:section] : [self.dataList[section] count];
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BaseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier forIndexPath:indexPath];
-    if (cell == nil) {
-        cell = [[[self cellClass] alloc] init];
+    
+    NSAssert(cell, @"You should call registerClass: method");
+    
+    if (self.isSingleDimension) {
+        cell.model = self.dataList[indexPath.row];
+    }else {
+        cell.model = self.dataList[indexPath.section][indexPath.row];
     }
-    return nil;
+    
+    return cell;
 }
 
 @end

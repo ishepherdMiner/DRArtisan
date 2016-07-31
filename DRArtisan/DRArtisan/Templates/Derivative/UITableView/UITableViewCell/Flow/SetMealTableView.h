@@ -6,7 +6,6 @@
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#import "MultidimensionTableView.h"
 
 #define kMealCycleMonths @[ \
                     @"每 1 月",@"每 2 月",@"每 3 月",@"每 4 月",@"每 5 月",@"每 6 月", \
@@ -28,7 +27,7 @@
 #define kUsedFlow   kThree
 #define kNewDescValues @[@"meal_cycle",@"settle_date",@"total_flow",@"used_flow"]
 
-@interface SetMealTableView : FlexibleHeightMultiTableView
+@interface SetMealTableView : BaseTableView
 /**
  *  UIAlertController block
  */

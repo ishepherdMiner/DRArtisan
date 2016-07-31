@@ -25,10 +25,7 @@
 
 // TableView
 #import "BaseTableView.h"
-#import "SingledimensionTableView.h"
-#import "MultidimensionTableView.h"
 #import "FlexibleHeightTableView.h"
-#import "FlexibleHeightMultiTableView.h"
 
 // Cell
 #import "BaseTableViewCell.h"

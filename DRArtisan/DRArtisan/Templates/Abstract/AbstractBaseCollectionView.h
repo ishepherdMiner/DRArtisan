@@ -42,7 +42,7 @@
 /**
  *  只关注点击cell触发动作的代理,因为点击触发的操作与具体的业务有关
  */
-@property (nonatomic,weak) id<ServiceCollectionViewDelegate> tdelegate;
+@property (nonatomic,weak) id<ServiceCollectionViewDelegate> sdelegate;
 
 /**
  *  If you like use vc to become tableview delegate object,set it.

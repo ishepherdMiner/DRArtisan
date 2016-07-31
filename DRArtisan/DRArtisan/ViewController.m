@@ -17,8 +17,6 @@
 
 @interface ViewController ()
 
-@property (nonatomic,weak) SingledimensionTableView *table_v;
-
 @property (nonatomic, weak) BaseTableView *base_table_v;
 
 @property (nonatomic,weak) UIView *badgeView;
@@ -181,22 +179,22 @@
 
 
 // 数据源为一维数组对象
-- (void)singledimensionTableViewDemo {
-    // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero, kZero,Screen_width, Screen_height) style:UITableViewStylePlain];
-    
-    // 注册cell对象(要求实现:setModel:方法)
-    [table_v registerClass:[JASValue1Cell class]];
-    
-    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
-     table_v.cellStyle = UITableViewCellStyleValue1;
-    
-    // 提供数据源
-    table_v.dataList = [self stringList];
-    
-    // 添加到父视图
-    [self.view addSubview:_table_v = table_v];
-}
+//- (void)singledimensionTableViewDemo {
+//    // 创建列表视图并设置位置
+//    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero, kZero,Screen_width, Screen_height) style:UITableViewStylePlain];
+//    
+//    // 注册cell对象(要求实现:setModel:方法)
+//    [table_v registerClass:[JASValue1Cell class]];
+//    
+//    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+//     table_v.cellStyle = UITableViewCellStyleValue1;
+//    
+//    // 提供数据源
+//    table_v.dataList = [self stringList];
+//    
+//    // 添加到父视图
+//    [self.view addSubview:_table_v = table_v];
+//}
 
 - (void)baseTableViewDemo {
     // 创建TableView
@@ -212,78 +210,78 @@
 }
 
 #pragma mark - Demo
-- (void)defaultCellDemo {
-    // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
-    
-    // 注册cell对象(要求实现:setModel:方法)
-    [table_v registerClass:[JASDefaultCell class]];
-    
-    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
-    // table_v.cellStyle = UITableViewCellStyleValue1;
-    
-    // 提供数据源
-    table_v.dataList = [self defaultCellModelList];
-    
-    // 添加到父视图
-    [self.view addSubview:_table_v = table_v];
-}
+//- (void)defaultCellDemo {
+//    // 创建列表视图并设置位置
+//    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
+//    
+//    // 注册cell对象(要求实现:setModel:方法)
+//    [table_v registerClass:[JASDefaultCell class]];
+//    
+//    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+//    // table_v.cellStyle = UITableViewCellStyleValue1;
+//    
+//    // 提供数据源
+//    table_v.dataList = [self defaultCellModelList];
+//    
+//    // 添加到父视图
+//    [self.view addSubview:_table_v = table_v];
+//}
+//
+//- (void)value1CellDemo {
+//    // 创建列表视图并设置位置
+//    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero,Screen_width, Screen_height) style:UITableViewStylePlain];
+//    
+//    // 注册cell对象(要求实现:setModel:方法)
+//    [table_v registerClass:[JASValue1Cell class]];
+//    
+//    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+//    table_v.cellStyle = UITableViewCellStyleValue1;
+//    
+//    // 提供数据源
+//    // table_v.dataList = [self defaultCellModelList];
+//    table_v.dataList = [self value1CellModelList];
+//    
+//    // 添加到父视图
+//    [self.view addSubview:_table_v = table_v];
+//}
 
-- (void)value1CellDemo {
-    // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero,Screen_width, Screen_height) style:UITableViewStylePlain];
-    
-    // 注册cell对象(要求实现:setModel:方法)
-    [table_v registerClass:[JASValue1Cell class]];
-    
-    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
-    table_v.cellStyle = UITableViewCellStyleValue1;
-    
-    // 提供数据源
-    // table_v.dataList = [self defaultCellModelList];
-    table_v.dataList = [self value1CellModelList];
-    
-    // 添加到父视图
-    [self.view addSubview:_table_v = table_v];
-}
+//- (void)value2CellDemo {
+//    // 创建列表视图并设置位置
+//    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
+//    
+//    // 注册cell对象(要求实现:setModel:方法)
+//    [table_v registerClass:[JASValue2Cell class]];
+//    
+//    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+//    table_v.cellStyle = UITableViewCellStyleValue2;
+//    
+//    // 提供数据源
+//    // table_v.dataList = [self defaultCellModelList];
+//    table_v.dataList = [self value1CellModelList];
+//    
+//    // 添加到父视图
+//    [self.view addSubview:_table_v = table_v];
+//}
 
-- (void)value2CellDemo {
-    // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
-    
-    // 注册cell对象(要求实现:setModel:方法)
-    [table_v registerClass:[JASValue2Cell class]];
-    
-    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
-    table_v.cellStyle = UITableViewCellStyleValue2;
-    
-    // 提供数据源
-    // table_v.dataList = [self defaultCellModelList];
-    table_v.dataList = [self value1CellModelList];
-    
-    // 添加到父视图
-    [self.view addSubview:_table_v = table_v];
-}
-
-- (void)subtitleCellDemo {
-    // 创建列表视图并设置位置
-    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
-    
-    // 注册cell对象(要求实现:setModel:方法)
-    [table_v registerClass:[JASSubtitleCell class]];
-    
-    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
-    table_v.cellStyle = UITableViewCellStyleSubtitle;
-    
-    //
-    
-    // 提供数据源
-    // table_v.dataList = [self defaultCellModelList];
-    table_v.dataList = [self subtitleCellModelList];
-    
-    // 添加到父视图
-    [self.view addSubview:_table_v = table_v];
-}
+//- (void)subtitleCellDemo {
+//    // 创建列表视图并设置位置
+//    SingledimensionTableView *table_v = [[SingledimensionTableView alloc] initWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain];
+//    
+//    // 注册cell对象(要求实现:setModel:方法)
+//    [table_v registerClass:[JASSubtitleCell class]];
+//    
+//    // 设置cell的内容类型,默认为UITableViewCellDefault(option)
+//    table_v.cellStyle = UITableViewCellStyleSubtitle;
+//    
+//    //
+//    
+//    // 提供数据源
+//    // table_v.dataList = [self defaultCellModelList];
+//    table_v.dataList = [self subtitleCellModelList];
+//    
+//    // 添加到父视图
+//    [self.view addSubview:_table_v = table_v];
+//}
 
 #pragma mark - dataSource
 
@@ -428,33 +426,6 @@
 
              
              ];
-    /*
-    return @[@{@"god_comment": @[@{@"id": @"347",@"topic_id": @"225",@"user_id": @"87",@"content": @"啊",@"reply_num": @"5",@"create_date": @"1466502431",@"nickname": @"风一样的男子",@"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"}],@"comment_list": @{@"p": @2,@"total": @"15",@"data": @[@{
-                                                                                                                                                                                                                                                                                                                                                                                              @"id": @"351",
-                                                                                                                                                                                                                                                                                                                                                                                              @"topic_id": @"225",
-                                                                                                                                                                                                                                                                                                                                                                                              @"user_id": @"87",
-                                                                                                                                                                                                                                                                                                                                                                                              @"content": @"睡觉睡觉就是",
-                                                                                                                                                                                                                                                                                                                                                                                              @"reply_num":@"0",
-                                                                                                                                                                                                                                                                                                                                                                                              @"create_date": @"1466502443",
-                                                                                                                                                                                                                                                                                                                                                                                              @"nickname": @"风一样的男子",
-                                                                                                                                                                                                                                                                                                                                                                                              @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
-                                                                                                                                                                                                                                                                                                                                                                                              },
-                                                                                                                                                                                                                                                                                                                                                                                          @{
-                                                                                                                                                                                                                                                                                                                                                                                              @"id": @"350",
-                                                                                                                                                                                                                                                                                                                                                                                              @"topic_id": @"225",
-                                                                                                                                                                                                                                                                                                                                                                                              @"user_id": @"87",
-                                                                                                                                                                                                                                                                                                                                                                                              @"content": @"只能是女神",
-                                                                                                                                                                                                                                                                                                                                                                                              @"reply_num": @"0",
-                                                                                                                                                                                                                                                                                                                                                                                              @"create_date": @"1466502440",
-                                                                                                                                                                                                                                                                                                                                                                                              @"nickname": @"风一样的男子",
-                                                                                                                                                                                                                                                                                                                                                                                              @"avatar": @"http://wx.qlogo.cn/mmopen/fORIgqpObQeeBNkeicc2GsuqmmH0D7x9Pm0IrzE45tAhtePtCCOr8GWvu4gKdDEowbPxb7hHdL6xiauHdXSvTiboA/0"
-                                                                                                                                                                                                                                                                                                                                                                                              }
-                                                                                                                                                                                                                                                                                                                                                                                          ]
-                                                                                                                                                                                                                                                                                                                                                      }
-                            }
-                 ];
-     */
-    
 }
 
 
@@ -480,5 +451,8 @@
                  }
              ];
 }
+
+#pragma mark - Demo 
+
 
 @end

@@ -26,7 +26,14 @@
     
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    if ([[self.owned_table_v locWithModel:model] section] == kTwo) {
+//    if ([[self.owned_table_v locateWithModel:model] section] == kTwo) {
+//        self.cell_type = MealCellTypeCenter;
+//        self.title_v.textColor = DEFAULT_COLOR;
+//        self.accessoryType = UITableViewCellAccessoryNone;
+//        [self.desc_field_v removeFromSuperview];
+//    }
+    
+    if (self.indexPath.section == kTwo){
         self.cell_type = MealCellTypeCenter;
         self.title_v.textColor = DEFAULT_COLOR;
         self.accessoryType = UITableViewCellAccessoryNone;

@@ -17,6 +17,7 @@
 + (instancetype)randomTimestamp:(NSUInteger)from to:(NSUInteger)to {
     NowTimestamp
     // int value  = arc4random() % (大数 - 小数 + 1) + 小数
-    return [NSNumber randomNumber:(nowTimestamp - from) to:(nowTimestamp + to)];
+    return [NSNumber randomNumber:(timestamp() - from) to:(timestamp() + to)];
 }
+
 @end

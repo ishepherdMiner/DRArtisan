@@ -11,7 +11,7 @@
 /**
  *  满足以下条件建议使用该tableView对象
  *      1.cell内容自定义
- *      2.高度需要指定
+ *      2.高度需要使用代理指定
  *      3.不需要设置header or footer视图
  *  使用方法
  *   // 视图
@@ -28,6 +28,6 @@
     其他与使用BaseTableView时相同
 
  */
-@interface FlexibleHeightTableView : SingledimensionTableView
+@interface FlexibleHeightTableView : BaseTableView
 
 @end

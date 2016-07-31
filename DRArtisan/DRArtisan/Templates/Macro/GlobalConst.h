@@ -101,6 +101,9 @@
 // 文字-默认颜色
 #define DEFAULT_FONT_COLOR   HexRGB(0x2d2a2a)
 
+//判断是否为pad
+#define IS_PAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+
 /**
  *  Setting network status code const
  *  Author  WangDL
@@ -186,10 +189,12 @@ return instance; \
 /// NavigationBar back
 #define SET_NAV_BTN(__arg__, __item__,__ftn__,__title__) UIButton * __arg__=[UIButton buttonWithType:UIButtonTypeCustom];__arg__.frame=CGRectMake(0, 0, 35, 20);[__arg__ setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];[__arg__ setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];[__arg__ addTarget:self action:@selector(__ftn__) forControlEvents:UIControlEventTouchUpInside];self.navigationItem.__item__=[[UIBarButtonItem alloc]initWithCustomView:__arg__];
 
-#define NowTimestamp NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0]; \
-                    NSUInteger nowTimestamp = (NSUInteger)[date timeIntervalSince1970];
 
-
+/// return Timestamp
+#define NowTimestamp  NSUInteger(^timestamp)() = ^() { \
+                            NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0]; \
+                            return (NSUInteger)[date timeIntervalSince1970]; \
+                      };
 // ============================================================================
 
 #endif /* GlobalConst_h */

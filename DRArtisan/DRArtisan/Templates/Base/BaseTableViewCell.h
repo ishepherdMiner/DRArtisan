@@ -16,7 +16,10 @@
 /// 模型对象
 @property (nonatomic,strong,nullable) JASBaseCellModel *model;
 
-/// 引用Cell对应的UITableView
-@property (nonatomic,weak,nullable) AbstractBaseTableView *owned_table_v;
+/// cell所属的tableview对象
+@property (nonatomic,weak,nullable) BaseTableView *owned_table_v;
+
+/// cell的位置
+@property (nonatomic,strong,nullable) NSIndexPath *indexPath;
 
 @end

@@ -8,6 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
+@class BaseCollectionCellModel;
+
 @interface BaseCollectionViewCell : UICollectionViewCell
+
+@property (nonatomic,strong) BaseCollectionCellModel *model;
 
 @end

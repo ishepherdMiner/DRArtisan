@@ -1,14 +1,14 @@
 //
-//  FlexibleHeightMultiTableView.m
-//  Flow
+//  FlexibleHeightTableView.m
+//  DRArtisan
 //
 //  Created by Jason on 7/11/16.
-//  Copyright © 2016 JasCoder. All rights reserved.
+//  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "FlexibleHeightMultiTableView.h"
+#import "FlexibleHeightTableView.h"
 
-@implementation FlexibleHeightMultiTableView
+@implementation FlexibleHeightTableView
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     // if you want to return height in viewcontroller,please set self.cdelegate = viewcontroller...
@@ -18,7 +18,10 @@
         }
     }
     // NSAssert([self.dataList[indexPath.row] cell_h], @"You should set cell_h at setModel: on table view cell object");
-    return [self.dataList[indexPath.section][indexPath.row] cell_h];
+    if (self.isSingleDimension) {
+        return [self.dataList[indexPath.row] cell_h];
+    }else {
+        return [self.dataList[indexPath.section][indexPath.row] cell_h];
+    }
 }
-
 @end
