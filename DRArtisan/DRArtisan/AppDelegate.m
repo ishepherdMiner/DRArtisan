@@ -11,6 +11,7 @@
 #import "ViewController.h"
 
 #import "BaseTableViewControllerDemo.h"
+#import "BaseCollectionViewControllerDemo.h"
 
 @interface AppDelegate ()
 
@@ -22,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
-    _window.rootViewController = [[BaseTableViewControllerDemo alloc] init];
+    _window.rootViewController = [[BaseCollectionViewControllerDemo alloc] init];
     
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试

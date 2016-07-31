@@ -14,6 +14,9 @@
  */
 @interface BaseCollectionView : AbstractBaseCollectionView
 
+@property (nonatomic,assign,readonly,getter=isSingleDimension) BOOL singleDimension;
+
+
 /**
  *  指定的初始化方法
  *

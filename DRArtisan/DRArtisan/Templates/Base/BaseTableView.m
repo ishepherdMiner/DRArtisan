@@ -42,8 +42,8 @@
         }
     }
     
-    obj.dataList = dataList;
     obj.customSetter = true;
+    obj.dataList = dataList;
     
     return obj;
 }

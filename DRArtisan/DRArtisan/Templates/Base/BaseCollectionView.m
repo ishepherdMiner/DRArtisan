@@ -26,13 +26,13 @@
     
     NSAssert([dataList isKindOfClass:[NSArray class]], @"dataSource param must be an array class");
     
-    BaseCollectionView *obj = [[BaseCollectionView alloc] initWithFrame:frame collectionViewLayout:style];
+    BaseCollectionView *obj = [[self alloc] initWithFrame:frame collectionViewLayout:style];
     
     obj.singleDimension = true;
     // Require any element is NSArray class object
     if (kTypecheck == kStrict) {
         for (id subList in dataList) {
-            if (![subList isKindOfClass:[NSArray class]]) {
+            if ([subList isKindOfClass:[NSArray class]]) {
                 obj.singleDimension = false;
             }
         }
@@ -43,6 +43,7 @@
         }
     }
     
+    obj.customSetter = true;
     obj.dataList = dataList;
     
     return obj;
@@ -71,5 +72,54 @@
     
     return cell;
 }
+
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    if (self.cdelegate) {
+        if ([self.cdelegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+            return [self.cdelegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+        }
+    }
+    
+    if (self.sdelegate) {
+        if ([self.sdelegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
+            return [self.sdelegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
+        }
+    }
+    
+    // If you extends BaseTableView and you can implement tableView:didSelectRowAtIndexPath: action event
+    JasLog(@"You can implement collectionView:didSelectItemAtIndexPath: in class which is extends BaseCollectionView.");
+}
+
+- (void)setDataList:(NSArray *)dataList {
+    _dataList = dataList;
+    if (self.customSetter == false) { return; }
+    
+    // Need Custom implement setter dataList
+    NSMutableArray *dataListM = [NSMutableArray arrayWithCapacity:[dataList count]];
+    if (self.isSingleDimension) {
+        for (id data in dataList) {
+            if(kFoundationProperty(data)){
+                [dataListM addObject:[self packFoundationClass:data]];
+            }else {
+                [dataListM addObject:data];
+            }
+        }
+    }else {
+        for (NSArray *subdataList in dataList) {
+            NSMutableArray *subdataListM = [NSMutableArray arrayWithCapacity:[subdataList count]];
+            for (id subdata in subdataList) {
+                if(kFoundationProperty(subdata)){
+                    [subdataListM addObject:[self packFoundationClass:subdata]];
+                }else {
+                    [subdataListM addObject:subdata];
+                }
+            }
+            [dataListM addObject:[subdataListM copy]];
+        }
+    }
+    _dataList = [dataListM copy];
+}
+
+
 
 @end

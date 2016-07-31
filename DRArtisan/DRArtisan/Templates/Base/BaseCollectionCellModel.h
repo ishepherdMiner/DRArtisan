@@ -9,5 +9,5 @@
 #import "BaseObject.h"
 
 @interface BaseCollectionCellModel : BaseObject
-
+@property (nonatomic,assign) CGFloat cell_h;
 @end

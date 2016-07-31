@@ -7,7 +7,12 @@
 //
 
 #import "AbstractBaseCollectionView.h"
+@interface AbstractBaseCollectionView ()
 
+@property (nonatomic,weak) Class cellClass;
+@property (nonatomic,copy) NSString *identifier;
+
+@end
 @implementation AbstractBaseCollectionView 
 
 #pragma mark - LifeCycle
@@ -31,7 +36,23 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    return nil;
+    AbstractMethodNotImplemented();
 }
 
+- (void)registerClass:(Class)cellClass {
+    self.cellClass = cellClass;
+    self.identifier = NSStringFromClass([cellClass class]);
+    [self registerClass:_cellClass forCellWithReuseIdentifier:_identifier];
+}
+
+#pragma mark - Wait to improve
+- (JASBaseCellModel *)packFoundationClass:(id)obj {
+    JASBaseCellModel *model = [[JASBaseCellModel alloc] init];
+    if ([obj isKindOfClass:[NSString class]]) {
+        model.b_string = obj;
+    }else if([obj isKindOfClass:[NSNumber class]]){
+        model.b_number = obj;
+    }else{return obj;}
+    return model;
+}
 @end

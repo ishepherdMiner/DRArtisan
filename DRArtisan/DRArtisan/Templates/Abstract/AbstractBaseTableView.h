@@ -30,7 +30,7 @@
  *
  *  @return a JASBaseCellModel object
  */
-- (JASBaseCellModel *)packFoundationClass:(id)obj;
+- (id)packFoundationClass:(id)obj;
 
 @end
 

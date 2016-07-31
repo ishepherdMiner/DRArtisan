@@ -27,12 +27,21 @@
 #import "BaseTableView.h"
 #import "FlexibleHeightTableView.h"
 
-// Cell
+// TableViewCell
 #import "BaseTableViewCell.h"
 #import "JASDefaultCell.h"
 #import "JASValue1Cell.h"
 #import "JASValue2Cell.h"
 #import "JASSubtitleCell.h"
+
+// CollectionView
+#import "BaseCollectionView.h"
+#import "FlexibleHeightCollectionView.h"
+#import "BaseCollectionViewFlowLayout.h"
+#import "WaterfallFlowLayout.h"
+
+// CollectionViewCell
+#import "BaseCollectionViewCell.h"
 
 // PickerView
 #import "BasePickerView.h"

@@ -8,6 +8,8 @@
 
 #import "FlexibleHeightTableView.h"
 
+#define kDefaultCellHeight 60
+
 @implementation FlexibleHeightTableView
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -21,12 +23,12 @@
     
     if (self.isSingleDimension) {
         if ([self.dataList[indexPath.row] cell_h] == kZero) {
-            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+            return self.rowHeight == kZero ? kDefaultCellHeight : self.rowHeight;
         }
         return [self.dataList[indexPath.row] cell_h];
     }else {
         if ([self.dataList[indexPath.section][indexPath.row] cell_h] == kZero) {
-            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+            return self.rowHeight == kZero ? kDefaultCellHeight : self.rowHeight;
         }
         return [self.dataList[indexPath.section][indexPath.row] cell_h];
     }

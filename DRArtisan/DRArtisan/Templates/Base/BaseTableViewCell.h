@@ -13,13 +13,10 @@
 @interface BaseTableViewCell : UITableViewCell {
     id _model;
 }
-/// 模型对象
+/// Model object
 @property (nonatomic,strong,nullable) JASBaseCellModel *model;
 
-/// cell所属的tableview对象
-@property (nonatomic,weak,nullable) BaseTableView *owned_table_v;
-
-/// cell的位置
+/// cell location
 @property (nonatomic,strong,nullable) NSIndexPath *indexPath;
 
 @end

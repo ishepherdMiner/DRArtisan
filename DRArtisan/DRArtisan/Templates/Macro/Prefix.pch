@@ -15,8 +15,8 @@
 
 #import "GlobalConst.h"
 #import "CategoryCollect.h"
-#import "BaseCollect.h"
 #import "AbstractCollect.h"
+#import "BaseCollect.h"
 #import "JASUtils.h"
 
 /**

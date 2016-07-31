@@ -8,15 +8,40 @@
 
 #import <UIKit/UIKit.h>
 
+@class WaterfallFlowLayout;
+
 @protocol ServiceCollectionViewDelegate <NSObject>
 
 @optional
-
+/// collectionView service delegate declare
+- (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
 @protocol BaseCollectionViewDelegate <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @optional
+
+/**
+ *  Packing a foundation class to a JASBaseCellModel object,just for UITableViewCell at present
+ *
+ *  @param obj founcation class
+ *
+ *  @return a JASBaseCellModel object
+ */
+- (id)packFoundationClass:(id)obj;
+
+/**
+ *  <#Description#>
+ *
+ *  @param collectionView <#collectionView description#>
+ *  @param layout         <#layout description#>
+ *  @param indexPath      <#indexPath description#>
+ *
+ *  @return <#return value description#>
+ */
+- (CGFloat)collectionView:(UICollectionView*)collectionView
+                   layout:(WaterfallFlowLayout *) layout
+ heightForItemAtIndexPath:(NSIndexPath*)indexPath;
 
 @end
 
@@ -65,5 +90,11 @@
  */
 @property (nonatomic,assign) NSUInteger reuseCount;
 
+/**
+ *  register tableview cell class and set a reuse id which equal to classname
+ *
+ *  @param cellClass which class is tableview cell
+ */
+- (void)registerClass:(Class)cellClass;
 
 @end

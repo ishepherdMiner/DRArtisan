@@ -35,9 +35,27 @@
 }
 
 - (void)tableViewDemoWithIdentifier:(NSInteger)identifier {
-    // 创建TableView
-    BaseTableView *base_table_v = [FlexibleHeightTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
     
+    // 使用流程:
+    // 1.创建tableview对象
+    //
+    // BaseTableView:系统的cell
+    // FlexibleHeightTabelView:自定义cell [可指定高度]
+    // 
+    //
+    // BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
+    
+    // 2.注册cell对象(要求实现:setModel:方法)
+    // [base_table_v registerClass:[JASDefaultCell class]];
+    
+    // 3.设置cell的内容类型,默认为UITableViewCellDefault(option)
+    // base_table_v.cellStyle = UITableViewCellStyleDefault;
+    
+    // 4.添加到父视图
+    // [self.view addSubview:_base_table_v = base_table_v];
+    
+    // 创建TableView
+    BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
     switch (identifier) {
         case UITableViewCellStyleDefault:{
             [base_table_v registerClass:[JASDefaultCell class]];
@@ -66,19 +84,6 @@
     base_table_v.sdelegate = self;
     
     [self.view addSubview:_base_table_v = base_table_v];
-    
-    
-    //  1.创建tableview对象
-    // BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
-    
-    // 2.注册cell对象(要求实现:setModel:方法)
-    // [base_table_v registerClass:[JASDefaultCell class]];
-    
-    // 3.设置cell的内容类型,默认为UITableViewCellDefault(option)
-    // base_table_v.cellStyle = UITableViewCellStyleDefault;
-    
-    // 4.添加到父视图
-    // [self.view addSubview:_base_table_v = base_table_v];
 
 }
 

@@ -10,6 +10,7 @@
 		9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222B1D4827FB0028A835 /* TYWaterWaveView.m */; };
 		9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222D1D4827FB0028A835 /* TYWaveProgressView.m */; };
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
+		96289F151D4E3476000F7665 /* FlexibleHeightCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */; };
 		9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */; };
 		9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */; };
 		9639AA661D458EEB007719B0 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9EF1D458EEB007719B0 /* BaseObject.m */; };
@@ -46,6 +47,9 @@
 		96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0561D4DDF2E00E8431F /* BaseCollectionCellModel.m */; };
 		96A3E05E1D4DE32200E8431F /* BaseTableViewControllerDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E05D1D4DE32200E8431F /* BaseTableViewControllerDemo.m */; };
 		96A3E0611D4DEEAE00E8431F /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0601D4DEEAE00E8431F /* FlexibleHeightTableView.m */; };
+		96A3E06A1D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */; };
+		96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */; };
+		96A3E0711D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -98,6 +102,8 @@
 		9624222D1D4827FB0028A835 /* TYWaveProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaveProgressView.m; sourceTree = "<group>"; };
 		9625079B1D461A3100DFF32D /* NSNumber+Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+Coder.h"; sourceTree = "<group>"; };
 		9625079C1D461A3100DFF32D /* NSNumber+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Coder.m"; sourceTree = "<group>"; };
+		96289F131D4E3476000F7665 /* FlexibleHeightCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightCollectionView.h; sourceTree = "<group>"; };
+		96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightCollectionView.m; sourceTree = "<group>"; };
 		9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		9639A9E61D458EEB007719B0 /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -175,6 +181,12 @@
 		96A3E05D1D4DE32200E8431F /* BaseTableViewControllerDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseTableViewControllerDemo.m; sourceTree = "<group>"; };
 		96A3E05F1D4DEEAE00E8431F /* FlexibleHeightTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightTableView.h; sourceTree = "<group>"; };
 		96A3E0601D4DEEAE00E8431F /* FlexibleHeightTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightTableView.m; sourceTree = "<group>"; };
+		96A3E0681D4E13DA00E8431F /* BaseCollectionViewFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewFlowLayout.h; sourceTree = "<group>"; };
+		96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewFlowLayout.m; sourceTree = "<group>"; };
+		96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterfallFlowLayout.h; sourceTree = "<group>"; };
+		96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterfallFlowLayout.m; sourceTree = "<group>"; };
+		96A3E06F1D4E18BC00E8431F /* BaseCollectionViewControllerDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewControllerDemo.h; sourceTree = "<group>"; };
+		96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewControllerDemo.m; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -591,6 +603,8 @@
 				96F5F45D1D3150A900AB1C03 /* CommentModel.m */,
 				96A3E05C1D4DE32200E8431F /* BaseTableViewControllerDemo.h */,
 				96A3E05D1D4DE32200E8431F /* BaseTableViewControllerDemo.m */,
+				96A3E06F1D4E18BC00E8431F /* BaseCollectionViewControllerDemo.h */,
+				96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */,
 			);
 			name = Demo;
 			sourceTree = "<group>";
@@ -602,6 +616,17 @@
 				965DB71A1D46D06200C6546D /* BackgroundAudioPlay.m */,
 			);
 			path = BackgroundAudio;
+			sourceTree = "<group>";
+		};
+		96A3E06B1D4E13E200E8431F /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				96A3E0681D4E13DA00E8431F /* BaseCollectionViewFlowLayout.h */,
+				96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */,
+				96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */,
+				96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */,
+			);
+			name = Layout;
 			sourceTree = "<group>";
 		};
 		96E72EFA1D30A26000D5A3A9 = {
@@ -754,10 +779,13 @@
 		96EDCB471D4A5EFF00F9DC3F /* UICollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				96A3E06B1D4E13E200E8431F /* Layout */,
 				96EDCB491D4A5F1500F9DC3F /* Models */,
 				96EDCB481D4A5F1100F9DC3F /* Cell */,
 				96EDCB361D4A503A00F9DC3F /* BaseCollectionView.h */,
 				96EDCB371D4A503A00F9DC3F /* BaseCollectionView.m */,
+				96289F131D4E3476000F7665 /* FlexibleHeightCollectionView.h */,
+				96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */,
 			);
 			name = UICollectionView;
 			sourceTree = "<group>";
@@ -966,10 +994,12 @@
 				9639AA7D1D458EEB007719B0 /* NSArray+Coder.m in Sources */,
 				9639AA8E1D458EEB007719B0 /* CircleProgressBar.m in Sources */,
 				9639AA731D458EEB007719B0 /* SetMealTableViewCell.m in Sources */,
+				96A3E0711D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m in Sources */,
 				9639AA851D458EEB007719B0 /* UIImage+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				9639AA901D458EEB007719B0 /* NJDBezierCurve.m in Sources */,
 				96EDCB411D4A572800F9DC3F /* BaseTableView.m in Sources */,
+				96289F151D4E3476000F7665 /* FlexibleHeightCollectionView.m in Sources */,
 				9639AA671D458EEB007719B0 /* BasePickerView.m in Sources */,
 				9639AA681D458EEB007719B0 /* BaseViewController.m in Sources */,
 				9639AA831D458EEB007719B0 /* NSURL+Coder.m in Sources */,
@@ -979,6 +1009,7 @@
 				9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */,
 				9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */,
 				96EDCB5D1D4A5F4500F9DC3F /* JASSubtitleCellModel.m in Sources */,
+				96A3E06A1D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
 				96EDCB5A1D4A5F4500F9DC3F /* JASDefaultCell.m in Sources */,
 				9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */,
@@ -1008,6 +1039,7 @@
 				9639AA841D458EEB007719B0 /* UIDevice+Coder.m in Sources */,
 				9639AA661D458EEB007719B0 /* BaseObject.m in Sources */,
 				9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */,
+				96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */,
 				9639AA821D458EEB007719B0 /* NSString+Coder.m in Sources */,
 				96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */,
 				96E72F081D30A26000D5A3A9 /* main.m in Sources */,
