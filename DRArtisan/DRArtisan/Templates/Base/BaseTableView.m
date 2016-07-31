@@ -25,7 +25,7 @@
     
     NSAssert([dataList isKindOfClass:[NSArray class]], @"dataSource param must be an array class");
     
-    BaseTableView *obj = [[BaseTableView alloc] initWithFrame:frame style:style];
+    BaseTableView *obj = [[self alloc] initWithFrame:frame style:style];
     
     // default datasource is single dimension array
     obj.singleDimension = true;
@@ -67,11 +67,6 @@
         JasLog(@"cell reuse => %zd",self.reuseCount++);
     }
     
-    // Just for avoid reuse affect
-    if (cell.owned_table_v == nil) {
-        cell.owned_table_v = self;
-    }
-    
     if(self.singleDimension) {
         cell.model = self.dataList[indexPath.row];
     }else {
@@ -82,29 +77,22 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    // If you want to do anything like before,your viewcontroller should become cdelegate
     if(self.cdelegate){
         if([self.cdelegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]){
             return [self.cdelegate tableView:tableView didSelectRowAtIndexPath:indexPath];
         }
     }
-}
-
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // if you want to return height in viewcontroller,please set self.cdelegate = viewcontroller...
-    if(self.cdelegate){
-        if([self.cdelegate respondsToSelector:@selector(tableView:heightForRowAtIndexPath:)]){
-            return [self.cdelegate tableView:tableView heightForRowAtIndexPath:indexPath];
+    
+    // If you just want to write click cell in viewcontroller,your viewcontroller should become sdelegate
+    if (self.sdelegate) {
+        if ([self.sdelegate respondsToSelector:@selector(tableView:didSelectRowAtIndexPath:)]) {
+            return [self.sdelegate tableView:tableView didSelectRowAtIndexPath:indexPath];
         }
     }
-    // NSAssert([self.dataList[indexPath.row] cell_h], @"You should set cell_h at setModel: on table view cell object");
-    if (self.isSingleDimension) {
-        if ([self.dataList[indexPath.row] cell_h] == 0) {
-            
-        }
-        return [self.dataList[indexPath.row] cell_h];
-    }else {
-        return [self.dataList[indexPath.section][indexPath.row] cell_h];
-    }
+    
+    // If you extends BaseTableView and you can implement tableView:didSelectRowAtIndexPath: action event
+    JasLog(@"You can implement tableView:didSelectRowAtIndexPath: in class which is extends BaseTableView.");
     
 }
 

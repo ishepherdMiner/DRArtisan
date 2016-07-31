@@ -70,16 +70,17 @@
 
 @interface BaseTableView : AbstractBaseTableView
 
+/// 数据源是一维数组(true)/二维数组(false)
 @property (nonatomic,assign,readonly,getter=isSingleDimension) BOOL singleDimension;
 
 /**
  *  指定的初始化方法
  *
- *  @param frame    frame
- *  @param style    style
+ *  @param frame    tableView的frame
+ *  @param style    tableView的样式
  *  @param dataList 数据源
  *
- *  @return SingledimensionTableView / MultidimensionTableView object
+ *  @return BaseTableView object
  */
 + (instancetype)tableViewWithFrame:(CGRect)frame
                              style:(UITableViewStyle)style

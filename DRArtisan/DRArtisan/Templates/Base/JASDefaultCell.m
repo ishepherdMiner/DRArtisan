@@ -21,7 +21,7 @@
     self.imageView.image = [UIImage imageNamed:model.icon];
     
     // 设置cell的高度 - 选择FlexibleHeightTableView 高度可变的TableView时 这句需要
-    model.cell_h = 120;
+    // model.cell_h = 120;
 }
 
 - (void)layoutSubviews {

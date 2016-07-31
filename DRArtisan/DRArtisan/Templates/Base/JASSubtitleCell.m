@@ -18,7 +18,9 @@
     
     // 当然图片大多数情况下是网络图片,需要仿一个网络缓存的框架 先考虑模型那部分,暂时忽略这个
     self.imageView.image = [UIImage imageNamed:model.icon];
-
+    
+    
+    // model.cell_h = 90;
 }
 
 @end

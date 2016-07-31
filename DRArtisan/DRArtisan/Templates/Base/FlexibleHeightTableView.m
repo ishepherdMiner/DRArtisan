@@ -18,9 +18,16 @@
         }
     }
     // NSAssert([self.dataList[indexPath.row] cell_h], @"You should set cell_h at setModel: on table view cell object");
+    
     if (self.isSingleDimension) {
+        if ([self.dataList[indexPath.row] cell_h] == kZero) {
+            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+        }
         return [self.dataList[indexPath.row] cell_h];
     }else {
+        if ([self.dataList[indexPath.section][indexPath.row] cell_h] == kZero) {
+            return [super tableView:tableView heightForRowAtIndexPath:indexPath];
+        }
         return [self.dataList[indexPath.section][indexPath.row] cell_h];
     }
 }
