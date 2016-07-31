@@ -26,7 +26,13 @@
                                                                               minInteritemSpace:20
                                                                                    sectionInset:UIEdgeInsetsZero];
     */
-    WaterfallFlowLayout *flowLayout = [WaterfallFlowLayout layoutWithColumns:3 mininterItemSpace:5];
+//    WaterfallFlowLayout *flowLayout = [WaterfallFlowLayout layoutWithColumns:3 mininterItemSpace:5];
+//    WaterfallFlowLayout *flowLayout = [[WaterfallFlowLayout alloc] init];
+    
+    WaterfallFlowLayout *flowLayout = [WaterfallFlowLayout layoutWithNumOfColumns:3
+                                                                        lineSpace:10
+                                                                  interItemHSpace:10
+                                                                           startY:0];
     
     // flowLayout.delegate = self;
     // [flowLayout sizeWithHeader:fSize(Screen_width, 40) footer:fSize(Screen_width, 30)];
@@ -41,7 +47,19 @@
 
 - (NSArray *)datas {
     if (_datas == nil) {
-        _datas = @[@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",@"fasd"];
+        _datas = @[@"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd",
+                   @"fasd",@"fasd",@"fasd",@"fasd",@"fasd"];
     }
     return _datas;
 }

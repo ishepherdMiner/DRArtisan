@@ -12,7 +12,7 @@
 @implementation BaseCollectionViewCell
 - (void)setModel:(BaseCollectionCellModel *)model {
     self.backgroundColor = [UIColor redColor];
-    model.cell_h = 80 + (arc4random() % 150);
+    // model.pass_h = 80 + (arc4random() % 150);
 }
 @end
  

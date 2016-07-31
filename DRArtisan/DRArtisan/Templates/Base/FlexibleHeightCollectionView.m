@@ -36,16 +36,46 @@
     // AbstractMethodNotImplemented();
     if (self.isSingleDimension) {
         // 执行这个先调用cell的内容方法
-        if ([self.dataList[indexPath.row] cell_h] == kZero) {
+        if ([self.dataList[indexPath.row] pass_h] == kZero) {
+            if ([self.dataList[indexPath.row] calculate_h] != kZero) {
+                return [self.dataList[indexPath.row] calculate_h];
+            }
             return kDefaultCollectionCellHeight;
         }
-        return [self.dataList[indexPath.row] cell_h];
+        return [self.dataList[indexPath.row] pass_h];
     }else {
-        if ([self.dataList[indexPath.section][indexPath.row] cell_h] == kZero) {
+        if ([self.dataList[indexPath.section][indexPath.row] pass_h] == kZero) {
+            if ([self.dataList[indexPath.row] calculate_h] != kZero) {
+                return [self.dataList[indexPath.row] calculate_h];
+            }
             return kDefaultCollectionCellHeight;
         }
-        return [self.dataList[indexPath.section][indexPath.row] cell_h];
+        return [self.dataList[indexPath.section][indexPath.row] pass_h];
     }
+}
+
+- (void)collectionView:(UICollectionView *)collectionView willDisplayCell:(UICollectionViewCell *)cell forItemAtIndexPath:(NSIndexPath *)indexPath NS_AVAILABLE_IOS(8_0)
+{
+    cell.contentView.alpha = 0;
+    cell.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(0, 0), 0);
+        
+    [UIView animateKeyframesWithDuration:.5 delay:0.0 options:0 animations:^{
+        /**
+         *  分步动画   第一个参数是该动画开始的百分比时间  第二个参数是该动画持续的百分比时间
+         *  先放大1.2倍,然后缩小到正常大小
+         */
+        [UIView addKeyframeWithRelativeStartTime:0.0 relativeDuration:0.8 animations:^{
+            cell.contentView.alpha = .5;
+            cell.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(1.2, 1.2), 0);
+        }];
+        [UIView addKeyframeWithRelativeStartTime:0.8 relativeDuration:0.2 animations:^{
+            cell.contentView.alpha = 1;
+            cell.transform = CGAffineTransformRotate(CGAffineTransformMakeScale(1, 1), 0);
+        }];
+        
+    } completion:^(BOOL finished) {
+        
+    }];
 }
 
 @end

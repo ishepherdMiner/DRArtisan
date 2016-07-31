@@ -8,6 +8,9 @@
 
 #import "BaseCollectionViewFlowLayout.h"
 
+UIKIT_EXTERN NSString *const XC_UICollectionElementKindSectionHeader;
+UIKIT_EXTERN NSString *const XC_UICollectionElementKindSectionFooter;
+
 #define kDefaultCollectionCellHeight 60
 
 @class WaterfallFlowLayout;
@@ -19,6 +22,9 @@
                     layout:(WaterfallFlowLayout *)layout
   heightForItemAtIndexPath:(NSIndexPath*)indexPath;
 
+/// 处理移动相关的数据源
+- (void)moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath
+                toIndexPath:(NSIndexPath*)destinationIndexPath;
 @end
 
 /**
@@ -26,15 +32,28 @@
  */
 @interface WaterfallFlowLayout : UICollectionViewFlowLayout
 
+
 /**
- *  指定的初始化方法是
+ *  指定的初始化方法
  *
- *  @param numOfColumns 每行的数量
- *  @param itemSpace    每个item间的最小间距
- *
+ *  @param numberOfColumns  列数
+ *  @param lineSpacing      行间距
+ *  @param interItemSpacing item间距
+ *  @param startY           collection的初识Y位置
  *  @return WaterfallFlowLayout object
  */
-+ (instancetype)layoutWithColumns:(NSUInteger)columns mininterItemSpace:(CGFloat)mininterItemSpace;
++ (instancetype)layoutWithNumOfColumns:(NSUInteger)numberOfColumns
+                             lineSpace:(CGFloat)lineSpacing
+                       interItemHSpace:(CGFloat)interItemSpacing
+                                startY:(CGFloat)startYValue;
+
+/**
+ *  set header && footer size
+ *
+ *  @param hSize header size
+ *  @param fSize footer size
+ */
+- (void)heightWithHeader:(CGFloat)hHeight footer:(CGFloat)fHeight;
 
 @property (nonatomic,weak) id<WaterfallFlowLayoutDelegate> delegate;
 @end

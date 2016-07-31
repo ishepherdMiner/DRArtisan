@@ -73,6 +73,12 @@
     return cell;
 }
 
+//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
+//    // UIImage *image = self.images[indexPath.item];
+//    // CGFloat newHeight = image.size.height / image.size.width * self.imageWidth;
+//    return CGSizeMake(90, 80 + (arc4random() % 150));
+//}
+
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     if (self.cdelegate) {
         if ([self.cdelegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {

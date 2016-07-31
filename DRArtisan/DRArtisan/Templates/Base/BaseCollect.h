@@ -42,6 +42,7 @@
 
 // CollectionViewCell
 #import "BaseCollectionViewCell.h"
+#import "BaseCollectionCellModel.h"
 
 // PickerView
 #import "BasePickerView.h"

@@ -7,6 +7,8 @@
 //
 
 #import "AbstractBaseCollectionView.h"
+#import "BaseCollectionCellModel.h"
+
 @interface AbstractBaseCollectionView ()
 
 @property (nonatomic,weak) Class cellClass;
@@ -46,8 +48,8 @@
 }
 
 #pragma mark - Wait to improve
-- (JASBaseCellModel *)packFoundationClass:(id)obj {
-    JASBaseCellModel *model = [[JASBaseCellModel alloc] init];
+- (BaseCollectionCellModel *)packFoundationClass:(id)obj {
+    BaseCollectionCellModel *model = [[BaseCollectionCellModel alloc] init];
     if ([obj isKindOfClass:[NSString class]]) {
         model.b_string = obj;
     }else if([obj isKindOfClass:[NSNumber class]]){
