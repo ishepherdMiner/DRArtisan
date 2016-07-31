@@ -101,7 +101,7 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 {
     [super prepareLayout];
     
-    //重新布局需要清空
+    // 重新布局需要清空
     [self.cellLayoutInfo removeAllObjects];
     [self.headLayoutInfo removeAllObjects];
     [self.footLayoutInfo removeAllObjects];
@@ -110,45 +110,45 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
     
     
     CGFloat viewWidth = self.collectionView.frame.size.width;
-    //代理里面只取了高度，所以cell的宽度有列数还有cell的间距计算出来
+    // 代理里面只取了高度，所以cell的宽度有列数还有cell的间距计算出来
     CGFloat itemWidth = (viewWidth - self.interitemSpace*(self.numberOfColumns + 1))/self.numberOfColumns;
     
-    //取有多少个section
+    // 取有多少个section
     NSInteger sectionsCount = [self.collectionView numberOfSections];
     
     for (NSInteger section = 0; section < sectionsCount; section++) {
-        //存储headerView属性
+        // 存储headerView属性
         NSIndexPath *supplementaryViewIndexPath = [NSIndexPath indexPathForRow:0 inSection:section];
-        //头视图的高度不为0并且根据代理方法能取到对应的头视图的时候，添加对应头视图的布局对象
+        // 头视图的高度不为0并且根据代理方法能取到对应的头视图的时候，添加对应头视图的布局对象
         if (_headerViewHeight>0 && [self.collectionView.dataSource respondsToSelector:@selector(collectionView: viewForSupplementaryElementOfKind: atIndexPath:)]) {
             
             UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:XC_UICollectionElementKindSectionHeader withIndexPath:supplementaryViewIndexPath];
-            //设置frame
+            // 设置frame
             attribute.frame = CGRectMake(0, self.startY, self.collectionView.frame.size.width, _headerViewHeight);
-            //保存布局对象
+            // 保存布局对象
             self.headLayoutInfo[supplementaryViewIndexPath] = attribute;
-            //设置下个布局对象的开始Y值
+            // 设置下个布局对象的开始Y值
             self.startY = self.startY + _headerViewHeight + _lineSpace;
         }else{
-            //没有头视图的时候，也要设置section的第一排cell到顶部的距离
+            // 没有头视图的时候，也要设置section的第一排cell到顶部的距离
             self.startY += _lineSpace;
         }
         
-        //将Section第一排cell的frame的Y值进行设置
+        // 将Section第一排cell的frame的Y值进行设置
         for (int i = 0; i < _numberOfColumns; i++) {
             self.maxYForColumn[@(i)] = @(self.startY);
         }
         
         
-        //计算cell的布局
-        //取出section有多少个row
+        // 计算cell的布局
+        // 取出section有多少个row
         NSInteger rowsCount = [self.collectionView numberOfItemsInSection:section];
-        //分别计算设置每个cell的布局对象
+        // 分别计算设置每个cell的布局对象
         for (NSInteger row = 0; row < rowsCount; row++) {
             NSIndexPath *cellIndePath =[NSIndexPath indexPathForItem:row inSection:section];
             UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForCellWithIndexPath:cellIndePath];
             
-            //计算当前的cell加到哪一列（瀑布流是加载到最短的一列）
+            // 计算当前的cell加到哪一列（瀑布流是加载到最短的一列）
             CGFloat y = [self.maxYForColumn[@(0)] floatValue];
             NSInteger currentRow = 0;
             for (int i = 1; i < _numberOfColumns; i++) {
@@ -157,9 +157,9 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
                     currentRow = i;
                 }
             }
-            //计算x值
+            // 计算x值
             CGFloat x = self.interitemSpace + (self.interitemSpace + itemWidth)*currentRow;
-            //根据代理去当前cell的高度  因为当前是采用通过列数计算的宽度，高度根据图片的原始宽高比进行设置的
+            // 根据代理去当前cell的高度  因为当前是采用通过列数计算的宽度，高度根据图片的原始宽高比进行设置的
             CGFloat height = 0;
             // 通过协议回传高度值 - 当没实现代理 退化为普通的FlowLayout布局
             if (self.collectionView.delegate) {
@@ -177,15 +177,15 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 
             // [(id<WaterfallFlowLayoutDelegate>)self.delegate collectionView:self.collectionView layout:self heightOfItemAtIndexPath:cellIndePath itemWidth:itemWidth];
             
-            //设置当前cell布局对象的frame
+            // 设置当前cell布局对象的frame
             attribute.frame = CGRectMake(x, y, itemWidth, height);
-            //重新设置当前列的Y值
+            // 重新设置当前列的Y值
             y = y + self.interitemSpace + height;
             self.maxYForColumn[@(currentRow)] = @(y);
-            //保留cell的布局对象
+            // 保留cell的布局对象
             self.cellLayoutInfo[cellIndePath] = attribute;
             
-            //当是section的最后一个cell是，取出最后一排cell的底部Y值   设置startY 决定下个视图对象的起始Y值
+            // 当是section的最后一个cell是，取出最后一排cell的底部Y值   设置startY 决定下个视图对象的起始Y值
             if (row == rowsCount -1) {
                 CGFloat maxY = [self.maxYForColumn[@(0)] floatValue];
                 for (int i = 1; i < _numberOfColumns; i++) {
@@ -199,8 +199,8 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
         }
         
         
-        //存储footView属性
-        //尾视图的高度不为0并且根据代理方法能取到对应的尾视图的时候，添加对应尾视图的布局对象
+        // 存储footView属性
+        // 尾视图的高度不为0并且根据代理方法能取到对应的尾视图的时候，添加对应尾视图的布局对象
         if (_footViewHeight>0 && [self.collectionView.dataSource respondsToSelector:@selector(collectionView: viewForSupplementaryElementOfKind: atIndexPath:)]) {
             
             UICollectionViewLayoutAttributes *attribute = [UICollectionViewLayoutAttributes layoutAttributesForSupplementaryViewOfKind:XC_UICollectionElementKindSectionFooter withIndexPath:supplementaryViewIndexPath];
@@ -217,21 +217,21 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 {
     NSMutableArray *allAttributes = [NSMutableArray array];
     
-    //添加当前屏幕可见的cell的布局
+    // 添加当前屏幕可见的cell的布局
     [self.cellLayoutInfo enumerateKeysAndObjectsUsingBlock:^(NSIndexPath *indexPath, UICollectionViewLayoutAttributes *attribute, BOOL *stop) {
         if (CGRectIntersectsRect(rect, attribute.frame)) {
             [allAttributes addObject:attribute];
         }
     }];
     
-    //添加当前屏幕可见的头视图的布局
+    // 添加当前屏幕可见的头视图的布局
     [self.headLayoutInfo enumerateKeysAndObjectsUsingBlock:^(NSIndexPath *indexPath, UICollectionViewLayoutAttributes *attribute, BOOL *stop) {
         if (CGRectIntersectsRect(rect, attribute.frame)) {
             [allAttributes addObject:attribute];
         }
     }];
     
-    //添加当前屏幕可见的尾部的布局
+    // 添加当前屏幕可见的尾部的布局
     [self.footLayoutInfo enumerateKeysAndObjectsUsingBlock:^(NSIndexPath *indexPath, UICollectionViewLayoutAttributes *attribute, BOOL *stop) {
         if (CGRectIntersectsRect(rect, attribute.frame)) {
             [allAttributes addObject:attribute];
@@ -241,7 +241,7 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
     return allAttributes;
 }
 
-//插入cell的时候系统会调用改方法
+// 插入cell的时候系统会调用改方法
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
     UICollectionViewLayoutAttributes *attribute = self.cellLayoutInfo[indexPath];
@@ -304,7 +304,7 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
     return nil;
 }
 
-//对应UICollectionViewUpdateItem 的indexPathAfterUpdate 设置调用
+// 对应UICollectionViewUpdateItem 的indexPathAfterUpdate 设置调用
 - (nullable UICollectionViewLayoutAttributes *)finalLayoutAttributesForDisappearingItemAtIndexPath:(NSIndexPath *)itemIndexPath
 {
     if ([self.shouldanimationArr containsObject:itemIndexPath]) {
@@ -335,7 +335,7 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 }
 
 
-//移动相关
+// 移动相关
 - (UICollectionViewLayoutInvalidationContext *)invalidationContextForInteractivelyMovingItems:(NSArray<NSIndexPath *> *)targetIndexPaths withTargetPosition:(CGPoint)targetPosition previousIndexPaths:(NSArray<NSIndexPath *> *)previousIndexPaths previousPosition:(CGPoint)previousPosition NS_AVAILABLE_IOS(9_0)
 {
     UICollectionViewLayoutInvalidationContext *context = [super invalidationContextForInteractivelyMovingItems:targetIndexPaths withTargetPosition:targetPosition previousIndexPaths:previousIndexPaths previousPosition:previousPosition];
