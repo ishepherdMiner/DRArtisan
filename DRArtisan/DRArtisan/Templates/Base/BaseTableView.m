@@ -64,7 +64,7 @@
     if (cell == nil) {
         cell = [[[[self cellClass] class] alloc] initWithStyle:self.cellStyle
                                                reuseIdentifier:self.identifier];
-        JasLog(@"cell reuse => %zd",self.reuseCount++);
+        XcLog(@"cell reuse => %zd",self.reuseCount++);
     }
     
     if(self.singleDimension) {
@@ -92,7 +92,7 @@
     }
     
     // If you extends BaseTableView and you can implement tableView:didSelectRowAtIndexPath: action event
-    JasLog(@"You can implement tableView:didSelectRowAtIndexPath: in class which is extends BaseTableView.");
+    XcLog(@"You can implement tableView:didSelectRowAtIndexPath: in class which is extends BaseTableView.");
     
 }
 

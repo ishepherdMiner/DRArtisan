@@ -26,7 +26,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
 
-    JasLog(@"%@",[view performSelector:@selector(recursiveDescription)]);
+    XcLog(@"%@",[view performSelector:@selector(recursiveDescription)]);
     
 #pragma clang diagnostic pop
 }
@@ -36,7 +36,7 @@
 #pragma clang diagnostic push
 #pragma clang diagnostic ignored "-Wundeclared-selector"
     
-    JasLog(@"%@",[vc performSelector:@selector(_printHierarchy)]);
+    XcLog(@"%@",[vc performSelector:@selector(_printHierarchy)]);
     
 #pragma clang diagnostic pop
 }
@@ -61,7 +61,7 @@
         cursor = addrs;
         while (cursor != NULL){
             name = [NSString stringWithFormat:@"%s",cursor->ifa_name];
-            // JasLog(@"ifa_name %s == %@\n", cursor->ifa_name,name);
+            // XcLog(@"ifa_name %s == %@\n", cursor->ifa_name,name);
             // names of interfaces: en0 is WiFi ,pdp_ip0 is WWAN
             if (cursor->ifa_addr->sa_family == AF_LINK){
                 // wifi
@@ -70,16 +70,16 @@
                     WiFiSent += networkStatisc->ifi_obytes;
                     WiFiReceived += networkStatisc->ifi_ibytes;
                     
-                    // JasLog(@"WiFiSent %lld == %d",WiFiSent,networkStatisc->ifi_obytes);
-                    // JasLog(@"WiFiReceived %lld == %d",WiFiReceived,networkStatisc->ifi_ibytes);
+                    // XcLog(@"WiFiSent %lld == %d",WiFiSent,networkStatisc->ifi_obytes);
+                    // XcLog(@"WiFiReceived %lld == %d",WiFiReceived,networkStatisc->ifi_ibytes);
                 }else if([name hasPrefix:@"pdp_ip"]){
                     // wwan
                     networkStatisc = (const struct if_data *) cursor->ifa_data;
                     WWANSent += networkStatisc->ifi_obytes;
                     WWANReceived += networkStatisc->ifi_ibytes;
                     
-                    // JasLog(@"WWANSent %lld == %d",WWANSent,networkStatisc->ifi_obytes);
-                    // JasLog(@"WWANReceived %lld == %d",WWANReceived,networkStatisc->ifi_ibytes);
+                    // XcLog(@"WWANSent %lld == %d",WWANSent,networkStatisc->ifi_obytes);
+                    // XcLog(@"WWANReceived %lld == %d",WWANReceived,networkStatisc->ifi_ibytes);
                 }
             }
             cursor = cursor->ifa_next;
@@ -87,10 +87,10 @@
         freeifaddrs(addrs);
     }
     
-    JasLog(@"WiFiSent %lld",WiFiSent);
-    JasLog(@"WiFiReceived %lld",WiFiReceived);
-    JasLog(@"WWANSent %lld",WWANSent);
-    JasLog(@"WWANReceived %lld",WWANReceived);
+    XcLog(@"WiFiSent %lld",WiFiSent);
+    XcLog(@"WiFiReceived %lld",WiFiReceived);
+    XcLog(@"WWANSent %lld",WWANSent);
+    XcLog(@"WWANReceived %lld",WWANReceived);
     
     return @[@(WiFiSent), @(WiFiReceived),@(WWANSent),@(WWANReceived)];
 }
@@ -140,7 +140,7 @@
         [output appendString:tableElement];
         [tablesM addObject:tableElement];
     }
-    JasLog(@"%@",output);
+    XcLog(@"%@",output);
     return [tablesM copy];
 }
 

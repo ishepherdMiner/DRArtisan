@@ -331,7 +331,7 @@
     
     if(newImage == nil){
         
-        JasLog(@"scale image fail");
+        XcLog(@"scale image fail");
         
     }
     
@@ -415,7 +415,7 @@
     
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     if(newImage == nil){
-        JasLog(@"scale image fail");
+        XcLog(@"scale image fail");
     }
     
     UIGraphicsEndImageContext();
@@ -464,7 +464,7 @@
     
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     if(newImage == nil){
-        JasLog(@"scale image fail");
+        XcLog(@"scale image fail");
     }
     
     UIGraphicsEndImageContext();

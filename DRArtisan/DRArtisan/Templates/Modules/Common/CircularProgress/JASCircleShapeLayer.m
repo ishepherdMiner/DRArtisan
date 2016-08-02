@@ -89,7 +89,7 @@
         if((progress * 100) > 100) {
             progress = 1.0f;
         }
-        JasLog(@"Percent = %f", progress);
+        XcLog(@"Percent = %f", progress);
         
         return progress;
     }

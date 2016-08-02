@@ -67,14 +67,14 @@
                 }else {
 #if DEBUG
                     // the class property not in model which is from server
-                    JasLog(@"the %@ property %@ not in model wihich is from server.",obj,property);
+                    XcLog(@"the %@ property %@ not in model wihich is from server.",obj,property);
 #endif
                 }
             }
         }
         for (NSString *property in propertyList) {
             if ([propertyDic objectForKey:property]) {
-                JasLog(@"value = %@, key = %@",[propertyDic objectForKey:property],property);
+                XcLog(@"value = %@, key = %@",[propertyDic objectForKey:property],property);
                 [obj setValue:[propertyDic objectForKey:property] forKeyPath:property];
             }
         }
@@ -133,14 +133,14 @@
 //    NSBundle *b = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/PreferencesUI.framework"];
 //    [b load];
 //    Class cls = NSClassFromString(@"FindMyiPhoneController"); // NSClassFromString(@"AdSupportController");
-//    JasLog(@"cls super %@",[cls superclass]);
+//    XcLog(@"cls super %@",[cls superclass]);
 //    [BaseObject jas_methodList:cls];
 //    id obj = [[cls alloc] init];
 //    [cls jas_propertyList];
 //    
 //    if([obj respondsToSelector:@selector(resetAdID)]) {
 //        [obj performSelector:@selector(resetAdID)];
-////        JasLog(@"deviceName => %@",[obj performSelector:@selector(resetAdID)]);
+////        XcLog(@"deviceName => %@",[obj performSelector:@selector(resetAdID)]);
 //    }
 
     // SettingsNetworkController

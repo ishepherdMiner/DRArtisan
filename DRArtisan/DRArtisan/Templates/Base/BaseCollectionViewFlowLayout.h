@@ -8,10 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+//
+#define BaseFlowLayout(w,h,marginW,marginH) [BaseCollectionViewFlowLayout LayoutWithItemSize:fSize(w,h) minMarginSize:fSize(marginW,marginH) sectionInset:UIEdgeInsetsZero]
+
 @interface BaseCollectionViewFlowLayout : UICollectionViewFlowLayout
 
 /**
- *  指定初始化方法
+ *  初始化方法
+ *
+ *  @param itemSize     cell的尺寸
+ *  @param marginSize   左右与上下的外间距
+ *  @param sectionInset cell的内间距
+ *
+ *  @return BaseCollectionViweFlowLayout object
+ */
++ (instancetype)LayoutWithItemSize:(CGSize)itemSize
+                     minMarginSize:(CGSize)marginSize
+                      sectionInset:(UIEdgeInsets)sectionInset;
+/**
+ *  初始化方法
  *
  *  @param itemSize          cell的尺寸
  *  @param minLineSpace      最小的行间距
@@ -24,7 +39,6 @@
                       minLineSpace:(CGFloat)minLineSpace
                  minInteritemSpace:(CGFloat)minInteritemSpace
                       sectionInset:(UIEdgeInsets)sectionInset ;
-
 /**
  *  set header && footer size
  *

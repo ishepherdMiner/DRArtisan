@@ -21,10 +21,11 @@
  */
 - (CGFloat)collectionView:(UICollectionView*)collectionView
                    layout:(WaterfallFlowLayout*)layout
- heightForItemAtIndexPath:(NSIndexPath*)indexPath {
+ heightForItemAtIndexPath:(NSIndexPath*)indexPath
+                itemWidth:(NSUInteger)itemWidth{
     if (self.cdelegate) {
-        if([self.cdelegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:)]){
-            [self.cdelegate collectionView:collectionView layout:layout heightForItemAtIndexPath:indexPath];
+        if([self.cdelegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:itemWidth:)]){
+            [self.cdelegate collectionView:collectionView layout:layout heightForItemAtIndexPath:indexPath itemWidth:itemWidth];
         }
     }
     

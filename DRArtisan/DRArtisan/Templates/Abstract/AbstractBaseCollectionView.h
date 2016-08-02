@@ -41,7 +41,8 @@
  */
 - (CGFloat)collectionView:(UICollectionView*)collectionView
                    layout:(WaterfallFlowLayout *) layout
- heightForItemAtIndexPath:(NSIndexPath*)indexPath;
+ heightForItemAtIndexPath:(NSIndexPath*)indexPath
+                itemWidth:(NSUInteger)itemWidth;
 
 @end
 

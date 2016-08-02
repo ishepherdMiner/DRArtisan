@@ -29,6 +29,12 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 /// 尾视图的高度
 @property (assign, nonatomic) CGFloat footViewHeight;
 
+/// collectionView的整个cell部分距离section headerView的上间距
+@property (nonatomic,assign) CGFloat marginHeader;
+
+/// collectionView的整个cell部分距离section headerView的下间距
+@property (nonatomic,assign) CGFloat marginFooter;
+
 /// 保存cell的布局
 @property (strong, nonatomic) NSMutableDictionary *cellLayoutInfo;
 
@@ -40,6 +46,9 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 
 /// 记录开始的Y
 @property (assign, nonatomic) CGFloat startY;
+
+/// 记录重新布局的开始的Y,因为现在是从外界传递进来的
+@property (nonatomic,assign) CGFloat relayoutY;
 
 /// 记录瀑布流每列最下面那个cell的底部y值
 @property (strong, nonatomic) NSMutableDictionary *maxYForColumn;
@@ -55,25 +64,6 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
 
 @implementation WaterfallFlowLayout
 
-- (instancetype)init
-{
-    self = [super init];
-    if (self) {
-        self.numberOfColumns = 3;
-        self.lineSpace = 10;
-        self.interitemSpace = 10;
-        _headerViewHeight = 0;
-        _footViewHeight = 0;
-        self.startY = 0;
-        self.maxYForColumn = [NSMutableDictionary dictionary];
-        self.shouldanimationArr = [NSMutableArray array];
-        self.cellLayoutInfo = [NSMutableDictionary dictionary];
-        self.headLayoutInfo = [NSMutableDictionary dictionary];
-        self.footLayoutInfo = [NSMutableDictionary dictionary];
-    }
-    return self;
-}
-
 + (instancetype)layoutWithNumOfColumns:(NSUInteger)numberOfColumns
                              lineSpace:(CGFloat)lineSpacing
                        interItemHSpace:(CGFloat)interItemSpacing
@@ -84,6 +74,7 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
     obj.lineSpace = lineSpacing;
     obj.interitemSpace = interItemSpacing;
     obj.startY = startYValue;
+    obj.relayoutY = startYValue;
     obj.maxYForColumn = [NSMutableDictionary dictionary];
     obj.cellLayoutInfo = [NSMutableDictionary dictionary];
     obj.headLayoutInfo = [NSMutableDictionary dictionary];
@@ -97,6 +88,11 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
     self.footViewHeight = fHeight;
 }
 
+- (void)marginWithHeader:(CGFloat)marginHeader footer:(CGFloat)marginFooter {
+    self.marginHeader = marginHeader;
+    self.marginFooter = marginFooter;
+}
+
 - (void)prepareLayout
 {
     [super prepareLayout];
@@ -106,11 +102,11 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
     [self.headLayoutInfo removeAllObjects];
     [self.footLayoutInfo removeAllObjects];
     [self.maxYForColumn removeAllObjects];
-    self.startY = 0;
+    self.startY = self.relayoutY;
     
     
     CGFloat viewWidth = self.collectionView.frame.size.width;
-    // 代理里面只取了高度，所以cell的宽度有列数还有cell的间距计算出来
+    // 代理里面只取了高度，所以cell的宽度由列数还有cell的间距计算出来
     CGFloat itemWidth = (viewWidth - self.interitemSpace*(self.numberOfColumns + 1))/self.numberOfColumns;
     
     // 取有多少个section
@@ -128,10 +124,10 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
             // 保存布局对象
             self.headLayoutInfo[supplementaryViewIndexPath] = attribute;
             // 设置下个布局对象的开始Y值
-            self.startY = self.startY + _headerViewHeight + _lineSpace;
+            self.startY = self.startY + _headerViewHeight + _marginHeader;
         }else{
             // 没有头视图的时候，也要设置section的第一排cell到顶部的距离
-            self.startY += _lineSpace;
+            self.startY += _marginHeader;
         }
         
         // 将Section第一排cell的frame的Y值进行设置
@@ -163,11 +159,12 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
             CGFloat height = 0;
             // 通过协议回传高度值 - 当没实现代理 退化为普通的FlowLayout布局
             if (self.collectionView.delegate) {
-                if ([self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:)]) {
+                if ([self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:itemWidth:)]) {
                     height = [((id<WaterfallFlowLayoutDelegate>)self.collectionView.delegate)
                               collectionView:self.collectionView
                               layout:self
-                              heightForItemAtIndexPath:cellIndePath];
+                              heightForItemAtIndexPath:cellIndePath
+                              itemWidth:itemWidth];
                 }else {
                     height = kDefaultCollectionCellHeight;
                 }
@@ -180,21 +177,21 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
             // 设置当前cell布局对象的frame
             attribute.frame = CGRectMake(x, y, itemWidth, height);
             // 重新设置当前列的Y值
-            y = y + self.interitemSpace + height;
+            y = y + self.lineSpace + height;
             self.maxYForColumn[@(currentRow)] = @(y);
             // 保留cell的布局对象
             self.cellLayoutInfo[cellIndePath] = attribute;
             
-            // 当是section的最后一个cell是，取出最后一排cell的底部Y值   设置startY 决定下个视图对象的起始Y值
+            // 当是section的最后一个cell时，取出最后一排cell的底部Y值   设置startY 决定下个视图对象的起始Y值
             if (row == rowsCount -1) {
                 CGFloat maxY = [self.maxYForColumn[@(0)] floatValue];
                 for (int i = 1; i < _numberOfColumns; i++) {
                     if ([self.maxYForColumn[@(i)] floatValue] > maxY) {
-                        NSLog(@"%f", [self.maxYForColumn[@(i)] floatValue]);
+                        XcLog(@"%f", [self.maxYForColumn[@(i)] floatValue]);
                         maxY = [self.maxYForColumn[@(i)] floatValue];
                     }
                 }
-                self.startY = maxY - self.interitemSpace + self.lineSpace;
+                self.startY = maxY - self.interitemSpace + self.marginFooter;
             }
         }
         

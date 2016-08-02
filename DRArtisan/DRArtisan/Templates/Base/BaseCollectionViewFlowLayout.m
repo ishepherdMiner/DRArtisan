@@ -11,6 +11,17 @@
 @implementation BaseCollectionViewFlowLayout
 
 + (instancetype)LayoutWithItemSize:(CGSize)itemSize
+                    minMarginSize:(CGSize)marginSize
+                     sectionInset:(UIEdgeInsets)sectionInset {
+    BaseCollectionViewFlowLayout *obj = [[self alloc] init];
+    obj.itemSize = itemSize;
+    obj.minimumLineSpacing = marginSize.height;
+    obj.minimumInteritemSpacing = marginSize.width;
+    obj.sectionInset = sectionInset;
+    return obj;
+}
+
++ (instancetype)LayoutWithItemSize:(CGSize)itemSize
                       minLineSpace:(CGFloat)minLineSpace
                  minInteritemSpace:(CGFloat)minInteritemSpace
                       sectionInset:(UIEdgeInsets)sectionInset {

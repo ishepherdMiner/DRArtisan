@@ -113,7 +113,7 @@
             // 重置
             UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
             UIAlertAction *alert_action_submit = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                JasLog(@"删除数据");
+                XcLog(@"删除数据");
             }];
             
             UIAlertAction *alert_action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -241,7 +241,7 @@
             if ([cell.desc_field_v isEqual:textField]) {
                 _cur_index = [NSIndexPath indexPathForRow:0 inSection:1];
             }else {
-                JasLog(@"不应该出现这个情况");
+                XcLog(@"不应该出现这个情况");
             }
             
         }else {
@@ -252,7 +252,7 @@
 
 #pragma mark - KVO
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    JasLog(@"change => %@",change);
+    XcLog(@"change => %@",change);
     //
     NSMutableDictionary *desc_dicM = nil;
     if(self.desc_dic){

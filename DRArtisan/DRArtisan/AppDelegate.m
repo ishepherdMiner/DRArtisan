@@ -24,16 +24,16 @@
     
     _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
     _window.rootViewController = [[BaseCollectionViewControllerDemo alloc] init];
-    
+    [UIDevice jas_broken];
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试
     // [self iosUpgradeTest];
 #endif
 //    NSDictionary *demoDic = [self demoDic];
-//    JasLog(@"%@",demoDic);
+//    XcLog(@"%@",demoDic);
 //    
 //    NSArray *demoArr = [self demoArr];
-//    JasLog(@"%@",demoArr);
+//    XcLog(@"%@",demoArr);
     
     // 测试设备信息相关的方法
     [BaseObject jas_test];

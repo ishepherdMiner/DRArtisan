@@ -89,7 +89,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 点击cell执行相关操作
-    JasLog(@"点击了%zd组%zd行",indexPath.section,indexPath.row);
+    XcLog(@"点击了%zd组%zd行",indexPath.section,indexPath.row);
 }
 
 

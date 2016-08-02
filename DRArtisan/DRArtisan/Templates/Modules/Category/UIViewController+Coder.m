@@ -62,33 +62,33 @@
 }
 
 - (void)jas_viewDidLoad {
-     JasLog(@"%@|视图加载|%s",self.class,__func__);
+     XcLog(@"%@|视图加载|%s",self.class,__func__);
     [self jas_viewDidLoad];
 }
 
 - (void)jas_viewWillAppear:(BOOL)animate {
-     JasLog(@"%@|视图即将出现|%s",self.class,__func__);
+     XcLog(@"%@|视图即将出现|%s",self.class,__func__);
     [self jas_viewWillAppear:animate];
 }
 
 - (void)jas_viewDidAppear:(BOOL)animate {
-     JasLog(@"%@|视图已经出现|%s",self.class,__func__);
+     XcLog(@"%@|视图已经出现|%s",self.class,__func__);
     [self jas_viewDidAppear:animate];
 }
 
 - (void)jas_viewWillDisappear:(BOOL)animate {
-     JasLog(@"%@|视图即将消失|%s",self.class,__func__);
+     XcLog(@"%@|视图即将消失|%s",self.class,__func__);
     [self jas_viewWillDisappear:animate];
 }
 
 - (void)jas_viewDidDisappear:(BOOL)animate {
-     JasLog(@"%@|视图已经消失|%s",self.class,__func__);
+     XcLog(@"%@|视图已经消失|%s",self.class,__func__);
     [self jas_viewDidDisappear:animate];
 }
 
 - (void)jas_pushViewController:(UIViewController *)vc animated:(BOOL)animated{
     if ([self isKindOfClass:UINavigationController.class]) {
-         JasLog(@"%@|push视图控制器|%s",self.class,__func__);
+         XcLog(@"%@|push视图控制器|%s",self.class,__func__);
         [self jas_pushViewController:vc animated:animated];
         vc.view.tag = kTargetVCFromPush;
     }
@@ -96,7 +96,7 @@
 
 - (void)jas_presentViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^ __nullable)(void))completion{
     if ([self isKindOfClass:UINavigationController.class]) {
-         JasLog(@"%@|pop视图控制器|%s",self.class,__func__);
+         XcLog(@"%@|pop视图控制器|%s",self.class,__func__);
         [self jas_presentViewController:vc animated:animated completion:completion];
         vc.view.tag = kTargetVCFromPresent;
     }
