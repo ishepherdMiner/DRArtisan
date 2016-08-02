@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960BD81F1D50FD6500885DEE /* SupplementaryTitleTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BD81E1D50FD6500885DEE /* SupplementaryTitleTableView.m */; };
+		960BD8221D510BA300885DEE /* SupplementaryViewTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 960BD8211D510BA300885DEE /* SupplementaryViewTableView.m */; };
 		9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222B1D4827FB0028A835 /* TYWaterWaveView.m */; };
 		9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222D1D4827FB0028A835 /* TYWaveProgressView.m */; };
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
@@ -96,6 +98,10 @@
 /* Begin PBXFileReference section */
 		04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		960BD81D1D50FD6500885DEE /* SupplementaryTitleTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementaryTitleTableView.h; sourceTree = "<group>"; };
+		960BD81E1D50FD6500885DEE /* SupplementaryTitleTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementaryTitleTableView.m; sourceTree = "<group>"; };
+		960BD8201D510BA300885DEE /* SupplementaryViewTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementaryViewTableView.h; sourceTree = "<group>"; };
+		960BD8211D510BA300885DEE /* SupplementaryViewTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementaryViewTableView.m; sourceTree = "<group>"; };
 		9624222A1D4827FB0028A835 /* TYWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaterWaveView.h; sourceTree = "<group>"; };
 		9624222B1D4827FB0028A835 /* TYWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaterWaveView.m; sourceTree = "<group>"; };
 		9624222C1D4827FB0028A835 /* TYWaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaveProgressView.h; sourceTree = "<group>"; };
@@ -734,6 +740,10 @@
 				96EDCB401D4A572800F9DC3F /* BaseTableView.m */,
 				96A3E05F1D4DEEAE00E8431F /* FlexibleHeightTableView.h */,
 				96A3E0601D4DEEAE00E8431F /* FlexibleHeightTableView.m */,
+				960BD81D1D50FD6500885DEE /* SupplementaryTitleTableView.h */,
+				960BD81E1D50FD6500885DEE /* SupplementaryTitleTableView.m */,
+				960BD8201D510BA300885DEE /* SupplementaryViewTableView.h */,
+				960BD8211D510BA300885DEE /* SupplementaryViewTableView.m */,
 			);
 			name = UITableView;
 			sourceTree = "<group>";
@@ -1045,6 +1055,7 @@
 				96EDCB3B1D4A50EE00F9DC3F /* BaseTableViewCell.m in Sources */,
 				9639AA801D458EEB007719B0 /* NSDictionary+Coder.m in Sources */,
 				96A3E05E1D4DE32200E8431F /* BaseTableViewControllerDemo.m in Sources */,
+				960BD81F1D50FD6500885DEE /* SupplementaryTitleTableView.m in Sources */,
 				96EDCB3E1D4A51F400F9DC3F /* AbstractBaseCollectionView.m in Sources */,
 				9639AA711D458EEB007719B0 /* SetMealCellModel.m in Sources */,
 				96EDCB5F1D4A5F4500F9DC3F /* JASValue1CellModel.m in Sources */,
@@ -1052,6 +1063,7 @@
 				9639AA7C1D458EEB007719B0 /* JASTableViewController.m in Sources */,
 				9639AA811D458EEB007719B0 /* NSObject+Coder.m in Sources */,
 				96EDCB611D4A5F4500F9DC3F /* JASValue2CellModel.m in Sources */,
+				960BD8221D510BA300885DEE /* SupplementaryViewTableView.m in Sources */,
 				9639AA841D458EEB007719B0 /* UIDevice+Coder.m in Sources */,
 				9639AA661D458EEB007719B0 /* BaseObject.m in Sources */,
 				9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */,

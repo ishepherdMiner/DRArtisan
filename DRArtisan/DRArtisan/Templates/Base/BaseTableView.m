@@ -103,7 +103,6 @@
     // Need Custom implement setter dataList
     NSMutableArray *dataListM = [NSMutableArray arrayWithCapacity:[dataList count]];
     if (self.isSingleDimension) {
-        NSMutableArray *dataListM = [NSMutableArray arrayWithCapacity:[dataList count]];
         for (id data in dataList) {
             if(kFoundationProperty(data)){
                 [dataListM addObject:[self packFoundationClass:data]];

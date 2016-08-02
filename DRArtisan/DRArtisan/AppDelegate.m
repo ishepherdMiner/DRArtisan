@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
-    _window.rootViewController = [[BaseCollectionViewControllerDemo alloc] init];
+    _window.rootViewController = [[BaseTableViewControllerDemo alloc] init];
     [UIDevice jas_broken];
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试

@@ -26,6 +26,8 @@
 // TableView
 #import "BaseTableView.h"
 #import "FlexibleHeightTableView.h"
+#import "SupplementaryTitleTableView.h"
+#import "SupplementaryViewTableView.h"
 
 // TableViewCell
 #import "BaseTableViewCell.h"

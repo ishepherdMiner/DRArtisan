@@ -30,7 +30,7 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     // Set demo cell option
-    self.identifier = 3;
+    self.identifier = 1;
     [self tableViewDemoWithIdentifier:self.identifier];
 }
 
@@ -55,7 +55,8 @@
     // [self.view addSubview:_base_table_v = base_table_v];
     
     // 创建TableView
-    BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
+    SupplementaryViewTableView *base_table_v = [SupplementaryViewTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
+    
     switch (identifier) {
         case UITableViewCellStyleDefault:{
             [base_table_v registerClass:[JASDefaultCell class]];
@@ -84,7 +85,12 @@
     base_table_v.sdelegate = self;
     
     [self.view addSubview:_base_table_v = base_table_v];
-
+    
+    // option
+    // - SupplementaryTitleTableView class
+    // [base_table_v titleWithSectionHeader:@[@"asdf"] sectionFooter:@[@"a"]];
+    // - SupplementaryTitleTableView class
+    // [base_table_v heightWithSectionHeader:@[@(30)] sectionFooter:@[@(20)]];
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
