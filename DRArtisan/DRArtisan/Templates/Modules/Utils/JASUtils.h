@@ -75,3 +75,16 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
 
 @end
 
+@interface JASUtils (RemotePush)
+
+/// 向苹果服务器申请远程通知的服务
++ (void)registerPushService;
+
+/// 将得到的deviceToken进行处理并发送相应的通知 1 => 将返回值保存起来 2.通过通知得到
++ (NSString *)postDeviceToken:(NSData *)deviceToken;
+
+/// 发送处理后的deviceToken的通知
+UIKIT_EXTERN const NSString *RegisterDeviceToken;
+
+@end
+

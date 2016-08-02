@@ -145,3 +145,38 @@
 }
 
 @end
+
+NSString *RegisterDeviceToken = @"RegisterDeviceToken";
+@implementation JASUtils (RemotePush)
+
++ (void)registerPushService {
+#if __IPHONE_OS_VERSION_MAX_ALLOWED > 90000
+    UIUserNotificationSettings *settings = [UIUserNotificationSettings
+                                            settingsForTypes:(UIUserNotificationTypeBadge
+                                                              |UIUserNotificationTypeSound
+                                                              |UIUserNotificationTypeAlert) categories:nil];
+    [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+        
+#else 
+    #if __IPHONE_OS_VERSION_MAX_ALLOWED > 80000
+            UIUserNotificationSettings *settings = [UIUserNotificationSettings settingsForTypes:(UIRemoteNotificationTypeBadge|
+                                UIRemoteNotificationTypeSound|UIRemoteNotificationTypeAlert) categories:nil];
+            [[UIApplication sharedApplication] registerUserNotificationSettings:settings];
+    #else 
+        UIRemoteNotificationType myTypes = UIRemoteNotificationTypeBadge |UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound;
+        [[UIApplication sharedApplication] registerForRemoteNotificationTypes:myTypes];
+    
+    #endif
+#endif
+}
+
++ (NSString *)postDeviceToken:(NSData *)deviceToken {
+    NSString *deviceTokenString = [NSString stringWithFormat:@"%@",deviceToken];
+    deviceTokenString = [[deviceTokenString substringWithRange:NSMakeRange(1, deviceTokenString.length - 2)] stringByReplacingOccurrencesOfString:@" " withString:@""];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:RegisterDeviceToken object:deviceTokenString];
+    
+    return deviceTokenString;
+}
+
+@end

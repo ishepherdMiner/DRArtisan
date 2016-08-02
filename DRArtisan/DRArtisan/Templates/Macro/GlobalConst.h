@@ -37,7 +37,7 @@
  *  @date    20160617
  */
 #define device_version [[UIDevice currentDevice] systemVersion]
-#define device_version_newer(version) [device_version compare:version options: NSNumericSearch] != NSOrderedAscending
+#define device_version_newer(version) [device_version compare:@(version).stringValue options: NSNumericSearch] != NSOrderedAscending
 
 /**
  *  Setting device bounds const
