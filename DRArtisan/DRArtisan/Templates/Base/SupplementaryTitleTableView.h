@@ -13,6 +13,4 @@
  */
 @interface SupplementaryTitleTableView : FlexibleHeightTableView
 
-- (void)titleWithSectionHeader:(NSArray *)headerTitles sectionFooter:(NSArray *)footerTitles;
-
 @end

@@ -15,6 +15,15 @@
 
 @property (nonatomic,assign,getter=isSingleDimension) BOOL singleDimension;
 
+/// Every section header title
+@property (nonatomic,strong) NSArray *headerTitles;
+
+/// Every section footer title
+@property (nonatomic,strong) NSArray *footerTitles;
+
+@property (nonatomic,strong) NSArray *headerHeights;
+@property (nonatomic,strong) NSArray *footerHeights;
+
 @end
 
 @implementation BaseTableView
@@ -46,6 +55,69 @@
     obj.dataList = dataList;
     
     return obj;
+}
+
++ (instancetype)tableViewWithFrame:(CGRect)frame
+                             style:(UITableViewStyle)style
+                          dataList:(NSArray *)dataList
+                              type:(XCTableViewType)type {
+    NSAssert([dataList isKindOfClass:[NSArray class]], @"dataSource param must be an array class");
+    
+    // [[self alloc] initWithFrame:frame style:style];
+    BaseTableView *obj =  nil;
+    
+    switch (type) {
+        case XCTableViewTypeBase:{
+            obj = [[BaseTableView alloc] initWithFrame:frame style:style];
+        }
+            break;
+        case XCTableViewTypeFlexibleHeight:{
+            obj = [[FlexibleHeightTableView alloc] initWithFrame:frame style:style];
+        }
+            break;
+        case XCTableViewTypeSupplementaryTitle:{
+            obj = [[SupplementaryTitleTableView alloc] initWithFrame:frame style:style];
+        }
+            break;
+        case XCTableViewTypeSupplementaryView:{
+            obj = [[SupplementaryViewTableView alloc] initWithFrame:frame style:style];
+        }
+            break;
+        default:{
+            obj = [[BaseTableView alloc] initWithFrame:frame style:style];
+        }
+            break;
+    }
+    
+    // default datasource is single dimension array
+    obj.singleDimension = true;
+    if (kTypecheck == kStrict) {
+        for (id subList in dataList) {
+            if ([subList isKindOfClass:[NSArray class]]) {
+                obj.singleDimension = false;
+                break;
+            }
+        }
+    }else if(kTypecheck == kSlack) {
+        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
+            obj.singleDimension = false;
+        }
+    }
+    
+    obj.customSetter = true;
+    obj.dataList = dataList;
+    
+    return obj;
+}
+
+- (void)titleWithSectionHeader:(NSArray *)headerTitles sectionFooter:(NSArray *)footerTitles {
+    self.headerTitles = headerTitles;
+    self.footerTitles = footerTitles;
+}
+
+- (void)heightWithSectionHeader:(NSArray *)headerHeights sectionFooter:(NSArray *)footerHeights {
+    self.headerHeights = headerHeights;
+    self.footerHeights = footerHeights;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

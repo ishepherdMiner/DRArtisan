@@ -30,35 +30,6 @@
     
     [BaseObject hookMethod:self OriginSelector:@selector(presentViewController:animated:completion:) SwizzledSelector:@selector(jas_presentViewController:animated:completion:)];
     
-    /*
-    Method originMethod = class_getInstanceMethod(self.class, @selector(viewDidLoad));
-    Method swissMethod = class_getInstanceMethod(self.class, @selector(jas_viewDidLoad));
-    method_exchangeImplementations(originMethod, swissMethod);
-    
-    originMethod = class_getInstanceMethod(self.class, @selector(viewWillAppear:));
-    swissMethod = class_getInstanceMethod(self.class, @selector(jas_viewWillAppear:));
-    method_exchangeImplementations(originMethod, swissMethod);
-    
-    originMethod = class_getInstanceMethod(self.class, @selector(viewDidAppear:));
-    swissMethod = class_getInstanceMethod(self.class, @selector(jas_viewDidAppear:));
-    method_exchangeImplementations(originMethod, swissMethod);
-    
-    originMethod = class_getInstanceMethod(self.class, @selector(viewWillDisappear:));
-    swissMethod = class_getInstanceMethod(self.class, @selector(jas_viewWillDisappear:));
-    method_exchangeImplementations(originMethod, swissMethod);
-    
-    originMethod = class_getInstanceMethod(self.class, @selector(viewDidDisappear:));
-    swissMethod = class_getInstanceMethod(self.class, @selector(jas_viewDidDisappear:));
-    method_exchangeImplementations(originMethod, swissMethod);
-    
-    originMethod = class_getInstanceMethod(self.class,@selector(pushViewController:animated:));
-    swissMethod = class_getInstanceMethod(self.class,@selector(jas_pushViewController:animated:));
-    method_exchangeImplementations(originMethod,swissMethod);
-    
-    originMethod = class_getInstanceMethod(self.class, @selector(presentViewController:animated:completion:));
-    swissMethod  = class_getInstanceMethod(self.class, @selector(jas_presentViewController:animated:completion:));
-    method_exchangeImplementations(originMethod,swissMethod);
-     */
 }
 
 - (void)jas_viewDidLoad {

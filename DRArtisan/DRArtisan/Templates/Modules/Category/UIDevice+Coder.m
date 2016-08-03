@@ -423,10 +423,10 @@
                               @"iPhone5,4" : @"iPhone-5c",
                               @"iPhone6,1" : @"iPhone-5s",
                               @"iPhone6,2" : @"iPhone-5s",
-                              @"iPhone7,1" : @"iPhone-6 Plus",
+                              @"iPhone7,1" : @"iPhone-6-Plus",
                               @"iPhone7,2" : @"iPhone-6",
                               @"iPhone8,1" : @"iPhone-6s",
-                              @"iPhone8,2" : @"iPhone-6s Plus",
+                              @"iPhone8,2" : @"iPhone-6s-Plus",
                               @"iPhone8,4" : @"iPhone-SE",
                               
                               @"iPad1,1" : @"iPad-1",

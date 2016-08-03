@@ -10,9 +10,6 @@
 
 @interface SupplementaryViewTableView ()
 
-@property (nonatomic,strong) NSArray *heightHeader;
-@property (nonatomic,strong) NSArray *heightFooter;
-
 @end
 
 @implementation SupplementaryViewTableView
@@ -38,9 +35,9 @@
         }
     }
     
-    NSAssert(self.heightFooter, @"Subclass not override this method and not call heightWithSectionHeader:sectionFooter: is not allow");
+    NSAssert(self.footerHeights, @"Subclass not override this method and not call heightWithSectionHeader:sectionFooter: is not allow");
     
-    return [self.heightFooter[section] doubleValue];
+    return [self.footerHeights[section] doubleValue];
 }
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
@@ -64,14 +61,9 @@
         }
     }
     
-    NSAssert(self.heightHeader, @"Subclass not override this method and not call heightWithSectionHeader:sectionFooter: is not allow");
+    NSAssert(self.headerHeights, @"Subclass not override this method and not call heightWithSectionHeader:sectionFooter: is not allow");
     
-    return [self.heightHeader[section] doubleValue];
-}
-
-- (void)heightWithSectionHeader:(NSArray *)heightHeader sectionFooter:(NSArray *)heightFooter {
-    self.heightHeader = heightHeader;
-    self.heightFooter = heightFooter;
+    return [self.headerHeights[section] doubleValue];
 }
 
 @end

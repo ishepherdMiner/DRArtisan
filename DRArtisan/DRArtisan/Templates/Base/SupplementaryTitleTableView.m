@@ -10,20 +10,10 @@
 
 @interface SupplementaryTitleTableView ()
 
-/// Every section header title
-@property (nonatomic,strong) NSArray *headerTitles;
-
-/// Every section footer title
-@property (nonatomic,strong) NSArray *footerTitles;
-
 @end
 
 @implementation SupplementaryTitleTableView
 
-- (void)titleWithSectionHeader:(NSArray *)headerTitles sectionFooter:(NSArray *)footerTitles {
-    self.headerTitles = headerTitles;
-    self.footerTitles = footerTitles;
-}
 
 - (NSString *)tableView:(UITableView *)tableView titleForFooterInSection:(NSInteger)section {
     if (self.cdelegate) {

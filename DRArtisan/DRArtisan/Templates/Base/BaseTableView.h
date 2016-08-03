@@ -8,6 +8,12 @@
 
 #import "AbstractBaseTableView.h"
 
+typedef NS_ENUM(NSUInteger,XCTableViewType){
+    XCTableViewTypeBase,
+    XCTableViewTypeFlexibleHeight,
+    XCTableViewTypeSupplementaryTitle,
+    XCTableViewTypeSupplementaryView,
+};
 
 /**
  *  满足以下条件时可以使用:
@@ -67,11 +73,18 @@
 
  *
  */
-
 @interface BaseTableView : AbstractBaseTableView
 
 /// 数据源是一维数组(true)/二维数组(false)
 @property (nonatomic,assign,readonly,getter=isSingleDimension) BOOL singleDimension;
+/// Every section header title
+@property (nonatomic,strong,readonly) NSArray *headerTitles;
+/// Every section footer title
+@property (nonatomic,strong,readonly) NSArray *footerTitles;
+/// Every section header height
+@property (nonatomic,strong,readonly) NSArray *headerHeights;
+/// Every section footer height
+@property (nonatomic,strong,readonly) NSArray *footerHeights;
 
 /**
  *  指定的初始化方法
@@ -86,5 +99,12 @@
                              style:(UITableViewStyle)style
                           dataList:(NSArray *)dataList;
 
++ (instancetype)tableViewWithFrame:(CGRect)frame
+                             style:(UITableViewStyle)style
+                          dataList:(NSArray *)dataList
+                              type:(XCTableViewType)type;
+
+- (void)titleWithSectionHeader:(NSArray *)headerTitles sectionFooter:(NSArray *)footerTitles;
+- (void)heightWithSectionHeader:(NSArray *)headerHeights sectionFooter:(NSArray *)footerHeights;
 
 @end
