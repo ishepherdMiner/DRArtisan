@@ -14,6 +14,8 @@
 #include <net/if_dl.h>
 #include <arpa/inet.h>
 
+#import <AVFoundation/AVFoundation.h>
+
 #define kWiFiSent     kZero
 #define kWiFiReceived kOne
 #define kWWANSent     kTwo
@@ -178,5 +180,34 @@ NSString *RegisterDeviceToken = @"RegisterDeviceToken";
     
     return deviceTokenString;
 }
+
+@end
+
+@implementation JASUtils (Device)
+
+//+ (void)monitorWithObserver:(id)observer selector:(SEL)sel option:(ObservedOptions)options{
+//    
+//    // Remeber remove observer in - dealloc method
+//    if (options & ObservedOptionsBrightness) {
+//        [[UIScreen mainScreen] addObserver:observer forKeyPath:@"brightness" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
+//    }
+//    
+//    if (options & ObservedOptionsVolumn) {
+//        NSError *error;
+//        // Active audio session before you listen to the volume change event.
+//        // It must be called first.
+//        // The old style code equivalent to the line below is:
+//        //
+//        // AudioSessionInitialize(NULL, NULL, NULL, NULL);
+//        // AudioSessionSetActive(YES);
+//        //
+//        // Now the code above is deprecated in iOS 7.0, you should use the new
+//        // code here.
+//        [[AVAudioSession sharedInstance] setActive:YES error:&error];
+//        
+//        // add event handler, for this example, it is `volumeChange:` method
+//        [[NSNotificationCenter defaultCenter] addObserver:observer selector:sel name:@"AVSystemController_SystemVolumeDidChangeNotification" object:nil];
+//    }
+//}
 
 @end

@@ -21,7 +21,7 @@
     }
     // NSAssert([self.dataList[indexPath.row] cell_h], @"You should set cell_h at setModel: on table view cell object");
     
-    if (self.isSingleDimension) {
+    if (self.sourceType == XCTableViewDataSourceTypeSingle) {
         if ([self.dataList[indexPath.row] cell_h] == kZero) {
             return self.rowHeight == kZero ? kDefaultCellHeight : self.rowHeight;
         }

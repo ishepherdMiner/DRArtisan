@@ -55,7 +55,9 @@
     // [self.view addSubview:_base_table_v = base_table_v];
     
     // 创建TableView
-    SupplementaryViewTableView *base_table_v = [SupplementaryViewTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain dataList:[self datas]];
+    BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain classType:XCTableViewClassTypeBase];
+    
+    base_table_v.dataList = [self datas];
     
     switch (identifier) {
         case UITableViewCellStyleDefault:{

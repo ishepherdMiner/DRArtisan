@@ -75,6 +75,7 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
 
 @end
 
+/// 远程通知工具方法
 @interface JASUtils (RemotePush)
 
 /// 向苹果服务器申请远程通知的服务
@@ -85,6 +86,17 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
 
 /// 发送处理后的deviceToken的通知
 UIKIT_EXTERN const NSString *RegisterDeviceToken;
+
+@end
+
+typedef NS_ENUM(NSUInteger,ObservedOptions){
+    ObservedOptionsBrightness = 1 << 0,  // 设备的屏幕亮度
+    ObservedOptionsVolumn = 1 << 1,      //
+};
+/// 设备相关的工具方法
+@interface JASUtils (Device)
+
+// + (void)monitorWithObserver:(id)observer selector:(SEL)sel option:(ObservedOptions)options;
 
 @end
 

@@ -35,8 +35,11 @@
 //    NSArray *demoArr = [self demoArr];
 //    XcLog(@"%@",demoArr);
     
+//    [JASUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
     // 测试设备信息相关的方法
     [BaseObject jas_test];
+    
+    [UIScreen mainScreen].brightness = 0.3;
     
     [NSString jas_propertyList];
     // [JASUtils logViewRecursive:_window];
@@ -46,6 +49,14 @@
     
     return YES;
 }
+
+//- (void)change:(NSNotification *)noti {
+//    XcLog(@"1");
+//}
+//
+//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
+//    XcLog(@"2");
+//}
 
 - (void)iosUpgradeTest {
     // JasError;
@@ -124,6 +135,10 @@
                          }
               };
     
+}
+
+- (void)dealloc {
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (NSArray *)demoArr {

@@ -28,6 +28,8 @@
 #import "FlexibleHeightTableView.h"
 #import "SupplementaryTitleTableView.h"
 #import "SupplementaryViewTableView.h"
+#import "SupplementaryHeaderTitleMix.h"
+#import "SupplementaryHeaderViewMix.h"
 
 // TableViewCell
 #import "BaseTableViewCell.h"

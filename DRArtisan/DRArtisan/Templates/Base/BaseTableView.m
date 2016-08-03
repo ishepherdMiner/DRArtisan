@@ -13,7 +13,7 @@
 
 @interface BaseTableView ()
 
-@property (nonatomic,assign,getter=isSingleDimension) BOOL singleDimension;
+@property (nonatomic,assign) XCTableViewDataSourceType sourceType;
 
 /// Every section header title
 @property (nonatomic,strong) NSArray *headerTitles;
@@ -30,82 +30,40 @@
 
 + (instancetype)tableViewWithFrame:(CGRect)frame
                              style:(UITableViewStyle)style
-                        dataList:(NSArray *)dataList{
+                         classType:(XCTableViewClassType)classType {
     
-    NSAssert([dataList isKindOfClass:[NSArray class]], @"dataSource param must be an array class");
-    
-    BaseTableView *obj = [[self alloc] initWithFrame:frame style:style];
-    
-    // default datasource is single dimension array
-    obj.singleDimension = true;
-    if (kTypecheck == kStrict) {
-        for (id subList in dataList) {
-            if ([subList isKindOfClass:[NSArray class]]) {
-                obj.singleDimension = false;
-                break;
-            }
-        }
-    }else if(kTypecheck == kSlack) {
-        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
-            obj.singleDimension = false;
-        }
-    }
-    
-    obj.customSetter = true;
-    obj.dataList = dataList;
-    
-    return obj;
-}
-
-+ (instancetype)tableViewWithFrame:(CGRect)frame
-                             style:(UITableViewStyle)style
-                          dataList:(NSArray *)dataList
-                              type:(XCTableViewType)type {
-    NSAssert([dataList isKindOfClass:[NSArray class]], @"dataSource param must be an array class");
-    
-    // [[self alloc] initWithFrame:frame style:style];
     BaseTableView *obj =  nil;
     
-    switch (type) {
-        case XCTableViewTypeBase:{
+    switch (classType) {
+        case XCTableViewClassTypeBase:{
             obj = [[BaseTableView alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewTypeFlexibleHeight:{
+        case XCTableViewClassTypeFlexibleHeight:{
             obj = [[FlexibleHeightTableView alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewTypeSupplementaryTitle:{
+        case XCTableViewClassTypeSupplementaryTitle:{
             obj = [[SupplementaryTitleTableView alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewTypeSupplementaryView:{
+        case XCTableViewClassTypeSupplementaryView:{
             obj = [[SupplementaryViewTableView alloc] initWithFrame:frame style:style];
         }
             break;
+        case XCTableViewClassTypeSupplementaryHeaderTitle:{
+            obj = [[SupplementaryHeaderTitleMix alloc] initWithFrame:frame style:style];
+        }
+        case XCTableViewClassTypeSupplementaryHeaderView:{
+            obj = [[SupplementaryHeaderViewMix alloc] initWithFrame:frame style:style];
+        }
         default:{
             obj = [[BaseTableView alloc] initWithFrame:frame style:style];
         }
             break;
     }
     
-    // default datasource is single dimension array
-    obj.singleDimension = true;
-    if (kTypecheck == kStrict) {
-        for (id subList in dataList) {
-            if ([subList isKindOfClass:[NSArray class]]) {
-                obj.singleDimension = false;
-                break;
-            }
-        }
-    }else if(kTypecheck == kSlack) {
-        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
-            obj.singleDimension = false;
-        }
-    }
-    
     obj.customSetter = true;
-    obj.dataList = dataList;
     
     return obj;
 }
@@ -121,25 +79,37 @@
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return self.isSingleDimension ?
+    // when datasource not require from servers
+    if (_dataList == nil) { return kOne; }
+    
+    NSAssert([_dataList isKindOfClass:[NSArray class]], @"The dataList property must be an array class.");
+    
+    // don't call setDataList: but set value for dataList property
+    if (_sourceType == XCTableViewDataSourceTypeUnassigned) {
+        _sourceType = [self dataSourceTypeWithDataList:_dataList];
+    }
+    
+    return _sourceType == XCTableViewDataSourceTypeSingle ?
         [super numberOfSectionsInTableView:tableView] : [self.dataList count];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return self.isSingleDimension ?
+    if (_dataList == nil) { return kZero; }
+    
+    // In - numberOfSectionInTableView: method already check the validity of _dataList
+    return _sourceType == XCTableViewDataSourceTypeSingle ?
         [super tableView:tableView numberOfRowsInSection:section] : [self.dataList[section] count];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     BaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
-    // static int i = 0;
     if (cell == nil) {
         cell = [[[[self cellClass] class] alloc] initWithStyle:self.cellStyle
                                                reuseIdentifier:self.identifier];
         XcLog(@"cell reuse => %zd",self.reuseCount++);
     }
     
-    if(self.singleDimension) {
+    if(_sourceType == XCTableViewDataSourceTypeSingle) {
         cell.model = self.dataList[indexPath.row];
     }else {
         cell.model = self.dataList[indexPath.section][indexPath.row];
@@ -170,11 +140,17 @@
 
 - (void)setDataList:(NSArray *)dataList {
     _dataList = dataList;
+    
+    // if set dataList by call setDataList:
+    if (_sourceType == XCTableViewDataSourceTypeUnassigned) {
+        _sourceType = [self dataSourceTypeWithDataList:dataList];
+    }
+    
     if (self.customSetter == false) { return; }
     
     // Need Custom implement setter dataList
     NSMutableArray *dataListM = [NSMutableArray arrayWithCapacity:[dataList count]];
-    if (self.isSingleDimension) {
+    if (_sourceType == XCTableViewDataSourceTypeSingle) {
         for (id data in dataList) {
             if(kFoundationProperty(data)){
                 [dataListM addObject:[self packFoundationClass:data]];
@@ -196,6 +172,25 @@
         }
     }
     _dataList = [dataListM copy];
+}
+
+
+- (XCTableViewDataSourceType)dataSourceTypeWithDataList:(NSArray *)dataList {
+    _sourceType = XCTableViewDataSourceTypeSingle;
+    if (kTypecheck == kStrict) {
+        for (id subList in dataList) {
+            if ([subList isKindOfClass:[NSArray class]]) {
+                _sourceType = XCTableViewDataSourceTypeMulti;
+                break;
+            }
+        }
+    }else if(kTypecheck == kSlack) {
+        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
+            _sourceType = XCTableViewDataSourceTypeMulti;
+        }
+    }
+    
+    return _sourceType;
 }
 
 @end
