@@ -30,12 +30,15 @@
         }
     }
     
+    
     // UIView *testView = [[UIView alloc] init];
     // testView.backgroundColor = [UIColor redColor];
     // return testView;
     // 如果需要具体的尾视图最好交给子类或控制器去实现
     AbstractMethodNotImplemented();
 }
+
+
 
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
     if(self.cdelegate) {

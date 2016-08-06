@@ -66,4 +66,8 @@
     return [self.headerHeights[section] doubleValue];
 }
 
+- (UIView *)hitTest:(CGPoint)point withEvent:(UIEvent *)event {
+    return nil;
+}
+
 @end

@@ -54,9 +54,11 @@
         case XCTableViewClassTypeSupplementaryHeaderTitle:{
             obj = [[SupplementaryHeaderTitleMix alloc] initWithFrame:frame style:style];
         }
+            break;
         case XCTableViewClassTypeSupplementaryHeaderView:{
             obj = [[SupplementaryHeaderViewMix alloc] initWithFrame:frame style:style];
         }
+            break;
         default:{
             obj = [[BaseTableView alloc] initWithFrame:frame style:style];
         }

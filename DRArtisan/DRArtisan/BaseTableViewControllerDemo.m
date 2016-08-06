@@ -55,7 +55,7 @@
     // [self.view addSubview:_base_table_v = base_table_v];
     
     // 创建TableView
-    BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain classType:XCTableViewClassTypeBase];
+    BaseTableView *base_table_v = [BaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain classType:XCTableViewClassTypeSupplementaryHeaderTitle];
     
     base_table_v.dataList = [self datas];
     
