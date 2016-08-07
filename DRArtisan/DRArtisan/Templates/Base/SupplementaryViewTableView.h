@@ -9,7 +9,7 @@
 #import "FlexibleHeightTableView.h"
 
 /**
- *  提供自定义的头视图与尾视图的视图对象(优先级高于SupplementaryTitleTableView中的代理方法
+ *  头视图与尾视图都为UIView对象(优先级高于SupplementaryTitleTableView中的代理方法)
  */
 @interface SupplementaryViewTableView : FlexibleHeightTableView
 

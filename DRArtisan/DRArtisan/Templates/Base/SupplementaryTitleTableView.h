@@ -9,7 +9,7 @@
 #import "FlexibleHeightTableView.h"
 
 /**
- *  提供自定义每一组的头视图与尾视图的文案内容
+ *  头视图与尾视图都为title即可满足的TableView的类型
  */
 @interface SupplementaryTitleTableView : FlexibleHeightTableView
 

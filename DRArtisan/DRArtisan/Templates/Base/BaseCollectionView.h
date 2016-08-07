@@ -8,6 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
+typedef NS_ENUM(NSUInteger,XCCollectionViewClassType){
+    // 一般的collectionView
+    XCCollectionViewClassTypeBase,
+    // cell高度能改变的 => 支持瀑布流的collectionView
+    XCCollectionViewClassTypeFlexibleHeight,
+};
+
 /**
  * 关于UICollectionView的基本介绍
  *  http://www.jianshu.com/p/b0d03c40fd65
@@ -29,5 +36,6 @@
 + (instancetype)collectionViewWithFrame:(CGRect)frame
                                   style:(UICollectionViewLayout *)style
                                dataList:(NSArray *)dataList ;
+
 
 @end

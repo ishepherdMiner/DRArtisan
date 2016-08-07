@@ -8,42 +8,39 @@
 
 #import "AbstractBaseTableView.h"
 
+/// 自定义的UITableView class的子类类型
 typedef NS_ENUM(NSUInteger,XCTableViewClassType){
-    XCTableViewClassTypeBase,
-    XCTableViewClassTypeFlexibleHeight,
-    XCTableViewClassTypeSupplementaryTitle,
-    XCTableViewClassTypeSupplementaryView,
-    XCTableViewClassTypeSupplementaryHeaderTitle,
-    XCTableViewClassTypeSupplementaryHeaderView,
+    XCTableViewClassTypeBase,           // 基础的UITableView,可以快速创建系统的cell
+    XCTableViewClassTypeFlexibleHeight, // cell的高度可变化的View
+    XCTableViewClassTypeAllTitle,       // 头视图与尾视图的都为Title
+    XCTableViewClassTypeAllView,        // 头视图与尾视图的都为UIView
+    XCTableViewClassTypeHeaderTitleMix, // 头视图为Title
+    XCTableViewClassTypeHeaderViewMix,  // 头视图为UIView
 };
 
+/// 数据源的状态
 typedef NS_ENUM(NSUInteger,XCTableViewDataSourceType){
-    XCTableViewDataSourceTypeUnassigned,
-    XCTableViewDataSourceTypeSingle,
-    XCTableViewDataSourceTypeMulti,
+    XCTableViewDataSourceTypeUnassigned,// 未赋值
+    XCTableViewDataSourceTypeSingle,    // 数据源为一维数组
+    XCTableViewDataSourceTypeMulti,     // 数据源为二维数组
 };
 
 @interface BaseTableView : AbstractBaseTableView
 
-/**
- *  数据源:
- *      一维数组(XCTableViewDataSourceTypeSingle)
- *      二维数组(XCTableViewDataSourceTypeMulti)
- *      初始值(XCTableViewDataSourceTypeUnassigned)
- */
+/// 数据源状态
 @property (nonatomic,assign,readonly) XCTableViewDataSourceType sourceType;
 
 /// Every section header title
-@property (nonatomic,strong,readonly) NSArray *headerTitles;
+@property (nonatomic,strong) NSArray *headerTitles;
 
 /// Every section footer title
-@property (nonatomic,strong,readonly) NSArray *footerTitles;
+@property (nonatomic,strong) NSArray *footerTitles;
 
 /// Every section header height
-@property (nonatomic,strong,readonly) NSArray *headerHeights;
+@property (nonatomic,strong) NSArray *headerHeights;
 
 /// Every section footer height
-@property (nonatomic,strong,readonly) NSArray *footerHeights;
+@property (nonatomic,strong) NSArray *footerHeights;
 
 /**
  *  Create a BaseTableView class cluster object
@@ -57,10 +54,5 @@ typedef NS_ENUM(NSUInteger,XCTableViewDataSourceType){
 + (instancetype)tableViewWithFrame:(CGRect)frame
                              style:(UITableViewStyle)style
                          classType:(XCTableViewClassType)classType;
-
-
-- (void)titleWithSectionHeader:(NSArray *)headerTitles sectionFooter:(NSArray *)footerTitles;
-
-- (void)heightWithSectionHeader:(NSArray *)headerHeights sectionFooter:(NSArray *)footerHeights;
 
 @end

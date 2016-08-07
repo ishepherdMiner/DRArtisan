@@ -15,15 +15,6 @@
 
 @property (nonatomic,assign) XCTableViewDataSourceType sourceType;
 
-/// Every section header title
-@property (nonatomic,strong) NSArray *headerTitles;
-
-/// Every section footer title
-@property (nonatomic,strong) NSArray *footerTitles;
-
-@property (nonatomic,strong) NSArray *headerHeights;
-@property (nonatomic,strong) NSArray *footerHeights;
-
 @end
 
 @implementation BaseTableView
@@ -43,19 +34,19 @@
             obj = [[FlexibleHeightTableView alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewClassTypeSupplementaryTitle:{
+        case XCTableViewClassTypeAllTitle:{
             obj = [[SupplementaryTitleTableView alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewClassTypeSupplementaryView:{
+        case XCTableViewClassTypeAllView:{
             obj = [[SupplementaryViewTableView alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewClassTypeSupplementaryHeaderTitle:{
+        case XCTableViewClassTypeHeaderTitleMix:{
             obj = [[SupplementaryHeaderTitleMix alloc] initWithFrame:frame style:style];
         }
             break;
-        case XCTableViewClassTypeSupplementaryHeaderView:{
+        case XCTableViewClassTypeHeaderViewMix:{
             obj = [[SupplementaryHeaderViewMix alloc] initWithFrame:frame style:style];
         }
             break;
@@ -68,16 +59,6 @@
     obj.customSetter = true;
     
     return obj;
-}
-
-- (void)titleWithSectionHeader:(NSArray *)headerTitles sectionFooter:(NSArray *)footerTitles {
-    self.headerTitles = headerTitles;
-    self.footerTitles = footerTitles;
-}
-
-- (void)heightWithSectionHeader:(NSArray *)headerHeights sectionFooter:(NSArray *)footerHeights {
-    self.headerHeights = headerHeights;
-    self.footerHeights = footerHeights;
 }
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
