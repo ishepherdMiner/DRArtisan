@@ -18,6 +18,7 @@
 #import "AbstractCollect.h"
 #import "BaseCollect.h"
 #import "JASUtils.h"
+#import "XCHTTPSessionManager.h"
 
 /**
  *  Setting switch service

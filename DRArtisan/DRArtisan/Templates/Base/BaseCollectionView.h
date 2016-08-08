@@ -8,11 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSUInteger,XCCollectionViewClassType){
-    // 一般的collectionView
-    XCCollectionViewClassTypeBase,
-    // cell高度能改变的 => 支持瀑布流的collectionView
-    XCCollectionViewClassTypeFlexibleHeight,
+typedef void (^ClickCellBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
+
+typedef NS_ENUM(NSUInteger,XCCollectionViewDataSourceType){
+    XCCollectionViewDataSourceTypeUnassigned,// 未赋值
+    XCCollectionViewDataSourceTypeSingle,    // 数据源为一维数组
+    XCCollectionViewDataSourceTypeMulti,     // 数据源为二维数组
 };
 
 /**
@@ -21,21 +22,8 @@ typedef NS_ENUM(NSUInteger,XCCollectionViewClassType){
  */
 @interface BaseCollectionView : AbstractBaseCollectionView
 
-@property (nonatomic,assign,readonly,getter=isSingleDimension) BOOL singleDimension;
+@property (nonatomic,assign,readonly) XCCollectionViewDataSourceType sourceType;
 
-
-/**
- *  指定的初始化方法
- *
- *  @param frame    frame
- *  @param style    style
- *  @param dataList 数据源
- *
- *  @return BaseCollectionView object
- */
-+ (instancetype)collectionViewWithFrame:(CGRect)frame
-                                  style:(UICollectionViewLayout *)style
-                               dataList:(NSArray *)dataList ;
-
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout clickCellBlock:(ClickCellBlock)click;
 
 @end

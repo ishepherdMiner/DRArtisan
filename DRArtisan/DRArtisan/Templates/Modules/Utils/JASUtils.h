@@ -89,6 +89,7 @@ UIKIT_EXTERN const NSString *RegisterDeviceToken;
 
 @end
 
+#pragma mark - Waiting
 typedef NS_ENUM(NSUInteger,ObservedOptions){
     ObservedOptionsBrightness = 1 << 0,  // 设备的屏幕亮度
     ObservedOptionsVolumn = 1 << 1,      //

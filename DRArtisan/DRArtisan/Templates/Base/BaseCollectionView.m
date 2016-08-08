@@ -14,48 +14,37 @@
 
 @interface BaseCollectionView ()
 
-@property (nonatomic,assign,getter=isSingleDimension) BOOL singleDimension;
+@property (nonatomic,copy) ClickCellBlock clickCellBlock;
 
 @end
 
 @implementation BaseCollectionView
 
-+ (instancetype)collectionViewWithFrame:(CGRect)frame
-                                  style:(UICollectionViewLayout *)style
-                               dataList:(NSArray *)dataList {
-    
-    NSAssert([dataList isKindOfClass:[NSArray class]], @"dataSource param must be an array class");
-    
-    BaseCollectionView *obj = [[self alloc] initWithFrame:frame collectionViewLayout:style];
-    
-    obj.singleDimension = true;
-    // Require any element is NSArray class object
-    if (kTypecheck == kStrict) {
-        for (id subList in dataList) {
-            if ([subList isKindOfClass:[NSArray class]]) {
-                obj.singleDimension = false;
-            }
-        }
-    }else if(kTypecheck == kSlack) {
-        // Require first element is NSArray class object
-        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
-            obj.singleDimension = false;
-        }
-    }
-    
-    obj.customSetter = true;
-    obj.dataList = dataList;
-    
-    return obj;
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
+    return [self initWithFrame:frame collectionViewLayout:layout clickCellBlock:nil];
 }
 
+- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout clickCellBlock:(ClickCellBlock)click {
+    if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
+        self.customSetter = true;
+        self.clickCellBlock = click;
+    }
+    return self;
+}
+
+
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
-    return self.isSingleDimension ?
+    // don't call setDataList: but set value for dataList property
+    if (_sourceType == XCCollectionViewDataSourceTypeUnassigned) {
+        _sourceType = [self dataSourceTypeWithDataList:_dataList];
+    }
+    
+    return _sourceType == XCCollectionViewDataSourceTypeSingle ?
         [super numberOfSectionsInCollectionView:collectionView] : [self.dataList count];
 }
 
 - (NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section {
-    return self.isSingleDimension ?
+    return _sourceType == XCCollectionViewDataSourceTypeSingle ?
         [super collectionView:collectionView numberOfItemsInSection:section] : [self.dataList[section] count];
 }
 
@@ -64,7 +53,7 @@
     
     NSAssert(cell, @"You should call registerClass: method");
     
-    if (self.isSingleDimension) {
+    if (_sourceType == XCCollectionViewDataSourceTypeSingle) {
         cell.model = self.dataList[indexPath.row];
     }else {
         cell.model = self.dataList[indexPath.section][indexPath.row];
@@ -80,6 +69,11 @@
 //}
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
+    
+    if (self.clickCellBlock) {
+        return self.clickCellBlock(collectionView,indexPath);
+    }
+    
     if (self.cdelegate) {
         if ([self.cdelegate respondsToSelector:@selector(collectionView:didSelectItemAtIndexPath:)]) {
             return [self.cdelegate collectionView:collectionView didSelectItemAtIndexPath:indexPath];
@@ -98,11 +92,14 @@
 
 - (void)setDataList:(NSArray *)dataList {
     _dataList = dataList;
+    if (_sourceType == XCCollectionViewDataSourceTypeUnassigned) {
+        _sourceType = [self dataSourceTypeWithDataList:dataList];
+    }
     if (self.customSetter == false) { return; }
     
     // Need Custom implement setter dataList
     NSMutableArray *dataListM = [NSMutableArray arrayWithCapacity:[dataList count]];
-    if (self.isSingleDimension) {
+    if (_sourceType == XCCollectionViewDataSourceTypeSingle) {
         for (id data in dataList) {
             if(kFoundationProperty(data)){
                 [dataListM addObject:[self packFoundationClass:data]];
@@ -126,6 +123,22 @@
     _dataList = [dataListM copy];
 }
 
-
+- (XCCollectionViewDataSourceType)dataSourceTypeWithDataList:(NSArray *)dataList {
+    _sourceType = XCCollectionViewDataSourceTypeSingle;
+    if (kTypecheck == kStrict) {
+        for (id subList in dataList) {
+            if ([subList isKindOfClass:[NSArray class]]) {
+                _sourceType = XCCollectionViewDataSourceTypeMulti;
+                break;
+            }
+        }
+    }else if(kTypecheck == kSlack) {
+        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
+            _sourceType = XCCollectionViewDataSourceTypeMulti;
+        }
+    }
+    
+    return _sourceType;
+}
 
 @end

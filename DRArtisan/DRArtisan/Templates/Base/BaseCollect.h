@@ -43,6 +43,7 @@
 #import "FlexibleHeightCollectionView.h"
 #import "BaseCollectionViewFlowLayout.h"
 #import "WaterfallFlowLayout.h"
+#import "WaterFlowLayout.h"
 
 // CollectionViewCell
 #import "BaseCollectionViewCell.h"
