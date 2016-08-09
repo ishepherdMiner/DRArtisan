@@ -14,7 +14,10 @@
 - (CGFloat)waterflowLayout:(WaterFlowLayout *)waterflowLayout
             heightForWidth:(CGFloat)width
                atIndexPath:(NSIndexPath *)indexPath;
-
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+                   layout:(WaterFlowLayout *)layout
+ heightForItemAtIndexPath:(NSIndexPath*)indexPath
+                itemWidth:(NSUInteger)itemWidth;
 @end
 
 @interface WaterFlowLayout : UICollectionViewLayout

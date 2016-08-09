@@ -13,6 +13,9 @@
 		962058151D5847C90085DB4F /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058141D5847C90085DB4F /* NewsModel.m */; };
 		962058181D584FBB0085DB4F /* NewsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058171D584FBB0085DB4F /* NewsCollectionCell.m */; };
 		962058221D58D4F20085DB4F /* WaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058211D58D4F20085DB4F /* WaterFlowLayout.m */; };
+		962058261D594B270085DB4F /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058241D594B270085DB4F /* PhotoCell.m */; };
+		962058271D594B270085DB4F /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962058251D594B270085DB4F /* PhotoCell.xib */; };
+		9620582A1D594BAD0085DB4F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058291D594BAD0085DB4F /* Photo.m */; };
 		9624222E1D4827FB0028A835 /* TYWaterWaveView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222B1D4827FB0028A835 /* TYWaterWaveView.m */; };
 		9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222D1D4827FB0028A835 /* TYWaveProgressView.m */; };
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
@@ -116,6 +119,11 @@
 		962058171D584FBB0085DB4F /* NewsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionCell.m; sourceTree = "<group>"; };
 		962058201D58D4F20085DB4F /* WaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowLayout.h; sourceTree = "<group>"; };
 		962058211D58D4F20085DB4F /* WaterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFlowLayout.m; sourceTree = "<group>"; };
+		962058231D594B270085DB4F /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
+		962058241D594B270085DB4F /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
+		962058251D594B270085DB4F /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
+		962058281D594BAD0085DB4F /* Photo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Photo.h; sourceTree = "<group>"; };
+		962058291D594BAD0085DB4F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		9624222A1D4827FB0028A835 /* TYWaterWaveView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaterWaveView.h; sourceTree = "<group>"; };
 		9624222B1D4827FB0028A835 /* TYWaterWaveView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TYWaterWaveView.m; sourceTree = "<group>"; };
 		9624222C1D4827FB0028A835 /* TYWaveProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TYWaveProgressView.h; sourceTree = "<group>"; };
@@ -306,6 +314,11 @@
 		9621570E1D501693001019BB /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				962058281D594BAD0085DB4F /* Photo.h */,
+				962058291D594BAD0085DB4F /* Photo.m */,
+				962058231D594B270085DB4F /* PhotoCell.h */,
+				962058241D594B270085DB4F /* PhotoCell.m */,
+				962058251D594B270085DB4F /* PhotoCell.xib */,
 				96A3E06F1D4E18BC00E8431F /* BaseCollectionViewControllerDemo.h */,
 				96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */,
 				962058131D5847C90085DB4F /* NewsModel.h */,
@@ -971,6 +984,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				962058271D594B270085DB4F /* PhotoCell.xib in Resources */,
 				96E72F161D30A26000D5A3A9 /* LaunchScreen.storyboard in Resources */,
 				96E72F131D30A26000D5A3A9 /* Assets.xcassets in Resources */,
 				96E72F111D30A26000D5A3A9 /* Main.storyboard in Resources */,
@@ -1092,6 +1106,7 @@
 				960BD81F1D50FD6500885DEE /* SupplementaryTitleTableView.m in Sources */,
 				96EDCB3E1D4A51F400F9DC3F /* AbstractBaseCollectionView.m in Sources */,
 				9639AA711D458EEB007719B0 /* SetMealCellModel.m in Sources */,
+				9620582A1D594BAD0085DB4F /* Photo.m in Sources */,
 				96844F811D5259A600C37697 /* SupplementaryHeaderTitleMix.m in Sources */,
 				96EDCB5F1D4A5F4500F9DC3F /* JASValue1CellModel.m in Sources */,
 				96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */,
@@ -1112,6 +1127,7 @@
 				9639AA8D1D458EEB007719B0 /* CustomBadge.m in Sources */,
 				962058221D58D4F20085DB4F /* WaterFlowLayout.m in Sources */,
 				9639AA7F1D458EEB007719B0 /* NSDate+Coder.m in Sources */,
+				962058261D594B270085DB4F /* PhotoCell.m in Sources */,
 				96EDCB5B1D4A5F4500F9DC3F /* JASDefaultCellModel.m in Sources */,
 				9639AA921D458EEB007719B0 /* JASUtils.m in Sources */,
 				9639AA871D458EEB007719B0 /* UIViewController+Coder.m in Sources */,

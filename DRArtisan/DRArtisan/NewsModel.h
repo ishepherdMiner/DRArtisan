@@ -13,6 +13,12 @@
 
 @property (nonatomic,assign) NSUInteger image_height;
 @property (nonatomic,assign) NSUInteger image_width;
-@property (nonatomic,copy) NSString *image_url;
+
+@property (nonatomic, assign) CGFloat small_width;
+@property (nonatomic, assign) CGFloat small_height;
+@property (nonatomic, copy) NSString *small_url;
+@property (nonatomic, copy) NSString *title;
+
+@property (nonatomic , copy) NSString *image_url;
 
 @end

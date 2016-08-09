@@ -9,6 +9,7 @@
 #import "NewsCollectionCell.h"
 #import "UIKit+AFNetworking.h"
 #import "NewsModel.h"
+#import "UIImageView+WebCache.h"
 
 @interface NewsCollectionCell ()
 
@@ -18,10 +19,26 @@
 
 @implementation NewsCollectionCell
 
+- (instancetype)initWithFrame:(CGRect)frame {
+    if (self = [super initWithFrame:frame]) {
+        // UIImageView *newsImageView = [[UIImageView alloc] initWithFrame:self.bounds];
+        UIImageView *newsImageView = [[UIImageView alloc] init];
+        [self addSubview:_newsImageView = newsImageView];
+    }
+    return self;
+}
+
 - (void)setModel:(NewsModel *)model {
-    UIImageView *newsImageView = [[UIImageView alloc] initWithFrame:self.bounds];
-    [newsImageView setImageWithURL:[NSURL URLWithString:model.image_url]];
-    self.model.pass_h = model.pass_h;
-    [self addSubview:_newsImageView = newsImageView];
+    _model = model;
+
+    // [newsImageView setImageWithURL:[NSURL URLWithString:model.small_url]];
+    [_newsImageView sd_setImageWithURL:[NSURL URLWithString:model.small_url]];
+    // self.model.pass_h = model.pass_h;
+    
+}
+
+- (void)layoutSubviews {
+    [super layoutSubviews];
+    _newsImageView.frame = self.bounds;
 }
 @end

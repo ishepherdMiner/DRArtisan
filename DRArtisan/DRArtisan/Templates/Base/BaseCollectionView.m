@@ -50,11 +50,13 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BaseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier forIndexPath:indexPath];
+    // self.identifier
     
     NSAssert(cell, @"You should call registerClass: method");
     
     if (_sourceType == XCCollectionViewDataSourceTypeSingle) {
-        cell.model = self.dataList[indexPath.row];
+        cell.model = self.dataList[indexPath.item];
+        // cell.photo = self.dataList[indexPath.row];
     }else {
         cell.model = self.dataList[indexPath.section][indexPath.row];
     }
