@@ -8,12 +8,17 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void (^ClickCellBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
+typedef void (^ClickItemBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
 
 typedef NS_ENUM(NSUInteger,XCCollectionViewDataSourceType){
     XCCollectionViewDataSourceTypeUnassigned,// 未赋值
     XCCollectionViewDataSourceTypeSingle,    // 数据源为一维数组
     XCCollectionViewDataSourceTypeMulti,     // 数据源为二维数组
+};
+
+typedef NS_ENUM(NSUInteger,XCCollectionViewClassType) {
+    XCCollectionViewClassTypeBase,
+    XCCollectionViewClassTypeFlex,
 };
 
 /**
@@ -24,6 +29,9 @@ typedef NS_ENUM(NSUInteger,XCCollectionViewDataSourceType){
 
 @property (nonatomic,assign,readonly) XCCollectionViewDataSourceType sourceType;
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout clickCellBlock:(ClickCellBlock)click;
++ (instancetype)collectionViewWithFrame:(CGRect)frame
+                                 layout:(UICollectionViewLayout *)layout
+                              classType:(XCCollectionViewClassType)classType
+                         clickItemBlock:(ClickItemBlock)click;
 
 @end

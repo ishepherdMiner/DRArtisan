@@ -45,6 +45,8 @@
 #import "WaterfallFlowLayout.h"
 #import "WaterFlowLayout.h"
 
+#import "Capable.h"
+
 // CollectionViewCell
 #import "BaseCollectionViewCell.h"
 #import "BaseCollectionCellModel.h"

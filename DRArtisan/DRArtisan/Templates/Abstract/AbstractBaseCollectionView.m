@@ -22,9 +22,8 @@
     NSAssert(![self isMemberOfClass:[AbstractBaseCollectionView class]], @"AbstractBaseTableView is an abstract class, you should not instantiate it directly.");
     if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
         self.dataSource = self;
-        self.delegate = self;
-    }
-    
+        self.delegate = self;        
+    }    
     return self;
 }
 
@@ -46,6 +45,15 @@
     self.identifier = NSStringFromClass([cellClass class]);
     [self registerClass:_cellClass forCellWithReuseIdentifier:_identifier];
 }
+#pragma mark - BaseCollectionViewDelegate
+- (void)moveItemAtIndexPath:(NSIndexPath *)srcIndexPath toIndexPath:(NSIndexPath *)desIndexPath {
+    if(srcIndexPath.row != desIndexPath.row){
+        NSMutableArray *dataListM = [NSMutableArray arrayWithArray:self.dataList];
+        NSString *value = dataListM[srcIndexPath.row];
+        [dataListM removeObjectAtIndex:srcIndexPath.row];
+        [dataListM insertObject:value atIndex:desIndexPath.row];
+    }
+}
 
 #pragma mark - Wait to improve
 - (BaseCollectionCellModel *)packFoundationClass:(id)obj {
@@ -57,4 +65,5 @@
     }else{return obj;}
     return model;
 }
+
 @end

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class WaterfallFlowLayout;
+@class WaterFlowLayout;
 
 @protocol ServiceCollectionViewDelegate <NSObject>
 
@@ -31,18 +31,27 @@
 - (id)packFoundationClass:(id)obj;
 
 /**
- *  <#Description#>
+ *  The collectionView cell height
  *
- *  @param collectionView <#collectionView description#>
- *  @param layout         <#layout description#>
- *  @param indexPath      <#indexPath description#>
+ *  @param collectionView which collectionView object
+ *  @param layout         which collectionView layout
+ *  @param indexPath      which collecitonView indexPath
  *
- *  @return <#return value description#>
+ *  @return the height for assign conditons
  */
 - (CGFloat)collectionView:(UICollectionView*)collectionView
-                   layout:(WaterfallFlowLayout *) layout
+                   layout:(WaterFlowLayout *) layout
  heightForItemAtIndexPath:(NSIndexPath*)indexPath
                 itemWidth:(NSUInteger)itemWidth;
+
+/**
+ *  The collectionView movable
+ *
+ *  @param sourceIndexPath      source IndexPath
+ *  @param destinationIndexPath destination IndexPath
+ */
+- (void)moveItemAtIndexPath:(NSIndexPath *)sourceIndexPath
+                toIndexPath:(NSIndexPath *)destinationIndexPath;
 
 @end
 

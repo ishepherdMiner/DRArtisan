@@ -14,5 +14,9 @@
     return @{@"pass_h":@"image_height"};
 }
 
+- (CGFloat)calculateHeightWithItemWidth:(CGFloat)itemWidth indexPath:(NSIndexPath *)indexPath {
+    return self.small_height / self.small_width * itemWidth;
+}
+
 
 @end

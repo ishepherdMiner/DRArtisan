@@ -84,6 +84,7 @@
 		96EDCB641D4A5F9900F9DC3F /* BaseCollectionViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 96EDCB631D4A5F9900F9DC3F /* BaseCollectionViewCell.m */; };
 		96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45A1D31502200AB1C03 /* DemoModel.m */; };
 		96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45D1D3150A900AB1C03 /* CommentModel.m */; };
+		96FB7DAC1D5B787E00CDE4D7 /* Capable.m in Sources */ = {isa = PBXBuildFile; fileRef = 96FB7DAB1D5B787E00CDE4D7 /* Capable.m */; };
 		99706EE11E51FCB57E22147F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11050FCD7E4EB553C4621D4 /* libPods.a */; };
 /* End PBXBuildFile section */
 
@@ -265,6 +266,8 @@
 		96F5F45A1D31502200AB1C03 /* DemoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModel.m; sourceTree = "<group>"; };
 		96F5F45C1D3150A900AB1C03 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
 		96F5F45D1D3150A900AB1C03 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
+		96FB7DAA1D5B787E00CDE4D7 /* Capable.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Capable.h; sourceTree = "<group>"; };
+		96FB7DAB1D5B787E00CDE4D7 /* Capable.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Capable.m; sourceTree = "<group>"; };
 		D11050FCD7E4EB553C4621D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -377,6 +380,7 @@
 		9639A9EA1D458EEB007719B0 /* Base */ = {
 			isa = PBXGroup;
 			children = (
+				96FB7DA91D5B785900CDE4D7 /* Capability */,
 				9639A9EB1D458EEB007719B0 /* BaseCollect.h */,
 				9639A9EE1D458EEB007719B0 /* BaseObject.h */,
 				9639A9EF1D458EEB007719B0 /* BaseObject.m */,
@@ -877,6 +881,15 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		96FB7DA91D5B785900CDE4D7 /* Capability */ = {
+			isa = PBXGroup;
+			children = (
+				96FB7DAA1D5B787E00CDE4D7 /* Capable.h */,
+				96FB7DAB1D5B787E00CDE4D7 /* Capable.m */,
+			);
+			name = Capability;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1128,6 +1141,7 @@
 				962058221D58D4F20085DB4F /* WaterFlowLayout.m in Sources */,
 				9639AA7F1D458EEB007719B0 /* NSDate+Coder.m in Sources */,
 				962058261D594B270085DB4F /* PhotoCell.m in Sources */,
+				96FB7DAC1D5B787E00CDE4D7 /* Capable.m in Sources */,
 				96EDCB5B1D4A5F4500F9DC3F /* JASDefaultCellModel.m in Sources */,
 				9639AA921D458EEB007719B0 /* JASUtils.m in Sources */,
 				9639AA871D458EEB007719B0 /* UIViewController+Coder.m in Sources */,

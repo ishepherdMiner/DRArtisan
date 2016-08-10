@@ -11,7 +11,6 @@
 UIKIT_EXTERN NSString *const XC_UICollectionElementKindSectionHeader;
 UIKIT_EXTERN NSString *const XC_UICollectionElementKindSectionFooter;
 
-#define kDefaultCollectionCellHeight 60
 
 @class WaterfallFlowLayout;
 

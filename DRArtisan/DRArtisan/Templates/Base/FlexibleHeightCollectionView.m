@@ -66,29 +66,11 @@
         }
     }
     
-#if 0
-    // 可以使用以下两行代码来查看效果
-    CGFloat randomHeight = 80 + (arc4random() % 150);
-    return randomHeight;
-#endif
     // AbstractMethodNotImplemented();
     if (self.sourceType == XCCollectionViewDataSourceTypeSingle) {
-        // 执行这个先调用cell的内容方法
-        if ([self.dataList[indexPath.row] pass_h] == kZero) {
-            if ([self.dataList[indexPath.row] calculate_h] != kZero) {
-                return [self.dataList[indexPath.row] calculate_h];
-            }
-            return kDefaultCollectionCellHeight;
-        }
-        return [self.dataList[indexPath.row] pass_h];
+        return [self.dataList[indexPath.row] calculateHeightWithItemWidth:itemWidth indexPath:indexPath];
     }else {
-        if ([self.dataList[indexPath.section][indexPath.row] pass_h] == kZero) {
-            if ([self.dataList[indexPath.row] calculate_h] != kZero) {
-                return [self.dataList[indexPath.row] calculate_h];
-            }
-            return kDefaultCollectionCellHeight;
-        }
-        return [self.dataList[indexPath.section][indexPath.row] pass_h];
+        return [self.dataList[indexPath.section][indexPath.row] calculateHeightWithItemWidth:itemWidth indexPath:indexPath];
     }
 }
 

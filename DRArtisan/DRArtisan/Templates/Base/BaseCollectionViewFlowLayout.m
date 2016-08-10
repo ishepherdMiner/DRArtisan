@@ -22,8 +22,8 @@
 }
 
 + (instancetype)LayoutWithItemSize:(CGSize)itemSize
-                      minLineSpace:(CGFloat)minLineSpace
-                 minInteritemSpace:(CGFloat)minInteritemSpace
+                         lineSpace:(CGFloat)minLineSpace
+                    interitemSpace:(CGFloat)minInteritemSpace
                       sectionInset:(UIEdgeInsets)sectionInset {
     
     BaseCollectionViewFlowLayout *obj = [[self alloc] init];

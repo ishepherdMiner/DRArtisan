@@ -7,15 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "BaseCollectionCellModel.h"
-//@class BaseCollectionCellModel;
-@class Photo;
+
+@class BaseCollectionCellModel;
+
 @interface BaseCollectionViewCell : UICollectionViewCell {
     BaseCollectionCellModel *_model;
 }
 
 @property (nonatomic,strong) BaseCollectionCellModel *model;
-
-@property (nonatomic,strong) Photo *photo;
 
 @end

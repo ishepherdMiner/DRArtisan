@@ -9,15 +9,10 @@
 #import "BaseCollectionViewCell.h"
 #import "BaseCollectionCellModel.h"
 
-@interface BaseCollectionViewCell ()
-@property (nonatomic,weak) UIImageView *testView;
-@end
-
 @implementation BaseCollectionViewCell
+
 - (void)setModel:(BaseCollectionCellModel *)model {
-    self.backgroundColor = [UIColor redColor];
-    // model.pass_h = 80 + (arc4random() % 150);
-    _model.pass_h = model.pass_h;
+    AbstractMethodNotImplemented();
 }
 @end
  

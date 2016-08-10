@@ -36,9 +36,9 @@
  *  @return BaseCollectionViweFlowLayout object
  */
 + (instancetype)LayoutWithItemSize:(CGSize)itemSize
-                      minLineSpace:(CGFloat)minLineSpace
-                 minInteritemSpace:(CGFloat)minInteritemSpace
-                      sectionInset:(UIEdgeInsets)sectionInset ;
+                         lineSpace:(CGFloat)minLineSpace
+                    interitemSpace:(CGFloat)minInteritemSpace
+                      sectionInset:(UIEdgeInsets)sectionInset;
 /**
  *  set header && footer size
  *

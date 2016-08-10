@@ -10,11 +10,17 @@
 
 @interface BaseCollectionCellModel : BaseObject
 
-/// 服务器传递的数据源中已包含高度
-@property (nonatomic,assign) CGFloat pass_h;
-
-/// 服务器传递的数据源中不包含高度 - 需要额外计算
-@property (nonatomic,assign) CGFloat calculate_h;
+/**
+ *  返回CollectionView的Cell的item的高度
+ *
+ *  @param itemWidth cell的宽度
+ *  @param indexPath cell的位置
+ *
+ *  @return item的高度
+ *
+ *  require override
+ */
+- (CGFloat)calculateHeightWithItemWidth:(CGFloat)itemWidth indexPath:(NSIndexPath *)indexPath;
 
 
 /// 简单对象的封装

@@ -10,11 +10,9 @@
 
 @implementation BaseCollectionCellModel
 
-- (CGFloat)pass_h {
-    return 40 + arc4random() % 190;
-}
-
-- (CGFloat)calculate_h {
-    return 40 + arc4random() % 190;
+- (CGFloat)calculateHeightWithItemWidth:(CGFloat)itemWidth
+                              indexPath:(NSIndexPath *)indexPath{
+    
+    AbstractMethodNotImplemented();
 }
 @end

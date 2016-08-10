@@ -14,24 +14,40 @@
 
 @interface BaseCollectionView ()
 
-@property (nonatomic,copy) ClickCellBlock clickCellBlock;
+@property (nonatomic,copy) ClickItemBlock clickItemBlock;
 
 @end
 
 @implementation BaseCollectionView
 
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout {
-    return [self initWithFrame:frame collectionViewLayout:layout clickCellBlock:nil];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame collectionViewLayout:(UICollectionViewLayout *)layout clickCellBlock:(ClickCellBlock)click {
-    if (self = [super initWithFrame:frame collectionViewLayout:layout]) {
-        self.customSetter = true;
-        self.clickCellBlock = click;
++ (instancetype)collectionViewWithFrame:(CGRect)frame
+                                 layout:(UICollectionViewLayout *)layout
+                              classType:(XCCollectionViewClassType)classType
+                         clickItemBlock:(ClickItemBlock)click {
+    
+    BaseCollectionView *base_collect_v = nil;
+    switch (classType) {
+        case XCCollectionViewClassTypeBase:{
+            base_collect_v = [[NSClassFromString(@"BaseCollectionView") alloc] initWithFrame:frame collectionViewLayout:layout];
+        }
+            break;
+        case XCCollectionViewClassTypeFlex:{
+            base_collect_v = [[NSClassFromString(@"FlexibleHeightCollectionView") alloc] initWithFrame:frame collectionViewLayout:layout];
+        }
+        // Continue:
+            break;
     }
-    return self;
-}
+    if (base_collect_v) {
+        base_collect_v.customSetter = true;
+        base_collect_v.clickItemBlock = click;
+    }
 
+#if DEBUG
+    NSAssert(base_collect_v, @"Create BaseCollectionView fail,please check params");
+#endif
+    
+    return base_collect_v;
+}
 
 - (NSInteger)numberOfSectionsInCollectionView:(UICollectionView *)collectionView {
     // don't call setDataList: but set value for dataList property
@@ -50,13 +66,11 @@
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
     BaseCollectionViewCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:self.identifier forIndexPath:indexPath];
-    // self.identifier
     
     NSAssert(cell, @"You should call registerClass: method");
     
     if (_sourceType == XCCollectionViewDataSourceTypeSingle) {
         cell.model = self.dataList[indexPath.item];
-        // cell.photo = self.dataList[indexPath.row];
     }else {
         cell.model = self.dataList[indexPath.section][indexPath.row];
     }
@@ -64,16 +78,10 @@
     return cell;
 }
 
-//- (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath {
-//    // UIImage *image = self.images[indexPath.item];
-//    // CGFloat newHeight = image.size.height / image.size.width * self.imageWidth;
-//    return CGSizeMake(90, 80 + (arc4random() % 150));
-//}
-
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     
-    if (self.clickCellBlock) {
-        return self.clickCellBlock(collectionView,indexPath);
+    if (self.clickItemBlock) {
+        return self.clickItemBlock(collectionView,indexPath);
     }
     
     if (self.cdelegate) {
