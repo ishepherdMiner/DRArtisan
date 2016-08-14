@@ -55,7 +55,7 @@
 		965DB71B1D46D06200C6546D /* BackgroundAudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 965DB71A1D46D06200C6546D /* BackgroundAudioPlay.m */; };
 		96844F811D5259A600C37697 /* SupplementaryHeaderTitleMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 96844F801D5259A600C37697 /* SupplementaryHeaderTitleMix.m */; };
 		96844F841D5259C000C37697 /* SupplementaryHeaderViewMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 96844F831D5259C000C37697 /* SupplementaryHeaderViewMix.m */; };
-		9698B92C1D5F688600D593F2 /* SelectLabelFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92B1D5F688600D593F2 /* SelectLabelFlowLayout.m */; };
+		9698B92C1D5F688600D593F2 /* TagChooserFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92B1D5F688600D593F2 /* TagChooserFlowLayout.m */; };
 		96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0561D4DDF2E00E8431F /* BaseCollectionCellModel.m */; };
 		96A3E05E1D4DE32200E8431F /* BaseTableViewControllerDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E05D1D4DE32200E8431F /* BaseTableViewControllerDemo.m */; };
 		96A3E0611D4DEEAE00E8431F /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0601D4DEEAE00E8431F /* FlexibleHeightTableView.m */; };
@@ -209,8 +209,8 @@
 		96844F801D5259A600C37697 /* SupplementaryHeaderTitleMix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementaryHeaderTitleMix.m; sourceTree = "<group>"; };
 		96844F821D5259C000C37697 /* SupplementaryHeaderViewMix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementaryHeaderViewMix.h; sourceTree = "<group>"; };
 		96844F831D5259C000C37697 /* SupplementaryHeaderViewMix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementaryHeaderViewMix.m; sourceTree = "<group>"; };
-		9698B92A1D5F688600D593F2 /* SelectLabelFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectLabelFlowLayout.h; sourceTree = "<group>"; };
-		9698B92B1D5F688600D593F2 /* SelectLabelFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectLabelFlowLayout.m; sourceTree = "<group>"; };
+		9698B92A1D5F688600D593F2 /* TagChooserFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagChooserFlowLayout.h; sourceTree = "<group>"; };
+		9698B92B1D5F688600D593F2 /* TagChooserFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagChooserFlowLayout.m; sourceTree = "<group>"; };
 		96A3E0551D4DDF2E00E8431F /* BaseCollectionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionCellModel.h; sourceTree = "<group>"; };
 		96A3E0561D4DDF2E00E8431F /* BaseCollectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionCellModel.m; sourceTree = "<group>"; };
 		96A3E05C1D4DE32200E8431F /* BaseTableViewControllerDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewControllerDemo.h; sourceTree = "<group>"; };
@@ -693,8 +693,8 @@
 				96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */,
 				962058201D58D4F20085DB4F /* WaterFlowLayout.h */,
 				962058211D58D4F20085DB4F /* WaterFlowLayout.m */,
-				9698B92A1D5F688600D593F2 /* SelectLabelFlowLayout.h */,
-				9698B92B1D5F688600D593F2 /* SelectLabelFlowLayout.m */,
+				9698B92A1D5F688600D593F2 /* TagChooserFlowLayout.h */,
+				9698B92B1D5F688600D593F2 /* TagChooserFlowLayout.m */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -1135,7 +1135,7 @@
 				9639AA841D458EEB007719B0 /* UIDevice+Coder.m in Sources */,
 				9639AA661D458EEB007719B0 /* BaseObject.m in Sources */,
 				9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */,
-				9698B92C1D5F688600D593F2 /* SelectLabelFlowLayout.m in Sources */,
+				9698B92C1D5F688600D593F2 /* TagChooserFlowLayout.m in Sources */,
 				96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */,
 				9639AA821D458EEB007719B0 /* NSString+Coder.m in Sources */,
 				96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */,
