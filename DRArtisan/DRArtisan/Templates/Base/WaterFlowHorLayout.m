@@ -1,21 +1,21 @@
 //
-//  TagChooserFlowLayout.m
+//  WaterFlowHorLayout.m
 //  DRArtisan
 //
 //  Created by Jason on 8/13/16.
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "TagChooserFlowLayout.h"
+#import "WaterFlowHorLayout.h"
 
-@interface TagChooserFlowLayout ()
+@interface WaterFlowHorLayout ()
 
 @property(nonatomic,strong) NSMutableArray *originxArray;
 @property(nonatomic,strong) NSMutableArray *originyArray;
 
 @end
 
-@implementation TagChooserFlowLayout
+@implementation WaterFlowHorLayout
 
 /**
  *  初始化方法
@@ -32,7 +32,7 @@
                         interitemSpace:(CGFloat)interitemSpace
                           sectionInset:(UIEdgeInsets)sectionInset{
     
-    TagChooserFlowLayout *layout = [[TagChooserFlowLayout alloc] init];
+    WaterFlowHorLayout *layout = [[WaterFlowHorLayout alloc] init];
     layout.minimumLineSpacing = lineSpace;
     layout.minimumInteritemSpacing = interitemSpace;
     layout.sectionInset = sectionInset;
@@ -68,11 +68,8 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    if (self.delegate == nil) {
-        self.delegate = self.collectionView.delegate;
-        if ([self.delegate respondsToSelector:@selector(waterFlowLayout:widthAtIndexPath:)]) {
-            [self.delegate waterFlowLayout:self widthAtIndexPath:indexPath];
-        }
+    if ([self.delegate respondsToSelector:@selector(collectionView:waterFlowVerLayout:widthAtIndexPath:)]) {
+        [self.delegate collectionView:self.collectionView waterFlowVerLayout:self widthAtIndexPath:indexPath];
     }
     CGFloat x = self.sectionInset.left;
     CGFloat y = self.sectionInset.top;
@@ -84,15 +81,15 @@
             y = [_originyArray[preRow]floatValue];
         }
         NSIndexPath *preIndexPath = [NSIndexPath indexPathForItem:preRow inSection:indexPath.section];
-        CGFloat preWidth = [self.delegate waterFlowLayout:self widthAtIndexPath:preIndexPath];
+        CGFloat preWidth = [self.delegate collectionView:self.collectionView waterFlowVerLayout:self widthAtIndexPath:preIndexPath];
         x += preWidth + self.minimumInteritemSpacing;
     }
     
-    CGFloat currentWidth = [self.delegate waterFlowLayout:self widthAtIndexPath:indexPath];
-    //保证一个cell不超过最大宽度
+    CGFloat currentWidth = [self.delegate collectionView:self.collectionView waterFlowVerLayout:self widthAtIndexPath:indexPath];
+    // 保证一个cell不超过最大宽度
     currentWidth = MIN(currentWidth, self.collectionView.frame.size.width - self.sectionInset.left - self.sectionInset.right);
     if(x + currentWidth > self.collectionView.frame.size.width - self.sectionInset.right){
-        //超出范围，换行
+        // 超出范围，换行
         x = self.sectionInset.left;
         y += _rowHeight + self.minimumLineSpacing;
     }

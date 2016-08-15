@@ -9,7 +9,7 @@
 #import "BaseCollectionView.h"
 
 /**
- *  主要实现瀑布流布局的CollectionView
+ *  主要实现竖直方向上的瀑布流布局的CollectionView
  */
 @interface FlexibleHeightCollectionView : BaseCollectionView
 

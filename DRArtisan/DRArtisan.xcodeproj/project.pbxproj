@@ -12,7 +12,7 @@
 		962058121D57FEEF0085DB4F /* XCHTTPSessionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058111D57FEEF0085DB4F /* XCHTTPSessionManager.m */; };
 		962058151D5847C90085DB4F /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058141D5847C90085DB4F /* NewsModel.m */; };
 		962058181D584FBB0085DB4F /* NewsCollectionCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058171D584FBB0085DB4F /* NewsCollectionCell.m */; };
-		962058221D58D4F20085DB4F /* WaterFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058211D58D4F20085DB4F /* WaterFlowLayout.m */; };
+		962058221D58D4F20085DB4F /* WaterFlowVerLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058211D58D4F20085DB4F /* WaterFlowVerLayout.m */; };
 		962058261D594B270085DB4F /* PhotoCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058241D594B270085DB4F /* PhotoCell.m */; };
 		962058271D594B270085DB4F /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962058251D594B270085DB4F /* PhotoCell.xib */; };
 		9620582A1D594BAD0085DB4F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058291D594BAD0085DB4F /* Photo.m */; };
@@ -20,6 +20,7 @@
 		9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9624222D1D4827FB0028A835 /* TYWaveProgressView.m */; };
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
 		96289F151D4E3476000F7665 /* FlexibleHeightCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */; };
+		962F2A9D1D6289D100F790C0 /* XCTagChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2A9C1D6289D100F790C0 /* XCTagChooserView.m */; };
 		9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */; };
 		9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */; };
 		9639AA661D458EEB007719B0 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9EF1D458EEB007719B0 /* BaseObject.m */; };
@@ -55,7 +56,8 @@
 		965DB71B1D46D06200C6546D /* BackgroundAudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 965DB71A1D46D06200C6546D /* BackgroundAudioPlay.m */; };
 		96844F811D5259A600C37697 /* SupplementaryHeaderTitleMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 96844F801D5259A600C37697 /* SupplementaryHeaderTitleMix.m */; };
 		96844F841D5259C000C37697 /* SupplementaryHeaderViewMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 96844F831D5259C000C37697 /* SupplementaryHeaderViewMix.m */; };
-		9698B92C1D5F688600D593F2 /* TagChooserFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92B1D5F688600D593F2 /* TagChooserFlowLayout.m */; };
+		9698B92C1D5F688600D593F2 /* WaterFlowHorLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92B1D5F688600D593F2 /* WaterFlowHorLayout.m */; };
+		9698B92F1D6139D100D593F2 /* FlexibleWidthCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92E1D6139D100D593F2 /* FlexibleWidthCollectionView.m */; };
 		96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0561D4DDF2E00E8431F /* BaseCollectionCellModel.m */; };
 		96A3E05E1D4DE32200E8431F /* BaseTableViewControllerDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E05D1D4DE32200E8431F /* BaseTableViewControllerDemo.m */; };
 		96A3E0611D4DEEAE00E8431F /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0601D4DEEAE00E8431F /* FlexibleHeightTableView.m */; };
@@ -119,8 +121,8 @@
 		962058141D5847C90085DB4F /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		962058161D584FBB0085DB4F /* NewsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCollectionCell.h; sourceTree = "<group>"; };
 		962058171D584FBB0085DB4F /* NewsCollectionCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsCollectionCell.m; sourceTree = "<group>"; };
-		962058201D58D4F20085DB4F /* WaterFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowLayout.h; sourceTree = "<group>"; };
-		962058211D58D4F20085DB4F /* WaterFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFlowLayout.m; sourceTree = "<group>"; };
+		962058201D58D4F20085DB4F /* WaterFlowVerLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowVerLayout.h; sourceTree = "<group>"; };
+		962058211D58D4F20085DB4F /* WaterFlowVerLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFlowVerLayout.m; sourceTree = "<group>"; };
 		962058231D594B270085DB4F /* PhotoCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PhotoCell.h; sourceTree = "<group>"; };
 		962058241D594B270085DB4F /* PhotoCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PhotoCell.m; sourceTree = "<group>"; };
 		962058251D594B270085DB4F /* PhotoCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PhotoCell.xib; sourceTree = "<group>"; };
@@ -134,6 +136,8 @@
 		9625079C1D461A3100DFF32D /* NSNumber+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+Coder.m"; sourceTree = "<group>"; };
 		96289F131D4E3476000F7665 /* FlexibleHeightCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightCollectionView.h; sourceTree = "<group>"; };
 		96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightCollectionView.m; sourceTree = "<group>"; };
+		962F2A9B1D6289D100F790C0 /* XCTagChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTagChooserView.h; sourceTree = "<group>"; };
+		962F2A9C1D6289D100F790C0 /* XCTagChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTagChooserView.m; sourceTree = "<group>"; };
 		9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		9639A9E61D458EEB007719B0 /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -209,8 +213,10 @@
 		96844F801D5259A600C37697 /* SupplementaryHeaderTitleMix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementaryHeaderTitleMix.m; sourceTree = "<group>"; };
 		96844F821D5259C000C37697 /* SupplementaryHeaderViewMix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupplementaryHeaderViewMix.h; sourceTree = "<group>"; };
 		96844F831D5259C000C37697 /* SupplementaryHeaderViewMix.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupplementaryHeaderViewMix.m; sourceTree = "<group>"; };
-		9698B92A1D5F688600D593F2 /* TagChooserFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagChooserFlowLayout.h; sourceTree = "<group>"; };
-		9698B92B1D5F688600D593F2 /* TagChooserFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagChooserFlowLayout.m; sourceTree = "<group>"; };
+		9698B92A1D5F688600D593F2 /* WaterFlowHorLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterFlowHorLayout.h; sourceTree = "<group>"; };
+		9698B92B1D5F688600D593F2 /* WaterFlowHorLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterFlowHorLayout.m; sourceTree = "<group>"; };
+		9698B92D1D6139D100D593F2 /* FlexibleWidthCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleWidthCollectionView.h; sourceTree = "<group>"; };
+		9698B92E1D6139D100D593F2 /* FlexibleWidthCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleWidthCollectionView.m; sourceTree = "<group>"; };
 		96A3E0551D4DDF2E00E8431F /* BaseCollectionCellModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionCellModel.h; sourceTree = "<group>"; };
 		96A3E0561D4DDF2E00E8431F /* BaseCollectionCellModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionCellModel.m; sourceTree = "<group>"; };
 		96A3E05C1D4DE32200E8431F /* BaseTableViewControllerDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseTableViewControllerDemo.h; sourceTree = "<group>"; };
@@ -355,6 +361,15 @@
 			path = TYWaveProgressView;
 			sourceTree = "<group>";
 		};
+		962F2A9A1D6289A500F790C0 /* TagChooser */ = {
+			isa = PBXGroup;
+			children = (
+				962F2A9B1D6289D100F790C0 /* XCTagChooserView.h */,
+				962F2A9C1D6289D100F790C0 /* XCTagChooserView.m */,
+			);
+			name = TagChooser;
+			sourceTree = "<group>";
+		};
 		9639A9E21D458EEB007719B0 /* Templates */ = {
 			isa = PBXGroup;
 			children = (
@@ -426,6 +441,7 @@
 		9639A9FE1D458EEB007719B0 /* UICollectionView */ = {
 			isa = PBXGroup;
 			children = (
+				962F2A9A1D6289A500F790C0 /* TagChooser */,
 				9639A9FF1D458EEB007719B0 /* UICollectionViewCell */,
 			);
 			path = UICollectionView;
@@ -691,10 +707,10 @@
 				96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */,
 				96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */,
 				96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */,
-				962058201D58D4F20085DB4F /* WaterFlowLayout.h */,
-				962058211D58D4F20085DB4F /* WaterFlowLayout.m */,
-				9698B92A1D5F688600D593F2 /* TagChooserFlowLayout.h */,
-				9698B92B1D5F688600D593F2 /* TagChooserFlowLayout.m */,
+				962058201D58D4F20085DB4F /* WaterFlowVerLayout.h */,
+				962058211D58D4F20085DB4F /* WaterFlowVerLayout.m */,
+				9698B92A1D5F688600D593F2 /* WaterFlowHorLayout.h */,
+				9698B92B1D5F688600D593F2 /* WaterFlowHorLayout.m */,
 			);
 			name = Layout;
 			sourceTree = "<group>";
@@ -864,6 +880,8 @@
 				96EDCB371D4A503A00F9DC3F /* BaseCollectionView.m */,
 				96289F131D4E3476000F7665 /* FlexibleHeightCollectionView.h */,
 				96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */,
+				9698B92D1D6139D100D593F2 /* FlexibleWidthCollectionView.h */,
+				9698B92E1D6139D100D593F2 /* FlexibleWidthCollectionView.m */,
 			);
 			name = UICollectionView;
 			sourceTree = "<group>";
@@ -1090,6 +1108,7 @@
 				96289F151D4E3476000F7665 /* FlexibleHeightCollectionView.m in Sources */,
 				9639AA671D458EEB007719B0 /* BasePickerView.m in Sources */,
 				9639AA681D458EEB007719B0 /* BaseViewController.m in Sources */,
+				9698B92F1D6139D100D593F2 /* FlexibleWidthCollectionView.m in Sources */,
 				9639AA831D458EEB007719B0 /* NSURL+Coder.m in Sources */,
 				9639AA721D458EEB007719B0 /* SetMealTableView.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
@@ -1112,6 +1131,7 @@
 				9639AA911D458EEB007719B0 /* Waver.m in Sources */,
 				9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */,
 				96EDCB641D4A5F9900F9DC3F /* BaseCollectionViewCell.m in Sources */,
+				962F2A9D1D6289D100F790C0 /* XCTagChooserView.m in Sources */,
 				96EDCB5E1D4A5F4500F9DC3F /* JASValue1Cell.m in Sources */,
 				9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */,
 				9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */,
@@ -1135,7 +1155,7 @@
 				9639AA841D458EEB007719B0 /* UIDevice+Coder.m in Sources */,
 				9639AA661D458EEB007719B0 /* BaseObject.m in Sources */,
 				9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */,
-				9698B92C1D5F688600D593F2 /* TagChooserFlowLayout.m in Sources */,
+				9698B92C1D5F688600D593F2 /* WaterFlowHorLayout.m in Sources */,
 				96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */,
 				9639AA821D458EEB007719B0 /* NSString+Coder.m in Sources */,
 				96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */,
@@ -1144,7 +1164,7 @@
 				96EDCB601D4A5F4500F9DC3F /* JASValue2Cell.m in Sources */,
 				9639AA8F1D458EEB007719B0 /* DSNumberLabel.m in Sources */,
 				9639AA8D1D458EEB007719B0 /* CustomBadge.m in Sources */,
-				962058221D58D4F20085DB4F /* WaterFlowLayout.m in Sources */,
+				962058221D58D4F20085DB4F /* WaterFlowVerLayout.m in Sources */,
 				9639AA7F1D458EEB007719B0 /* NSDate+Coder.m in Sources */,
 				962058261D594B270085DB4F /* PhotoCell.m in Sources */,
 				96FB7DAC1D5B787E00CDE4D7 /* Capable.m in Sources */,

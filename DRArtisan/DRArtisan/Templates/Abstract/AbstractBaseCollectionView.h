@@ -8,7 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
-@class WaterFlowLayout;
+#define kDefaultCollectionCellHeight 60
+
+@class WaterFlowVerLayout,WaterFlowHorLayout;
 
 @protocol ServiceCollectionViewDelegate <NSObject>
 
@@ -17,6 +19,7 @@
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath;
 @end
 
+/// 代理方法统一放到这里,子类代理对象的协议统一为这个delegate 一般 && 竖直/水平 瀑布流)
 @protocol BaseCollectionViewDelegate <UICollectionViewDataSource,UICollectionViewDelegate>
 
 @optional
@@ -40,9 +43,22 @@
  *  @return the height for assign conditons
  */
 - (CGFloat)collectionView:(UICollectionView*)collectionView
-                   layout:(WaterFlowLayout *) layout
+                   layout:(WaterFlowVerLayout *) layout
  heightForItemAtIndexPath:(NSIndexPath*)indexPath
                 itemWidth:(NSUInteger)itemWidth;
+
+/**
+ *  The collectionView celll width
+ *
+ *  @param collectionView which collectionView object
+ *  @param layout         which collectionView layout
+ *  @param indexPath      which collectionView indexPath
+ *
+ *  @return the width fo assign conditions
+ */
+- (CGFloat)collectionView:(UICollectionView *)collectionView
+          waterFlowVerLayout:(WaterFlowHorLayout *)layout
+          widthAtIndexPath:(NSIndexPath *)indexPath;
 
 /**
  *  The collectionView movable

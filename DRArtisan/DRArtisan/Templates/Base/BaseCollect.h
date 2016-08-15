@@ -41,9 +41,11 @@
 // CollectionView
 #import "BaseCollectionView.h"
 #import "FlexibleHeightCollectionView.h"
+#import "FlexibleWidthCollectionView.h"
 #import "BaseCollectionViewFlowLayout.h"
 #import "WaterfallFlowLayout.h"
-#import "WaterFlowLayout.h"
+#import "WaterFlowVerLayout.h"
+#import "WaterFlowHorLayout.h"
 
 #import "Capable.h"
 

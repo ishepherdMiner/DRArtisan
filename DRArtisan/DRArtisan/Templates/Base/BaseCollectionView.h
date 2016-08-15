@@ -18,7 +18,8 @@ typedef NS_ENUM(NSUInteger,XCCollectionViewDataSourceType){
 
 typedef NS_ENUM(NSUInteger,XCCollectionViewClassType) {
     XCCollectionViewClassTypeBase,
-    XCCollectionViewClassTypeFlex,
+    XCCollectionViewClassTypeFlexVer,
+    XCCollectionViewClassTypeFlexHor,
 };
 
 /**

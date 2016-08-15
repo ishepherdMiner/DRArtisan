@@ -1,5 +1,5 @@
 //
-//  TagChooserFlowLayout.h
+//  WaterFlowHorLayout.h
 //  DRArtisan
 //
 //  Created by Jason on 8/13/16.
@@ -8,22 +8,12 @@
 
 #import <UIKit/UIKit.h>
 
-@class TagChooserFlowLayout;
-
-@protocol  TagChooserFlowLayoutDelegate <NSObject>
-
-/**通过代理获得每个cell的宽度*/
-- (CGFloat)waterFlowLayout:(TagChooserFlowLayout *)layout
-          widthAtIndexPath:(NSIndexPath *)indexPath;
-
-@end
-
 /**
  *  标签选择器的布局
  */
-@interface TagChooserFlowLayout : UICollectionViewFlowLayout
+@interface WaterFlowHorLayout : UICollectionViewFlowLayout
 
-@property (nonatomic,weak) id<TagChooserFlowLayoutDelegate> delegate;
+@property (nonatomic,weak) id<BaseCollectionViewDelegate> delegate;
 
 /// 固定行高
 @property(nonatomic,assign)CGFloat rowHeight;

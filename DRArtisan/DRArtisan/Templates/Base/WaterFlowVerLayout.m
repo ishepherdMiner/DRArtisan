@@ -1,15 +1,15 @@
 //
-//  WaterFlowLayout.m
+//  WaterFlowVerLayout.m
 //  DRArtisan
 //
 //  Created by Jason on 8/8/16.
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "WaterFlowLayout.h"
+#import "WaterFlowVerLayout.h"
 
-@interface WaterFlowLayout() {
-    __weak WaterFlowLayout *weakself;
+@interface WaterFlowVerLayout() {
+    __weak WaterFlowVerLayout *weakself;
 }
 
 /** 这个字典用来存储每一列最大的Y值(每一列的高度) */
@@ -28,14 +28,14 @@
 
 @end
 
-@implementation WaterFlowLayout
+@implementation WaterFlowVerLayout
 
 + (instancetype)LayoutWithColumnsCount:(NSUInteger)columnsCount
                              lineSpace:(CGFloat)lineSpace
                         interitemSpace:(CGFloat)interitemSpace
                           sectionInset:(UIEdgeInsets)sectionInset {
     
-    WaterFlowLayout *layout = [[WaterFlowLayout alloc] init];
+    WaterFlowVerLayout *layout = [[WaterFlowVerLayout alloc] init];
     layout.columnsCount = columnsCount;
     layout.columnMargin = interitemSpace;
     layout.rowMargin = lineSpace;
@@ -121,10 +121,9 @@
     CGFloat width = (self.collectionView.frame.size.width - self.sectionInset.left - self.sectionInset.right - (self.columnsCount - 1) * self.columnMargin)/self.columnsCount;
     
     CGFloat height = 0;
-    if(self.collectionView.delegate) {        
-        if ([self.collectionView.delegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:itemWidth:)]) {
-            id<WaterFlowLayoutDelegate> delegate = (id<WaterFlowLayoutDelegate>)self.collectionView.delegate;
-            height = [delegate collectionView:self.collectionView
+    if(self.delegate) {
+        if ([self.delegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:itemWidth:)]) {
+            height = [self.delegate collectionView:self.collectionView
                                        layout:self
                      heightForItemAtIndexPath:indexPath
                                     itemWidth:width];
@@ -162,7 +161,7 @@
     
     if(self.collectionView.delegate) {
         if ([self.collectionView.delegate respondsToSelector:@selector(moveItemAtIndexPath: toIndexPath:)]) {
-            id<WaterFlowLayoutDelegate> delegate = (id<WaterFlowLayoutDelegate>)self.collectionView.delegate;
+            id<BaseCollectionViewDelegate> delegate = (id<BaseCollectionViewDelegate>)self.collectionView.delegate;
             [delegate moveItemAtIndexPath:previousIndexPaths[0] toIndexPath:targetIndexPaths[0]];
         }
     }

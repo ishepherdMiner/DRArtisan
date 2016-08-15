@@ -23,16 +23,15 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    WaterFlowLayout *flowLayout = [WaterFlowLayout LayoutWithColumnsCount:2 lineSpace:5 interitemSpace:5 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5)];
+    WaterFlowVerLayout *flowLayout = [WaterFlowVerLayout LayoutWithColumnsCount:2 lineSpace:5 interitemSpace:5 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5)];
 
-    
-    BaseCollectionView *collect_v = [BaseCollectionView collectionViewWithFrame:Screen_bounds layout:flowLayout classType:XCCollectionViewClassTypeFlex clickItemBlock:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
+    BaseCollectionView *collect_v = [BaseCollectionView collectionViewWithFrame:Screen_bounds layout:flowLayout classType:XCCollectionViewClassTypeFlexVer clickItemBlock:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
         
          XcLog(@"%@",@"点击了Cell");
         
     }];
     
-    // collect_v.dataList = [self datas];
+    flowLayout.delegate = collect_v;
     
     collect_v.backgroundColor = HexRGB(0xffffff);
     [collect_v registerClass:[NewsCollectionCell class]];

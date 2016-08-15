@@ -31,8 +31,12 @@
             base_collect_v = [[NSClassFromString(@"BaseCollectionView") alloc] initWithFrame:frame collectionViewLayout:layout];
         }
             break;
-        case XCCollectionViewClassTypeFlex:{
+        case XCCollectionViewClassTypeFlexVer:{
             base_collect_v = [[NSClassFromString(@"FlexibleHeightCollectionView") alloc] initWithFrame:frame collectionViewLayout:layout];
+        }
+            break;
+        case XCCollectionViewClassTypeFlexHor:{
+            base_collect_v = [[NSClassFromString(@"FlexibleWidthCollectionView") alloc] initWithFrame:frame collectionViewLayout:layout];
         }
         // Continue:
             break;
