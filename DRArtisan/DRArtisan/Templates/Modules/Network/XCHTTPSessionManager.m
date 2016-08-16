@@ -12,9 +12,11 @@
 #define kDefaultOutTime 20
 
 @implementation XCHTTPSessionManager
-+ (instancetype)manager {
+
++ (instancetype)managerWithBaseUrl:(NSString *)baseUrl {
+    
     XCHTTPSessionManager *instance;
-    instance = [[self alloc] initWithBaseURL:[NSURL URLWithString:kBaseUrl]];
+    instance = [[self alloc] initWithBaseURL:[NSURL URLWithString:baseUrl]];
     
     // 设置response格式
     // instance.responseSerializer = [AFJSONResponseSerializer serializer];
@@ -30,9 +32,9 @@
 
 - (NSURLSessionDataTask *)GET:(NSString *)URLString parameters:(id)parameters progress:(void (^)(NSProgress * _Nonnull))downloadProgress success:(void (^)(NSURLSessionDataTask * _Nonnull, id _Nullable))success failure:(void (^)(NSURLSessionDataTask * _Nullable, NSError * _Nonnull))failure {
     NSString *paramString = nil;
-    if ([self respondsToSelector:@selector(encryptUrlParams:)]) {
+    if ([self.delegate respondsToSelector:@selector(encryptString:)]) {
         // 参数加密
-        paramString = [self encryptUrlParams:parameters];
+        paramString = [self.delegate encryptString:parameters];
         // 修改URLString参数,生成完整的请求地址
         URLString = [URLString stringByAppendingString:paramString];
     }

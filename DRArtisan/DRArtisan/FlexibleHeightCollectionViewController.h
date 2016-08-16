@@ -1,5 +1,5 @@
 //
-//  BaseCollectionViewControllerDemo.h
+//  FlexibleHeightCollectionViewController.h
 //  DRArtisan
 //
 //  Created by Jason on 7/31/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface BaseCollectionViewControllerDemo : UIViewController
+@interface FlexibleHeightCollectionViewController : UIViewController
 
 @end

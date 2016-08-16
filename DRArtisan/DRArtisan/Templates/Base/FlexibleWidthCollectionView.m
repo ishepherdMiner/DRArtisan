@@ -10,10 +10,17 @@
 
 @implementation FlexibleWidthCollectionView
 
-- (CGFloat)collectionView:(UICollectionView *)collectionView waterFlowVerLayout:(WaterFlowHorLayout *)layout widthAtIndexPath:(NSIndexPath *)indexPath {
-    return arc4random() % 30 + 80;
+- (CGFloat)collectionView:(UICollectionView *)collectionView layout:(WaterFlowHorLayout *)layout widthForItemAtIndexPath:(NSIndexPath *)indexPath itemHeight:(CGFloat)itemHeight {
+    if ([self.cdelegate respondsToSelector:@selector(collectionView:layout:widthForItemAtIndexPath:itemHeight:)]) {
+        [self.cdelegate collectionView:collectionView layout:layout widthForItemAtIndexPath:indexPath itemHeight:itemHeight];
+    }
+    
+    if (self.sourceType == XCCollectionViewDataSourceTypeSingle) {
+        return [self.dataList[indexPath.row] calculateWidthWithItemHeight:itemHeight indexPath:indexPath];        
+    }else {
+        return [self.dataList[indexPath.section][indexPath.row] calculateWidthWithItemHeight:itemHeight indexPath:indexPath];
+    }
 }
-
 
 
 

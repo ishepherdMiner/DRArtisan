@@ -67,8 +67,6 @@
  */
 + (instancetype)modelWithDic:(NSDictionary *)dict;
 
-+ (void)jas_test;
-
 /**
  *  交换方法
  *

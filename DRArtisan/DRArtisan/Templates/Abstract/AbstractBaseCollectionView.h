@@ -45,7 +45,7 @@
 - (CGFloat)collectionView:(UICollectionView*)collectionView
                    layout:(WaterFlowVerLayout *) layout
  heightForItemAtIndexPath:(NSIndexPath*)indexPath
-                itemWidth:(NSUInteger)itemWidth;
+                itemWidth:(CGFloat)itemWidth;
 
 /**
  *  The collectionView celll width
@@ -57,8 +57,10 @@
  *  @return the width fo assign conditions
  */
 - (CGFloat)collectionView:(UICollectionView *)collectionView
-          waterFlowVerLayout:(WaterFlowHorLayout *)layout
-          widthAtIndexPath:(NSIndexPath *)indexPath;
+                   layout:(WaterFlowHorLayout *)layout
+  widthForItemAtIndexPath:(NSIndexPath *)indexPath
+               itemHeight:(CGFloat)itemHeight;
+
 
 /**
  *  The collectionView movable

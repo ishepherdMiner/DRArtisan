@@ -15,4 +15,11 @@
     
     AbstractMethodNotImplemented();
 }
+
+- (CGFloat)calculateWidthWithItemHeight:(CGFloat)itemHeight
+                              indexPath:(NSIndexPath *)indexPath {
+    
+   AbstractMethodNotImplemented();
+}
+
 @end

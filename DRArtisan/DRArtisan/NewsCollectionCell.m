@@ -21,7 +21,6 @@
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        // UIImageView *newsImageView = [[UIImageView alloc] initWithFrame:self.bounds];
         UIImageView *newsImageView = [[UIImageView alloc] init];
         [self addSubview:_newsImageView = newsImageView];
     }
@@ -30,11 +29,7 @@
 
 - (void)setModel:(NewsModel *)model {
     _model = model;
-
-    // [newsImageView setImageWithURL:[NSURL URLWithString:model.small_url]];
     [_newsImageView sd_setImageWithURL:[NSURL URLWithString:model.small_url]];
-    // self.model.pass_h = model.pass_h;
-    
 }
 
 - (void)layoutSubviews {

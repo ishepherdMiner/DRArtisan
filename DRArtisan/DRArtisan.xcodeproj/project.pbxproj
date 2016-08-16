@@ -21,6 +21,10 @@
 		9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9625079C1D461A3100DFF32D /* NSNumber+Coder.m */; };
 		96289F151D4E3476000F7665 /* FlexibleHeightCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */; };
 		962F2A9D1D6289D100F790C0 /* XCTagChooserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2A9C1D6289D100F790C0 /* XCTagChooserView.m */; };
+		962F2B031D63623600F790C0 /* EncryptSymmetry.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2B021D63623600F790C0 /* EncryptSymmetry.m */; };
+		962F2B071D6365D800F790C0 /* XCTagChooserCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2B061D6365D800F790C0 /* XCTagChooserCell.m */; };
+		962F2B0C1D63D8B000F790C0 /* XCTagChooserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2B0B1D63D8B000F790C0 /* XCTagChooserModel.m */; };
+		962F2B121D63DB7500F790C0 /* FlexibleWidthCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2B111D63DB7500F790C0 /* FlexibleWidthCollectionViewController.m */; };
 		9639AA631D458EEB007719B0 /* AbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */; };
 		9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9ED1D458EEB007719B0 /* BaseNavigationController.m */; };
 		9639AA661D458EEB007719B0 /* BaseObject.m in Sources */ = {isa = PBXBuildFile; fileRef = 9639A9EF1D458EEB007719B0 /* BaseObject.m */; };
@@ -63,7 +67,7 @@
 		96A3E0611D4DEEAE00E8431F /* FlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0601D4DEEAE00E8431F /* FlexibleHeightTableView.m */; };
 		96A3E06A1D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */; };
 		96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */; };
-		96A3E0711D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */; };
+		96A3E0711D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0701D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -138,6 +142,14 @@
 		96289F141D4E3476000F7665 /* FlexibleHeightCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightCollectionView.m; sourceTree = "<group>"; };
 		962F2A9B1D6289D100F790C0 /* XCTagChooserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTagChooserView.h; sourceTree = "<group>"; };
 		962F2A9C1D6289D100F790C0 /* XCTagChooserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTagChooserView.m; sourceTree = "<group>"; };
+		962F2B011D63623600F790C0 /* EncryptSymmetry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EncryptSymmetry.h; sourceTree = "<group>"; };
+		962F2B021D63623600F790C0 /* EncryptSymmetry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EncryptSymmetry.m; sourceTree = "<group>"; };
+		962F2B051D6365D800F790C0 /* XCTagChooserCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTagChooserCell.h; sourceTree = "<group>"; };
+		962F2B061D6365D800F790C0 /* XCTagChooserCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTagChooserCell.m; sourceTree = "<group>"; };
+		962F2B0A1D63D8B000F790C0 /* XCTagChooserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XCTagChooserModel.h; sourceTree = "<group>"; };
+		962F2B0B1D63D8B000F790C0 /* XCTagChooserModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = XCTagChooserModel.m; sourceTree = "<group>"; };
+		962F2B101D63DB7500F790C0 /* FlexibleWidthCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleWidthCollectionViewController.h; sourceTree = "<group>"; };
+		962F2B111D63DB7500F790C0 /* FlexibleWidthCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleWidthCollectionViewController.m; sourceTree = "<group>"; };
 		9639A9E41D458EEB007719B0 /* AbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractBaseTableView.h; sourceTree = "<group>"; };
 		9639A9E51D458EEB007719B0 /* AbstractBaseTableView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AbstractBaseTableView.m; sourceTree = "<group>"; };
 		9639A9E61D458EEB007719B0 /* AbstractCollect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AbstractCollect.h; sourceTree = "<group>"; };
@@ -227,8 +239,8 @@
 		96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterfallFlowLayout.h; sourceTree = "<group>"; };
 		96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterfallFlowLayout.m; sourceTree = "<group>"; };
-		96A3E06F1D4E18BC00E8431F /* BaseCollectionViewControllerDemo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCollectionViewControllerDemo.h; sourceTree = "<group>"; };
-		96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCollectionViewControllerDemo.m; sourceTree = "<group>"; };
+		96A3E06F1D4E18BC00E8431F /* FlexibleHeightCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightCollectionViewController.h; sourceTree = "<group>"; };
+		96A3E0701D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightCollectionViewController.m; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -326,17 +338,9 @@
 		9621570E1D501693001019BB /* CollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				962058281D594BAD0085DB4F /* Photo.h */,
-				962058291D594BAD0085DB4F /* Photo.m */,
-				962058231D594B270085DB4F /* PhotoCell.h */,
-				962058241D594B270085DB4F /* PhotoCell.m */,
-				962058251D594B270085DB4F /* PhotoCell.xib */,
-				96A3E06F1D4E18BC00E8431F /* BaseCollectionViewControllerDemo.h */,
-				96A3E0701D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m */,
-				962058131D5847C90085DB4F /* NewsModel.h */,
-				962058141D5847C90085DB4F /* NewsModel.m */,
-				962058161D584FBB0085DB4F /* NewsCollectionCell.h */,
-				962058171D584FBB0085DB4F /* NewsCollectionCell.m */,
+				962F2B0E1D63DB4400F790C0 /* FlexibleWidthCollectionView */,
+				962F2B0D1D63DA8300F790C0 /* FlexibleHeightCollectionView */,
+				962F2A9E1D628E6D00F790C0 /* Xib */,
 			);
 			name = CollectionView;
 			sourceTree = "<group>";
@@ -364,10 +368,82 @@
 		962F2A9A1D6289A500F790C0 /* TagChooser */ = {
 			isa = PBXGroup;
 			children = (
+				962F2B091D63D88100F790C0 /* Models */,
+				962F2B081D6365E400F790C0 /* Cell */,
 				962F2A9B1D6289D100F790C0 /* XCTagChooserView.h */,
 				962F2A9C1D6289D100F790C0 /* XCTagChooserView.m */,
 			);
 			name = TagChooser;
+			sourceTree = "<group>";
+		};
+		962F2A9E1D628E6D00F790C0 /* Xib */ = {
+			isa = PBXGroup;
+			children = (
+				962058281D594BAD0085DB4F /* Photo.h */,
+				962058291D594BAD0085DB4F /* Photo.m */,
+				962058231D594B270085DB4F /* PhotoCell.h */,
+				962058241D594B270085DB4F /* PhotoCell.m */,
+				962058251D594B270085DB4F /* PhotoCell.xib */,
+			);
+			name = Xib;
+			sourceTree = "<group>";
+		};
+		962F2B001D63615A00F790C0 /* Encrpyt */ = {
+			isa = PBXGroup;
+			children = (
+				962F2B011D63623600F790C0 /* EncryptSymmetry.h */,
+				962F2B021D63623600F790C0 /* EncryptSymmetry.m */,
+			);
+			name = Encrpyt;
+			sourceTree = "<group>";
+		};
+		962F2B041D6363C800F790C0 /* Tmp */ = {
+			isa = PBXGroup;
+			children = (
+				96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */,
+				96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */,
+			);
+			name = Tmp;
+			sourceTree = "<group>";
+		};
+		962F2B081D6365E400F790C0 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				962F2B051D6365D800F790C0 /* XCTagChooserCell.h */,
+				962F2B061D6365D800F790C0 /* XCTagChooserCell.m */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		962F2B091D63D88100F790C0 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				962F2B0A1D63D8B000F790C0 /* XCTagChooserModel.h */,
+				962F2B0B1D63D8B000F790C0 /* XCTagChooserModel.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		962F2B0D1D63DA8300F790C0 /* FlexibleHeightCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				96A3E06F1D4E18BC00E8431F /* FlexibleHeightCollectionViewController.h */,
+				96A3E0701D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m */,
+				962058131D5847C90085DB4F /* NewsModel.h */,
+				962058141D5847C90085DB4F /* NewsModel.m */,
+				962058161D584FBB0085DB4F /* NewsCollectionCell.h */,
+				962058171D584FBB0085DB4F /* NewsCollectionCell.m */,
+			);
+			name = FlexibleHeightCollectionView;
+			sourceTree = "<group>";
+		};
+		962F2B0E1D63DB4400F790C0 /* FlexibleWidthCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				962F2B101D63DB7500F790C0 /* FlexibleWidthCollectionViewController.h */,
+				962F2B111D63DB7500F790C0 /* FlexibleWidthCollectionViewController.m */,
+			);
+			name = FlexibleWidthCollectionView;
 			sourceTree = "<group>";
 		};
 		9639A9E21D458EEB007719B0 /* Templates */ = {
@@ -442,16 +518,8 @@
 			isa = PBXGroup;
 			children = (
 				962F2A9A1D6289A500F790C0 /* TagChooser */,
-				9639A9FF1D458EEB007719B0 /* UICollectionViewCell */,
 			);
 			path = UICollectionView;
-			sourceTree = "<group>";
-		};
-		9639A9FF1D458EEB007719B0 /* UICollectionViewCell */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = UICollectionViewCell;
 			sourceTree = "<group>";
 		};
 		9639AA001D458EEB007719B0 /* UILabel */ = {
@@ -670,6 +738,7 @@
 		9639AA601D458EEB007719B0 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				962F2B001D63615A00F790C0 /* Encrpyt */,
 				9639AA611D458EEB007719B0 /* JASUtils.h */,
 				9639AA621D458EEB007719B0 /* JASUtils.m */,
 			);
@@ -703,10 +772,9 @@
 		96A3E06B1D4E13E200E8431F /* Layout */ = {
 			isa = PBXGroup;
 			children = (
+				962F2B041D6363C800F790C0 /* Tmp */,
 				96A3E0681D4E13DA00E8431F /* BaseCollectionViewFlowLayout.h */,
 				96A3E0691D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m */,
-				96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */,
-				96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */,
 				962058201D58D4F20085DB4F /* WaterFlowVerLayout.h */,
 				962058211D58D4F20085DB4F /* WaterFlowVerLayout.m */,
 				9698B92A1D5F688600D593F2 /* WaterFlowHorLayout.h */,
@@ -1100,7 +1168,7 @@
 				9639AA7D1D458EEB007719B0 /* NSArray+Coder.m in Sources */,
 				9639AA8E1D458EEB007719B0 /* CircleProgressBar.m in Sources */,
 				9639AA731D458EEB007719B0 /* SetMealTableViewCell.m in Sources */,
-				96A3E0711D4E18BC00E8431F /* BaseCollectionViewControllerDemo.m in Sources */,
+				96A3E0711D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m in Sources */,
 				9639AA851D458EEB007719B0 /* UIImage+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				9639AA901D458EEB007719B0 /* NJDBezierCurve.m in Sources */,
@@ -1119,12 +1187,14 @@
 				96EDCB5D1D4A5F4500F9DC3F /* JASSubtitleCellModel.m in Sources */,
 				96A3E06A1D4E13DA00E8431F /* BaseCollectionViewFlowLayout.m in Sources */,
 				96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */,
+				962F2B031D63623600F790C0 /* EncryptSymmetry.m in Sources */,
 				96EDCB5A1D4A5F4500F9DC3F /* JASDefaultCell.m in Sources */,
 				9639AA651D458EEB007719B0 /* BaseNavigationController.m in Sources */,
 				9639AA8C1D458EEB007719B0 /* BadgeStyle.m in Sources */,
 				9639AA881D458EEB007719B0 /* JASCircleProgressView.m in Sources */,
 				96EDCB5C1D4A5F4500F9DC3F /* JASSubtitleCell.m in Sources */,
 				96EDCB381D4A503A00F9DC3F /* BaseCollectionView.m in Sources */,
+				962F2B121D63DB7500F790C0 /* FlexibleWidthCollectionViewController.m in Sources */,
 				9639AA861D458EEB007719B0 /* UIView+Coder.m in Sources */,
 				9639AA8A1D458EEB007719B0 /* JASSession.m in Sources */,
 				9625079D1D461A3100DFF32D /* NSNumber+Coder.m in Sources */,
@@ -1134,6 +1204,7 @@
 				962F2A9D1D6289D100F790C0 /* XCTagChooserView.m in Sources */,
 				96EDCB5E1D4A5F4500F9DC3F /* JASValue1Cell.m in Sources */,
 				9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */,
+				962F2B0C1D63D8B000F790C0 /* XCTagChooserModel.m in Sources */,
 				9639AA691D458EEB007719B0 /* JASBaseCellModel.m in Sources */,
 				96844F841D5259C000C37697 /* SupplementaryHeaderViewMix.m in Sources */,
 				96EDCB3B1D4A50EE00F9DC3F /* BaseTableViewCell.m in Sources */,
@@ -1157,6 +1228,7 @@
 				9639AA7E1D458EEB007719B0 /* NSData+Coder.m in Sources */,
 				9698B92C1D5F688600D593F2 /* WaterFlowHorLayout.m in Sources */,
 				96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */,
+				962F2B071D6365D800F790C0 /* XCTagChooserCell.m in Sources */,
 				9639AA821D458EEB007719B0 /* NSString+Coder.m in Sources */,
 				96A3E0571D4DDF2E00E8431F /* BaseCollectionCellModel.m in Sources */,
 				96E72F081D30A26000D5A3A9 /* main.m in Sources */,

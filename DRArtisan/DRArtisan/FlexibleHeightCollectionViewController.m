@@ -1,16 +1,16 @@
 //
-//  BaseCollectionViewControllerDemo.m
+//  FlexibleHeightCollectionViewController.m
 //  DRArtisan
 //
 //  Created by Jason on 7/31/16.
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "BaseCollectionViewControllerDemo.h"
+#import "FlexibleHeightCollectionViewController.h"
 #import "NewsModel.h"
 #import "NewsCollectionCell.h"
 
-@interface BaseCollectionViewControllerDemo ()
+@interface FlexibleHeightCollectionViewController ()
 
 @property (nonatomic,weak) BaseCollectionView *collect_v;
 
@@ -18,7 +18,7 @@
 
 @end
 
-@implementation BaseCollectionViewControllerDemo
+@implementation FlexibleHeightCollectionViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -55,7 +55,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://image.baidu.com/wisebrowse/data?tag1=%@&tag2=%@",tag1,tag2];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    XCHTTPSessionManager *manager = [XCHTTPSessionManager manager];
+    XCHTTPSessionManager *manager = [XCHTTPSessionManager managerWithBaseUrl:nil];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
     
     [manager GET:urlString parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

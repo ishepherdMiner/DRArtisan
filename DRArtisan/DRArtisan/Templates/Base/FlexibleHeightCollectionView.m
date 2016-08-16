@@ -23,7 +23,7 @@
 - (CGFloat)collectionView:(UICollectionView*)collectionView
                    layout:(WaterFlowVerLayout*)layout
  heightForItemAtIndexPath:(NSIndexPath*)indexPath
-                itemWidth:(NSUInteger)itemWidth{
+                itemWidth:(CGFloat)itemWidth{
     if (self.cdelegate) {
         if([self.cdelegate respondsToSelector:@selector(collectionView:layout:heightForItemAtIndexPath:itemWidth:)]){
             [self.cdelegate collectionView:collectionView layout:layout heightForItemAtIndexPath:indexPath itemWidth:itemWidth];

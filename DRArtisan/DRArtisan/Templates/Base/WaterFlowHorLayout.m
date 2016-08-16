@@ -68,8 +68,8 @@
 - (UICollectionViewLayoutAttributes *)layoutAttributesForItemAtIndexPath:(NSIndexPath *)indexPath
 {
    
-    if ([self.delegate respondsToSelector:@selector(collectionView:waterFlowVerLayout:widthAtIndexPath:)]) {
-        [self.delegate collectionView:self.collectionView waterFlowVerLayout:self widthAtIndexPath:indexPath];
+    if ([self.delegate respondsToSelector:@selector(collectionView:layout:widthForItemAtIndexPath:itemHeight:)]) {
+        [self.delegate collectionView:self.collectionView layout:self widthForItemAtIndexPath:indexPath itemHeight:_rowHeight];
     }
     CGFloat x = self.sectionInset.left;
     CGFloat y = self.sectionInset.top;
@@ -81,11 +81,11 @@
             y = [_originyArray[preRow]floatValue];
         }
         NSIndexPath *preIndexPath = [NSIndexPath indexPathForItem:preRow inSection:indexPath.section];
-        CGFloat preWidth = [self.delegate collectionView:self.collectionView waterFlowVerLayout:self widthAtIndexPath:preIndexPath];
+        CGFloat preWidth = [self.delegate collectionView:self.collectionView layout:self widthForItemAtIndexPath:preIndexPath itemHeight:_rowHeight];
         x += preWidth + self.minimumInteritemSpacing;
     }
     
-    CGFloat currentWidth = [self.delegate collectionView:self.collectionView waterFlowVerLayout:self widthAtIndexPath:indexPath];
+    CGFloat currentWidth = [self.delegate collectionView:self.collectionView layout:self widthForItemAtIndexPath:indexPath itemHeight:_rowHeight];
     // 保证一个cell不超过最大宽度
     currentWidth = MIN(currentWidth, self.collectionView.frame.size.width - self.sectionInset.left - self.sectionInset.right);
     if(x + currentWidth > self.collectionView.frame.size.width - self.sectionInset.right){

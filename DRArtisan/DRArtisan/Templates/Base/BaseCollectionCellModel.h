@@ -11,17 +11,26 @@
 @interface BaseCollectionCellModel : BaseObject
 
 /**
- *  返回CollectionView的Cell的item的高度
+ *  返回CollectionView的Cell的item的高度 -
  *
  *  @param itemWidth cell的宽度
  *  @param indexPath cell的位置
  *
  *  @return item的高度
  *
- *  require override
  */
 - (CGFloat)calculateHeightWithItemWidth:(CGFloat)itemWidth indexPath:(NSIndexPath *)indexPath;
 
+
+/**
+ *  返回CollectionView的Cell的item的宽度
+ *
+ *  @param itemHeight cell的高度
+ *  @param indexPath  cell的位置
+ *
+ *  @return item的宽度
+ */
+- (CGFloat)calculateWidthWithItemHeight:(CGFloat)itemHeight indexPath:(NSIndexPath *)indexPath;
 
 /// 简单对象的封装
 // ============================================

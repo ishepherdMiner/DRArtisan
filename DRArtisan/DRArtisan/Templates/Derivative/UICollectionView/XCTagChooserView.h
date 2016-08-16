@@ -10,10 +10,10 @@
 
 @interface XCTagChooserView : UIView
 
-/// 指定白色背景高度
-@property (nonatomic,assign) CGFloat    bottomHeight;
+@property (nonatomic,weak) BaseCollectionView *collect_v;
 
-/// 最多可选择数量
-@property (nonatomic,assign) NSInteger  maxSelectCount;
++ (instancetype)chooserViewWithFrame:(CGRect)frame
+                        bottomHeight:(CGFloat)bHeight
+                      maxSelectCount:(CGFloat)maxCount;
 
 @end

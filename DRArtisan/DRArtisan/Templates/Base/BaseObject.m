@@ -119,31 +119,4 @@
 - (void)dealloc {
     [self jas_logDealloc];
 }
-
-//
-//- (NSString *)description {
-//    NSMutableString *descM = [NSMutableString stringWithFormat:@"<%@ %p>\n",self,self];
-//    for (NSString *property in [[self class] jas_propertyList]) {
-//        [descM appendString:[NSString stringWithFormat:@"%@ => %@",property,[self valueForKey:property]]];
-//    }
-//    return descM;
-//}
-
-+ (void)jas_test {
-//    NSBundle *b = [NSBundle bundleWithPath:@"/System/Library/PrivateFrameworks/PreferencesUI.framework"];
-//    [b load];
-//    Class cls = NSClassFromString(@"FindMyiPhoneController"); // NSClassFromString(@"AdSupportController");
-//    XcLog(@"cls super %@",[cls superclass]);
-//    [BaseObject jas_methodList:cls];
-//    id obj = [[cls alloc] init];
-//    [cls jas_propertyList];
-//    
-//    if([obj respondsToSelector:@selector(resetAdID)]) {
-//        [obj performSelector:@selector(resetAdID)];
-////        XcLog(@"deviceName => %@",[obj performSelector:@selector(resetAdID)]);
-//    }
-
-    // SettingsNetworkController
-}
-
 @end

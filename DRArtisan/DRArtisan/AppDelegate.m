@@ -11,7 +11,7 @@
 #import "ViewController.h"
 
 #import "BaseTableViewControllerDemo.h"
-#import "BaseCollectionViewControllerDemo.h"
+#import "FlexibleHeightCollectionViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +23,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
-    _window.rootViewController = [[BaseCollectionViewControllerDemo alloc] init];
+    _window.rootViewController = [[FlexibleHeightCollectionViewController alloc] init];
     [UIDevice jas_broken];
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试
@@ -36,8 +36,6 @@
 //    XcLog(@"%@",demoArr);
     
 //    [JASUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
-    // 测试设备信息相关的方法
-    [BaseObject jas_test];
     
     [UIScreen mainScreen].brightness = 0.3;
     
