@@ -17,7 +17,7 @@
 
 const char* propertiesKey = "md5(bundleId)_propertiesKey";
 
-+ (NSArray *)jas_propertyList {
++ (NSArray *)jx_propertyList {
     
     // 0. 判断是否存在关联对象，如果存在，直接返回
     /**

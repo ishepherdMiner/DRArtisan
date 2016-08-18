@@ -45,7 +45,7 @@
 #pragma mark - JXTagChooserViewDelegate
 - (JXBaseCollectionView *)tagChooserView:(JXTagChooserView *)chooserView {
     if (_collect_v == nil) {
-        JXWaterFlowHorLayout *flowLayout = [JXWaterFlowHorLayout LayoutWithColumnsCount:4 lineSpace:5 interitemSpace:10 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5) layoutTactics:JXLayoutTacticsColumns];
+        JXWaterFlowHorLayout *flowLayout = [JXWaterFlowHorLayout LayoutWithColumnsCount:4 lineSpace:5 interitemSpace:5 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5) layoutTactics:JXLayoutTacticsColumns];
         
         flowLayout.rowHeight = 40;
         

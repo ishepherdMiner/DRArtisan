@@ -61,11 +61,12 @@
 		96844F841D5259C000C37697 /* JXSupplementaryHeaderViewMix.m in Sources */ = {isa = PBXBuildFile; fileRef = 96844F831D5259C000C37697 /* JXSupplementaryHeaderViewMix.m */; };
 		9698B92C1D5F688600D593F2 /* JXWaterFlowHorLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92B1D5F688600D593F2 /* JXWaterFlowHorLayout.m */; };
 		9698B92F1D6139D100D593F2 /* JXFlexibleWidthCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92E1D6139D100D593F2 /* JXFlexibleWidthCollectionView.m */; };
+		96990A441D65C45800EEF584 /* DemoRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96990A431D65C45800EEF584 /* DemoRootViewController.m */; };
 		96A3E05E1D4DE32200E8431F /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E05D1D4DE32200E8431F /* DemoTableViewController.m */; };
 		96A3E0611D4DEEAE00E8431F /* JXFlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0601D4DEEAE00E8431F /* JXFlexibleHeightTableView.m */; };
 		96A3E06A1D4E13DA00E8431F /* JXBaseCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0691D4E13DA00E8431F /* JXBaseCollectionViewFlowLayout.m */; };
 		96A3E06E1D4E184800E8431F /* WaterfallFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */; };
-		96A3E0711D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0701D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m */; };
+		96A3E0711D4E18BC00E8431F /* DemoFlexibleHeightViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0701D4E18BC00E8431F /* DemoFlexibleHeightViewController.m */; };
 		96E72F081D30A26000D5A3A9 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F071D30A26000D5A3A9 /* main.m */; };
 		96E72F0B1D30A26000D5A3A9 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0A1D30A26000D5A3A9 /* AppDelegate.m */; };
 		96E72F0E1D30A26000D5A3A9 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F0D1D30A26000D5A3A9 /* ViewController.m */; };
@@ -223,6 +224,8 @@
 		9698B92B1D5F688600D593F2 /* JXWaterFlowHorLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXWaterFlowHorLayout.m; sourceTree = "<group>"; };
 		9698B92D1D6139D100D593F2 /* JXFlexibleWidthCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXFlexibleWidthCollectionView.h; sourceTree = "<group>"; };
 		9698B92E1D6139D100D593F2 /* JXFlexibleWidthCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXFlexibleWidthCollectionView.m; sourceTree = "<group>"; };
+		96990A421D65C45800EEF584 /* DemoRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoRootViewController.h; sourceTree = "<group>"; };
+		96990A431D65C45800EEF584 /* DemoRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoRootViewController.m; sourceTree = "<group>"; };
 		96A3E05C1D4DE32200E8431F /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
 		96A3E05D1D4DE32200E8431F /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 		96A3E05F1D4DEEAE00E8431F /* JXFlexibleHeightTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXFlexibleHeightTableView.h; sourceTree = "<group>"; };
@@ -231,8 +234,8 @@
 		96A3E0691D4E13DA00E8431F /* JXBaseCollectionViewFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXBaseCollectionViewFlowLayout.m; sourceTree = "<group>"; };
 		96A3E06C1D4E184700E8431F /* WaterfallFlowLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WaterfallFlowLayout.h; sourceTree = "<group>"; };
 		96A3E06D1D4E184800E8431F /* WaterfallFlowLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WaterfallFlowLayout.m; sourceTree = "<group>"; };
-		96A3E06F1D4E18BC00E8431F /* FlexibleHeightCollectionViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FlexibleHeightCollectionViewController.h; sourceTree = "<group>"; };
-		96A3E0701D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FlexibleHeightCollectionViewController.m; sourceTree = "<group>"; };
+		96A3E06F1D4E18BC00E8431F /* DemoFlexibleHeightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoFlexibleHeightViewController.h; sourceTree = "<group>"; };
+		96A3E0701D4E18BC00E8431F /* DemoFlexibleHeightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoFlexibleHeightViewController.m; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -419,8 +422,8 @@
 		962F2B0D1D63DA8300F790C0 /* FlexibleHeightCollectionView */ = {
 			isa = PBXGroup;
 			children = (
-				96A3E06F1D4E18BC00E8431F /* FlexibleHeightCollectionViewController.h */,
-				96A3E0701D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m */,
+				96A3E06F1D4E18BC00E8431F /* DemoFlexibleHeightViewController.h */,
+				96A3E0701D4E18BC00E8431F /* DemoFlexibleHeightViewController.m */,
 				962058131D5847C90085DB4F /* NewsModel.h */,
 				962058141D5847C90085DB4F /* NewsModel.m */,
 				962058161D584FBB0085DB4F /* NewsCollectionCell.h */,
@@ -739,6 +742,8 @@
 		963ED3C51D32485A0071BECF /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				96990A421D65C45800EEF584 /* DemoRootViewController.h */,
+				96990A431D65C45800EEF584 /* DemoRootViewController.m */,
 				9621570F1D50169F001019BB /* TableView */,
 				9621570E1D501693001019BB /* CollectionView */,
 				96E72F0C1D30A26000D5A3A9 /* ViewController.h */,
@@ -1170,7 +1175,7 @@
 				9639AA7D1D458EEB007719B0 /* NSArray+Coder.m in Sources */,
 				9639AA8E1D458EEB007719B0 /* CircleProgressBar.m in Sources */,
 				9639AA731D458EEB007719B0 /* SetMealTableViewCell.m in Sources */,
-				96A3E0711D4E18BC00E8431F /* FlexibleHeightCollectionViewController.m in Sources */,
+				96A3E0711D4E18BC00E8431F /* DemoFlexibleHeightViewController.m in Sources */,
 				9639AA851D458EEB007719B0 /* UIImage+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
 				9639AA901D458EEB007719B0 /* NJDBezierCurve.m in Sources */,
@@ -1203,6 +1208,7 @@
 				9639AA911D458EEB007719B0 /* Waver.m in Sources */,
 				9624222F1D4827FB0028A835 /* TYWaveProgressView.m in Sources */,
 				96EDCB641D4A5F9900F9DC3F /* JXBaseCollectionViewCell.m in Sources */,
+				96990A441D65C45800EEF584 /* DemoRootViewController.m in Sources */,
 				962F2A9D1D6289D100F790C0 /* JXTagChooserView.m in Sources */,
 				96EDCB5E1D4A5F4500F9DC3F /* JXValue1Cell.m in Sources */,
 				9639AA701D458EEB007719B0 /* FlowAnalytical.m in Sources */,

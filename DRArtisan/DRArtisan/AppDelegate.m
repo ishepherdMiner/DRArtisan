@@ -10,8 +10,10 @@
 
 #import "ViewController.h"
 
+#import "DemoRootViewController.h"
+
 #import "DemoTableViewController.h"
-#import "FlexibleHeightCollectionViewController.h"
+#import "DemoFlexibleHeightViewController.h"
 #import "DemoFlexibleWidthViewController.h"
 
 @interface AppDelegate ()
@@ -24,29 +26,36 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
+    
     //
-     _window.rootViewController = [[DemoFlexibleWidthViewController alloc] init];
-//     _window.rootViewController = [[DemoTableViewController alloc] init];
-//    _window.rootViewController = [[FlexibleHeightCollectionViewController alloc] init];
-    [UIDevice jas_broken];
+    UINavigationController *rootNavC = [[UINavigationController alloc] initWithRootViewController:[[DemoRootViewController alloc] init]];
+    
+    _window.rootViewController = rootNavC;
+    
+    //  _window.rootViewController = [[DemoFlexibleWidthViewController alloc] init];
+    //  _window.rootViewController = [[DemoTableViewController alloc] init];
+    //  _window.rootViewController = [[DemoFlexibleHeightViewController alloc] init];
+    
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试
     // [self iosUpgradeTest];
 #endif
-//    NSDictionary *demoDic = [self demoDic];
-//    XcLog(@"%@",demoDic);
-//    
-//    NSArray *demoArr = [self demoArr];
-//    XcLog(@"%@",demoArr);
     
-//    [JXUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
+    // NSDictionary *demoDic = [self demoDic];
+    // XcLog(@"%@",demoDic);
+    //
+    // NSArray *demoArr = [self demoArr];
+    // XcLog(@"%@",demoArr);
+    
+    // [JXUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
     
     [UIScreen mainScreen].brightness = 0.3;
     
-    [NSString jas_propertyList];
+//    [NSString jx_propertyList];
     // [JXUtils logViewRecursive:_window];
     
     _window.backgroundColor = HexRGB(0xffffff);
+    
     [_window makeKeyAndVisible];
     
     return YES;

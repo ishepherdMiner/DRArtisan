@@ -15,6 +15,7 @@
 @optional
 /// 子类继承后自定义CollectView提供方法
 - (JXBaseCollectionView *)tagChooserView:(JXTagChooserView *)chooserView;
+
 @end
 
 @interface JXTagChooserView : UIView <JXTagChooserViewDelegate>

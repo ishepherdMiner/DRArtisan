@@ -13,7 +13,7 @@
 /**
  *  返回类的属性列表
  */
-+ (NSArray *)jas_propertyList;
++ (NSArray *)jx_propertyList;
 
 /**
  *  返回类的方法列表

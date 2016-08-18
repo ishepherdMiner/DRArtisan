@@ -1,16 +1,16 @@
 //
-//  JXFlexibleHeightCollectionViewController.m
+//  JXDemoFlexibleHeightViewController.m
 //  DRArtisan
 //
 //  Created by Jason on 7/31/16.
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "FlexibleHeightCollectionViewController.h"
+#import "DemoFlexibleHeightViewController.h"
 #import "NewsModel.h"
 #import "NewsCollectionCell.h"
 
-@interface FlexibleHeightCollectionViewController ()
+@interface DemoFlexibleHeightViewController ()
 
 @property (nonatomic,weak) JXBaseCollectionView *collect_v;
 
@@ -18,10 +18,11 @@
 
 @end
 
-@implementation FlexibleHeightCollectionViewController
+@implementation DemoFlexibleHeightViewController
 
 - (void)viewDidLoad {
-    [super viewDidLoad];
+    [super viewDidLoad];    
+    self.title = @"瀑布流(限宽不限高)";
     
     JXWaterFlowVerLayout *flowLayout = [JXWaterFlowVerLayout LayoutWithColumnsCount:2 lineSpace:5 interitemSpace:5 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5)];
 

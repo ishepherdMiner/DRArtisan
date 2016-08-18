@@ -29,7 +29,7 @@
     
     id obj = [[self alloc] init];
     
-    NSArray *propertyList = [self jas_propertyList];
+    NSArray *propertyList = [self jx_propertyList];
     
     NSMutableDictionary *propertyDic = [NSMutableDictionary dictionaryWithCapacity:[propertyList  count]];
     

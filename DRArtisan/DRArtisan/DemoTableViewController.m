@@ -29,6 +29,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
+    self.title = @"tableView视图(自定义高度)";
     // Set demo cell option
     self.identifier = 1;
     [self tableViewDemoWithIdentifier:self.identifier];
@@ -54,7 +55,7 @@
     // 5.在合适的时机设置数据源
     
     // 创建TableView
-    JXBaseTableView *base_table_v = [JXBaseTableView tableViewWithFrame:fRect(kZero,kZero, Screen_width, Screen_height) style:UITableViewStylePlain classType:JXTableViewClassTypeFlexibleHeight];
+    JXBaseTableView *base_table_v = [JXBaseTableView tableViewWithFrame:fRect(kZero,Nav_bar_height, Screen_width, Screen_height - Nav_bar_height) style:UITableViewStylePlain classType:JXTableViewClassTypeFlexibleHeight];
     
     base_table_v.dataList = [self datas];
     

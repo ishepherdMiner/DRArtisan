@@ -1,5 +1,5 @@
 //
-//  JXFlexibleHeightCollectionViewController.h
+//  JXDemoFlexibleHeightViewController.h
 //  DRArtisan
 //
 //  Created by Jason on 7/31/16.
@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface FlexibleHeightCollectionViewController : UIViewController
+@interface DemoFlexibleHeightViewController : UIViewController
 
 @end

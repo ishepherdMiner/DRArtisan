@@ -23,7 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    JXTagChooserView *tagChooserView = [JXTagChooserView chooserViewWithFrame:fRect(0, 64, Screen_width, Screen_height - 64) bottomHeight:300 maxSelectCount:5];
+    JXTagChooserView *tagChooserView = [JXTagChooserView chooserViewWithFrame:Screen_bounds bottomHeight:300 maxSelectCount:5];
     
     [self.view addSubview:_tagChooserView = tagChooserView];
     NSArray *dataList = @[
