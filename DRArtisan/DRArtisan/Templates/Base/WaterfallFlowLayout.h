@@ -6,7 +6,7 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "BaseCollectionViewFlowLayout.h"
+#import "JXBaseCollectionViewFlowLayout.h"
 
 UIKIT_EXTERN NSString *const XC_UICollectionElementKindSectionHeader;
 UIKIT_EXTERN NSString *const XC_UICollectionElementKindSectionFooter;

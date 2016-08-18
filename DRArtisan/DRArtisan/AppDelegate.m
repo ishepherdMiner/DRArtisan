@@ -10,8 +10,9 @@
 
 #import "ViewController.h"
 
-#import "BaseTableViewControllerDemo.h"
+#import "DemoTableViewController.h"
 #import "FlexibleHeightCollectionViewController.h"
+#import "DemoFlexibleWidthViewController.h"
 
 @interface AppDelegate ()
 
@@ -23,7 +24,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     _window = [[UIWindow alloc] initWithFrame:Screen_bounds];
-    _window.rootViewController = [[FlexibleHeightCollectionViewController alloc] init];
+    //
+     _window.rootViewController = [[DemoFlexibleWidthViewController alloc] init];
+//     _window.rootViewController = [[DemoTableViewController alloc] init];
+//    _window.rootViewController = [[FlexibleHeightCollectionViewController alloc] init];
     [UIDevice jas_broken];
 #if kCoder_Ext
     // 该用法用于测试iOS版本升级后的测试
@@ -35,12 +39,12 @@
 //    NSArray *demoArr = [self demoArr];
 //    XcLog(@"%@",demoArr);
     
-//    [JASUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
+//    [JXUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
     
     [UIScreen mainScreen].brightness = 0.3;
     
     [NSString jas_propertyList];
-    // [JASUtils logViewRecursive:_window];
+    // [JXUtils logViewRecursive:_window];
     
     _window.backgroundColor = HexRGB(0xffffff);
     [_window makeKeyAndVisible];

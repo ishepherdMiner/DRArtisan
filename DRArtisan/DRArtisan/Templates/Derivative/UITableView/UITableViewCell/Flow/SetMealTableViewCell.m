@@ -14,24 +14,17 @@
 
 @property (nonatomic,weak) UITextField *desc_field_v;
 
+@property (nonatomic,strong) SetMealCellModel *model;
 @end
 
 @implementation SetMealTableViewCell
 
-- (void)setModel:(SetMealCellModel *)model {
+- (void)injectedModel:(id)model {
     _model = model;
     
-    self.title_v.text = model.meal_question;
-    self.desc_field_v.text = model.meal_answer;
-    
+    self.title_v.text = _model.meal_question;
+    self.desc_field_v.text = _model.meal_answer;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-    
-//    if ([[self.owned_table_v locateWithModel:model] section] == kTwo) {
-//        self.cell_type = MealCellTypeCenter;
-//        self.title_v.textColor = DEFAULT_COLOR;
-//        self.accessoryType = UITableViewCellAccessoryNone;
-//        [self.desc_field_v removeFromSuperview];
-//    }
     
     if (self.indexPath.section == kTwo){
         self.cell_type = MealCellTypeCenter;
@@ -40,7 +33,7 @@
         [self.desc_field_v removeFromSuperview];
     }
     
-    model.cell_h = 50;
+    // _model.cell_h = 50;    
 }
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {

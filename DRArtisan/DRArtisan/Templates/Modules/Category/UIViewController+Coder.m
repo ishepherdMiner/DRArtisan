@@ -16,19 +16,19 @@
 
 + (void)load {
     
-    [BaseObject hookMethod:self OriginSelector:@selector(viewDidLoad)  SwizzledSelector:@selector(jas_viewDidLoad)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidLoad)  SwizzledSelector:@selector(jas_viewDidLoad)];
     
-    [BaseObject hookMethod:self OriginSelector:@selector(viewWillAppear:) SwizzledSelector:@selector(jas_viewWillAppear:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewWillAppear:) SwizzledSelector:@selector(jas_viewWillAppear:)];
     
-     [BaseObject hookMethod:self OriginSelector:@selector(viewDidAppear:) SwizzledSelector:@selector(jas_viewDidAppear:)];
+     [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidAppear:) SwizzledSelector:@selector(jas_viewDidAppear:)];
     
-    [BaseObject hookMethod:self OriginSelector:@selector(viewWillDisappear:) SwizzledSelector:@selector(jas_viewWillDisappear:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewWillDisappear:) SwizzledSelector:@selector(jas_viewWillDisappear:)];
     
-    [BaseObject hookMethod:self OriginSelector:@selector(viewDidDisappear:) SwizzledSelector:@selector(jas_viewDidDisappear:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidDisappear:) SwizzledSelector:@selector(jas_viewDidDisappear:)];
     
-    [BaseObject hookMethod:self OriginSelector:@selector(pushViewController:animated:) SwizzledSelector:@selector(jas_pushViewController:animated:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(pushViewController:animated:) SwizzledSelector:@selector(jas_pushViewController:animated:)];
     
-    [BaseObject hookMethod:self OriginSelector:@selector(presentViewController:animated:completion:) SwizzledSelector:@selector(jas_presentViewController:animated:completion:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(presentViewController:animated:completion:) SwizzledSelector:@selector(jas_presentViewController:animated:completion:)];
     
 }
 

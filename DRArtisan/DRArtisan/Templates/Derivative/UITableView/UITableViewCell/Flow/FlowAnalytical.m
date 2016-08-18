@@ -44,7 +44,7 @@
     double theUse = [userDefaults doubleForKey:kThisUseFlow];
     
     // 获取本次开机使用的流量
-    double thisUse = [[JASUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
+    double thisUse = [[JXUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
     
     // 获取所有使用量
     double allUse = [[userDefaults objectForKey:kAllUseFlow] doubleValue];
@@ -169,7 +169,7 @@
         [userDefaults setObject:@"0.0" forKey:kThisUseFlow];
         
         // 获取本次开机使用的流量
-        double thisUse = [[JASUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
+        double thisUse = [[JXUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
         
         // [FlowAnalytical getDataWithB:[arr[2] longLongValue] + [arr[3] longLongValue]];
         // 本次开机使用流量

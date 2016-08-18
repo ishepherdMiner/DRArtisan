@@ -27,7 +27,7 @@
 #define kUsedFlow   kThree
 #define kNewDescValues @[@"meal_cycle",@"settle_date",@"total_flow",@"used_flow"]
 
-@interface SetMealTableView : BaseTableView
+@interface SetMealTableView : JXBaseTableView
 /**
  *  UIAlertController block
  */

@@ -6,9 +6,9 @@
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#import "BaseViewController.h"
+#import "JXBaseViewController.h"
 
-@interface JASTableViewController : BaseViewController <BaseTableViewDelegate>
+@interface JASTableViewController : JXBaseViewController <JXBaseTableViewDelegate>
 
 @property (nonatomic,strong) NSArray *table_datas;
 

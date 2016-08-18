@@ -16,7 +16,7 @@
  */
 
 
-@interface Photo : BaseObject
+@interface Photo : JXBaseObject
 @property (nonatomic, assign) CGFloat small_width;
 @property (nonatomic, assign) CGFloat small_height;
 @property (nonatomic, copy) NSString *small_url;

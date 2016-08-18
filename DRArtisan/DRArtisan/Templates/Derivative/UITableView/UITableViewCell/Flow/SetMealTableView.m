@@ -9,7 +9,7 @@
 #import "SetMealTableView.h"
 #import "FlowAnalytical.h"
 
-@interface SetMealTableView () <BasePickerViewDelegate,UITextFieldDelegate>
+@interface SetMealTableView () <JXBasePickerViewDelegate,UITextFieldDelegate>
 
 @property (nonatomic,weak) UIPickerView *picker_v;
 @property (nonatomic,weak) UIToolbar *accessory_v;
@@ -143,7 +143,7 @@
     // lazyload
     if (_picker_v == nil) {
         dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.2 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-            BasePickerView *picker_v = [[BasePickerView alloc] initWithFrame:fRect(0, Screen_height - 200, Screen_width, 200)];
+            JXBasePickerView *picker_v = [[JXBasePickerView alloc] initWithFrame:fRect(0, Screen_height - 200, Screen_width, 200)];
             picker_v.dataList = dataList;
             picker_v.pickerDelegate = self;
             SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];

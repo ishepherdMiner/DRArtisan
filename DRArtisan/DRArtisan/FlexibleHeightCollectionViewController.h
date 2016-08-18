@@ -1,5 +1,5 @@
 //
-//  FlexibleHeightCollectionViewController.h
+//  JXFlexibleHeightCollectionViewController.h
 //  DRArtisan
 //
 //  Created by Jason on 7/31/16.

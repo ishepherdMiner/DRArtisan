@@ -6,9 +6,7 @@
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#import "JASBaseCellModel.h"
-
-@interface SetMealCellModel : JASBaseCellModel
+@interface SetMealCellModel : JXBaseObject
 
 /// 标题(周期是多少等...)
 @property (nonatomic, copy) NSString *meal_question;

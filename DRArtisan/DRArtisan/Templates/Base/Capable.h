@@ -11,7 +11,7 @@
 @interface Capable : NSObject
 
 // - instance methods
-+ (instancetype)capableWithCollectionView:(BaseCollectionView *)collectionView;
++ (instancetype)capableWithCollectionView:(JXBaseCollectionView *)collectionView;
 
 
 - (void)mobility;

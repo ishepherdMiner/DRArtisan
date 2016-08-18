@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger,MealCellType){
     MealCellTypeRight
 };
 
-@interface SetMealTableViewCell : BaseTableViewCell
+@interface SetMealTableViewCell : JXBaseTableViewCell
 
 @property (nonatomic,assign) MealCellType cell_type;
 

@@ -9,16 +9,10 @@
 #ifndef prefix_pch
 #define prefix_pch
 
-/// Cabability Switch
-// if you define it, you should manual link libz.x.x.x.tbd framework at present
-// #define Add_Data_Zip_Capability
-
 #import "GlobalConst.h"
-#import "CategoryCollect.h"
-#import "AbstractCollect.h"
-#import "BaseCollect.h"
-#import "JASUtils.h"
-#import "XCHTTPSessionManager.h"
+#import "JXArtisan.h"
+#import "JXUtils.h"
+#import "JXHTTPSessionManager.h"
 
 /**
  *  Setting switch service

@@ -10,7 +10,7 @@
 
 @implementation NewsModel
 
-- (NSDictionary *)mapperProperties {
+- (NSDictionary *)mapping {
     return @{@"pass_h":@"image_height"};
 }
 

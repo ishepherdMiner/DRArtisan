@@ -10,7 +10,7 @@
 
 @class CommentModel;
 
-@interface DemoModel : BaseObject
+@interface DemoModel : JXBaseObject
 
 @property (nonatomic, copy) CommentModel *god_comment;
 

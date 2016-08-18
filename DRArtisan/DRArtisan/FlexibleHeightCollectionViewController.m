@@ -1,5 +1,5 @@
 //
-//  FlexibleHeightCollectionViewController.m
+//  JXFlexibleHeightCollectionViewController.m
 //  DRArtisan
 //
 //  Created by Jason on 7/31/16.
@@ -12,7 +12,7 @@
 
 @interface FlexibleHeightCollectionViewController ()
 
-@property (nonatomic,weak) BaseCollectionView *collect_v;
+@property (nonatomic,weak) JXBaseCollectionView *collect_v;
 
 @property (nonatomic,strong) Capable *capable;
 
@@ -23,9 +23,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    WaterFlowVerLayout *flowLayout = [WaterFlowVerLayout LayoutWithColumnsCount:2 lineSpace:5 interitemSpace:5 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5)];
+    JXWaterFlowVerLayout *flowLayout = [JXWaterFlowVerLayout LayoutWithColumnsCount:2 lineSpace:5 interitemSpace:5 sectionInset:UIEdgeInsetsMake(0, 5, 5, 5)];
 
-    BaseCollectionView *collect_v = [BaseCollectionView collectionViewWithFrame:Screen_bounds layout:flowLayout classType:XCCollectionViewClassTypeFlexVer clickItemBlock:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
+    JXBaseCollectionView *collect_v = [JXBaseCollectionView collectionViewWithFrame:Screen_bounds layout:flowLayout classType:JXCollectionViewClassTypeFlexVer clickItemBlock:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
         
          XcLog(@"%@",@"点击了Cell");
         
@@ -34,7 +34,7 @@
     flowLayout.delegate = collect_v;
     
     collect_v.backgroundColor = HexRGB(0xffffff);
-    [collect_v registerClass:[NewsCollectionCell class]];
+    [collect_v registerCellClass:[NewsCollectionCell class]];
     [self.view addSubview:_collect_v = collect_v];
     
     // Add Move ability
@@ -55,7 +55,7 @@
     NSString *urlString = [NSString stringWithFormat:@"http://image.baidu.com/wisebrowse/data?tag1=%@&tag2=%@",tag1,tag2];
     urlString = [urlString stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
     
-    XCHTTPSessionManager *manager = [XCHTTPSessionManager managerWithBaseUrl:nil];
+    JXHTTPSessionManager *manager = [JXHTTPSessionManager managerWithBaseUrl:nil];
     manager.responseSerializer.acceptableContentTypes =[NSSet setWithObjects:@"application/json", @"text/json", @"text/javascript",@"text/html", nil];
     
     [manager GET:urlString parameters:dic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {

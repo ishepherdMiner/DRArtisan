@@ -25,7 +25,7 @@
 /**
  *  class释放时,进行输出提示,辅助内存泄露
  */
-- (void)jas_logDealloc;
+- (void)jx_logDealloc;
 
 /*
     Copyright (c) 2013,

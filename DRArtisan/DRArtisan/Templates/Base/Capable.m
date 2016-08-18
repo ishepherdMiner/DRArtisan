@@ -10,12 +10,12 @@
 
 @interface Capable ()
 
-@property (nonatomic,weak) BaseCollectionView *collectionView;
+@property (nonatomic,weak) JXBaseCollectionView *collectionView;
 
 @end
 
 @implementation Capable
-+ (instancetype)capableWithCollectionView:(BaseCollectionView *)collectionView {
++ (instancetype)capableWithCollectionView:(JXBaseCollectionView *)collectionView {
     Capable *capable = [[Capable alloc] init];
     capable.collectionView = collectionView;
     return capable;

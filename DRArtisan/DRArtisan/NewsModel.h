@@ -6,10 +6,10 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "BaseObject.h"
+#import "JXBaseObject.h"
 
 /// 摘取网易图片的模型对象
-@interface NewsModel : BaseCollectionCellModel
+@interface NewsModel : JXBaseObject
 
 @property (nonatomic,assign) NSUInteger image_height;
 @property (nonatomic,assign) NSUInteger image_width;

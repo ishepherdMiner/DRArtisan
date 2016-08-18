@@ -12,21 +12,21 @@
 #import "CustomBadge.h"
 #import <AVFoundation/AVFoundation.h>
 #import "Waver.h"
-#import "JASSession.h"
-#import "JASCircleProgressView.h"
+#import "JXSession.h"
+#import "JXCircleProgressView.h"
 
 @interface ViewController ()
 
-@property (nonatomic, weak) BaseTableView *base_table_v;
+@property (nonatomic, weak) JXBaseTableView *base_table_v;
 
 @property (nonatomic,weak) UIView *badgeView;
 
 @property (nonatomic, strong) AVAudioRecorder *recorder;
 
 @property (nonatomic,weak) UIButton *actionButton;
-@property (nonatomic,weak) JASCircleProgressView *circle_progress_v;
+@property (nonatomic,weak) JXCircleProgressView *circle_progress_v;
 @property (strong, nonatomic) NSTimer *timer;
-@property (nonatomic) JASSession *session;
+@property (nonatomic) JXSession *session;
 @end
 
 @implementation ViewController
@@ -43,13 +43,13 @@
     }];
     
     XcLog(@"%@",[[[CommentModel alloc] init] jas_autoDescription]);
-    [JASUtils encryptTable:224];
+    [JXUtils encryptTable:224];
     // 感觉作用不大,而且
     self.view.backgroundColor = RGBA(51/255.0, 73/255.0, 93/255.0, 1.0);
-    self.session = [[JASSession alloc] init];
+    self.session = [[JXSession alloc] init];
     self.session.state = SessionStateStop;
     
-    JASCircleProgressView *circle_progress_v = [[JASCircleProgressView alloc] init];
+    JXCircleProgressView *circle_progress_v = [[JXCircleProgressView alloc] init];
     CGFloat circle_progress_w = 200;
     CGFloat circle_progress_h = circle_progress_w;
     circle_progress_v.frame = fRect((Screen_width - circle_progress_w) * 0.5, 100, circle_progress_w, circle_progress_h);

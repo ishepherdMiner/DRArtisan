@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface CommentModel : BaseObject
+@interface CommentModel : JXBaseObject
 @property (nonatomic, copy) NSString *id;
 @property (nonatomic, copy) NSString *topic_id;
 @property (nonatomic, copy) NSString *user_id;

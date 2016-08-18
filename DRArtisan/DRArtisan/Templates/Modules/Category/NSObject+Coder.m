@@ -91,7 +91,7 @@ const char* propertiesKey = "md5(bundleId)_propertiesKey";
 }
 
 static char __logDeallocAssociatedKey__;
-- (void)jas_logDealloc{
+- (void)jx_logDealloc{
     if( objc_getAssociatedObject( self, &__logDeallocAssociatedKey__ ) == nil ) {
         LogDealloc* log = [[LogDealloc alloc] init];
         log.message = NSStringFromClass( self.class );

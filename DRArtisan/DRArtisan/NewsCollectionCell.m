@@ -12,7 +12,7 @@
 #import "UIImageView+WebCache.h"
 
 @interface NewsCollectionCell ()
-
+@property (nonatomic,strong) NewsModel *model;
 @property (nonatomic,weak) UIImageView *newsImageView;
 
 @end
@@ -27,9 +27,9 @@
     return self;
 }
 
-- (void)setModel:(NewsModel *)model {
+- (void)injectedModel:(id)model {
     _model = model;
-    [_newsImageView sd_setImageWithURL:[NSURL URLWithString:model.small_url]];
+   [_newsImageView sd_setImageWithURL:[NSURL URLWithString:_model.small_url]];
 }
 
 - (void)layoutSubviews {
