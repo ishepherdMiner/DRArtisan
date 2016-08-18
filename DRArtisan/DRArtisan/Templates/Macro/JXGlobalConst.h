@@ -1,13 +1,13 @@
 //
-//  GlobalConst.h
+//  JXGlobalConst.h
 //  NormalCoder
 //
 //  Created by Jason on 7/6/16.
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#ifndef GlobalConst_h
-#define GlobalConst_h
+#ifndef JXGlobalConst_h
+#define JXGlobalConst_h
 
 /**
  *  Setting frame const
@@ -53,9 +53,9 @@
 #define Screen_height         [UIScreen mainScreen].bounds.size.height
 #define Screen_width          [UIScreen mainScreen].bounds.size.width
 #define Screen_scale          [UIScreen mainScreen].scale
-#define Status_bar_height     20
-#define Nav_bar_height        64
-#define Tab_bar_height        49
+#define kStatus_bar_height     20
+#define kNav_bar_height        64
+#define kTab_bar_height        49
 #define Proportion_iPhone5_w  Screen_width / 320.0f
 #define Proporiton_iPhone5_h  Screen_height / 568.0f
 
@@ -197,7 +197,7 @@ return instance; \
                       };
 // ============================================================================
 
-#endif /* GlobalConst_h */
+#endif /* JXGlobalConst_h */
 
 
 

@@ -51,7 +51,7 @@ const char* propertiesKey = "md5(bundleId)_propertiesKey";
         
         [arrayM addObject:[NSString stringWithUTF8String:cname]];
     }
-    XcLog(@"%@", arrayM);
+    JXLog(@"%@", arrayM);
     
     // 释放属性数组
     free(list);
@@ -160,7 +160,7 @@ static char __logDeallocAssociatedKey__;
 @implementation LogDealloc
 
 - (void)dealloc{
-    XcLog( @"dealloc: %@", self.message);
+    JXLog( @"dealloc: %@", self.message);
 }
 
 @end

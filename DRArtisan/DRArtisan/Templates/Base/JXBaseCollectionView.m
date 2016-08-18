@@ -101,7 +101,7 @@
     }
     
     // If you extends BaseTableView and you can implement tableView:didSelectRowAtIndexPath: action event
-    XcLog(@"You can implement collectionView:didSelectItemAtIndexPath: in class which is extends JXBaseCollectionView.");
+    JXLog(@"You can implement collectionView:didSelectItemAtIndexPath: in class which is extends JXBaseCollectionView.");
 }
 
 - (void)setDataList:(NSArray *)dataList {

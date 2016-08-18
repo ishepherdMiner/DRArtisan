@@ -28,7 +28,7 @@
 
     JXBaseCollectionView *collect_v = [JXBaseCollectionView collectionViewWithFrame:Screen_bounds layout:flowLayout classType:JXCollectionViewClassTypeFlexVer clickItemBlock:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
         
-         XcLog(@"%@",@"点击了Cell");
+         JXLog(@"%@",@"点击了Cell");
         
     }];
     
@@ -73,16 +73,16 @@
                     }
                     
                      _collect_v.dataList = [imgsM copy];
-                     XcLog(@"%@",_collect_v.dataList);
+                     JXLog(@"%@",_collect_v.dataList);
                      [_collect_v reloadData];
                 }
             }
         
-            // XcLog(@"%@",responseObject);
+            // JXLog(@"%@",responseObject);
         }
 
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        XcLog(@"%@",error);
+        JXLog(@"%@",error);
     }];
      
 }

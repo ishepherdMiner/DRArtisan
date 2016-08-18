@@ -89,7 +89,7 @@
     if (cell == nil) {
         cell = [[[[self cellClass] class] alloc] initWithStyle:self.cellStyle
                                                reuseIdentifier:self.identifier];
-        XcLog(@"cell reuse => %zd",self.reuseCount++);
+        JXLog(@"cell reuse => %zd",self.reuseCount++);
     }
     
     if(_sourceType == JXTableViewDataSourceTypeSingle) {
@@ -117,7 +117,7 @@
     }
     
     // If you extends JXBaseTableView and you can implement tableView:didSelectRowAtIndexPath: action event
-    XcLog(@"You can implement tableView:didSelectRowAtIndexPath: in class which is extends JXBaseTableView.");
+    JXLog(@"You can implement tableView:didSelectRowAtIndexPath: in class which is extends JXBaseTableView.");
     
 }
 

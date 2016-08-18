@@ -55,7 +55,7 @@
     // 5.在合适的时机设置数据源
     
     // 创建TableView
-    JXBaseTableView *base_table_v = [JXBaseTableView tableViewWithFrame:fRect(kZero,Nav_bar_height, Screen_width, Screen_height - Nav_bar_height) style:UITableViewStylePlain classType:JXTableViewClassTypeFlexibleHeight];
+    JXBaseTableView *base_table_v = [JXBaseTableView tableViewWithFrame:fRect(kZero,kNav_bar_height, Screen_width, Screen_height - kNav_bar_height) style:UITableViewStylePlain classType:JXTableViewClassTypeFlexibleHeight];
     
     base_table_v.dataList = [self datas];
     
@@ -92,7 +92,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     // 点击cell执行相关操作
-    XcLog(@"点击了%zd组%zd行",indexPath.section,indexPath.row);
+    JXLog(@"点击了%zd组%zd行",indexPath.section,indexPath.row);
 }
 
 

@@ -24,16 +24,16 @@
 @implementation UIDevice (Coder)
 
 + (void)jas_logInfo {
-    XcLog(@"%f",[self jas_cpuUsage]);
+    JXLog(@"%f",[self jas_cpuUsage]);
     [self jas_cpuType];
     
     [self jas_wifi];
-    XcLog(@"%tu",[self jas_freeMemory]);
-    XcLog(@"%f",[self jas_freeMemoryBytes] / 1024.0 / 1024.0);
+    JXLog(@"%tu",[self jas_freeMemory]);
+    JXLog(@"%f",[self jas_freeMemoryBytes] / 1024.0 / 1024.0);
     
-    XcLog(@"%fG",[self jas_totalMemory] / 1024.0 / 1024.0 / 1024.0);
-    XcLog(@"%fM",[self jas_freeHardDiskSpace] / 1024.0 / 1024.0);
-    XcLog(@"%fM",[self jas_totalHardDiskSpace] / 1024.0 / 1024.0);
+    JXLog(@"%fG",[self jas_totalMemory] / 1024.0 / 1024.0 / 1024.0);
+    JXLog(@"%fM",[self jas_freeHardDiskSpace] / 1024.0 / 1024.0);
+    JXLog(@"%fM",[self jas_totalHardDiskSpace] / 1024.0 / 1024.0);
     [self jas_hardDiskStatus];
     [self jas_sersor];
 }
@@ -42,25 +42,25 @@
     // 方向感应器
     CMMotionManager *motionManager = [[CMMotionManager alloc] init];
     if([motionManager isAccelerometerAvailable]){
-        XcLog(@"有加速感应器");
+        JXLog(@"有加速感应器");
     }
     if([motionManager isGyroAvailable]) {
-        XcLog(@"有三轴陀螺仪");
+        JXLog(@"有三轴陀螺仪");
     }
     
     // 距离传感器 A Boolean value indicating whether the proximity
     // sensor is close to the user (YES) or not (NO).
     [UIDevice currentDevice].proximityMonitoringEnabled = YES;
     if([[UIDevice currentDevice] proximityState]) {
-        XcLog(@"有距离感应器");
+        JXLog(@"有距离感应器");
     }
     // 位置感应器
     if ([CLLocationManager headingAvailable]) {
-        XcLog(@"有位置感应器");
+        JXLog(@"有位置感应器");
     }
     // 磁力计
     if ([motionManager isMagnetometerAvailable]) {
-        XcLog(@"有磁力计");
+        JXLog(@"有磁力计");
     }
 }
 
@@ -125,7 +125,7 @@
     
     kr = vm_deallocate(mach_task_self(), (vm_offset_t)thread_list, thread_count * sizeof(thread_t));
     assert(kr == KERN_SUCCESS);
-    XcLog(@"tot_cpu => %f",tot_cpu);
+    JXLog(@"tot_cpu => %f",tot_cpu);
     return tot_cpu;
 }
 
@@ -141,19 +141,19 @@
     
     switch (hostInfo.cpu_type) {
         case CPU_TYPE_ARM:
-            XcLog(@"CPU_TYPE_ARM");
+            JXLog(@"CPU_TYPE_ARM");
             break;
             
         case CPU_TYPE_ARM64:
-            XcLog(@"CPU_TYPE_ARM64");
+            JXLog(@"CPU_TYPE_ARM64");
             break;
             
         case CPU_TYPE_X86:
-            XcLog(@"CPU_TYPE_X86");
+            JXLog(@"CPU_TYPE_X86");
             break;
             
         case CPU_TYPE_X86_64:
-            XcLog(@"CPU_TYPE_X86_64");
+            JXLog(@"CPU_TYPE_X86_64");
             break;
             
         default:
@@ -163,7 +163,7 @@
 
 + (void)jas_hardDiskStatus {
     NSDictionary *dic = [[NSFileManager defaultManager] attributesOfItemAtPath:@"/" error:NULL];
-    XcLog(@"%@",dic);
+    JXLog(@"%@",dic);
 }
 
 /**
@@ -182,7 +182,7 @@
             macIp = [dict valueForKey:@"BSSID"];
         }
     }
-    XcLog(@"SSID:%@ && macIP:%@",ssid,macIp);
+    JXLog(@"SSID:%@ && macIP:%@",ssid,macIp);
 }
 
 /**
@@ -191,7 +191,7 @@
 + (void)jas_screenDimension {
     CGSize  screenSize = [UIScreen mainScreen].bounds.size;
     CGFloat screenScale = [UIScreen mainScreen].scale;
-    XcLog(@"Height = %f, Width = %f",screenScale * screenSize.height,screenScale * screenSize.width);
+    JXLog(@"Height = %f, Width = %f",screenScale * screenSize.height,screenScale * screenSize.width);
 }
 
 /**
@@ -209,7 +209,7 @@
         return NSNotFound;
     }
     
-    XcLog(@"freeMemory =>%f",((vm_page_size *vmStats.free_count) / 1024.0) / 1024.0);
+    JXLog(@"freeMemory =>%f",((vm_page_size *vmStats.free_count) / 1024.0) / 1024.0);
     return ((vm_page_size *vmStats.free_count) / 1024.0) / 1024.0;
 }
 
@@ -224,12 +224,12 @@
     
     host_page_size(host_port, &pagesize);
     
-    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS) XcLog(@"Failed to fetch vm statistics");
+    if (host_statistics(host_port, HOST_VM_INFO, (host_info_t)&vm_stat, &host_size) != KERN_SUCCESS) JXLog(@"Failed to fetch vm statistics");
     
     // natural_t   mem_used = (vm_stat.active_count + vm_stat.inactive_count + vm_stat.wire_count) * pagesize;
     natural_t mem_free = (natural_t)(vm_stat.free_count * pagesize);
     // natural_t   mem_total = mem_used + mem_free;
-    XcLog(@"mem_free => %f",mem_free / 1024.0 / 1024.0);
+    JXLog(@"mem_free => %f",mem_free / 1024.0 / 1024.0);
     return mem_free;
 }
 
@@ -237,7 +237,7 @@
  * 总内存
  */
 + (NSUInteger)jas_totalMemory {
-   XcLog(@"totalMemory => %f",[self sysInfo:HW_PHYSMEM] / 1024.0 / 1024.0);
+   JXLog(@"totalMemory => %f",[self sysInfo:HW_PHYSMEM] / 1024.0 / 1024.0);
    return [self sysInfo:HW_PHYSMEM];
 }
 
@@ -251,7 +251,7 @@
     if(statfs("/private/var", &buf) >= 0){
         freeHardDiskSpace = (long long)buf.f_bsize * buf.f_bfree;
     }
-    XcLog(@"freeHardDiskSpace =>%lld(%fM,%fG)",freeHardDiskSpace,freeHardDiskSpace / kMoreMagnitude/ kMoreMagnitude,freeHardDiskSpace / kMoreMagnitude / kMoreMagnitude / kMoreMagnitude);
+    JXLog(@"freeHardDiskSpace =>%lld(%fM,%fG)",freeHardDiskSpace,freeHardDiskSpace / kMoreMagnitude/ kMoreMagnitude,freeHardDiskSpace / kMoreMagnitude / kMoreMagnitude / kMoreMagnitude);
     
     return freeHardDiskSpace;
 }
@@ -266,7 +266,7 @@
     if(statfs("/private/var", &buf) >= 0){
         totalHardDiskSpace = (long long)buf.f_bsize * buf.f_blocks;
     }
-    XcLog(@"totalHardDiskSpace =>%lld(%fM,%fG)",totalHardDiskSpace,totalHardDiskSpace / kMoreMagnitude/ kMoreMagnitude,totalHardDiskSpace / 1024.0 / 1024.0 / 1024.0);
+    JXLog(@"totalHardDiskSpace =>%lld(%fM,%fG)",totalHardDiskSpace,totalHardDiskSpace / kMoreMagnitude/ kMoreMagnitude,totalHardDiskSpace / 1024.0 / 1024.0 / 1024.0);
     return totalHardDiskSpace;
 }
 
@@ -290,13 +290,13 @@
         if (adId==nil||[adId isEqualToString:@""]||[adId isEqualToString:@"(null)"]) {
             adId=@"";
         }
-        XcLog(@"adId => %@",adId);
+        JXLog(@"adId => %@",adId);
         return adId;
     }
 }
 
 + (NSString *)jas_idfv {
-    XcLog(@"idfv => %@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]);
+    JXLog(@"idfv => %@",[[[UIDevice currentDevice] identifierForVendor] UUIDString]);
     return [[[UIDevice currentDevice] identifierForVendor] UUIDString];
 }
 
@@ -317,7 +317,7 @@
 
 + (NSString *)jas_system_running_time {
     NSProcessInfo *info=[NSProcessInfo processInfo];
-    XcLog(@"system_running_time => %@",@(info.systemUptime / 86400.0).stringValue);
+    JXLog(@"system_running_time => %@",@(info.systemUptime / 86400.0).stringValue);
     return @(info.systemUptime / 86400.0).stringValue;
 }
 
@@ -326,7 +326,7 @@
     NSProcessInfo *info = [NSProcessInfo processInfo] ;
     NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
     NSTimeInterval curtime=[dat timeIntervalSince1970];
-    XcLog(@"start_time => %@",[[NSString alloc] initWithFormat:@"%ld", (long)curtime - (long)info.systemUptime]);
+    JXLog(@"start_time => %@",[[NSString alloc] initWithFormat:@"%ld", (long)curtime - (long)info.systemUptime]);
     return [[NSString alloc] initWithFormat:@"%ld", (long)curtime - (long)info.systemUptime];
 }
 
@@ -456,10 +456,10 @@
                               @"iPad5,2" : @"iPad-mini-4",
                               @"iPad5,3" : @"iPad-Air 2",
                               @"iPad5,4" : @"iPad-Air 2",
-                              @"iPad6,3" : @"iPad-Pro-(9.7 inch)",
-                              @"iPad6,4" : @"iPad-Pro-(9.7 inch)",
-                              @"iPad6,7" : @"iPad-Pro-(12.9 inch)",
-                              @"iPad6,8" : @"iPad-Pro-(12.9 inch)",
+                              @"iPad6,3" : @"iPad-Pro-(9.7-inch)",
+                              @"iPad6,4" : @"iPad-Pro-(9.7-inch)",
+                              @"iPad6,7" : @"iPad-Pro-(12.9-inch)",
+                              @"iPad6,8" : @"iPad-Pro-(12.9-inch)",
                               
                               @"AppleTV2,1" : @"Apple-TV-2",
                               @"AppleTV3,1" : @"Apple-TV-3",
@@ -482,8 +482,8 @@
         // 是否能打开Cydia
         NSURL *url = [NSURL URLWithString:@"cydia://package/com.fake.package"];
         BOOL isOpen = [[UIApplication sharedApplication] canOpenURL:url];
-        conditions[0] = isOpen ? @"true":@"false";
-        // XcLog(@"isOpen : %@", isOpen?@"TRUE":@"FALSE");
+        [conditions addObject:isOpen ? @"true":@"false"];
+        // JXLog(@"isOpen : %@", isOpen?@"TRUE":@"FALSE");
         
         NSArray *paths = @[
                            @"/Applications/Cydia.app",
@@ -511,22 +511,22 @@
         struct stat sp;
         for (NSString *path in paths) {
             int res = stat([path UTF8String], &sp);
-            XcLog(@"isStat :%@，%d", res == 0 ? @"true":@"false", res);
+            JXLog(@"isStat :%@，%d", res == 0 ? @"true":@"false", res);
             if (res == 0) {
                 num++;
             }
         }
         if(num >=2){
-            conditions[1] = @"true";
-            XcLog(@"isPahtExits : %@",@"true");
+            [conditions addObject:@"true"];
+            JXLog(@"isPahtExits : %@",@"true");
         }else {
-            conditions[1] = @"false";
-            XcLog(@"isPahtExits : %@",@"false");
+            [conditions addObject:@"false"];
+            JXLog(@"isPahtExits : %@",@"false");
         }
         /*
         int res2 = system(0x0);
         conditions[2] = res2 == 1? @"true" : @"false";
-        XcLog(@"isSystem : %@", res2==1?@"true":@"false");   // isSystem : 1, 0
+        JXLog(@"isSystem : %@", res2==1?@"true":@"false");   // isSystem : 1, 0
         */
         BOOL isDylib = false;
         uint32_t count = _dyld_image_count();
@@ -538,12 +538,12 @@
                 break;
             }
         }
-        conditions[3] = isDylib?@"true":@"false";
-        XcLog(@"isDylib : %@ ", isDylib?@"true":@"false");
+        [conditions addObject:isDylib?@"true":@"false"];
+        JXLog(@"isDylib : %@ ", isDylib?@"true":@"false");
         
         char *env = getenv("DYLD_INSERT_LIBRARIES");
-        XcLog(@"%s", env);
-        conditions[4] = env == NULL ? @"false" : @"true";
+        JXLog(@"%s", env);
+        [conditions addObject:env == NULL ? @"false" : @"true"];
         
 
     }

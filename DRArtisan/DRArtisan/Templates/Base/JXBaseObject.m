@@ -80,14 +80,14 @@
                 }else {
 #if DEBUG
                     // the class property not in model which is from server
-                    XcLog(@"the %@ property %@ not in model wihich is from server.",obj,property);
+                    JXLog(@"the %@ property %@ not in model wihich is from server.",obj,property);
 #endif
                 }
             }
         }
         for (NSString *property in propertyList) {
             if ([propertyDic objectForKey:property]) {
-                XcLog(@"value = %@, key = %@",[propertyDic objectForKey:property],property);
+                JXLog(@"value = %@, key = %@",[propertyDic objectForKey:property],property);
                 [obj setValue:[propertyDic objectForKey:property] forKeyPath:property];
             }
         }

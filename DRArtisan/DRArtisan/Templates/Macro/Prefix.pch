@@ -9,7 +9,7 @@
 #ifndef prefix_pch
 #define prefix_pch
 
-#import "GlobalConst.h"
+#import "JXGlobalConst.h"
 #import "JXArtisan.h"
 #import "JXUtils.h"
 #import "JXHTTPSessionManager.h"
@@ -22,19 +22,19 @@
  *  @date    20160712
  */
 #if DEBUG
-#define XcLog(fmt,...)       NSLog((@"\n[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt),\
+#define JXLog(fmt,...)       NSLog((@"\n[文件名:%s]\n" "[函数名:%s]\n" "[行号:%d] \n" fmt),\
                               __FILE__, __FUNCTION__, __LINE__, ##__VA_ARGS__); \
                               fprintf(stderr,"\n\n");
 
 
-    #define JasBaseURL  @""
-    #define JasError    XcLog(@"\n\tclass => %@ \n\tfunction => %s",self,__func__)
-    #define JasFrame    XcLog(@"\n\tframe => %@",NSStringFromClass([self class]))
+    #define JXBaseURL  @""
+    #define JXError    JXLog(@"\n\tclass => %@ \n\tfunction => %s",self,__func__)
+    #define JXFrame    JXLog(@"\n\tframe => %@",NSStringFromClass([self class]))
 #else
-    #define XcLog(...) {}
-    #define JasBaseURL  @""
-    #define JasError    {}
-    #define JasFrame    {}
+    #define JXLog(...) {}
+    #define JXBaseURL  @""
+    #define JXError    {}
+    #define JXFrame    {}
 #endif
 
 

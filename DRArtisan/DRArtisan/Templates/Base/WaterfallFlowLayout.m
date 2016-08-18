@@ -187,7 +187,7 @@ NSString *const XC_UICollectionElementKindSectionFooter = @"XC_FootView";
                 CGFloat maxY = [self.maxYForColumn[@(0)] floatValue];
                 for (int i = 1; i < _numberOfColumns; i++) {
                     if ([self.maxYForColumn[@(i)] floatValue] > maxY) {
-                        XcLog(@"%f", [self.maxYForColumn[@(i)] floatValue]);
+                        JXLog(@"%f", [self.maxYForColumn[@(i)] floatValue]);
                         maxY = [self.maxYForColumn[@(i)] floatValue];
                     }
                 }

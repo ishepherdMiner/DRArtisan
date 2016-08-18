@@ -18,7 +18,7 @@
     // 2.创建视图
      BaseCollectionView *collect_v = [BaseCollectionView collectionViewWithFrame:Screen_bounds layout:flowLayout classType:XCCollectionViewClassTypeFlexVer clickItemBlock:^(UICollectionView *collectionView, NSIndexPath *indexPath) {
      
-        XcLog(@"%@",@"点击了Cell");
+        JXLog(@"%@",@"点击了Cell");
      
      }];
      

@@ -89,7 +89,7 @@
         if((progress * 100) > 100) {
             progress = 1.0f;
         }
-        XcLog(@"Percent = %f", progress);
+        JXLog(@"Percent = %f", progress);
         
         return progress;
     }

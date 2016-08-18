@@ -42,10 +42,10 @@
 #endif
     
     // NSDictionary *demoDic = [self demoDic];
-    // XcLog(@"%@",demoDic);
+    // JXLog(@"%@",demoDic);
     //
     // NSArray *demoArr = [self demoArr];
-    // XcLog(@"%@",demoArr);
+    // JXLog(@"%@",demoArr);
     
     // [JXUtils monitorWithObserver:self selector:nil option:ObservedOptionsBrightness];
     
@@ -62,15 +62,15 @@
 }
 
 //- (void)change:(NSNotification *)noti {
-//    XcLog(@"1");
+//    JXLog(@"1");
 //}
 //
 //- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context {
-//    XcLog(@"2");
+//    JXLog(@"2");
 //}
 
 - (void)iosUpgradeTest {
-    // JasError;
+    // JXError;
     
     // [CorePrivate jas_ipAddresses];
     // [CorePrivate jas_allInstalledApps];

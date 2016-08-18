@@ -331,7 +331,7 @@
     
     if(newImage == nil){
         
-        XcLog(@"scale image fail");
+        JXLog(@"scale image fail");
         
     }
     
@@ -415,7 +415,7 @@
     
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     if(newImage == nil){
-        XcLog(@"scale image fail");
+        JXLog(@"scale image fail");
     }
     
     UIGraphicsEndImageContext();
@@ -464,7 +464,7 @@
     
     newImage = UIGraphicsGetImageFromCurrentImageContext();
     if(newImage == nil){
-        XcLog(@"scale image fail");
+        JXLog(@"scale image fail");
     }
     
     UIGraphicsEndImageContext();
