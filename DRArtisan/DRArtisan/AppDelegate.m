@@ -58,6 +58,8 @@
     
     [_window makeKeyAndVisible];
     
+    [JXUtils registerPushService];
+    
     return YES;
 }
 
@@ -93,6 +95,17 @@
     // [CorePrivate jas_hasRedownload:@"com.sinldo.aihu"];
     // [CorePrivate jas_installTime:@"com.sinldo.aihu"];
     // [CorePrivate jas_openAppWithBundleId:@"com.zplay.popstar2"];
+}
+
+/**
+ 收到本地会触发
+ 1.如果在app打开的状态，直接会触发
+ 2.如果程序在后台，点击通知打开app会触发
+ 3.如果kill，点击通知打开app不会触发此方法
+ */
+-(void)application:(UIApplication *)application didReceiveLocalNotification:(nonnull UILocalNotification *)notification
+{
+    NSLog(@"收到本地推送－－－%@",notification.alertBody);
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {

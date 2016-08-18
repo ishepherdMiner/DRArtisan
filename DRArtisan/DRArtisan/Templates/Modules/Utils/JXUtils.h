@@ -75,14 +75,31 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
 
 @end
 
-/// 远程通知工具方法
-@interface JXUtils (RemotePush)
+/// 推送相关的工具方法
+@interface JXUtils (Push)
 
-/// 向苹果服务器申请远程通知的服务
+/// 向苹果服务器申请通知的服务 会弹出申请框要求用户授权
 + (void)registerPushService;
 
 /// 将得到的deviceToken进行处理并发送相应的通知 1 => 将返回值保存起来 2.通过通知得到
 + (NSString *)postDeviceToken:(NSData *)deviceToken;
+
+/**
+ *  配置本地通知参数
+ *
+ *  @param alertBody       通知内容
+ *  @param fireDate        执行时间
+ *  @param launchImageName 启动图片名称
+ *  @param soundName       声音名称
+ *  @param extra           额外信息
+ *  @param repeat          重复间隔
+ */
++ (UILocalNotification *)configureLocalPush:(NSString *)alertBody
+                                   fireDate:(NSDate *)fireDate
+                            launchImageName:(NSString *)launchImageName
+                                  soundName:(NSString *)soundName
+                                      extra:(NSDictionary *)extra
+                             repeatInterval:(NSCalendarUnit)repeat;
 
 /// 发送处理后的deviceToken的通知
 UIKIT_EXTERN const NSString *RegisterDeviceToken;

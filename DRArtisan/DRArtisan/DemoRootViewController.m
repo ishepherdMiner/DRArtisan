@@ -10,6 +10,7 @@
 #import "DemoTableViewController.h"
 #import "DemoFlexibleHeightViewController.h"
 #import "DemoFlexibleWidthViewController.h"
+#import "DemoLocalPushViewController.h"
 
 @interface DemoRootViewController () <JXServiceTableViewDelegate>
 
@@ -34,15 +35,19 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     switch (indexPath.row) {
         case 0:{
-            [self.navigationController pushViewController:[[DemoTableViewController alloc] init] animated:true];
+            NavigationPush(DemoTableViewController);
         }
             break;
         case 1:{
-            [self.navigationController pushViewController:[[DemoFlexibleHeightViewController alloc] init] animated:true];
+            NavigationPush(DemoFlexibleHeightViewController);
         }
             break;
         case 2:{
-            [self.navigationController pushViewController:[[DemoFlexibleWidthViewController alloc] init] animated:true];
+            NavigationPush(DemoFlexibleWidthViewController);           
+        }
+            break;
+        case 3:{
+            NavigationPush(DemoLocalPushViewController);
         }
             break;
     }
@@ -62,7 +67,12 @@
                                                     },
                                                 @{
                                                     @"id":@3,
-                                                    @"title":@"瀑布流(限高不限宽",
+                                                    @"title":@"瀑布流(限高不限宽)",
+                                                    @"icon":@"demo_tableview_02"
+                                                    },
+                                                @{
+                                                    @"id":@4,
+                                                    @"title":@"本地推送",
                                                     @"icon":@"demo_tableview_02"
                                                     },
                                                 ]];

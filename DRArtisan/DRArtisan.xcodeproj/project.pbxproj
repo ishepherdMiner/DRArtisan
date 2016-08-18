@@ -63,6 +63,9 @@
 		9698B92F1D6139D100D593F2 /* JXFlexibleWidthCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9698B92E1D6139D100D593F2 /* JXFlexibleWidthCollectionView.m */; };
 		96990A441D65C45800EEF584 /* DemoRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96990A431D65C45800EEF584 /* DemoRootViewController.m */; };
 		96990A4D1D660FAB00EEF584 /* KeychainItemWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = 96990A4C1D660FAB00EEF584 /* KeychainItemWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		96990A501D667AED00EEF584 /* VoiceSearchFeedback014@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96990A4F1D667AED00EEF584 /* VoiceSearchFeedback014@2x.png */; };
+		96990A521D667AF400EEF584 /* shake_sound_male.wav in Resources */ = {isa = PBXBuildFile; fileRef = 96990A511D667AF400EEF584 /* shake_sound_male.wav */; };
+		96990A551D667B4600EEF584 /* DemoLocalPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96990A541D667B4600EEF584 /* DemoLocalPushViewController.m */; };
 		96A3E05E1D4DE32200E8431F /* DemoTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E05D1D4DE32200E8431F /* DemoTableViewController.m */; };
 		96A3E0611D4DEEAE00E8431F /* JXFlexibleHeightTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0601D4DEEAE00E8431F /* JXFlexibleHeightTableView.m */; };
 		96A3E06A1D4E13DA00E8431F /* JXBaseCollectionViewFlowLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = 96A3E0691D4E13DA00E8431F /* JXBaseCollectionViewFlowLayout.m */; };
@@ -229,6 +232,10 @@
 		96990A431D65C45800EEF584 /* DemoRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoRootViewController.m; sourceTree = "<group>"; };
 		96990A4B1D660FAB00EEF584 /* KeychainItemWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainItemWrapper.h; sourceTree = "<group>"; };
 		96990A4C1D660FAB00EEF584 /* KeychainItemWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainItemWrapper.m; sourceTree = "<group>"; };
+		96990A4F1D667AED00EEF584 /* VoiceSearchFeedback014@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback014@2x.png"; sourceTree = "<group>"; };
+		96990A511D667AF400EEF584 /* shake_sound_male.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_sound_male.wav; sourceTree = "<group>"; };
+		96990A531D667B4600EEF584 /* DemoLocalPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoLocalPushViewController.h; sourceTree = "<group>"; };
+		96990A541D667B4600EEF584 /* DemoLocalPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoLocalPushViewController.m; sourceTree = "<group>"; };
 		96A3E05C1D4DE32200E8431F /* DemoTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoTableViewController.h; sourceTree = "<group>"; };
 		96A3E05D1D4DE32200E8431F /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 		96A3E05F1D4DEEAE00E8431F /* JXFlexibleHeightTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXFlexibleHeightTableView.h; sourceTree = "<group>"; };
@@ -747,6 +754,7 @@
 		963ED3C51D32485A0071BECF /* demo */ = {
 			isa = PBXGroup;
 			children = (
+				96990A4E1D667AA900EEF584 /* LocalPush */,
 				96990A421D65C45800EEF584 /* DemoRootViewController.h */,
 				96990A431D65C45800EEF584 /* DemoRootViewController.m */,
 				9621570F1D50169F001019BB /* TableView */,
@@ -806,6 +814,17 @@
 				96990A4C1D660FAB00EEF584 /* KeychainItemWrapper.m */,
 			);
 			path = KeychainItemWrapper;
+			sourceTree = "<group>";
+		};
+		96990A4E1D667AA900EEF584 /* LocalPush */ = {
+			isa = PBXGroup;
+			children = (
+				96990A511D667AF400EEF584 /* shake_sound_male.wav */,
+				96990A4F1D667AED00EEF584 /* VoiceSearchFeedback014@2x.png */,
+				96990A531D667B4600EEF584 /* DemoLocalPushViewController.h */,
+				96990A541D667B4600EEF584 /* DemoLocalPushViewController.m */,
+			);
+			name = LocalPush;
 			sourceTree = "<group>";
 		};
 		96A3E06B1D4E13E200E8431F /* Layout */ = {
@@ -1116,9 +1135,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				96990A501D667AED00EEF584 /* VoiceSearchFeedback014@2x.png in Resources */,
 				962058271D594B270085DB4F /* PhotoCell.xib in Resources */,
 				96E72F161D30A26000D5A3A9 /* LaunchScreen.storyboard in Resources */,
 				96E72F131D30A26000D5A3A9 /* Assets.xcassets in Resources */,
+				96990A521D667AF400EEF584 /* shake_sound_male.wav in Resources */,
 				96E72F111D30A26000D5A3A9 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1199,6 +1220,7 @@
 				96A3E0711D4E18BC00E8431F /* DemoFlexibleHeightViewController.m in Sources */,
 				9639AA851D458EEB007719B0 /* UIImage+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
+				96990A551D667B4600EEF584 /* DemoLocalPushViewController.m in Sources */,
 				9639AA901D458EEB007719B0 /* NJDBezierCurve.m in Sources */,
 				96EDCB411D4A572800F9DC3F /* JXBaseTableView.m in Sources */,
 				96289F151D4E3476000F7665 /* JXFlexibleHeightCollectionView.m in Sources */,

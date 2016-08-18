@@ -200,6 +200,51 @@ NSString *RegisterDeviceToken = @"RegisterDeviceToken";
 
 @end
 
+@implementation JXUtils (LocalPush)
+
++ (UILocalNotification *)configureLocalPush:(NSString *)alertBody
+                                   fireDate:(NSDate *)fireDate
+                            launchImageName:(NSString *)launchImageName
+                                  soundName:(NSString *)soundName
+                                      extra:(NSDictionary *)extra
+                             repeatInterval:(NSCalendarUnit)repeat {
+    //初始化
+    UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+    
+    //设置推送内容
+    localNotification.alertBody = alertBody;
+    // @"miss you";
+    
+    //执行时间
+    localNotification.fireDate = fireDate;
+    // [NSDate dateWithTimeInterval:3 sinceDate:[NSDate date]];
+    
+    //点击通知进入 app的时候 启动图片
+    localNotification.alertLaunchImage = launchImageName;
+    // @"VoiceSearchFeedback014@2x.png";
+    
+#if 0
+    // 设置声音
+    localNotification.soundName = UILocalNotificationDefaultSoundName;
+#endif
+    
+    // 自定义声音,格式最好是wav,不能超过30秒
+    localNotification.soundName = soundName;
+    // @"shake_sound_male.wav";
+    
+    // 添加附加信息
+    localNotification.userInfo = extra;
+    
+    // @{kNotificationKey:@"wekeUpNotificationValue"};
+    
+    //重复时间(每分钟收到一个本地推送)
+    localNotification.repeatInterval = repeat;
+
+    return localNotification;
+}
+
+@end
+
 @implementation JXUtils (Device)
 
 //+ (void)monitorWithObserver:(id)observer selector:(SEL)sel option:(ObservedOptions)options{
