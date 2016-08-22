@@ -6,12 +6,15 @@
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
+#define kCommonFonts_1(s) [UIFont fontWithName:@"HelveticaNeue-Light" size:s]
+#define kCommonFonts_2(s) [UIFont fontWithName:@"Menlo" size:s]
+
 @interface SetMealCellModel : JXBaseObject
 
-/// 标题(周期是多少等...)
+/// 问题(周期是多少等...)
 @property (nonatomic, copy) NSString *meal_question;
 
-/// 对应的内容
+/// 答案
 @property (nonatomic,copy) NSString *meal_answer;
 
 @end

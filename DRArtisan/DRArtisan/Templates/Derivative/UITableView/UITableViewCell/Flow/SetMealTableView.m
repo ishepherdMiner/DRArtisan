@@ -8,40 +8,27 @@
 
 #import "SetMealTableView.h"
 #import "FlowAnalytical.h"
+#import "JXMealPersistent.h"
 
 @interface SetMealTableView () <JXBasePickerViewDelegate,UITextFieldDelegate>
 
+/// 选择器视图
 @property (nonatomic,weak) UIPickerView *picker_v;
+
+/// 工具条视图
 @property (nonatomic,weak) UIToolbar *accessory_v;
 
-@property (nonatomic,strong) NSArray <UIView *> *unit_v_list;
-
+/// 遮罩视图
 @property (nonatomic,weak) UIView *mask_v;
 
-/// 当前cell的索引
-@property (nonatomic,strong) NSIndexPath *cur_index;
+/// 修改预览视图
+@property (nonatomic,weak) UILabel *preview_label;
 
 @end
 
 @implementation SetMealTableView
 
 #pragma mark - Lifecycle
-/// in order to kvo,so override parent method
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    // Why not set kvo in cell
-    // It won't work because the cells are being reused. So when the cell goes off the screen it's not deallocated, it goes to reuse pool.
-    // You shouldn't register notifications and KVO in cell. You should do it in table view controller instead and when the model changes you should update model and reload visible cells.
-    // http://stackoverflow.com/questions/25056942/instance-was-deallocated-while-key-value-observers-were-still-registered-with-it
-    SetMealTableViewCell *cell = (SetMealTableViewCell *)[super tableView:tableView cellForRowAtIndexPath:indexPath];
-    for (UIView *sub_v in cell.contentView.subviews) {
-        if ([sub_v isKindOfClass:[UITextField class]]) {
-            [cell.desc_field_v addObserver:self forKeyPath:@"text" options:NSKeyValueObservingOptionOld | NSKeyValueObservingOptionNew context:nil];
-        }
-    }
-    
-    return cell;
-
-}
 
 - (instancetype)initWithFrame:(CGRect)frame style:(UITableViewStyle)style {
     if (self = [super initWithFrame:frame style:style]) {
@@ -57,10 +44,6 @@
     return self;
 }
 
-- (void)dealloc {
-    [[NSNotificationCenter defaultCenter] removeObserver:self];
-}
-
 #pragma mark - Events
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -69,74 +52,77 @@
         self.mask_v.alpha = 0.6;
     }];
     
-#if 0
-    // When this click index not equal to last index and _picker_v not equal to nil
-    if (indexPath != self.cur_index && _picker_v) {
-        [[[UIApplication sharedApplication].delegate window] endEditing:true];
-        [_picker_v removeFromSuperview];
-        _picker_v = nil;
+    NSArray *picker_option_list = nil;
+    switch (indexPath.section) {
+        case kZero:{
+            switch (indexPath.row) {
+                case kZero:{
+                    // 套餐周期
+                    // Will log appear follow infomation in sometimes
+                    // http://blog.csdn.net/x567851326/article/details/51251655
+                    // _BSMachError: (os/kern) invalid capability (20)
+                    // _BSMachError: (os/kern) invalid name (15)
+                    picker_option_list = MealCycleMonths;
+                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+                }
+                    break;
+                case kOne:{
+                    // 结算日期
+                    picker_option_list = SettleDates;
+                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+                }
+                    break;
+                case kTwo:{
+                    // 套餐流量
+                    picker_option_list = MealFlows;
+                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+                }
+                    break;
+            }
+        }
+            break;
+        case kOne:{
+            switch (indexPath.row) {
+                case kZero: {
+                    // 已使用流量
+                    picker_option_list = UsedFlows;
+                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+                }
+                    break;
+//                case kOne: {
+//                    // 已使用流量
+//                    picker_option_list = LeftFlows;
+//                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+//                }
+//                    break;
+            }
+        }
+            
+            break;
+        case kTwo:{
+            switch (indexPath.row) {
+                case kZero:{
+                    self.mask_v.alpha = 0;
+                    // 重置
+                    UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
+                    UIAlertAction *alert_action_submit = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+                        JXLog(@"删除数据");
+                    }];
+                    
+                    UIAlertAction *alert_action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
+                        
+                    }];
+                    
+                    [alert_c addAction:alert_action_submit];
+                    [alert_c addAction:alert_action_cancel];
+                    
+                    self.alertBlock(alert_c);
+                }
+                    break;
+            }
+        }
+            break;
     }
-#endif
-    
-    // recoard current  index
-    self.cur_index = indexPath;
-
-    if(indexPath.section == kZero) {
-        if (indexPath.row == kZero) {
-            // 套餐周期
-            // Will log appear follow infomation in sometimes
-            // http://blog.csdn.net/x567851326/article/details/51251655
-            // _BSMachError: (os/kern) invalid capability (20)
-            // _BSMachError: (os/kern) invalid name (15)
-            NSArray *picker_option_list = kMealCycleMonths;
-            
-            [self pickerViewWithList:picker_option_list indexPath:indexPath];
-            
-        }else if(indexPath.row == kOne) {
-            // 结算日期
-            NSArray *picker_option_list = kSettleDates;
-            
-            [self pickerViewWithList:picker_option_list indexPath:indexPath];
-            
-        }else if(indexPath.row == kTwo) {
-            // 套餐流量
-            [self fieldViewWithIndexPath:indexPath];
-        }
-    }else if(indexPath.section == kOne) {
-        if (indexPath.row == kZero) {
-           // 调整流量
-            [self fieldViewWithIndexPath:indexPath];
-        }
-    }else if(indexPath.section == kTwo) {
-        if (indexPath.row == kZero) {
-            self.mask_v.alpha = 0;
-            // 重置
-            UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
-            UIAlertAction *alert_action_submit = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
-                JXLog(@"删除数据");
-            }];
-            
-            UIAlertAction *alert_action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                
-            }];
-            
-            [alert_c addAction:alert_action_submit];
-            [alert_c addAction:alert_action_cancel];
-            
-            self.alertBlock(alert_c);
-            
-        }
-    }
-}
-
-- (void)fieldViewWithIndexPath:(NSIndexPath *)indexPath {
-    SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
-    meal_cell_v.desc_field_v.userInteractionEnabled = true;
-    meal_cell_v.desc_field_v.returnKeyType = UIReturnKeyDone;
-    meal_cell_v.desc_field_v.delegate = self;
-    meal_cell_v.desc_field_v.keyboardType = UIKeyboardTypeDecimalPad;
-    meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
-    [meal_cell_v.desc_field_v becomeFirstResponder];
 }
 
 - (void)pickerViewWithList:(NSArray *)dataList indexPath:(NSIndexPath *)indexPath {
@@ -149,6 +135,7 @@
             SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
             meal_cell_v.desc_field_v.userInteractionEnabled = true;
             meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
+            meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
             [meal_cell_v.desc_field_v becomeFirstResponder];
         });
     }
@@ -156,73 +143,173 @@
 
 /// PickerView的代理方法
 - (void)didSelectedPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component RowText:(NSString *)text {
-    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
-    cell.desc_field_v.text = text;
+    NSIndexPath *indexPath = self.indexPathForSelectedRow;
+    switch (indexPath.section) {
+        case kZero:{
+            switch (indexPath.row) {
+                case kZero:
+                case kOne:{
+                    _preview_label.text = text;
+                }
+                    break;
+                case kTwo:{
+                    // 百位
+                    NSString *hDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(0, 1)] : @"0";
+                    // 十位
+                    NSString *tDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(1, 1)] : @"0";
+                    
+                    // 个位
+                    NSString *digits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(2, 1)] : @"0";
+                    
+                    // 单位
+                    NSString *unit = _preview_label.text ? [_preview_label.text substringWithRange:fRange(3, 2)] : @"MB";
+                    
+                    NSMutableArray *preview_labels = [NSMutableArray arrayWithArray:@[hDigits,tDigits,digits,unit]] ;
+                    
+                    preview_labels[component] = text;
+                    
+                    NSMutableString *preview_stringM = [NSMutableString string];
+                    for (int i = 0; i < [MealFlows count]; ++i) {
+                        [preview_stringM appendString:preview_labels[i]];
+                    }
+                    
+                    _preview_label.text = preview_stringM;
+                }
+                    break;
+            }
+        }
+            
+            break;
+        case kOne:{
+            switch (indexPath.row) {
+                case kZero:{
+                    // 百位
+                    NSString *hDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(0, 1)] : @"0";
+                    // 十位
+                    NSString *tDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(1, 1)] : @"0";
+                    
+                    // 个位
+                    NSString *digits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(2, 2)] : @"0.";
+ 
+                    // 十分位
+                    NSString *decile = _preview_label.text ? [_preview_label.text substringWithRange:fRange(4, 1)] : @"0";
+                    // 单位
+                    NSString *unit = _preview_label.text ? [_preview_label.text substringWithRange:fRange(5, 2)] : @"MB";
+                    
+                    NSMutableArray *preview_labels = [NSMutableArray arrayWithArray:@[hDigits,tDigits,digits,decile,unit]] ;
+                    
+                    preview_labels[component] = text;
+                    
+                    NSMutableString *preview_stringM = [NSMutableString string];
+                    for (int i = 0; i < [UsedFlows count]; ++i) {
+                        [preview_stringM appendString:preview_labels[i]];
+                    }
+                    
+                    _preview_label.text = preview_stringM;
+                    
+                }
+                    break;
+//                case kOne:{
+//                    // 百位
+//                    NSString *hDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(0, 1)] : @"0";
+//                    // 十位
+//                    NSString *tDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(1, 1)] : @"0";
+//                    
+//                    // 个位
+//                    NSString *digits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(2, 2)] : @"0.";
+//                    
+//                    // 十分位
+//                    NSString *decile = _preview_label.text ? [_preview_label.text substringWithRange:fRange(4, 1)] : @"0";
+//                    // 单位
+//                    NSString *unit = _preview_label.text ? [_preview_label.text substringWithRange:fRange(5, 2)] : @"MB";
+//                    
+//                    NSMutableArray *preview_labels = [NSMutableArray arrayWithArray:@[hDigits,tDigits,digits,decile,unit]] ;
+//                    
+//                    preview_labels[component] = text;
+//                    
+//                    NSMutableString *preview_stringM = [NSMutableString string];
+//                    for (int i = 0; i < [LeftFlows count]; ++i) {
+//                        [preview_stringM appendString:preview_labels[i]];
+//                    }
+//                    
+//                    _preview_label.text = preview_stringM;
+//                }
+//                    break;
+            }
+        }
+            break;
+    }
 }
 
 /// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
 - (void)maskClick:(UIGestureRecognizer *)tap {
     [self endEditing:true];
     
-    [self addUnit];
-    
     [_picker_v removeFromSuperview];
+    
     _picker_v = nil;
+    _accessory_v = nil;
+    _preview_label = nil;
+    
     [UIView animateWithDuration:0.5 animations:^{
         _mask_v.alpha = 0.0;
     }];
-    
-    // reset _cur_index
-    _cur_index = [NSIndexPath indexPathForRow:0 inSection:0];
 }
 
-- (void)unitClick:(UIButton *)sender {
-    for (UIButton *unit_v in _unit_v_list) {
-        if (unit_v == sender) {
-            unit_v.selected = true;
-        }else {
-            unit_v.selected = false;
-        }
-    }
-}
-
+/// 完成修改按钮点击触发额事件
 - (void)submitClick:(UIButton *)sender {
-    [self maskClick:nil];
-}
-
-/// 因为需要检测 - 所以目前只想到这样处理
-- (void)addUnit {
-    UIButton *unit_v = (UIButton *)_unit_v_list.firstObject;
-    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
-    // 需要把流量单位也保存到用户配置中
-    NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
-    // 调整使用量
-    if(![cell.desc_field_v.text isEqualToString:@""]) {
-        if(_cur_index.section == kOne) {
-            if(unit_v.selected) {
-                cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M"];
-                [userDefaults setObject:@" M" forKey:kUsedFlowUnit];
-            }else {
-                cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G"];
-                [userDefaults setObject:@" G" forKey:kUsedFlowUnit];
-            }
-        }else {
-            if (_cur_index.row == kTwo && _cur_index.section == kZero){
-                if(unit_v.selected) {
-                    cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" M/月"];
-                    [userDefaults setObject:@" M/月" forKey:kFlowUnit];
-                }else {
-                    cell.desc_field_v.text = [cell.desc_field_v.text stringByAppendingString:@" G/月"];
-                    [userDefaults setObject:@" G/月" forKey:kFlowUnit];
-                }
-            }
-        }
+    NSIndexPath *indexPath = self.indexPathForSelectedRow;
+    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
+    
+    if (_persistent == nil) {
+        _persistent = [[JXMealPersistent alloc] init];
     }
+
+
+    switch (indexPath.section) {
+        case kZero:{
+            switch (indexPath.row) {
+                case kZero:{
+                    _persistent.meal_cycle = _preview_label.text;
+                }
+                    break;
+                case kOne:{
+                    _persistent.settle_date = _preview_label.text;
+                }
+                    break;
+                case kTwo:{
+                    _persistent.total_flow = _preview_label.text;
+                }
+                    break;
+            }
+            _persistent.change_status = @"true";
+        }
+            break;
+        case kOne:{
+            switch (indexPath.row) {
+                case kZero:{
+                    _persistent.used_flow = _preview_label.text;
+//                    if (_persistent.total_flow == nil) {
+//                        _persistent.total_flow = @"200";
+//                    }
+//                    _persistent.left_flow = @([_persistent.total_flow doubleValue] - [_persistent.used_flow doubleValue]).stringValue;
+                }
+                    break;
+//                case kOne:{
+//                    _persistent.left_flow = _preview_label.text;
+//                }
+//                    break;
+            }
+            _persistent.change_status = @"true";
+        }
+            break;
+    }
+    cell.desc_field_v.text = _preview_label.text;
+    [self maskClick:nil];
 }
 
 #pragma mark - UITextField Delegate
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField {
-    
     if(_mask_v.alpha < 0.6){
         [UIView animateWithDuration:0.5 animations:^{
             _mask_v.alpha = 0.6;
@@ -231,93 +318,33 @@
     return true;
 }
 
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    // 如果发现_cur_index指向错误了,通过这里来修改,但从代码结构上看并不好
-    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:self.cur_index];
-    if (![cell.desc_field_v isEqual:textField]) {
-        cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:2 inSection:0]];
-        if (![cell.desc_field_v isEqual:textField]) {
-            cell = [self cellForRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:1]];
-            if ([cell.desc_field_v isEqual:textField]) {
-                _cur_index = [NSIndexPath indexPathForRow:0 inSection:1];
-            }else {
-                JXLog(@"不应该出现这个情况");
-            }
-            
-        }else {
-            _cur_index = [NSIndexPath indexPathForRow:2 inSection:0];
-        }
-    }
-}
-
-#pragma mark - KVO
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary<NSString *,id> *)change context:(void *)context{
-    JXLog(@"change => %@",change);
-    //
-    NSMutableDictionary *desc_dicM = nil;
-    if(self.desc_dic){
-        desc_dicM = [self.desc_dic mutableCopy];
-    }else {
-        desc_dicM = [NSMutableDictionary dictionaryWithCapacity:kTotalCellNums];
-        [desc_dicM setObject:@"false" forKey:@"change"];
-    }
-    
-    // - mark 功能点:从文件中读取当前的这一次,如果最终没有变化,不需要弹窗提示,对_desc_dic的change值重新赋值
-    
-    
-    if ([[desc_dicM objectForKey:@"change"] isEqualToString:@"false"]) {
-        [desc_dicM setObject:@"true" forKey:@"change"];
-    }
-    
-    // 找到具体是哪个cell的UITextField的值改变了
-    NSUInteger nums = [self numberOfRowsInSection:kZero]; // 第一组的rows的数量
-    
-    // 如果数量越界
-    BOOL transboundary = self.cur_index.row + self.cur_index.section * nums > kTotalCellNums;
-    [desc_dicM setObject:change[@"new"] forKey:transboundary ? kNewDescValues[kTotalCellNums - 1]:
-                                                               kNewDescValues[self.cur_index.row + self.cur_index.section * nums]];
-    
-    self.desc_dic = [desc_dicM copy];
-}
 
 #pragma mark - lazyload
 - (UIToolbar *)accessory_v {
     if (_accessory_v == nil) {
         UIToolbar *accessory_v = [[UIToolbar alloc] initWithFrame:fRect(0, 0, Screen_width, 40)];
         
-        // 单位:MB
-        UIButton *mb_unit_btn = [[UIButton alloc] initWithFrame:fRect(0, 0, accessory_v.w * 0.33, accessory_v.h)];
-        mb_unit_btn.backgroundColor = HexRGB(0x888888);
-        [mb_unit_btn setTitle:@"MB" forState:UIControlStateNormal];
-        [mb_unit_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [mb_unit_btn setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
-        [mb_unit_btn addTarget:self action:@selector(unitClick:) forControlEvents:UIControlEventTouchUpInside];
-        mb_unit_btn.selected = true;
-        
-        // 单位:GB
-        UIButton *gb_unit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.33, 0, accessory_v.w * 0.33, accessory_v.h)];
-        gb_unit_btn.backgroundColor = HexRGB(0x888888);
-        [gb_unit_btn setTitle:@"GB" forState:UIControlStateNormal];
-        [gb_unit_btn setTitleColor:[UIColor whiteColor] forState:UIControlStateNormal];
-        [gb_unit_btn setTitleColor:[UIColor blueColor] forState:UIControlStateSelected];
-        [gb_unit_btn addTarget:self action:@selector(unitClick:) forControlEvents:UIControlEventTouchUpInside];
-        
         // 完成按钮
-        UIButton *submit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.66, 0, accessory_v.w * 0.34, accessory_v.h)];
-        submit_btn.backgroundColor = HexRGB(0x888888);
-        submit_btn.titleLabel.font = [UIFont systemFontOfSize:13];
+        UIButton *submit_btn = [[UIButton alloc] initWithFrame:fRect(accessory_v.w * 0.66 + 5, 5, accessory_v.w * 0.34 - 10, accessory_v.h - 10)];
+        submit_btn.backgroundColor = HexRGB(0xffffff);
+        // [UIColor colorWithWhite:0 alpha:0.6];
+        submit_btn.titleLabel.font = kCommonFonts_1(17);
+        JXLog(@"%@",[UIFont familyNames]);
         [submit_btn setTitle:@"完成" forState:UIControlStateNormal];
         [submit_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [submit_btn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
         
-        [accessory_v addSubview:mb_unit_btn];
-        [accessory_v addSubview:gb_unit_btn];
-        [accessory_v addSubview:submit_btn];
+        // 预览结果
+        UILabel *preview_label = [[UILabel alloc] initWithFrame:fRect(5, 5, accessory_v.w - submit_btn.w - 15, accessory_v.h - 10)];
+        preview_label.backgroundColor = HexRGB(0xffffff);
+        preview_label.font = kCommonFonts_1(17);
+        preview_label.textAlignment = NSTextAlignmentCenter;
+        _preview_label = preview_label;
         
-        _unit_v_list = [NSArray arrayWithObjects:mb_unit_btn,gb_unit_btn, nil];
+        [accessory_v addSubview:preview_label];
+        [accessory_v addSubview:submit_btn];
         return accessory_v;
     }
     return _accessory_v;
 }
-
 @end

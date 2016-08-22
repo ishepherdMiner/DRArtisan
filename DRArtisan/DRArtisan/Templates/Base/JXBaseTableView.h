@@ -16,6 +16,7 @@ typedef NS_ENUM(NSUInteger,JXTableViewClassType){
     JXTableViewClassTypeAllView,        // 头视图与尾视图的都为UIView
     JXTableViewClassTypeHeaderTitleMix, // 头视图为Title
     JXTableViewClassTypeHeaderViewMix,  // 头视图为UIView
+    JXTableViewClassTypeCustomer = 99,  // 自定义UITableView
 };
 
 /// 数据源的状态
@@ -42,6 +43,16 @@ typedef NS_ENUM(NSUInteger,JXTableViewDataSourceType){
 /// Every section footer height
 @property (nonatomic,strong) NSArray *footerHeights;
 
+/**
+ *  Custom UITableView
+ *
+ *  @param frame TableView frame
+ *  @param style TableView style
+ *
+ *  @return a BaseTableView object
+ */
++ (instancetype)tableViewWithFrame:(CGRect)frame
+                             style:(UITableViewStyle)style;
 /**
  *  Create a BaseTableView class cluster object
  *

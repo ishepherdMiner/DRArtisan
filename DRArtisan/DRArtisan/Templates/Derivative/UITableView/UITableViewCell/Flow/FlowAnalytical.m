@@ -12,6 +12,9 @@
 #include <ifaddrs.h>
 #include <net/if_dl.h>
 #include <arpa/inet.h>
+
+#import "JXMealPersistent.h"
+
 /**
  *  原来的逻辑有些地方我不太明白,我整理下我现在的业务逻辑,然后着手修改
  *  每次进入页面的时候:
@@ -38,6 +41,26 @@
  */
 + (void)updateUseFlow{
     
+    JXMealPersistent *persistent = [JXMealPersistent accessModel];
+    
+    // 获取本次开机使用流量的本地记录 一开始是0.0
+    double theUse = persistent.cal_boot_flow;
+    
+    // 获取本次开机使用的流量
+    double thisUse = [[JXUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
+    
+    // 获取已使用流量
+    double allUse = persistent.cal_used_flow;
+    
+    // 上次月份改变时的剩余流量
+    double monthChangeUse = persistent.cal_left_flow;
+    
+    // 当有剩余流量时
+    if(monthChangeUse > 0) {
+        
+    }
+    
+    /*
     NSUserDefaults *userDefaults = [[NSUserDefaults alloc] initWithSuiteName:@"group.lrl"];
     
     // 获取本次开机使用流量的本地记录
@@ -52,7 +75,9 @@
     // 上次月份改变时,剩余流量
     double monthChangeUse = [userDefaults doubleForKey:kMonthChangeUse];
     
+    // 当上月有剩余流量
     if (monthChangeUse > 0) {
+        // 本次开机的流量大于上月剩余
         if (thisUse > monthChangeUse) {
             // 更新全部使用流量
             double nowAllUse = allUse + thisUse - monthChangeUse;
@@ -91,6 +116,7 @@
             [userDefaults setObject:[NSString stringWithFormat:@"%.2f",nowAllUse] forKey:kAllUseFlow];
         }
     }
+     */
 }
 
 /**

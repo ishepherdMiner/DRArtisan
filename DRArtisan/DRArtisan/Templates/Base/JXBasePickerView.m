@@ -51,20 +51,31 @@
     return [_dataList count];
 }
 
-//返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
--(NSString*)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
-{
+//- (NSString* )pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component
+//{
+//    if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
+//        return [_dataList[component] objectAtIndex:row];
+//    }
+//    return _dataList[row];
+//}
+
+/// 返回当前行的内容,此处是将数组中数值添加到滚动的那个显示栏上
+- (UIView *)pickerView:(UIPickerView *)pickerView viewForRow:(NSInteger)row forComponent:(NSInteger)component reusingView:(UIView *)view {
+    UILabel *label = [[UILabel alloc] init];
+    label.textAlignment = NSTextAlignmentCenter;
     if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
-        return [_dataList[component] objectAtIndex:row];
+        label.text = [_dataList[component] objectAtIndex:row];
+    }else {
+        label.text = _dataList[row];
     }
-    return _dataList[row];
+    return label;
 }
 
 // 每列宽度
 - (CGFloat)pickerView:(UIPickerView *)pickerView widthForComponent:(NSInteger)component
 {
     if ([_dataList.firstObject isKindOfClass:[NSArray class]]) {
-        return self.frame.size.width/[self.dataList count];
+        return self.frame.size.width / [self.dataList count];
     }
     return self.frame.size.width;
 }

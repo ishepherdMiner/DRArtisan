@@ -57,7 +57,18 @@
 
 @end
 
+/**
+ *  持久化协议,用于简化NSKeyUnarchive... 的操作
+ */
+@protocol JXCodingDelegate <NSObject>
 
+/// 将模型存入文件进行持久化
++ (void)storeModel:(id)persistent;
+
+/// 将文件中的持久化模型取出
++ (instancetype)accessModel;
+
+@end
 
 /**
  *  Base Model

@@ -64,13 +64,13 @@
 @interface NSString (file)
 
 /// .../sandbox/Document
-#define kDir_Doc [NSString dirPath:NSDocumentDirectory];
+#define kDir_Doc [NSString dirPath:NSDocumentDirectory]
 /// .../sandbox/Library
-#define kDir_Lib [NSString dirPath:NSLibraryDirectory];
+#define kDir_Lib [NSString dirPath:NSLibraryDirectory]
 /// .../sandbox/Library/Cache
-#define kDir_Cache [NSString dirPath:NSCachesDirectory];
+#define kDir_Cache [NSString dirPath:NSCachesDirectory]
 /// .../sandbox/Library/Documentation
-#define kDir_Documentation [NSString dirPath:NSDocumentationDirectory];
+#define kDir_Documentation [NSString dirPath:NSDocumentationDirectory]
 /// .../sandbox/tmp
 #define kDir_Tmp NSTemporaryDirectory();
 

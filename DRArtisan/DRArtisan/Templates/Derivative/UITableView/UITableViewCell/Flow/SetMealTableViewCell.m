@@ -43,10 +43,11 @@
         
         UILabel *title_v = [[UILabel alloc] init];
         title_v.textColor = DEFAULT_FONT_COLOR;
+        title_v.font = kCommonFonts_2(17);
         self.cell_type = MealCellTypeLeft;
         
         UITextField *desc_field_v = [[UITextField alloc] init];
-        desc_field_v.font = [UIFont systemFontOfSize:17];
+        desc_field_v.font = kCommonFonts_1(17);
         desc_field_v.textAlignment = NSTextAlignmentRight;
         desc_field_v.userInteractionEnabled = false;
         

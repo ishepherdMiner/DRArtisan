@@ -20,6 +20,15 @@
 @implementation JXBaseTableView
 
 + (instancetype)tableViewWithFrame:(CGRect)frame
+                             style:(UITableViewStyle)style {
+    
+    return [self tableViewWithFrame:frame
+                              style:style
+                          classType:JXTableViewClassTypeCustomer];
+}
+
+
++ (instancetype)tableViewWithFrame:(CGRect)frame
                              style:(UITableViewStyle)style
                          classType:(JXTableViewClassType)classType {
     
@@ -50,6 +59,10 @@
             obj = [[JXSupplementaryHeaderViewMix alloc] initWithFrame:frame style:style];
         }
             break;
+        case JXTableViewClassTypeCustomer:{
+            obj = [[self alloc] initWithFrame:frame style:style];
+        }
+            break;
         default:{
             obj = [[JXBaseTableView alloc] initWithFrame:frame style:style];
         }
@@ -60,6 +73,8 @@
     
     return obj;
 }
+
+
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     // when datasource not require from servers
@@ -85,6 +100,11 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Why not set kvo in cell
+    //    // It won't work because the cells are being reused. So when the cell goes off the screen it's not deallocated, it goes to reuse pool.
+    //    // You shouldn't register notifications and KVO in cell. You should do it in table view controller instead and when the model changes you should update model and reload visible cells.
+    //    // http://stackoverflow.com/questions/25056942/instance-was-deallocated-while-key-value-observers-were-still-registered-with-it
+
     JXBaseTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:self.identifier];
     if (cell == nil) {
         cell = [[[[self cellClass] class] alloc] initWithStyle:self.cellStyle

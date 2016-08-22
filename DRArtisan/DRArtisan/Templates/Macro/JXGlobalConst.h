@@ -193,9 +193,9 @@ return instance; \
 #define NavigationPush(vc) [self.navigationController pushViewController:[[vc alloc] init] animated:true]
 
 /// return Timestamp
-#define NowTimestamp  NSUInteger(^timestamp)() = ^() { \
+#define NowTimestamp  NSTimeInterval(^timestamp)() = ^() { \
                             NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0]; \
-                            return (NSUInteger)[date timeIntervalSince1970]; \
+                            return (NSTimeInterval)[date timeIntervalSince1970]; \
                       };
 // ============================================================================
 
