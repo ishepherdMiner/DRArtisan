@@ -1,23 +1,23 @@
 //
-//  SetMealTableViewCell.m
+//  JXSetMealTableViewCell.m
 //  Flow
 //
 //  Created by Jason on 7/5/16.
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#import "SetMealTableViewCell.h"
+#import "JXSetMealTableViewCell.h"
 
-@interface SetMealTableViewCell ()
+@interface JXSetMealTableViewCell ()
 
 @property (nonatomic,weak) UILabel *title_v;
 
 @property (nonatomic,weak) UITextField *desc_field_v;
 
-@property (nonatomic,strong) SetMealCellModel *model;
+@property (nonatomic,strong) JXSetMealCellModel *model;
 @end
 
-@implementation SetMealTableViewCell
+@implementation JXSetMealTableViewCell
 
 - (void)injectedModel:(id)model {
     _model = model;

@@ -1,5 +1,5 @@
 //
-//  SetMealTableViewCell.h
+//  JXSetMealTableViewCell.h
 //  Flow
 //
 //  Created by Jason on 7/5/16.
@@ -14,7 +14,7 @@ typedef NS_ENUM(NSUInteger,MealCellType){
     MealCellTypeRight
 };
 
-@interface SetMealTableViewCell : JXBaseTableViewCell
+@interface JXSetMealTableViewCell : JXBaseTableViewCell
 
 @property (nonatomic,assign) MealCellType cell_type;
 

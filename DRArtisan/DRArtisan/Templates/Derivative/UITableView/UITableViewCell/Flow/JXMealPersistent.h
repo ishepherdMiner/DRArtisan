@@ -14,19 +14,22 @@
 @interface JXMealPersistent : JXBaseObject <NSCoding,JXCodingDelegate>
 
 /// 套餐周期
-@property (nonatomic,copy) NSString *meal_cycle;
+@property (nonatomic,copy,readonly) NSString *meal_cycle;
 
 /// 结算日期
-@property (nonatomic,copy) NSString *settle_date;
+@property (nonatomic,copy,readonly) NSString *settle_date;
 
 /// 套餐流量
-@property (nonatomic,copy) NSString *total_flow;
+@property (nonatomic,copy,readonly) NSString *total_flow;
 
 /// 已使用流量
-@property (nonatomic,copy) NSString *used_flow;
+@property (nonatomic,copy,readonly) NSString *used_flow;
 
 /// 剩余流量
-//@property (nonatomic,copy) NSString *left_flow;
+@property (nonatomic,copy,readonly) NSString *left_flow;
+
+/// 流量不清零
+@property (nonatomic,copy,readonly) NSString *not_clear_flow;
 
 /// 是否是老用户
 @property (nonatomic,assign,getter=isOlder) BOOL older;
@@ -50,25 +53,29 @@
 /// 用于描述持久化的数据是否有被修改 - 设置界面使用
 @property (nonatomic,copy) NSString *change_status;
 
-/// 维护一张剩余流量表,用于计算流量结余
-@property (nonatomic,strong) NSDictionary *flow_table;
-
-// - 以下属性参与计算剩余流量
-
-/// 本次开机消耗的流量 - 计算型
+/// 本次开机消耗的流量
 @property (nonatomic,assign) CGFloat cal_boot_flow;
-/// 已使用流量 - 计算型
+
+/// 总流量
+@property (nonatomic,assign) CGFloat cal_total_flow;
+@property (nonatomic,copy) NSString *cal_total_flow_unit;
+
+/// 已使用流量
 @property (nonatomic,assign) CGFloat cal_used_flow;
+@property (nonatomic,copy) NSString *cal_used_flow_unit;
+
 /// 流量结余 - 计算型
 @property (nonatomic,assign) CGFloat cal_left_flow;
+@property (nonatomic,copy) NSString *cal_left_flow_unit;
+
+/// 结算日期
+@property (nonatomic,assign) NSUInteger cal_settle_date;
+
+/// 套餐周期
+@property (nonatomic,assign) NSUInteger cal_meal_cycle;
+
+/// 流量不清零
+@property (nonatomic,assign) NSUInteger cal_not_clear_flow;
 
 @end
-
-UIKIT_EXTERN NSString *kMealCycle;
-UIKIT_EXTERN NSString *kSettleDate;
-UIKIT_EXTERN NSString *kTotalFlow;
-UIKIT_EXTERN NSString *kUsedFlow;
-UIKIT_EXTERN NSString *kLeftFlow;
-UIKIT_EXTERN NSString *kCurrentMonth;
-
 

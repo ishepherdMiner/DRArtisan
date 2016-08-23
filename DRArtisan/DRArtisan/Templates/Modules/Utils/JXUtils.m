@@ -42,6 +42,11 @@
     
 #pragma clang diagnostic pop
 }
+
++ (NSTimeInterval)timestamp {
+    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];
+    return (NSTimeInterval)[date timeIntervalSince1970];
+}
 @end
 
 @implementation JXUtils (Network)

@@ -1,5 +1,5 @@
 //
-//  SetMealTableView.h
+//  JXSetMealTableView.h
 //  Flow
 //
 //  Created by Jason on 7/11/16.
@@ -38,12 +38,16 @@
                      @[@"0",@"1",@"2",@"3",@"4",@"5",@"6",@"7",@"8",@"9"], \
                      @[@"MB",@"GB"] \
                     ]
+
+/// 流量不清零
+#define FlowNotClear @[@"每 1 月",@"每 2 月",@"每 3 月",@"每 4 月",@"每 5 月",@"每 6 月",@"流量不清零"]
+
 /// 剩余流量
-//#define LeftFlows UsedFlows
+#define LeftFlows UsedFlows
 
 @class JXMealPersistent;
 
-@interface SetMealTableView : JXBaseTableView
+@interface JXSetMealTableView : JXBaseTableView
 
 /**
  *  UIAlertController block
@@ -51,5 +55,21 @@
 @property (nonatomic,copy) void ((^alertBlock)(UIViewController *));
 
 @property (nonatomic,strong) JXMealPersistent *persistent;
+
+/// 保存计算过程
+/// 总流量
+@property (nonatomic,copy) NSString *mark_String0;
+/// 总流量的单位
+@property (nonatomic,copy) NSString *mark_String0_unit;
+
+/// 已使用流量
+@property (nonatomic,copy) NSString *mark_String1;
+/// 已使用流量的单位
+@property (nonatomic,copy) NSString *mark_String1_unit;
+
+/// 剩余流量
+@property (nonatomic,copy) NSString *mark_String2;
+/// 剩余流量的单位
+@property (nonatomic,copy) NSString *mark_String2_unit;
 
 @end

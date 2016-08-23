@@ -30,6 +30,16 @@
  */
 + (instancetype)randomTimestamp:(NSUInteger)from to:(NSUInteger)to;
 
+/**
+ *  create an assign decimal number
+ *
+ *  @param price    which number
+ *  @param position decimal number
+ *
+ *  @return the assign decimal number
+ */
++ (instancetype)notRounding:(CGFloat)price afterPoint:(int)position;
+
 @end
 
 @interface NSNumber (Deprecated)

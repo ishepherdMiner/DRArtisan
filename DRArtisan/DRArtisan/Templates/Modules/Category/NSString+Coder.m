@@ -43,6 +43,39 @@
     return [self stringByTrimmingCharactersInSet:set];
 }
 
+- (instancetype)accuracyDigital:(NSUInteger)pos {
+    // 找到小数点位置
+    NSRange pointRange = [self rangeOfString:@"."];
+    return [self substringToIndex:(pointRange.location + 1 + pos)];
+}
+
+@end
+
+@implementation NSString (Regular)
+
+- (instancetype)filterDigital:(JXRegularDigitalType)type{
+    NSString *regex = @"[0-9]";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    NSMutableString *result = [NSMutableString string];
+    if (type == JXRegularDigitalTypeDefault) {
+        for (int i = 0; i < self.length; ++i) {
+            NSString *tmp = [self substringWithRange:NSMakeRange(i, 1)];
+            if([pred evaluateWithObject:tmp]) {
+                [result appendString:tmp];
+            }
+        }
+ 
+    }else if(type == JXRegularDigitalTypeLast){
+        for (int i = 0; i < self.length; ++i) {
+            NSString *tmp = [self substringWithRange:fRange(self.length - 1 - i, 1)];
+            if ([pred evaluateWithObject:tmp]) {
+                [result appendString:tmp];
+            }
+        }
+    }
+    return result;
+}
+
 @end
 
 @implementation NSString (file)

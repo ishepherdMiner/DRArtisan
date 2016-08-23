@@ -38,6 +38,13 @@ typedef NS_ENUM(NSUInteger,FlowDirectionOption){
 
 #endif
 
+/**
+ *  返回当前时间戳
+ *
+ *  @return 当前时间戳
+ */
++ (NSTimeInterval)timestamp;
+
 @end
 
 /**

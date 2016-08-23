@@ -42,7 +42,7 @@
 #import "JXValue1CellModel.h"
 #import "JXValue2CellModel.h"
 #import "JXSubtitleCellModel.h"
-#import "SetMealCellModel.h"
+#import "JXSetMealCellModel.h"
 
 // ViewController
 #import "JXBaseViewController.h"
@@ -83,6 +83,6 @@
 #import "JASTableViewController.h"
 
 // From flow project
-#import "SetMealTableViewCell.h"
+#import "JXSetMealTableViewCell.h"
 
 #endif /* JXArtisan_h */

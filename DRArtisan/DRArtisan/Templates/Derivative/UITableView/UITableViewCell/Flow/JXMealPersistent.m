@@ -10,18 +10,26 @@
 
 #define kFlowFile [NSString stringWithFormat:@"%@/%@",kDir_Doc,@"JXFlow.plist"]
 
-NSString *kMealCycle = @"meal_cycle";
-NSString *kSettleDate = @"settle_date";
-NSString *kTotalFlow = @"total_flow";
-NSString *kUsedFlow = @"used_flow";
-// NSString *kLeftFlow = @"left_flow";
+NSString *kOlder = @"older";
 NSString *kCurrentMonth = @"current_month";
-NSString *KOlder = @"older";
+NSString *kRegTimestamp = @"reg_timestamp";
+NSString *kRunningTime = @"running_time";
+NSString *kChangeStatus = @"change_status";
+NSString *kCalTotalFlow = @"cal_total_flow";
+NSString *kCalTotalFlowUnit = @"cal_total_flow_unit";
+NSString *kCalUsedFlow = @"cal_used_flow";
+NSString *kCalUsedFlowUnit = @"cal_used_flow_unit";
+NSString *kCalLeftFlow = @"cal_left_flow";
+NSString *kCalLeftFlowUnit = @"cal_left_flow_unit";
+NSString *kCalSettleDate = @"cal_settle_date";
+NSString *kCalMealCycle = @"cal_meal_cycle";
+NSString *kCalBootFlow = @"cal_boot_flow";
+NSString *kCalNotClearFlow = @"cal_not_clear_flow";
+
 
 @implementation JXMealPersistent
 
 + (void)storeModel:(id)persistent{
-    // JXLog(@"%@",[NSString stringWithFormat:@"%@/%@",kDir_Doc,kFlowFile]);
     [NSKeyedArchiver archiveRootObject:persistent toFile:kFlowFile];
 }
 
@@ -30,35 +38,117 @@ NSString *KOlder = @"older";
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
-    _meal_cycle = [aDecoder decodeObjectForKey:kMealCycle];
-    _settle_date = [aDecoder decodeObjectForKey:kSettleDate];
-    _total_flow = [aDecoder decodeObjectForKey:kTotalFlow];
-    _used_flow = [aDecoder decodeObjectForKey:kUsedFlow];
-//    _left_flow = [aDecoder decodeObjectForKey:kLeftFlow];
-    _reg_timestamp = [aDecoder decodeDoubleForKey:@"reg_timestamp"];
-    _running_time = [aDecoder decodeDoubleForKey:@"running_time"];
-    _older = [aDecoder decodeBoolForKey:KOlder];
+    _reg_timestamp = [aDecoder decodeDoubleForKey:kRegTimestamp];
+    _running_time = [aDecoder decodeDoubleForKey:kRunningTime];
+    _older = [aDecoder decodeBoolForKey:kOlder];
     _current_month = [aDecoder decodeIntegerForKey:kCurrentMonth];
-    _change_status = [aDecoder decodeObjectForKey:@"change_status"];
-    
-    _cal_boot_flow = [aDecoder decodeDoubleForKey:@"cal_boot_flow"];
-    _cal_used_flow = [aDecoder decodeDoubleForKey:@"cal_used_flow"];
+    _change_status = [aDecoder decodeObjectForKey:kChangeStatus];
+    _cal_boot_flow = [aDecoder decodeDoubleForKey:kCalBootFlow];
+    _cal_total_flow = [aDecoder decodeDoubleForKey:kCalTotalFlow];
+    _cal_total_flow_unit = [aDecoder decodeObjectForKey:kCalTotalFlowUnit];
+    _cal_used_flow = [aDecoder decodeDoubleForKey:kCalUsedFlow];
+    _cal_used_flow_unit = [aDecoder decodeObjectForKey:kCalUsedFlowUnit];
+    _cal_left_flow = [aDecoder decodeDoubleForKey:kCalLeftFlow];
+    _cal_left_flow_unit = [aDecoder decodeObjectForKey:kCalLeftFlowUnit];
+    _cal_settle_date = [aDecoder decodeIntegerForKey:kCalSettleDate];
+    _cal_meal_cycle = [aDecoder decodeIntegerForKey:kCalMealCycle];
+    _cal_not_clear_flow = [aDecoder decodeIntegerForKey:kCalNotClearFlow];
     return self;
 }
 
-- (void)encodeWithCoder:(NSCoder *)aCoder {    
-    [aCoder encodeObject:_meal_cycle forKey:kMealCycle];
-    [aCoder encodeObject:_settle_date forKey:kSettleDate];
-    [aCoder encodeObject:_total_flow forKey:kTotalFlow];
-    [aCoder encodeObject:_used_flow forKey:kUsedFlow];
-//    [aCoder encodeObject:_left_flow forKey:kLeftFlow];
-    [aCoder encodeDouble:_reg_timestamp forKey:@"reg_timestamp"];
-    [aCoder encodeDouble:_running_time forKey:@"running_time"];
-    [aCoder encodeBool:_older forKey:KOlder];
+- (void)encodeWithCoder:(NSCoder *)aCoder {
+    [aCoder encodeDouble:_reg_timestamp forKey:kRegTimestamp];
+    [aCoder encodeDouble:_running_time forKey:kRunningTime];
+    [aCoder encodeBool:_older forKey:kOlder];
     [aCoder encodeInteger:_current_month forKey:kCurrentMonth];
-    [aCoder encodeObject:_change_status forKey:@"change_status"];
-    
-    [aCoder encodeDouble:_cal_boot_flow forKey:@"cal_boot_flow"];
-    [aCoder encodeDouble:_cal_used_flow forKey:@"cal_used_flow"];
+    [aCoder encodeObject:_change_status forKey:kChangeStatus];
+    [aCoder encodeDouble:_cal_boot_flow forKey:kCalBootFlow];
+    [aCoder encodeDouble:_cal_total_flow forKey:kCalTotalFlow];
+    [aCoder encodeObject:_cal_total_flow_unit forKey:kCalTotalFlowUnit];
+    [aCoder encodeDouble:_cal_used_flow forKey:kCalUsedFlow];
+    [aCoder encodeObject:_cal_used_flow_unit forKey:kCalUsedFlowUnit];
+    [aCoder encodeDouble:_cal_left_flow forKey:kCalLeftFlow];
+    [aCoder encodeObject:_cal_left_flow_unit forKey:kCalLeftFlowUnit];
+    [aCoder encodeInteger:_cal_settle_date forKey:kCalSettleDate];
+    [aCoder encodeInteger:_cal_meal_cycle forKey:kCalMealCycle];
+    [aCoder encodeInteger:_cal_not_clear_flow forKey:kCalNotClearFlow];
 }
+
+
+#pragma mark - computer property
+- (NSString *)total_flow {
+    if (self.cal_total_flow == 0) {
+        return @"";
+    }
+    
+    if (self.cal_total_flow_unit) {
+       return [@(self.cal_total_flow).stringValue stringByAppendingString:self.cal_total_flow_unit];
+    }
+    return @"";
+}
+
+- (NSString *)used_flow {
+    if (self.cal_used_flow == 0) {
+        return @"";
+    }
+    if (self.cal_used_flow_unit) {
+        return [@(self.cal_used_flow).stringValue stringByAppendingString:self.cal_total_flow_unit];
+    }
+    return @"";
+}
+
+- (NSString *)left_flow {
+    if (self.cal_left_flow == 0) {
+        return @"";
+    }
+    if (self.cal_left_flow_unit) {
+        return [@(self.cal_left_flow).stringValue stringByAppendingString:self.cal_total_flow_unit];
+    }
+    return @"";
+}
+
+- (NSString *)settle_date {
+    if (self.cal_settle_date == 0) {
+        return @"01 日";
+    }
+    
+    if (self.cal_settle_date) {
+        // 一位数
+        if (@(self.cal_settle_date).stringValue.length == kOne) {
+            return [[@"0" stringByAppendingString:@(self.cal_settle_date).stringValue] stringByAppendingString:@" 日"];
+        }else if(@(self.cal_settle_date).stringValue.length == kTwo) {
+            return [@(self.cal_settle_date).stringValue stringByAppendingString:@" 日"];
+        }
+    }
+    
+    return @"01 日";
+}
+
+- (NSString *)meal_cycle {
+    if (self.cal_meal_cycle == 0) {
+        return @"每 1 月";
+    }
+    
+    if (self.cal_meal_cycle) {
+        if (@(self.cal_meal_cycle).stringValue.length == kOne) {
+            return [[@"每" stringByAppendingString:@(self.cal_meal_cycle).stringValue] stringByAppendingString:@" 月"];
+        }
+    }
+    return @"每 1 月";
+}
+
+- (NSString *)not_clear_flow {
+    if (self.cal_not_clear_flow == 0) {
+        return @"每 2 月";
+    }
+    
+    if (self.cal_not_clear_flow) {
+        if (@(self.cal_not_clear_flow).stringValue.length == kOne) {
+            return [[@"每" stringByAppendingString:@(self.cal_not_clear_flow).stringValue] stringByAppendingString:@" 月"];
+        }
+
+    }
+    return @"每 2 月";
+}
+
 @end

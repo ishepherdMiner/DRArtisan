@@ -53,6 +53,30 @@
  */
 - (NSString *)trim;
 
+/**
+ *  保留指定精度
+ *
+ *  @param value 要保留的小数点位数
+ *
+ *  @return double类型的数据
+ */
+- (instancetype)accuracyDigital:(NSUInteger)value;
+
+@end
+
+typedef NS_ENUM(NSUInteger,JXRegularDigitalType){
+    JXRegularDigitalTypeDefault,  // 连续的第一个数字串
+    JXRegularDigitalTypeLast,     // 连续的最后一个字符串
+};
+@interface NSString (Regular)
+
+/**
+ *  筛选出字符串中首个连接的数字
+ *
+ *  @return 返回被筛选出的数字
+ */
+- (instancetype)filterDigital:(JXRegularDigitalType)type;
+
 @end
 
 @interface NSString (CleanDescription)

@@ -1,16 +1,16 @@
 //
-//  SetMealTableView.m
+//  JXSetMealTableView.m
 //  Flow
 //
 //  Created by Jason on 7/11/16.
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#import "SetMealTableView.h"
-#import "FlowAnalytical.h"
+#import "JXSetMealTableView.h"
+#import "JXFlowAnalytical.h"
 #import "JXMealPersistent.h"
 
-@interface SetMealTableView () <JXBasePickerViewDelegate,UITextFieldDelegate>
+@interface JXSetMealTableView () <JXBasePickerViewDelegate,UITextFieldDelegate>
 
 /// 选择器视图
 @property (nonatomic,weak) UIPickerView *picker_v;
@@ -26,7 +26,7 @@
 
 @end
 
-@implementation SetMealTableView
+@implementation JXSetMealTableView
 
 #pragma mark - Lifecycle
 
@@ -89,12 +89,18 @@
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
                 }
                     break;
-//                case kOne: {
-//                    // 已使用流量
-//                    picker_option_list = LeftFlows;
-//                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
-//                }
-//                    break;
+                case kOne: {
+                    // 剩余流量
+                    picker_option_list = LeftFlows;
+                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+                }
+                    break;
+                case kTwo:{
+                    // 流量不清零周期
+                    picker_option_list = FlowNotClear;
+                    [self pickerViewWithList:picker_option_list indexPath:indexPath];
+                }
+                    break;
             }
         }
             
@@ -107,6 +113,7 @@
                     UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
                     UIAlertAction *alert_action_submit = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         JXLog(@"删除数据");
+                        
                     }];
                     
                     UIAlertAction *alert_action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -132,7 +139,7 @@
             JXBasePickerView *picker_v = [[JXBasePickerView alloc] initWithFrame:fRect(0, Screen_height - 200, Screen_width, 200)];
             picker_v.dataList = dataList;
             picker_v.pickerDelegate = self;
-            SetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
+            JXSetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
             meal_cell_v.desc_field_v.userInteractionEnabled = true;
             meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
             meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
@@ -169,10 +176,21 @@
                     preview_labels[component] = text;
                     
                     NSMutableString *preview_stringM = [NSMutableString string];
+                    NSMutableString *marks_String0 = [NSMutableString string];
+                    
                     for (int i = 0; i < [MealFlows count]; ++i) {
                         [preview_stringM appendString:preview_labels[i]];
+                        
+                        // 排除单位的字段
+                        if (i < [MealFlows count] - 1) {
+                            [marks_String0 appendString:preview_labels[i]];
+                        }else {
+                            _mark_String0_unit = preview_labels[i];
+                        }
                     }
                     
+                    // 总流量
+                    _mark_String0 = [marks_String0 copy];
                     _preview_label.text = preview_stringM;
                 }
                     break;
@@ -201,44 +219,72 @@
                     preview_labels[component] = text;
                     
                     NSMutableString *preview_stringM = [NSMutableString string];
+                    NSMutableString *marks_String1 = [NSMutableString string];
+                    
                     for (int i = 0; i < [UsedFlows count]; ++i) {
                         [preview_stringM appendString:preview_labels[i]];
+                        
+                        if (i < [UsedFlows count] - 1) {
+                            [marks_String1 appendString:preview_labels[i]];
+                        }else {
+                            // - 单位
+                            _mark_String1_unit = preview_labels[i];
+                        }
                     }
                     
+                    //  - 值
+                    // 已使用流量
+                    _mark_String1 = [marks_String1 copy];
                     _preview_label.text = preview_stringM;
                     
                 }
                     break;
-//                case kOne:{
-//                    // 百位
-//                    NSString *hDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(0, 1)] : @"0";
-//                    // 十位
-//                    NSString *tDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(1, 1)] : @"0";
-//                    
-//                    // 个位
-//                    NSString *digits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(2, 2)] : @"0.";
-//                    
-//                    // 十分位
-//                    NSString *decile = _preview_label.text ? [_preview_label.text substringWithRange:fRange(4, 1)] : @"0";
-//                    // 单位
-//                    NSString *unit = _preview_label.text ? [_preview_label.text substringWithRange:fRange(5, 2)] : @"MB";
-//                    
-//                    NSMutableArray *preview_labels = [NSMutableArray arrayWithArray:@[hDigits,tDigits,digits,decile,unit]] ;
-//                    
-//                    preview_labels[component] = text;
-//                    
-//                    NSMutableString *preview_stringM = [NSMutableString string];
-//                    for (int i = 0; i < [LeftFlows count]; ++i) {
-//                        [preview_stringM appendString:preview_labels[i]];
-//                    }
-//                    
-//                    _preview_label.text = preview_stringM;
-//                }
-//                    break;
+                case kOne:{
+                    // 百位
+                    NSString *hDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(0, 1)] : @"0";
+                    // 十位
+                    NSString *tDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(1, 1)] : @"0";
+                    
+                    // 个位
+                    NSString *digits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(2, 2)] : @"0.";
+                    
+                    // 十分位
+                    NSString *decile = _preview_label.text ? [_preview_label.text substringWithRange:fRange(4, 1)] : @"0";
+                    // 单位
+                    NSString *unit = _preview_label.text ? [_preview_label.text substringWithRange:fRange(5, 2)] : @"MB";
+                    
+                    NSMutableArray *preview_labels = [NSMutableArray arrayWithArray:@[hDigits,tDigits,digits,decile,unit]] ;
+                    
+                    preview_labels[component] = text;
+                    
+                    NSMutableString *preview_stringM = [NSMutableString string];
+                    NSMutableString *marks_String2 = [NSMutableString string];
+                    
+                    for (int i = 0; i < [LeftFlows count]; ++i) {
+                        [preview_stringM appendString:preview_labels[i]];
+                        
+                        if (i < [LeftFlows count] - 1) {
+                            [marks_String2 appendString:preview_labels[i]];
+                        }else {
+                            _mark_String2_unit = preview_labels[i];
+                        }
+                    }
+                    
+                    // 剩余流量
+                    _mark_String2 = [marks_String2 copy];
+                    _preview_label.text = preview_stringM;
+                }
+                    break;
+                case kTwo:{
+                    _preview_label.text = text;
+                }
+                    break;
             }
         }
             break;
     }
+    
+    
 }
 
 /// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
@@ -259,7 +305,7 @@
 /// 完成修改按钮点击触发额事件
 - (void)submitClick:(UIButton *)sender {
     NSIndexPath *indexPath = self.indexPathForSelectedRow;
-    SetMealTableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
+    JXSetMealTableViewCell *cell = [self cellForRowAtIndexPath:indexPath];
     
     if (_persistent == nil) {
         _persistent = [[JXMealPersistent alloc] init];
@@ -270,15 +316,17 @@
         case kZero:{
             switch (indexPath.row) {
                 case kZero:{
-                    _persistent.meal_cycle = _preview_label.text;
+                    // JXLog(@"%zd",[[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue]);
+                    _persistent.cal_meal_cycle = [[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue];
                 }
                     break;
                 case kOne:{
-                    _persistent.settle_date = _preview_label.text;
+                    _persistent.cal_settle_date = [[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue];
                 }
                     break;
                 case kTwo:{
-                    _persistent.total_flow = _preview_label.text;
+                    _persistent.cal_total_flow = [_mark_String0 doubleValue];
+                    _persistent.cal_total_flow_unit = _mark_String0_unit;
                 }
                     break;
             }
@@ -288,17 +336,20 @@
         case kOne:{
             switch (indexPath.row) {
                 case kZero:{
-                    _persistent.used_flow = _preview_label.text;
-//                    if (_persistent.total_flow == nil) {
-//                        _persistent.total_flow = @"200";
-//                    }
-//                    _persistent.left_flow = @([_persistent.total_flow doubleValue] - [_persistent.used_flow doubleValue]).stringValue;
+                    _persistent.cal_used_flow = [_mark_String1 doubleValue];
+                    _persistent.cal_used_flow_unit = _mark_String1_unit;
                 }
                     break;
-//                case kOne:{
-//                    _persistent.left_flow = _preview_label.text;
-//                }
-//                    break;
+                case kOne:{
+                    _persistent.cal_left_flow = [_mark_String2 doubleValue];
+                    _persistent.cal_left_flow_unit = _mark_String2_unit;
+                    
+                }
+                    break;
+                case kTwo:{
+                    _persistent.cal_not_clear_flow = [[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue];
+                }
+                    break;
             }
             _persistent.change_status = @"true";
         }
@@ -347,4 +398,5 @@
     }
     return _accessory_v;
 }
+
 @end
