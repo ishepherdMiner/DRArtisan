@@ -17,6 +17,7 @@
 		96990A501D667AED00EEF584 /* VoiceSearchFeedback014@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96990A4F1D667AED00EEF584 /* VoiceSearchFeedback014@2x.png */; };
 		96990A521D667AF400EEF584 /* shake_sound_male.wav in Resources */ = {isa = PBXBuildFile; fileRef = 96990A511D667AF400EEF584 /* shake_sound_male.wav */; };
 		96990A551D667B4600EEF584 /* DemoLocalPushViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96990A541D667B4600EEF584 /* DemoLocalPushViewController.m */; };
+		969C566A1D6D117B00A191CD /* UIView+JXCoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969C56691D6D117B00A191CD /* UIView+JXCoder.m */; };
 		969E955C1D68B6020037EF5A /* JXAbstractBaseCollectionView.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E94B41D68B6020037EF5A /* JXAbstractBaseCollectionView.m */; };
 		969E955D1D68B6020037EF5A /* JXAbstractBaseTableView.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E94B61D68B6020037EF5A /* JXAbstractBaseTableView.m */; };
 		969E955E1D68B6020037EF5A /* Capable.m in Sources */ = {isa = PBXBuildFile; fileRef = 969E94B91D68B6020037EF5A /* Capable.m */; };
@@ -136,6 +137,8 @@
 		96990A511D667AF400EEF584 /* shake_sound_male.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = shake_sound_male.wav; sourceTree = "<group>"; };
 		96990A531D667B4600EEF584 /* DemoLocalPushViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoLocalPushViewController.h; sourceTree = "<group>"; };
 		96990A541D667B4600EEF584 /* DemoLocalPushViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoLocalPushViewController.m; sourceTree = "<group>"; };
+		969C56681D6D117B00A191CD /* UIView+JXCoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JXCoder.h"; sourceTree = "<group>"; };
+		969C56691D6D117B00A191CD /* UIView+JXCoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JXCoder.m"; sourceTree = "<group>"; };
 		969E94B31D68B6020037EF5A /* JXAbstractBaseCollectionView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXAbstractBaseCollectionView.h; sourceTree = "<group>"; };
 		969E94B41D68B6020037EF5A /* JXAbstractBaseCollectionView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXAbstractBaseCollectionView.m; sourceTree = "<group>"; };
 		969E94B51D68B6020037EF5A /* JXAbstractBaseTableView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXAbstractBaseTableView.h; sourceTree = "<group>"; };
@@ -628,6 +631,8 @@
 				969E95291D68B6020037EF5A /* UIView+Coder.m */,
 				969E952A1D68B6020037EF5A /* UIViewController+Coder.h */,
 				969E952B1D68B6020037EF5A /* UIViewController+Coder.m */,
+				969C56681D6D117B00A191CD /* UIView+JXCoder.h */,
+				969C56691D6D117B00A191CD /* UIView+JXCoder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1250,6 +1255,7 @@
 				969E95911D68B6020037EF5A /* JXSession.m in Sources */,
 				969E958C1D68B6020037EF5A /* UIImage+Coder.m in Sources */,
 				962058261D594B270085DB4F /* PhotoCell.m in Sources */,
+				969C566A1D6D117B00A191CD /* UIView+JXCoder.m in Sources */,
 				969E95771D68B6020037EF5A /* JXWaterFlowHorLayout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

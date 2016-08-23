@@ -68,6 +68,30 @@ typedef NS_ENUM(NSUInteger,JXRegularDigitalType){
     JXRegularDigitalTypeDefault,  // 连续的第一个数字串
     JXRegularDigitalTypeLast,     // 连续的最后一个字符串
 };
+
+/*
+ *  正则语法表
+ *
+ *  .     匹配除换行符外的任意字符
+ *  \w    匹配字母或者数字的字符
+ *  \W    匹配任意不是字母或数字的字符
+ *  \s    匹配任意的空白符(空格、制表符、换行符)
+ *  \S    匹配任意不是空白符的字符
+ *  \d    匹配任意数字
+ *  \D    匹配任意非数字的字符
+ *  \b    匹配单词的结尾或者开头的字符
+ *  \B    匹配任意不是单词结尾或开头的字符
+ * [^x]   匹配任意非x的字符。如[^[a-z]]匹配非小写字母的任意字符
+ *  ^     匹配字符串的开头
+ *  $     匹配字符串的结尾
+ *  *     匹配重复任意次数
+ *  +     匹配重复一次以上的次数
+ *  ?     匹配一次或零次
+ *  {n}   匹配重复n次
+ *  {n,}  匹配重复n次或n次以上
+ *  {n,m} 匹配重复最少n次最多m次
+ */
+
 @interface NSString (Regular)
 
 /**
@@ -76,6 +100,16 @@ typedef NS_ENUM(NSUInteger,JXRegularDigitalType){
  *  @return 返回被筛选出的数字
  */
 - (instancetype)filterDigital:(JXRegularDigitalType)type;
+
+/**
+ *  正则匹配替换内容
+ *
+ *  @param oPattern     正则匹配的源字符串
+ *  @param targetString 目标的字符串
+ *
+ *  @return 返回匹配处理后的字符串
+ */
+- (instancetype)replaceOrigin:(NSString *)oPattern targetString:(NSString *)targetString;
 
 @end
 

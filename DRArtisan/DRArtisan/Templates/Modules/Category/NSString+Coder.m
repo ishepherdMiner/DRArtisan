@@ -76,6 +76,19 @@
     return result;
 }
 
+- (instancetype)replaceOrigin:(NSString *)oPattern targetString:(NSString *)targetString {
+    // 匹配空格 @"\\s+" 匹配回车换行 @"\n"
+    NSRegularExpression * regular = [[NSRegularExpression alloc] initWithPattern:oPattern
+                                                                         options:NSRegularExpressionCaseInsensitive
+                                                                           error:nil];
+    NSString *result = [regular stringByReplacingMatchesInString:self
+                                                         options:NSMatchingReportProgress
+                                                           range:NSMakeRange(0,self.length)
+                                                    withTemplate:targetString];
+    
+    return result;
+}
+
 @end
 
 @implementation NSString (file)
