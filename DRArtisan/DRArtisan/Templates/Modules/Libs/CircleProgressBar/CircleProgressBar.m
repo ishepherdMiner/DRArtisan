@@ -14,7 +14,7 @@
 // Progress Bar Defaults
 #define DefaultProgressBarProgressColor [UIColor colorWithRed:0.71 green:0.099 blue:0.099 alpha:0.7]
 #define DefaultProgressBarTrackColor [UIColor colorWithRed:1 green:1 blue:1 alpha:0.7]
-const CGFloat DefaultProgressBarWidth = 33.0f;
+const CGFloat DefaultProgressBarWidth = 25.0f;
 
 // Hint View Defaults
 #define DefaultHintBackgroundColor [UIColor colorWithWhite:0 alpha:0.7]

@@ -150,11 +150,14 @@
            pst.cal_used_flow -= thisUse;
         }
         
+        // 记录本次开机消耗的流量
+        pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
+        
     }else{
         
-        // 重启过-情形2:初始运行时间 + 当前时间戳 - 注册时间戳 - 600 <= 运行时间 600代表可以接受10分钟的误差
+        // 重启过-情形2:初始运行时间 + 当前时间戳 - 注册时间戳  > 运行时间 + 600 600代表可以接受10分钟的误差
         // 当前时间戳 - 注册时间戳 => 理论上增加的运行时间
-        if(pst.running_time + [JXUtils timestamp] - pst.reg_timestamp - 600 <= [[[NSProcessInfo alloc] init] systemUptime]){
+        if(pst.running_time + ([JXUtils timestamp] - pst.reg_timestamp) > [[[NSProcessInfo alloc] init] systemUptime] + 600){
             
             // 这次得到的流量,需要全部减去
             if (pst.cal_left_flow > kZero) {
@@ -167,6 +170,9 @@
             }else {
                 pst.cal_used_flow -= thisUse;
             }
+            
+            // 记录本次开机消耗的流量
+            pst.cal_boot_flow += thisUse;
             
         }else {
             // 假定为0时,是首次
@@ -187,16 +193,16 @@
             }else {
                 pst.cal_used_flow -= (thisUse - pst.cal_boot_flow);
             }
-            
             // 记录本次开机消耗的流量
-            pst.cal_boot_flow += thisUse;
+            pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
+           
         }
     }
     
     [JXMealPersistent storeModel:pst];
 }
 
-+ (NSString *)execUpdateDay:(NSUInteger)updateDay{
++ (NSArray <NSString *>*)execUpdateDay:(NSUInteger)updateDay{
     NSDate *now = [NSDate date];
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *comps = [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
@@ -204,12 +210,15 @@
         comps.day = kOne;
     }
     comps.day = updateDay;
-    
     comps.month = comps.month + kOne;
     NSDate *firstDay = [cal dateFromComponents:comps];
     
     NSTimeInterval time = [firstDay timeIntervalSinceDate:now];
-    return [NSString stringWithFormat:@"%d 天", (int)ceilf(time/60/60/24)];
+    return @[[NSString stringWithFormat:@"%zd 月 %zd 日",comps.month,comps.day],[NSString stringWithFormat:@"%d 天", (int)ceilf(time/60/60/24)]];
+}
+
++ (void)resetAll {
+#warning 重置若干参数
 }
 
 @end

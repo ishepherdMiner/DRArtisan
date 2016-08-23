@@ -30,6 +30,7 @@
  */
 + (void)execUpdateFlow;
 
+
 /**
  *  保存/更新 流量配置
  *
@@ -38,9 +39,14 @@
 + (void)saveOrUpdateConfig:(JXMealPersistent *)pst_param;
 
 /**
- *  距下个月更新日期的天数
+ *  重置流量配置
  */
-+ (NSString *)execUpdateDay:(NSUInteger)updateDay;
++ (void)resetAll;
+
+/**
+ *  下次更新日期 && 距今多少天
+ */
++ (NSArray <NSString *>*)execUpdateDay:(NSUInteger)updateDay;
 
 
 

@@ -12,16 +12,16 @@
 
 @interface JXSetMealTableView () <JXBasePickerViewDelegate,UITextFieldDelegate>
 
-/// 选择器视图
+/// 视图 - 选择器
 @property (nonatomic,weak) UIPickerView *picker_v;
 
-/// 工具条视图
+/// 视图 - 工具条
 @property (nonatomic,weak) UIToolbar *accessory_v;
 
-/// 遮罩视图
+/// 视图 - 遮罩层
 @property (nonatomic,weak) UIView *mask_v;
 
-/// 修改预览视图
+/// 视图 - 预览
 @property (nonatomic,weak) UILabel *preview_label;
 
 @end
@@ -113,11 +113,11 @@
                     UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
                     UIAlertAction *alert_action_submit = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         JXLog(@"删除数据");
-                        
+                        [JXFlowAnalytical resetAll];
                     }];
                     
                     UIAlertAction *alert_action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
-                        
+                        JXLog(@"取消修改数据");
                     }];
                     
                     [alert_c addAction:alert_action_submit];
@@ -380,7 +380,7 @@
         submit_btn.backgroundColor = HexRGB(0xffffff);
         // [UIColor colorWithWhite:0 alpha:0.6];
         submit_btn.titleLabel.font = kCommonFonts_1(17);
-        JXLog(@"%@",[UIFont familyNames]);
+        // JXLog(@"%@",[UIFont familyNames]);
         [submit_btn setTitle:@"完成" forState:UIControlStateNormal];
         [submit_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [submit_btn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
