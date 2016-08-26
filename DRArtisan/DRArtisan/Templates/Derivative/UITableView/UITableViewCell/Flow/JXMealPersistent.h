@@ -45,7 +45,7 @@
  *  2.该值 大于 以后由NSProgressInfo获取的值时 running_time + 当前时间戳 - reg_timestamp 应该约等于运行时间 精读要求10分钟吧
  *  3.至于中间的重复关机的过程 没办法检测了
  */
-@property (nonatomic,assign) NSTimeInterval running_time;
+@property (nonatomic,assign) NSTimeInterval init_running_time;
 
 /// 当前月份
 @property (nonatomic,assign) NSUInteger current_month;
@@ -76,6 +76,9 @@
 
 /// 流量不清零
 @property (nonatomic,assign) NSUInteger cal_not_clear_flow;
+
+/// 用于检测重启后是否已经进行过检测开机流量的正确性问题
+@property (nonatomic,assign) CGFloat min_running_time;
 
 @end
 

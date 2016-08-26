@@ -25,6 +25,7 @@ NSString *kCalSettleDate = @"cal_settle_date";
 NSString *kCalMealCycle = @"cal_meal_cycle";
 NSString *kCalBootFlow = @"cal_boot_flow";
 NSString *kCalNotClearFlow = @"cal_not_clear_flow";
+NSString *kMinBootFlow = @"min_running_time";
 
 
 @implementation JXMealPersistent
@@ -39,7 +40,7 @@ NSString *kCalNotClearFlow = @"cal_not_clear_flow";
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     _reg_timestamp = [aDecoder decodeDoubleForKey:kRegTimestamp];
-    _running_time = [aDecoder decodeDoubleForKey:kRunningTime];
+    _init_running_time = [aDecoder decodeDoubleForKey:kRunningTime];
     _older = [aDecoder decodeBoolForKey:kOlder];
     _current_month = [aDecoder decodeIntegerForKey:kCurrentMonth];
     _change_status = [aDecoder decodeObjectForKey:kChangeStatus];
@@ -53,12 +54,13 @@ NSString *kCalNotClearFlow = @"cal_not_clear_flow";
     _cal_settle_date = [aDecoder decodeIntegerForKey:kCalSettleDate];
     _cal_meal_cycle = [aDecoder decodeIntegerForKey:kCalMealCycle];
     _cal_not_clear_flow = [aDecoder decodeIntegerForKey:kCalNotClearFlow];
+    _min_running_time = [aDecoder decodeDoubleForKey:kMinBootFlow];
     return self;
 }
 
 - (void)encodeWithCoder:(NSCoder *)aCoder {
     [aCoder encodeDouble:_reg_timestamp forKey:kRegTimestamp];
-    [aCoder encodeDouble:_running_time forKey:kRunningTime];
+    [aCoder encodeDouble:_init_running_time forKey:kRunningTime];
     [aCoder encodeBool:_older forKey:kOlder];
     [aCoder encodeInteger:_current_month forKey:kCurrentMonth];
     [aCoder encodeObject:_change_status forKey:kChangeStatus];
@@ -72,6 +74,7 @@ NSString *kCalNotClearFlow = @"cal_not_clear_flow";
     [aCoder encodeInteger:_cal_settle_date forKey:kCalSettleDate];
     [aCoder encodeInteger:_cal_meal_cycle forKey:kCalMealCycle];
     [aCoder encodeInteger:_cal_not_clear_flow forKey:kCalNotClearFlow];
+    [aCoder encodeDouble:_min_running_time forKey:kMinBootFlow];
 }
 
 

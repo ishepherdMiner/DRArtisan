@@ -105,7 +105,8 @@
     if (pst.reg_timestamp == 0) {
         pst.older = true;
         pst.reg_timestamp = [JXUtils timestamp];
-        pst.running_time = [[[NSProcessInfo alloc] init] systemUptime];
+        pst.init_running_time = [[[NSProcessInfo alloc] init] systemUptime];
+        pst.min_running_time = pst.init_running_time;
         // 检测用户配置中的当前月份是否为空,为空的话,写入一次
         if (pst.current_month == kZero) {
             NSDateComponents *comps = [NSDate currentComponents];
@@ -136,29 +137,15 @@
     CGFloat thisUse =  [[JXUtils flowUsage:FlowUsageTypeWwan direction:FlowDirectionOptionUp | FlowDirectionOptionDown] doubleValue];
     
     // 重启过-情形1:没有关机过,写入的running_time应该要小于后面的值,该情况比较明显
-    if (pst.running_time > [[[NSProcessInfo alloc] init] systemUptime]) {
+    NSTimeInterval api_running_time = [[[NSProcessInfo alloc] init] systemUptime];
+    
+    // 避免2~N次重启后重复进入判断 这样判断条件会越来越苛刻的 有漏洞
+    if (pst.min_running_time > api_running_time) {
+        // 尝试从Extension的公共文件中读取运行时间 如果有
         
-        // 这次得到的流量,需要全部减去
-        if (pst.cal_left_flow > kZero) {
-            if (pst.cal_left_flow > thisUse) {
-                pst.cal_left_flow -= thisUse;
-            }else {
-                pst.cal_left_flow = 0;
-                pst.cal_used_flow -= (thisUse - pst.cal_left_flow);
-            }
-        }else {
-           pst.cal_used_flow -= thisUse;
-        }
-        
-        // 记录本次开机消耗的流量
-        pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
-        
-    }else{
-        
-        // 重启过-情形2:初始运行时间 + 当前时间戳 - 注册时间戳  > 运行时间 + 600 600代表可以接受10分钟的误差
-        // 当前时间戳 - 注册时间戳 => 理论上增加的运行时间
-        if(pst.running_time + ([JXUtils timestamp] - pst.reg_timestamp) > [[[NSProcessInfo alloc] init] systemUptime] + 600){
-            
+        // 至少要求两次重启并打开应用的时间不超过1小时
+        pst.min_running_time = api_running_time > 3600 ? api_running_time : 3600;
+        if (pst.init_running_time > api_running_time) {
             // 这次得到的流量,需要全部减去
             if (pst.cal_left_flow > kZero) {
                 if (pst.cal_left_flow > thisUse) {
@@ -172,31 +159,53 @@
             }
             
             // 记录本次开机消耗的流量
-            pst.cal_boot_flow += thisUse;
+            pst.cal_boot_flow = thisUse;
             
-        }else {
-            // 假定为0时,是首次
-            if (pst.cal_boot_flow == kZero) {
+        }else{
+            
+            // 当2~N次重启后当 本次开机时间 > 运行时间 也可能是重启过的
+            // 重启过-情形2:初始运行时间 + 当前时间戳 - 注册时间戳  > 运行时间 + 600 600代表可以接受10分钟的误差
+            // 当前时间戳 - 注册时间戳 => 理论上增加的运行时间
+            if(pst.init_running_time + ([JXUtils timestamp] - pst.reg_timestamp) > api_running_time + 60){
+                
+                // 这次得到的流量,需要全部减去
+                if (pst.cal_left_flow > kZero) {
+                    if (pst.cal_left_flow > thisUse) {
+                        pst.cal_left_flow -= thisUse;
+                    }else {
+                        pst.cal_left_flow = 0;
+                        pst.cal_used_flow -= (thisUse - pst.cal_left_flow);
+                    }
+                }else {
+                    pst.cal_used_flow -= thisUse;
+                }
+                
+                // 记录本次开机消耗的流量
                 pst.cal_boot_flow = thisUse;
             }
-            
-            // 默认为没有进行重启设备的操作
-            // 有剩余流量
-            if (pst.cal_left_flow > kZero) {
-                // 剩余流量 > 本次使用的流量
-                if (pst.cal_left_flow > thisUse) {
-                    pst.cal_left_flow -= (thisUse - pst.cal_boot_flow);
-                }else {
-                    pst.cal_left_flow = kZero;
-                    pst.cal_used_flow -= (thisUse - pst.cal_boot_flow - pst.cal_left_flow);
-                }
-            }else {
-                pst.cal_used_flow -= (thisUse - pst.cal_boot_flow);
-            }
-            // 记录本次开机消耗的流量
-            pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
-           
         }
+    }else {
+        
+        // 假定为0时,是首次
+        if (pst.cal_boot_flow == kZero) {
+            pst.cal_boot_flow = thisUse;
+        }
+        
+        // 默认为没有进行重启设备的操作
+        // 有剩余流量
+        if (pst.cal_left_flow > kZero) {
+            // 剩余流量 > 本次使用的流量
+            if (pst.cal_left_flow > thisUse) {
+                pst.cal_left_flow -= (thisUse - pst.cal_boot_flow);
+            }else {
+                pst.cal_left_flow = kZero;
+                pst.cal_used_flow -= (thisUse - pst.cal_boot_flow - pst.cal_left_flow);
+            }
+        }else {
+            pst.cal_used_flow -= (thisUse - pst.cal_boot_flow);
+        }
+        // 记录本次开机消耗的流量
+        pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
     }
     
     [JXMealPersistent storeModel:pst];

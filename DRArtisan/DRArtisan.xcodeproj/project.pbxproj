@@ -431,11 +431,11 @@
 		969E94B11D68B6020037EF5A /* Templates */ = {
 			isa = PBXGroup;
 			children = (
+				969E950E1D68B6020037EF5A /* JXArtisan.h */,
 				969E94B21D68B6020037EF5A /* Abstract */,
 				969E94B71D68B6020037EF5A /* Base */,
 				969E94F01D68B6020037EF5A /* Core */,
 				969E94F11D68B6020037EF5A /* Derivative */,
-				969E950E1D68B6020037EF5A /* JXArtisan.h */,
 				969E950F1D68B6020037EF5A /* Macro */,
 				969E95121D68B6020037EF5A /* Modules */,
 				969E955B1D68B6020037EF5A /* Tutorial */,
@@ -535,17 +535,9 @@
 		969E94FD1D68B6020037EF5A /* UITableView */ = {
 			isa = PBXGroup;
 			children = (
-				969E94FE1D68B6020037EF5A /* UITableViewCell */,
-			);
-			path = UITableView;
-			sourceTree = "<group>";
-		};
-		969E94FE1D68B6020037EF5A /* UITableViewCell */ = {
-			isa = PBXGroup;
-			children = (
 				969E94FF1D68B6020037EF5A /* Flow */,
 			);
-			path = UITableViewCell;
+			path = UITableView;
 			sourceTree = "<group>";
 		};
 		969E94FF1D68B6020037EF5A /* Flow */ = {
@@ -562,7 +554,8 @@
 				969E95081D68B6020037EF5A /* JXSetMealTableViewCell.h */,
 				969E95091D68B6020037EF5A /* JXSetMealTableViewCell.m */,
 			);
-			path = Flow;
+			name = Flow;
+			path = UITableViewCell/Flow;
 			sourceTree = "<group>";
 		};
 		969E950A1D68B6020037EF5A /* UIView */ = {
