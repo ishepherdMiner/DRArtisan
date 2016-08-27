@@ -24,6 +24,8 @@
 /// 视图 - 预览
 @property (nonatomic,weak) UILabel *preview_label;
 
+@property (nonatomic,weak) UIButton *preview_submit;
+
 @end
 
 @implementation JXSetMealTableView
@@ -141,6 +143,7 @@
             picker_v.pickerDelegate = self;
             JXSetMealTableViewCell *meal_cell_v = [self cellForRowAtIndexPath:indexPath];
             meal_cell_v.desc_field_v.userInteractionEnabled = true;
+            meal_cell_v.desc_field_v.delegate = self;
             meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
             meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
             [meal_cell_v.desc_field_v becomeFirstResponder];
@@ -150,6 +153,11 @@
 
 /// PickerView的代理方法
 - (void)didSelectedPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component RowText:(NSString *)text {
+    if (_preview_submit) {
+        _preview_submit.userInteractionEnabled = false;
+        // [_preview_submit setTitle:@"adf" forState:UIControlStateNormal];
+        [_preview_submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+    }
     NSIndexPath *indexPath = self.indexPathForSelectedRow;
     switch (indexPath.section) {
         case kZero:{
@@ -284,7 +292,10 @@
             break;
     }
     
-    
+    if (_preview_submit) {
+        _preview_submit.userInteractionEnabled = true;
+        [_preview_submit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
 }
 
 /// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
@@ -299,6 +310,8 @@
     
     [UIView animateWithDuration:0.5 animations:^{
         _mask_v.alpha = 0.0;
+//        [_mask_v removeFromSuperview];
+//        _mask_v = nil;
     }];
 }
 
@@ -384,6 +397,8 @@
         [submit_btn setTitle:@"完成" forState:UIControlStateNormal];
         [submit_btn setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
         [submit_btn addTarget:self action:@selector(submitClick:) forControlEvents:UIControlEventTouchUpInside];
+        
+        _preview_submit = submit_btn;
         
         // 预览结果
         UILabel *preview_label = [[UILabel alloc] initWithFrame:fRect(5, 5, accessory_v.w - submit_btn.w - 15, accessory_v.h - 10)];

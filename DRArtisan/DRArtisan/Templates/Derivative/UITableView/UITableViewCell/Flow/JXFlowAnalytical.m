@@ -228,6 +228,14 @@
 
 + (void)resetAll {
 #warning 重置若干参数
+    JXMealPersistent *pst = [[JXMealPersistent alloc] init];
+    pst.cal_meal_cycle = 0;
+    pst.cal_settle_date = 0;
+    pst.cal_not_clear_flow = 0;
+    pst.cal_used_flow = 0.0;
+    pst.cal_total_flow = 0.0;
+    [JXMealPersistent storeModel:pst];
+    
 }
 
 @end

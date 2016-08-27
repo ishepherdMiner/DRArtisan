@@ -133,9 +133,11 @@ NSString *kMinBootFlow = @"min_running_time";
     }
     
     if (self.cal_meal_cycle) {
-        if (@(self.cal_meal_cycle).stringValue.length == kOne) {
-            return [[@"每" stringByAppendingString:@(self.cal_meal_cycle).stringValue] stringByAppendingString:@" 月"];
-        }
+        return [[@"每" stringByAppendingString:@(self.cal_meal_cycle).stringValue] stringByAppendingString:@" 月"];
+
+//        if (@(self.cal_meal_cycle).stringValue.length == kOne) {
+//            return [[@"每" stringByAppendingString:@(self.cal_meal_cycle).stringValue] stringByAppendingString:@" 月"];
+//        }
     }
     return @"每 1 月";
 }
