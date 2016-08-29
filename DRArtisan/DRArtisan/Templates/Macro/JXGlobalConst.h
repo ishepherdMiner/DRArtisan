@@ -197,6 +197,7 @@ return instance; \
                             NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0]; \
                             return (NSTimeInterval)[date timeIntervalSince1970]; \
                       };
+
 // ============================================================================
 
 #endif /* JXGlobalConst_h */

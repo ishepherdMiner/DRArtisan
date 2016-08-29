@@ -41,7 +41,7 @@
 /**
  *  重置流量配置
  */
-+ (void)resetAll;
++ (void)resetAll:(void(^)())clearCallback;
 
 /**
  *  下次更新日期 && 距今多少天

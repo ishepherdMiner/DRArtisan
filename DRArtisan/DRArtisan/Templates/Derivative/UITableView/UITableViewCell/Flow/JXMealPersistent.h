@@ -28,6 +28,9 @@
 /// 剩余流量
 @property (nonatomic,copy,readonly) NSString *left_flow;
 
+
+@property (nonatomic,strong) NSDictionary *left_flow_month_dic;
+
 /// 流量不清零
 @property (nonatomic,copy,readonly) NSString *not_clear_flow;
 

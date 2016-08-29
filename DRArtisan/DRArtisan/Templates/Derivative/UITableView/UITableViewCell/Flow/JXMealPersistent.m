@@ -26,6 +26,7 @@ NSString *kCalMealCycle = @"cal_meal_cycle";
 NSString *kCalBootFlow = @"cal_boot_flow";
 NSString *kCalNotClearFlow = @"cal_not_clear_flow";
 NSString *kMinBootFlow = @"min_running_time";
+NSString *kLeftFlowMonthDic = @"left_flow_month_dic";
 
 
 @implementation JXMealPersistent
@@ -55,6 +56,7 @@ NSString *kMinBootFlow = @"min_running_time";
     _cal_meal_cycle = [aDecoder decodeIntegerForKey:kCalMealCycle];
     _cal_not_clear_flow = [aDecoder decodeIntegerForKey:kCalNotClearFlow];
     _min_running_time = [aDecoder decodeDoubleForKey:kMinBootFlow];
+    _left_flow_month_dic = [aDecoder decodeObjectForKey:kLeftFlowMonthDic];
     return self;
 }
 
@@ -75,6 +77,7 @@ NSString *kMinBootFlow = @"min_running_time";
     [aCoder encodeInteger:_cal_meal_cycle forKey:kCalMealCycle];
     [aCoder encodeInteger:_cal_not_clear_flow forKey:kCalNotClearFlow];
     [aCoder encodeDouble:_min_running_time forKey:kMinBootFlow];
+    [aCoder encodeObject:_left_flow_month_dic forKey:kLeftFlowMonthDic];
 }
 
 
@@ -85,7 +88,7 @@ NSString *kMinBootFlow = @"min_running_time";
     }
     
     if (self.cal_total_flow_unit) {
-       return [@(self.cal_total_flow).stringValue stringByAppendingString:self.cal_total_flow_unit];
+       return [[NSString stringWithFormat:@"%.1f",self.cal_total_flow] stringByAppendingString:self.cal_total_flow_unit];
     }
     return @"";
 }
@@ -95,7 +98,7 @@ NSString *kMinBootFlow = @"min_running_time";
         return @"";
     }
     if (self.cal_used_flow_unit) {
-        return [@(self.cal_used_flow).stringValue stringByAppendingString:self.cal_total_flow_unit];
+        return [[NSString stringWithFormat:@"%.1f",self.cal_used_flow] stringByAppendingString:self.cal_used_flow_unit];
     }
     return @"";
 }
@@ -105,7 +108,7 @@ NSString *kMinBootFlow = @"min_running_time";
         return @"";
     }
     if (self.cal_left_flow_unit) {
-        return [@(self.cal_left_flow).stringValue stringByAppendingString:self.cal_total_flow_unit];
+        return [[NSString stringWithFormat:@"%.1f",self.cal_left_flow] stringByAppendingString:self.cal_left_flow_unit];
     }
     return @"";
 }
@@ -149,7 +152,7 @@ NSString *kMinBootFlow = @"min_running_time";
     
     if (self.cal_not_clear_flow) {
         if (@(self.cal_not_clear_flow).stringValue.length == kOne) {
-            return [[@"每" stringByAppendingString:@(self.cal_not_clear_flow).stringValue] stringByAppendingString:@" 月"];
+            return [[@"每 " stringByAppendingString:@(self.cal_not_clear_flow).stringValue] stringByAppendingString:@" 月"];
         }
 
     }

@@ -15,6 +15,8 @@
 /// 视图 - 选择器
 @property (nonatomic,weak) UIPickerView *picker_v;
 
+@property (nonatomic,weak) JXSetMealTableViewCell *selected_cell;
+
 /// 视图 - 工具条
 @property (nonatomic,weak) UIToolbar *accessory_v;
 
@@ -115,7 +117,9 @@
                     UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
                     UIAlertAction *alert_action_submit = [UIAlertAction actionWithTitle:@"确定" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
                         JXLog(@"删除数据");
-                        [JXFlowAnalytical resetAll];
+                        [JXFlowAnalytical resetAll:^{
+                           //  [self reloadData];
+                        }];
                     }];
                     
                     UIAlertAction *alert_action_cancel = [UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:^(UIAlertAction * _Nonnull action) {
@@ -147,17 +151,18 @@
             meal_cell_v.desc_field_v.inputView = _picker_v = picker_v;
             meal_cell_v.desc_field_v.inputAccessoryView = _accessory_v = [self accessory_v];
             [meal_cell_v.desc_field_v becomeFirstResponder];
+            // _selected_cell = meal_cell_v;
+            // [self readyPreview];
         });
     }
 }
 
 /// PickerView的代理方法
 - (void)didSelectedPickerView:(UIPickerView *)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component RowText:(NSString *)text {
-    if (_preview_submit) {
-        _preview_submit.userInteractionEnabled = false;
-        // [_preview_submit setTitle:@"adf" forState:UIControlStateNormal];
-        [_preview_submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    }
+//    if (_preview_submit) {
+//        _preview_submit.userInteractionEnabled = false;
+//        [_preview_submit setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+//    }
     NSIndexPath *indexPath = self.indexPathForSelectedRow;
     switch (indexPath.section) {
         case kZero:{
@@ -292,10 +297,10 @@
             break;
     }
     
-    if (_preview_submit) {
-        _preview_submit.userInteractionEnabled = true;
-        [_preview_submit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
-    }
+//    if (_preview_submit) {
+//        _preview_submit.userInteractionEnabled = true;
+//        [_preview_submit setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+//    }
 }
 
 /// 点击遮罩视图,退下键盘,移除pickerview,隐藏遮罩层
@@ -413,5 +418,14 @@
     }
     return _accessory_v;
 }
+
+//- (void)readyPreview{
+//    // 设置预览文字
+//    if (_selected_cell) {
+//        if (![_selected_cell.desc_field_v.text isEqualToString:@""]) {
+//            _preview_label.text = _selected_cell.desc_field_v.text;
+//        }
+//    }
+//}
 
 @end

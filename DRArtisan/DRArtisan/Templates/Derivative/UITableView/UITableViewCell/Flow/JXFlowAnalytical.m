@@ -77,8 +77,8 @@
         }
     }
     
-    if (pst_param.cal_left_flow) {
-        if (pst.cal_left_flow != pst_param.cal_left_flow) {
+    if (pst.cal_left_flow != pst_param.cal_left_flow) {
+        if (pst_param.cal_left_flow) {
             pst.cal_left_flow = [[NSNumber notRounding:pst_param.cal_left_flow afterPoint:1] doubleValue];
         }else {
             pst.cal_left_flow = 0;
@@ -112,8 +112,24 @@
             NSDateComponents *comps = [NSDate currentComponents];
             pst.current_month = comps.month;
         }
+        
+        // 将剩余流量默认为是上一个月留下来的
+        if (pst.left_flow_month_dic == nil) {
+            NSMutableDictionary *dicM = [NSMutableDictionary dictionary];
+            [dicM setObject:pst_param.left_flow?pst_param.left_flow : @"0.0" forKey:@((pst.current_month - 1)%12)];
+            pst.left_flow_month_dic = [dicM copy];
+        }
+        
+        
     }
-    
+    if (pst.cal_not_clear_flow != pst_param.cal_not_clear_flow) {
+        // 如果没有设置,则默认为2
+        if (pst.cal_not_clear_flow == 0) {
+            pst.cal_not_clear_flow = 2;
+        }else {
+            pst.cal_not_clear_flow = pst_param.cal_not_clear_flow;
+        }
+    }
     // 写入文件
     [JXMealPersistent storeModel:pst];
 }
@@ -129,7 +145,18 @@
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *comps = [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
     if (comps.month > pst.current_month) {
-        
+        pst.cal_left_flow = 0;
+        NSMutableDictionary *dicM = [NSMutableDictionary dictionaryWithDictionary:pst.left_flow_month_dic];
+        // 现在月份以前的流量舍弃
+        for (NSNumber *month in pst.left_flow_month_dic.allKeys) {
+            if ([month integerValue] < comps.month - pst.cal_not_clear_flow) {
+                [dicM setObject:@"0.0" forKey:month];
+            }else {
+                pst.cal_left_flow += [[dicM objectForKey:month] doubleValue];
+            }
+        }
+        // 重新设置当前月份
+        pst.current_month = comps.month;
     }
     
     // 获取本次开机使用的流量
@@ -150,8 +177,14 @@
             if (pst.cal_left_flow > kZero) {
                 if (pst.cal_left_flow > thisUse) {
                     pst.cal_left_flow -= thisUse;
+                    
+                    [self updateLeftFlow:thisUse type:0];
+                    
                 }else {
                     pst.cal_left_flow = 0;
+                    
+                    [self updateLeftFlow:thisUse type:1];
+                    
                     pst.cal_used_flow -= (thisUse - pst.cal_left_flow);
                 }
             }else {
@@ -172,8 +205,10 @@
                 if (pst.cal_left_flow > kZero) {
                     if (pst.cal_left_flow > thisUse) {
                         pst.cal_left_flow -= thisUse;
+                        [self updateLeftFlow:thisUse type:0];
                     }else {
                         pst.cal_left_flow = 0;
+                        [self updateLeftFlow:thisUse type:1];
                         pst.cal_used_flow -= (thisUse - pst.cal_left_flow);
                     }
                 }else {
@@ -197,8 +232,10 @@
             // 剩余流量 > 本次使用的流量
             if (pst.cal_left_flow > thisUse) {
                 pst.cal_left_flow -= (thisUse - pst.cal_boot_flow);
+                [self updateLeftFlow:thisUse type:0];
             }else {
                 pst.cal_left_flow = kZero;
+                [self updateLeftFlow:thisUse type:1];
                 pst.cal_used_flow -= (thisUse - pst.cal_boot_flow - pst.cal_left_flow);
             }
         }else {
@@ -219,23 +256,66 @@
         comps.day = kOne;
     }
     comps.day = updateDay;
-    comps.month = comps.month + kOne;
+    if (comps.month + kOne > 12) {
+        comps.year += 1;
+    }
+    comps.month = comps.month + kOne > 12 ? (comps.month + kOne) % 12 : (comps.month + kOne);
     NSDate *firstDay = [cal dateFromComponents:comps];
     
     NSTimeInterval time = [firstDay timeIntervalSinceDate:now];
     return @[[NSString stringWithFormat:@"%zd 月 %zd 日",comps.month,comps.day],[NSString stringWithFormat:@"%d 天", (int)ceilf(time/60/60/24)]];
 }
 
-+ (void)resetAll {
-#warning 重置若干参数
++ (void)resetAll:(void(^)())clearCallback {
     JXMealPersistent *pst = [[JXMealPersistent alloc] init];
     pst.cal_meal_cycle = 0;
     pst.cal_settle_date = 0;
     pst.cal_not_clear_flow = 0;
     pst.cal_used_flow = 0.0;
     pst.cal_total_flow = 0.0;
+    pst.cal_boot_flow = 0.0;
+    pst.cal_total_flow_unit = @"";
+    pst.cal_used_flow_unit = @"";
+    pst.cal_left_flow_unit = @"";
+    pst.cal_left_flow = 0.0;
     [JXMealPersistent storeModel:pst];
+    clearCallback();
     
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"RefreshMealFlowNotification" object:nil];
+}
+
++ (void)updateLeftFlow:(CGFloat)thisUse type:(CGFloat)type{
+    
+    JXMealPersistent *pst = [JXMealPersistent accessModel];
+    NSMutableDictionary *dicM = [NSMutableDictionary dictionaryWithDictionary:pst.left_flow_month_dic];
+    
+    // mark - 找到"最小"的月份 如果剩余流量不是0.0,先用那个以此类推
+    
+    // 剩余流量足够用于本次更新
+    if (type == 0) {
+        NSUInteger cur_month = pst.current_month > pst.cal_not_clear_flow ? pst.current_month :  12 + pst.current_month;
+        for (int i = (cur_month - pst.cal_not_clear_flow) % 12; i < cur_month; ++i) {
+            if([[dicM objectForKey:@(i%12)] isEqualToString:@"0.0"]){
+                continue;
+            }else {
+                if([[dicM objectForKey:@(i%12)] doubleValue] - thisUse > 0){
+                    // 保存剩余流量
+                    [dicM setObject:@([[dicM objectForKey:@(i%12)] doubleValue] - thisUse).stringValue forKey:@(i%12)];
+                    break;
+                }else {
+                    [dicM setObject:@"0.0" forKey:@(i%12)];
+                }
+            }
+        }
+    }else {
+        for (NSNumber *month in dicM.allKeys) {
+            [dicM setObject:@"0.0" forKey:month];
+        }
+    }
+    
+    pst.left_flow_month_dic = [dicM copy];
+    
+    [JXMealPersistent storeModel:pst];
 }
 
 @end
