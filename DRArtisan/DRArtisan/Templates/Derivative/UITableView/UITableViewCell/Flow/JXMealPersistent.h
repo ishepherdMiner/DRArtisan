@@ -8,6 +8,11 @@
 
 #import "JXBaseObject.h"
 
+typedef NS_ENUM(NSUInteger,JXRefreshSource){
+    JXRefreshSourceNone,
+    JXRefreshSourceApp,
+    JXRefreshSourceWidght,
+};
 /**
  *  持久化
  */
@@ -82,6 +87,8 @@
 
 /// 用于检测重启后是否已经进行过检测开机流量的正确性问题
 @property (nonatomic,assign) CGFloat min_running_time;
+
+@property (nonatomic,assign) JXRefreshSource source;
 
 @end
 

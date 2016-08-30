@@ -8,6 +8,7 @@
 
 #import "JXMealPersistent.h"
 
+
 #define kFlowFile [NSString stringWithFormat:@"%@/%@",kDir_Doc,@"JXFlow.plist"]
 
 NSString *kOlder = @"older";
@@ -27,17 +28,63 @@ NSString *kCalBootFlow = @"cal_boot_flow";
 NSString *kCalNotClearFlow = @"cal_not_clear_flow";
 NSString *kMinBootFlow = @"min_running_time";
 NSString *kLeftFlowMonthDic = @"left_flow_month_dic";
+NSString *kRefreshSource = @"refresh_source";
 
 
 @implementation JXMealPersistent
 
-+ (void)storeModel:(id)persistent{
-    [NSKeyedArchiver archiveRootObject:persistent toFile:kFlowFile];
++ (NSUserDefaults *)flowDefaults {
+    return [[NSUserDefaults alloc] initWithSuiteName:@"group.coderFlow"];
+}
+
++ (void)storeModel:(JXMealPersistent *)pst{
+    NSUserDefaults *flowDic = [self flowDefaults];
+    [flowDic setObject:@(pst.reg_timestamp) forKey:kRegTimestamp];
+    [flowDic setObject:@(pst.init_running_time) forKey:kRunningTime];
+    [flowDic setObject:@(pst.older) forKey:kOlder];
+    [flowDic setObject:@(pst.current_month) forKey:kCurrentMonth];
+    [flowDic setObject:pst.change_status forKey:kChangeStatus];
+    [flowDic setObject:@(pst.cal_boot_flow) forKey:kCalBootFlow];
+    [flowDic setObject:@(pst.cal_total_flow) forKey:kCalTotalFlow];
+    [flowDic setObject:pst.cal_total_flow_unit forKey:kCalTotalFlowUnit];
+    [flowDic setObject:@(pst.cal_used_flow) forKey:kCalUsedFlow];
+    [flowDic setObject:pst.cal_used_flow_unit forKey:kCalUsedFlowUnit];
+    [flowDic setObject:@(pst.cal_left_flow) forKey:kCalLeftFlow];
+    [flowDic setObject:pst.cal_left_flow_unit forKey:kCalLeftFlowUnit];
+    [flowDic setObject:@(pst.cal_settle_date) forKey:kCalSettleDate];
+    [flowDic setObject:@(pst.cal_meal_cycle) forKey:kCalMealCycle];
+    [flowDic setObject:@(pst.cal_not_clear_flow) forKey:kCalNotClearFlow];
+    [flowDic setObject:@(pst.min_running_time) forKey:kMinBootFlow];
+    [flowDic setObject:[NSKeyedArchiver archivedDataWithRootObject:pst.left_flow_month_dic] forKey:kLeftFlowMonthDic];
+    [flowDic setObject:@(pst.source) forKey:kRefreshSource];
+    [flowDic synchronize];
+//  [NSKeyedArchiver archiveRootObject:persistent toFile:kFlowFile];
 }
 
 + (instancetype)accessModel {
-    return [NSKeyedUnarchiver unarchiveObjectWithFile:kFlowFile];
+    NSUserDefaults *flowDic = [self flowDefaults];
+    JXMealPersistent *pst = [[JXMealPersistent alloc] init];
+    pst.reg_timestamp = [[flowDic objectForKey:kRegTimestamp] doubleValue];
+    pst.init_running_time = [[flowDic objectForKey:kRunningTime] doubleValue];
+    pst.older = [[flowDic objectForKey:kOlder] boolValue];
+    pst.current_month = [[flowDic objectForKey:kCurrentMonth] integerValue];
+    pst.change_status = [flowDic objectForKey:kChangeStatus];
+    pst.cal_boot_flow = [[flowDic objectForKey:kCalBootFlow] doubleValue];
+    pst.cal_total_flow = [[flowDic objectForKey:kCalTotalFlow] doubleValue];
+    pst.cal_total_flow_unit = [flowDic objectForKey:kCalTotalFlowUnit];
+    pst.cal_used_flow = [[flowDic objectForKey:kCalUsedFlow] doubleValue];
+    pst.cal_used_flow_unit = [flowDic objectForKey:kCalUsedFlowUnit];
+    pst.cal_left_flow = [[flowDic objectForKey:kCalLeftFlow] doubleValue];
+    pst.cal_left_flow_unit = [flowDic objectForKey:kCalLeftFlowUnit];
+    pst.cal_settle_date = [[flowDic objectForKey:kCalSettleDate] integerValue];
+    pst.cal_meal_cycle = [[flowDic objectForKey:kCalMealCycle] integerValue];
+    pst.cal_not_clear_flow = [[flowDic objectForKey:kMinBootFlow] doubleValue];
+    pst.left_flow_month_dic = [NSKeyedUnarchiver unarchiveObjectWithData:[flowDic objectForKey:kLeftFlowMonthDic]];
+    pst.source = [[flowDic objectForKey:kRefreshSource] integerValue];
+    // return [NSKeyedUnarchiver unarchiveObjectWithFile:kFlowFile];
+    return pst;
 }
+
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     _reg_timestamp = [aDecoder decodeDoubleForKey:kRegTimestamp];
@@ -79,7 +126,6 @@ NSString *kLeftFlowMonthDic = @"left_flow_month_dic";
     [aCoder encodeDouble:_min_running_time forKey:kMinBootFlow];
     [aCoder encodeObject:_left_flow_month_dic forKey:kLeftFlowMonthDic];
 }
-
 
 #pragma mark - computer property
 - (NSString *)total_flow {

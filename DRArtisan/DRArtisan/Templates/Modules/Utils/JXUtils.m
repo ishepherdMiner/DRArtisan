@@ -44,7 +44,7 @@
 }
 
 + (NSTimeInterval)timestamp {
-    NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSDate* date = [NSDate date];
     return (NSTimeInterval)[date timeIntervalSince1970];
 }
 @end

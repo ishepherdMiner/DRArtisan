@@ -116,7 +116,7 @@
         // 将剩余流量默认为是上一个月留下来的
         if (pst.left_flow_month_dic == nil) {
             NSMutableDictionary *dicM = [NSMutableDictionary dictionary];
-            [dicM setObject:pst_param.left_flow?pst_param.left_flow : @"0.0" forKey:@((pst.current_month - 1)%12)];
+            [dicM setObject:![pst_param.left_flow isEqualToString:@""]?pst_param.left_flow : @"0.0" forKey:@((pst.current_month - 1)%12)];
             pst.left_flow_month_dic = [dicM copy];
         }
         
@@ -140,11 +140,18 @@
 + (void)execUpdateFlow{
     JXMealPersistent *pst = [JXMealPersistent accessModel];
     
+//    if (pst.source == JXRefreshSourceWidght) {
+//        pst.source = JXRefreshSourceApp;
+//        [JXMealPersistent storeModel:pst];
+//        return;
+//    }
+    
     // 当月份变化时,已使用流量要根据条件确定是否要转化为剩余流量
     NSDate *now = [NSDate date];
     NSCalendar *cal = [NSCalendar currentCalendar];
     NSDateComponents *comps = [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
-    if (comps.month > pst.current_month) {
+    // 因为不想比较年份 所以采用月份不相等就认为升级 - 年份暂时不去考虑
+    if (comps.month != pst.current_month) {
         pst.cal_left_flow = 0;
         NSMutableDictionary *dicM = [NSMutableDictionary dictionaryWithDictionary:pst.left_flow_month_dic];
         // 现在月份以前的流量舍弃
@@ -157,6 +164,28 @@
         }
         // 重新设置当前月份
         pst.current_month = comps.month;
+        
+        // 本月剩余流量
+        CGFloat add_left_flow = 0.0;
+        if ([pst.cal_total_flow_unit isEqualToString:@"GB"] && [pst.cal_used_flow_unit isEqualToString:@"GB"]) {
+            add_left_flow = (pst.cal_total_flow - pst.cal_used_flow) * kMoreMagnitude;
+        }
+        
+        if ([pst.cal_total_flow_unit isEqualToString:@"MB"] && [pst.cal_used_flow_unit isEqualToString:@"MB"]) {
+            add_left_flow = (pst.cal_total_flow - pst.cal_used_flow);
+        }
+        
+        if ([pst.cal_total_flow_unit isEqualToString:@"GB"] && [pst.cal_used_flow_unit isEqualToString:@"MB"]) {
+            add_left_flow = pst.cal_total_flow * kMoreMagnitude - pst.cal_used_flow;
+        }
+        
+        pst.cal_left_flow += add_left_flow;
+        [dicM setObject:@(pst.cal_total_flow - pst.cal_used_flow) forKey:@(pst.current_month)];
+        
+        // 本月已使用流量清空
+        pst.cal_used_flow = 0.0;
+        
+        pst.left_flow_month_dic = [dicM copy];
     }
     
     // 获取本次开机使用的流量
@@ -185,10 +214,10 @@
                     
                     [self updateLeftFlow:thisUse type:1];
                     
-                    pst.cal_used_flow -= (thisUse - pst.cal_left_flow);
+                    pst.cal_used_flow += (thisUse - pst.cal_left_flow);
                 }
             }else {
-                pst.cal_used_flow -= thisUse;
+                pst.cal_used_flow += thisUse;
             }
             
             // 记录本次开机消耗的流量
@@ -212,7 +241,7 @@
                         pst.cal_used_flow -= (thisUse - pst.cal_left_flow);
                     }
                 }else {
-                    pst.cal_used_flow -= thisUse;
+                    pst.cal_used_flow += thisUse;
                 }
                 
                 // 记录本次开机消耗的流量
@@ -236,14 +265,20 @@
             }else {
                 pst.cal_left_flow = kZero;
                 [self updateLeftFlow:thisUse type:1];
-                pst.cal_used_flow -= (thisUse - pst.cal_boot_flow - pst.cal_left_flow);
+                pst.cal_used_flow += (thisUse - pst.cal_boot_flow - pst.cal_left_flow);
             }
         }else {
-            pst.cal_used_flow -= (thisUse - pst.cal_boot_flow);
+            if (thisUse > pst.cal_boot_flow) {
+                pst.cal_used_flow += (thisUse - pst.cal_boot_flow);
+            }
         }
-        // 记录本次开机消耗的流量
-        pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
+        if (thisUse > pst.cal_boot_flow) {            
+            // 记录本次开机消耗的流量
+            pst.cal_boot_flow += (thisUse - pst.cal_boot_flow);
+        }
     }
+    
+    // pst.source = JXRefreshSourceApp;
     
     [JXMealPersistent storeModel:pst];
 }
