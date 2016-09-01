@@ -2,8 +2,8 @@
 //  UIViewController+Coder.m
 //  Market
 //
-//  Created by jason on 4/4/16.
-//  Copyright © 2016 jason. All rights reserved.
+//  Created by jxon on 4/4/16.
+//  Copyright © 2016 jxon. All rights reserved.
 //
 
 #import "UIViewController+Coder.h"
@@ -16,60 +16,72 @@
 
 + (void)load {
     
-    [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidLoad)  SwizzledSelector:@selector(jas_viewDidLoad)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidLoad)  SwizzledSelector:@selector(jx_viewDidLoad)];
     
-    [JXBaseObject hookMethod:self OriginSelector:@selector(viewWillAppear:) SwizzledSelector:@selector(jas_viewWillAppear:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewWillAppear:) SwizzledSelector:@selector(jx_viewWillAppear:)];
     
-     [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidAppear:) SwizzledSelector:@selector(jas_viewDidAppear:)];
+     [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidAppear:) SwizzledSelector:@selector(jx_viewDidAppear:)];
     
-    [JXBaseObject hookMethod:self OriginSelector:@selector(viewWillDisappear:) SwizzledSelector:@selector(jas_viewWillDisappear:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewWillDisappear:) SwizzledSelector:@selector(jx_viewWillDisappear:)];
     
-    [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidDisappear:) SwizzledSelector:@selector(jas_viewDidDisappear:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(viewDidDisappear:) SwizzledSelector:@selector(jx_viewDidDisappear:)];
     
-    [JXBaseObject hookMethod:self OriginSelector:@selector(pushViewController:animated:) SwizzledSelector:@selector(jas_pushViewController:animated:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(pushViewController:animated:) SwizzledSelector:@selector(jx_pushViewController:animated:)];
     
-    [JXBaseObject hookMethod:self OriginSelector:@selector(presentViewController:animated:completion:) SwizzledSelector:@selector(jas_presentViewController:animated:completion:)];
+    [JXBaseObject hookMethod:self OriginSelector:@selector(presentViewController:animated:completion:) SwizzledSelector:@selector(jx_presentViewController:animated:completion:)];
     
 }
 
-- (void)jas_viewDidLoad {
+- (void)jx_viewDidLoad {
      JXLog(@"%@|视图加载|%s",self.class,__func__);
-    [self jas_viewDidLoad];
+    [self jx_viewDidLoad];
 }
 
-- (void)jas_viewWillAppear:(BOOL)animate {
+- (void)jx_viewWillAppear:(BOOL)animate {
      JXLog(@"%@|视图即将出现|%s",self.class,__func__);
-    [self jas_viewWillAppear:animate];
+    [self jx_viewWillAppear:animate];
 }
 
-- (void)jas_viewDidAppear:(BOOL)animate {
+- (void)jx_viewDidAppear:(BOOL)animate {
      JXLog(@"%@|视图已经出现|%s",self.class,__func__);
-    [self jas_viewDidAppear:animate];
+    [self jx_viewDidAppear:animate];
 }
 
-- (void)jas_viewWillDisappear:(BOOL)animate {
+- (void)jx_viewWillDisappear:(BOOL)animate {
      JXLog(@"%@|视图即将消失|%s",self.class,__func__);
-    [self jas_viewWillDisappear:animate];
+    [self jx_viewWillDisappear:animate];
 }
 
-- (void)jas_viewDidDisappear:(BOOL)animate {
+- (void)jx_viewDidDisappear:(BOOL)animate {
      JXLog(@"%@|视图已经消失|%s",self.class,__func__);
-    [self jas_viewDidDisappear:animate];
+    [self jx_viewDidDisappear:animate];
 }
 
-- (void)jas_pushViewController:(UIViewController *)vc animated:(BOOL)animated{
+- (void)jx_pushViewController:(UIViewController *)vc animated:(BOOL)animated{
     if ([self isKindOfClass:UINavigationController.class]) {
          JXLog(@"%@|push视图控制器|%s",self.class,__func__);
-        [self jas_pushViewController:vc animated:animated];
+        [self jx_pushViewController:vc animated:animated];
         vc.view.tag = kTargetVCFromPush;
     }
 }
 
-- (void)jas_presentViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^ __nullable)(void))completion{
+- (void)jx_presentViewController:(UIViewController *)vc animated:(BOOL)animated completion:(void (^ __nullable)(void))completion{
     if ([self isKindOfClass:UINavigationController.class]) {
          JXLog(@"%@|pop视图控制器|%s",self.class,__func__);
-        [self jas_presentViewController:vc animated:animated completion:completion];
+        [self jx_presentViewController:vc animated:animated completion:completion];
         vc.view.tag = kTargetVCFromPresent;
+    }
+}
+
+#pragma mark - 兼容iOS10
+- (void)jx_hiddenNavigationBarBackGround{
+    for(UIView *subview in self.navigationController.navigationBar.subviews) {
+        if([subview isKindOfClass:UIImageView.class]) {
+            [subview setHidden:YES];
+        }
+        if ([subview isKindOfClass:[UIView class]] && CGRectGetHeight(subview.frame) == 64) {
+            subview.hidden = YES;
+        }
     }
 }
 

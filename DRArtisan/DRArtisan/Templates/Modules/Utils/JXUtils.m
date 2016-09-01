@@ -47,6 +47,7 @@
     NSDate* date = [NSDate date];
     return (NSTimeInterval)[date timeIntervalSince1970];
 }
+
 @end
 
 @implementation JXUtils (Network)

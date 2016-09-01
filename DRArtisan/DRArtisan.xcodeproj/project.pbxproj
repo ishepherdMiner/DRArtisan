@@ -97,7 +97,7 @@
 		96E72F2C1D30A26000D5A3A9 /* DRArtisanUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 96E72F2B1D30A26000D5A3A9 /* DRArtisanUITests.m */; };
 		96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45A1D31502200AB1C03 /* DemoModel.m */; };
 		96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 96F5F45D1D3150A900AB1C03 /* CommentModel.m */; };
-		99706EE11E51FCB57E22147F /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D11050FCD7E4EB553C4621D4 /* libPods.a */; };
+		CB5554B7594BAAACE53E4D75 /* libPods-DRArtisan.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C52E67A0FAD46245FA58E46 /* libPods-DRArtisan.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,8 +118,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		2564D22BEFA5AAE476C1B6D1 /* Pods-DRArtisan.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRArtisan.release.xcconfig"; path = "Pods/Target Support Files/Pods-DRArtisan/Pods-DRArtisan.release.xcconfig"; sourceTree = "<group>"; };
+		2C52E67A0FAD46245FA58E46 /* libPods-DRArtisan.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-DRArtisan.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		4C86E5E82671083EE2740F6C /* Pods-DRArtisan.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DRArtisan.debug.xcconfig"; path = "Pods/Target Support Files/Pods-DRArtisan/Pods-DRArtisan.debug.xcconfig"; sourceTree = "<group>"; };
 		962058131D5847C90085DB4F /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
 		962058141D5847C90085DB4F /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		962058161D584FBB0085DB4F /* NewsCollectionCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsCollectionCell.h; sourceTree = "<group>"; };
@@ -300,7 +301,6 @@
 		96F5F45A1D31502200AB1C03 /* DemoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoModel.m; sourceTree = "<group>"; };
 		96F5F45C1D3150A900AB1C03 /* CommentModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentModel.h; sourceTree = "<group>"; };
 		96F5F45D1D3150A900AB1C03 /* CommentModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentModel.m; sourceTree = "<group>"; };
-		D11050FCD7E4EB553C4621D4 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -308,7 +308,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				99706EE11E51FCB57E22147F /* libPods.a in Frameworks */,
+				CB5554B7594BAAACE53E4D75 /* libPods-DRArtisan.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,19 +329,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0122A5D4C1C3FD1B622A1D81 /* Frameworks */ = {
+		26B3E517B7ED9E5D0D47176C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D11050FCD7E4EB553C4621D4 /* libPods.a */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		849BF79DFB5E2FCD00B94664 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */,
-				3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */,
+				4C86E5E82671083EE2740F6C /* Pods-DRArtisan.debug.xcconfig */,
+				2564D22BEFA5AAE476C1B6D1 /* Pods-DRArtisan.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -910,8 +902,8 @@
 				96E72F1F1D30A26000D5A3A9 /* DRArtisanTests */,
 				96E72F2A1D30A26000D5A3A9 /* DRArtisanUITests */,
 				96E72F041D30A26000D5A3A9 /* Products */,
-				849BF79DFB5E2FCD00B94664 /* Pods */,
-				0122A5D4C1C3FD1B622A1D81 /* Frameworks */,
+				26B3E517B7ED9E5D0D47176C /* Pods */,
+				DA5CE1A18ECD6DEF06FDD896 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -983,6 +975,14 @@
 			name = Main;
 			sourceTree = "<group>";
 		};
+		DA5CE1A18ECD6DEF06FDD896 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2C52E67A0FAD46245FA58E46 /* libPods-DRArtisan.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -990,12 +990,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 96E72F301D30A26000D5A3A9 /* Build configuration list for PBXNativeTarget "DRArtisan" */;
 			buildPhases = (
-				4B6F7A98D5BBB0F1F0346098 /* Check Pods Manifest.lock */,
+				63BB7DE1A48FB4DAC2895027 /* [CP] Check Pods Manifest.lock */,
 				96E72EFF1D30A26000D5A3A9 /* Sources */,
 				96E72F001D30A26000D5A3A9 /* Frameworks */,
 				96E72F011D30A26000D5A3A9 /* Resources */,
-				E24ACA7C257E238B7C3D4D4B /* Embed Pods Frameworks */,
-				3711E1027FF0AC7577B8E417 /* Copy Pods Resources */,
+				1D4A59D31C57B1ECCB80C6F0 /* [CP] Embed Pods Frameworks */,
+				63A45EB28C406D2EAC504345 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -1116,49 +1116,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3711E1027FF0AC7577B8E417 /* Copy Pods Resources */ = {
+		1D4A59D31C57B1ECCB80C6F0 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DRArtisan/Pods-DRArtisan-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		4B6F7A98D5BBB0F1F0346098 /* Check Pods Manifest.lock */ = {
+		63A45EB28C406D2EAC504345 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-DRArtisan/Pods-DRArtisan-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63BB7DE1A48FB4DAC2895027 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		E24ACA7C257E238B7C3D4D4B /* Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1388,7 +1388,7 @@
 		};
 		96E72F311D30A26000D5A3A9 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04C5D075614A0BDD6B1FA191 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 4C86E5E82671083EE2740F6C /* Pods-DRArtisan.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
@@ -1410,7 +1410,7 @@
 		};
 		96E72F321D30A26000D5A3A9 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3127636F46455AFFEAEDA01C /* Pods.release.xcconfig */;
+			baseConfigurationReference = 2564D22BEFA5AAE476C1B6D1 /* Pods-DRArtisan.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
