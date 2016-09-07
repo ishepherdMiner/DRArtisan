@@ -13,6 +13,12 @@
 		962058271D594B270085DB4F /* PhotoCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 962058251D594B270085DB4F /* PhotoCell.xib */; };
 		9620582A1D594BAD0085DB4F /* Photo.m in Sources */ = {isa = PBXBuildFile; fileRef = 962058291D594BAD0085DB4F /* Photo.m */; };
 		962F2B121D63DB7500F790C0 /* DemoFlexibleWidthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 962F2B111D63DB7500F790C0 /* DemoFlexibleWidthViewController.m */; };
+		9671A42A1D806E25004337E6 /* NSString+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671A4201D806E25004337E6 /* NSString+Extension.m */; };
+		9671A42B1D806E25004337E6 /* trade.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 9671A4211D806E25004337E6 /* trade.bundle */; };
+		9671A42C1D806E25004337E6 /* UIAlertView+Quick.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671A4231D806E25004337E6 /* UIAlertView+Quick.m */; };
+		9671A42D1D806E25004337E6 /* UIView+Extension.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671A4251D806E25004337E6 /* UIView+Extension.m */; };
+		9671A42E1D806E25004337E6 /* ZCTradeInputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671A4271D806E25004337E6 /* ZCTradeInputView.m */; };
+		9671A42F1D806E25004337E6 /* ZCTradeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9671A4291D806E25004337E6 /* ZCTradeView.m */; };
 		96990A441D65C45800EEF584 /* DemoRootViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96990A431D65C45800EEF584 /* DemoRootViewController.m */; };
 		96990A501D667AED00EEF584 /* VoiceSearchFeedback014@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96990A4F1D667AED00EEF584 /* VoiceSearchFeedback014@2x.png */; };
 		96990A521D667AF400EEF584 /* shake_sound_male.wav in Resources */ = {isa = PBXBuildFile; fileRef = 96990A511D667AF400EEF584 /* shake_sound_male.wav */; };
@@ -132,6 +138,17 @@
 		962058291D594BAD0085DB4F /* Photo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Photo.m; sourceTree = "<group>"; };
 		962F2B101D63DB7500F790C0 /* DemoFlexibleWidthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoFlexibleWidthViewController.h; sourceTree = "<group>"; };
 		962F2B111D63DB7500F790C0 /* DemoFlexibleWidthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoFlexibleWidthViewController.m; sourceTree = "<group>"; };
+		9671A41F1D806E25004337E6 /* NSString+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Extension.h"; sourceTree = "<group>"; };
+		9671A4201D806E25004337E6 /* NSString+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Extension.m"; sourceTree = "<group>"; };
+		9671A4211D806E25004337E6 /* trade.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = trade.bundle; sourceTree = "<group>"; };
+		9671A4221D806E25004337E6 /* UIAlertView+Quick.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertView+Quick.h"; sourceTree = "<group>"; };
+		9671A4231D806E25004337E6 /* UIAlertView+Quick.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertView+Quick.m"; sourceTree = "<group>"; };
+		9671A4241D806E25004337E6 /* UIView+Extension.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Extension.h"; sourceTree = "<group>"; };
+		9671A4251D806E25004337E6 /* UIView+Extension.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Extension.m"; sourceTree = "<group>"; };
+		9671A4261D806E25004337E6 /* ZCTradeInputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeInputView.h; sourceTree = "<group>"; };
+		9671A4271D806E25004337E6 /* ZCTradeInputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeInputView.m; sourceTree = "<group>"; };
+		9671A4281D806E25004337E6 /* ZCTradeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZCTradeView.h; sourceTree = "<group>"; };
+		9671A4291D806E25004337E6 /* ZCTradeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZCTradeView.m; sourceTree = "<group>"; };
 		96990A421D65C45800EEF584 /* DemoRootViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoRootViewController.h; sourceTree = "<group>"; };
 		96990A431D65C45800EEF584 /* DemoRootViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoRootViewController.m; sourceTree = "<group>"; };
 		96990A4F1D667AED00EEF584 /* VoiceSearchFeedback014@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VoiceSearchFeedback014@2x.png"; sourceTree = "<group>"; };
@@ -647,6 +664,17 @@
 		969E95341D68B6020037EF5A /* PayChecker */ = {
 			isa = PBXGroup;
 			children = (
+				9671A41F1D806E25004337E6 /* NSString+Extension.h */,
+				9671A4201D806E25004337E6 /* NSString+Extension.m */,
+				9671A4211D806E25004337E6 /* trade.bundle */,
+				9671A4221D806E25004337E6 /* UIAlertView+Quick.h */,
+				9671A4231D806E25004337E6 /* UIAlertView+Quick.m */,
+				9671A4241D806E25004337E6 /* UIView+Extension.h */,
+				9671A4251D806E25004337E6 /* UIView+Extension.m */,
+				9671A4261D806E25004337E6 /* ZCTradeInputView.h */,
+				9671A4271D806E25004337E6 /* ZCTradeInputView.m */,
+				9671A4281D806E25004337E6 /* ZCTradeView.h */,
+				9671A4291D806E25004337E6 /* ZCTradeView.m */,
 			);
 			path = PayChecker;
 			sourceTree = "<group>";
@@ -1091,6 +1119,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				96990A501D667AED00EEF584 /* VoiceSearchFeedback014@2x.png in Resources */,
+				9671A42B1D806E25004337E6 /* trade.bundle in Resources */,
 				962058271D594B270085DB4F /* PhotoCell.xib in Resources */,
 				96E72F161D30A26000D5A3A9 /* LaunchScreen.storyboard in Resources */,
 				96E72F131D30A26000D5A3A9 /* Assets.xcassets in Resources */,
@@ -1173,6 +1202,7 @@
 				969E95991D68B6020037EF5A /* TYWaterWaveView.m in Sources */,
 				969E95951D68B6020037EF5A /* CircleProgressBar.m in Sources */,
 				969E95971D68B6020037EF5A /* NJDBezierCurve.m in Sources */,
+				9671A42D1D806E25004337E6 /* UIView+Extension.m in Sources */,
 				969E958A1D68B6020037EF5A /* NSURL+Coder.m in Sources */,
 				969E95661D68B6020037EF5A /* JXBaseTableViewCell.m in Sources */,
 				969E95601D68B6020037EF5A /* JXBaseCollectionViewCell.m in Sources */,
@@ -1182,10 +1212,12 @@
 				969E957D1D68B6020037EF5A /* JXFlowAnalytical.m in Sources */,
 				969E95891D68B6020037EF5A /* NSString+Coder.m in Sources */,
 				96F5F45B1D31502200AB1C03 /* DemoModel.m in Sources */,
+				9671A42F1D806E25004337E6 /* ZCTradeView.m in Sources */,
 				969E95711D68B6020037EF5A /* JXSupplementaryTitleTableView.m in Sources */,
 				96990A551D667B4600EEF584 /* DemoLocalPushViewController.m in Sources */,
 				969E957E1D68B6020037EF5A /* JXMealPersistent.m in Sources */,
 				969E955E1D68B6020037EF5A /* Capable.m in Sources */,
+				9671A42E1D806E25004337E6 /* ZCTradeInputView.m in Sources */,
 				96F5F45E1D3150A900AB1C03 /* CommentModel.m in Sources */,
 				969E959A1D68B6020037EF5A /* TYWaveProgressView.m in Sources */,
 				969E95751D68B6020037EF5A /* JXValue2Cell.m in Sources */,
@@ -1209,6 +1241,7 @@
 				969E95611D68B6020037EF5A /* JXBaseCollectionViewFlowLayout.m in Sources */,
 				969E95681D68B6020037EF5A /* JXDefaultCell.m in Sources */,
 				969E95941D68B6020037EF5A /* CustomBadge.m in Sources */,
+				9671A42A1D806E25004337E6 /* NSString+Extension.m in Sources */,
 				969E95631D68B6020037EF5A /* JXBaseObject.m in Sources */,
 				969E95881D68B6020037EF5A /* NSObject+Coder.m in Sources */,
 				969E959D1D68B6020037EF5A /* EncryptSymmetry.m in Sources */,
@@ -1242,6 +1275,7 @@
 				969E957C1D68B6020037EF5A /* JXTagChooserView.m in Sources */,
 				969E95811D68B6020037EF5A /* JXSetMealTableViewCell.m in Sources */,
 				969E958D1D68B6020037EF5A /* UIView+Coder.m in Sources */,
+				9671A42C1D806E25004337E6 /* UIAlertView+Quick.m in Sources */,
 				969E959E1D68B6020037EF5A /* JXUtils.m in Sources */,
 				969E95781D68B6020037EF5A /* JXWaterFlowVerLayout.m in Sources */,
 				969E957F1D68B6020037EF5A /* JXSetMealCellModel.m in Sources */,
