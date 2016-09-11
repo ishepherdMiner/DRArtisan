@@ -7,6 +7,8 @@
 //
 
 #import "JXTagChooserModel.h"
+#import "JXGlobal.h"
+
 @interface JXTagChooserModel ()
 
 /// 随机方式在重新绘制宽度在加上文字颜色也是随机会有一定影响

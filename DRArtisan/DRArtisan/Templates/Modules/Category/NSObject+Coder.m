@@ -6,6 +6,7 @@
 
 #import "NSObject+Coder.h"
 #import <objc/runtime.h>
+#import "JXSwitch.h"
 
 @interface LogDealloc : NSObject
 

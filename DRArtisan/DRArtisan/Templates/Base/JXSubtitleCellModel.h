@@ -6,6 +6,8 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
+#import "JXBaseObject.h"
+
 @interface JXSubtitleCellModel : JXBaseObject
 
 /// cell的标识id

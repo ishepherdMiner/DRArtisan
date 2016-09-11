@@ -11,6 +11,7 @@
 #import "DemoFlexibleHeightViewController.h"
 #import "DemoFlexibleWidthViewController.h"
 #import "DemoLocalPushViewController.h"
+#import "JXArtisan.h"
 
 @interface DemoRootViewController () <JXServiceTableViewDelegate>
 

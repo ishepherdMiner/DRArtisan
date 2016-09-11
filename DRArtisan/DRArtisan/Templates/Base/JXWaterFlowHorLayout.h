@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JXBaseCollectionViewFlowLayout.h"
+#import "JXAbstractBaseCollectionView.h"
+
 /// 布局的优先级策略 - 需要改进
 typedef NS_ENUM(NSUInteger,JXLayoutTactics){
     JXLayoutTacticsDefault, // 优先保证宽度 - 看上去不太好

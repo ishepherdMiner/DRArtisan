@@ -8,6 +8,9 @@
 
 #import "JXBaseObject.h"
 #import <objc/message.h>
+#import "JXGlobal.h"
+#import "JXSwitch.h"
+#import "NSObject+Coder.h"
 
 @interface JXBaseObject ()
 

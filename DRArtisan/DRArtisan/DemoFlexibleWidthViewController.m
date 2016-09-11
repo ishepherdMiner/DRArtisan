@@ -7,7 +7,7 @@
 //
 
 #import "DemoFlexibleWidthViewController.h"
-#import "JXTagChooserView.h"
+#import "JXArtisan.h"
 
 @interface DemoFlexibleWidthViewController ()
 

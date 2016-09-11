@@ -7,6 +7,8 @@
 //
 
 #import "WaterfallFlowLayout.h"
+#import "JXSwitch.h"
+
 #define kDefaultCollectionCellHeight 60
 
 NSString *const XC_UICollectionElementKindSectionHeader = @"XC_HeadView";

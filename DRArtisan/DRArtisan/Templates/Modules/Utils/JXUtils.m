@@ -15,11 +15,13 @@
 #include <arpa/inet.h>
 
 #import <AVFoundation/AVFoundation.h>
+#import "JXGlobal.h"
+#import "JXSwitch.h"
 
-#define kWiFiSent     kZero
-#define kWiFiReceived kOne
-#define kWWANSent     kTwo
-#define kWWANReceived kThree
+#define kWiFiSent     0
+#define kWiFiReceived 1
+#define kWWANSent     2
+#define kWWANReceived 3
 
 
 @implementation JXUtils

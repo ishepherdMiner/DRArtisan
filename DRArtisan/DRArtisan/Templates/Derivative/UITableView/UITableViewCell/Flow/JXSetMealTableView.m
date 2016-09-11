@@ -10,6 +10,8 @@
 #import "JXFlowAnalytical.h"
 #import "JXMealPersistent.h"
 
+#import "JXSwitch.h"
+
 @interface JXSetMealTableView () <JXBasePickerViewDelegate,UITextFieldDelegate>
 
 /// 视图 - 选择器
@@ -58,9 +60,9 @@
     
     NSArray *picker_option_list = nil;
     switch (indexPath.section) {
-        case kZero:{
+        case 0:{
             switch (indexPath.row) {
-                case kZero:{
+                case 0:{
                     // 套餐周期
                     // Will log appear follow infomation in sometimes
                     // http://blog.csdn.net/x567851326/article/details/51251655
@@ -70,13 +72,13 @@
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
                 }
                     break;
-                case kOne:{
+                case 1:{
                     // 结算日期
                     picker_option_list = SettleDates;
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
                 }
                     break;
-                case kTwo:{
+                case 2:{
                     // 套餐流量
                     picker_option_list = MealFlows;
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
@@ -85,21 +87,21 @@
             }
         }
             break;
-        case kOne:{
+        case 1:{
             switch (indexPath.row) {
-                case kZero: {
+                case 0: {
                     // 已使用流量
                     picker_option_list = UsedFlows;
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
                 }
                     break;
-                case kOne: {
+                case 1: {
                     // 剩余流量
                     picker_option_list = LeftFlows;
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
                 }
                     break;
-                case kTwo:{
+                case 2:{
                     // 流量不清零周期
                     picker_option_list = FlowNotClear;
                     [self pickerViewWithList:picker_option_list indexPath:indexPath];
@@ -109,9 +111,9 @@
         }
             
             break;
-        case kTwo:{
+        case 2:{
             switch (indexPath.row) {
-                case kZero:{
+                case 0:{
                     self.mask_v.alpha = 0;
                     // 重置
                     UIAlertController *alert_c = [UIAlertController alertControllerWithTitle:@"提示" message:@"确定重置数据？" preferredStyle:UIAlertControllerStyleActionSheet];
@@ -172,7 +174,7 @@
                     _preview_label.text = text;
                 }
                     break;
-                case kTwo:{
+                case 2:{
                     // 百位
                     NSString *hDigits = _preview_label.text ? [_preview_label.text substringWithRange:fRange(0, 1)] : @"0";
                     // 十位
@@ -288,7 +290,7 @@
                     _preview_label.text = preview_stringM;
                 }
                     break;
-                case kTwo:{
+                case 2:{
                     _preview_label.text = text;
                 }
                     break;
@@ -331,18 +333,18 @@
 
 
     switch (indexPath.section) {
-        case kZero:{
+        case 0:{
             switch (indexPath.row) {
-                case kZero:{
+                case 0:{
                     // JXLog(@"%zd",[[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue]);
                     _persistent.cal_meal_cycle = [[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue];
                 }
                     break;
-                case kOne:{
+                case 1:{
                     _persistent.cal_settle_date = [[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue];
                 }
                     break;
-                case kTwo:{
+                case 2:{
                     _persistent.cal_total_flow = [_mark_String0 doubleValue];
                     _persistent.cal_total_flow_unit = _mark_String0_unit;
                 }
@@ -351,20 +353,20 @@
             _persistent.change_status = @"true";
         }
             break;
-        case kOne:{
+        case 1:{
             switch (indexPath.row) {
-                case kZero:{
+                case 0:{
                     _persistent.cal_used_flow = [_mark_String1 doubleValue];
                     _persistent.cal_used_flow_unit = _mark_String1_unit;
                 }
                     break;
-                case kOne:{
+                case 1:{
                     _persistent.cal_left_flow = [_mark_String2 doubleValue];
                     _persistent.cal_left_flow_unit = _mark_String2_unit;
                     
                 }
                     break;
-                case kTwo:{
+                case 2:{
                     _persistent.cal_not_clear_flow = [[_preview_label.text filterDigital:JXRegularDigitalTypeDefault] integerValue];
                 }
                     break;

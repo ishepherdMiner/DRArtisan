@@ -6,6 +6,8 @@
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
+#import "JXBaseObject.h"
+
 #define kCommonFonts_1(s) [UIFont fontWithName:@"HelveticaNeue-Light" size:s]
 #define kCommonFonts_2(s) [UIFont fontWithName:@"Menlo" size:s]
 

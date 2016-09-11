@@ -6,6 +6,7 @@
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
+#import "JXArtisan.h"
 
 /// 套餐周期
 #define MealCycleMonths @[ \

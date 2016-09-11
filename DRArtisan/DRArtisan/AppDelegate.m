@@ -16,6 +16,8 @@
 #import "DemoFlexibleHeightViewController.h"
 #import "DemoFlexibleWidthViewController.h"
 
+#import "JXArtisan.h"
+
 @interface AppDelegate ()
 
 @end

@@ -6,7 +6,7 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
+#import "JXArtisan.h"
 
 @interface CommentModel : JXBaseObject
 @property (nonatomic, copy) NSString *id;

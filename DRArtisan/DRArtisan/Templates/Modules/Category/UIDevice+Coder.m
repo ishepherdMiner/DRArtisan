@@ -21,6 +21,9 @@
 #import <sys/stat.h>
 #import <mach-o/dyld.h>
 
+#import "JXGlobal.h"
+#import "JXSwitch.h"
+
 @implementation UIDevice (Coder)
 
 + (void)jas_logInfo {
@@ -477,7 +480,7 @@
 
 
 + (BOOL)jas_broken {
-    NSMutableArray *conditions = [NSMutableArray arrayWithCapacity:kFive];
+    NSMutableArray *conditions = [NSMutableArray arrayWithCapacity:5];
     @try {
         // 是否能打开Cydia
         NSURL *url = [NSURL URLWithString:@"cydia://package/com.fake.package"];

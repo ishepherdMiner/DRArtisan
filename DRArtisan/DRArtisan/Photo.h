@@ -6,8 +6,7 @@
 //  Copyright © 2015年 apple. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
+#import "JXArtisan.h"
 
 /**
  *    "image_url"

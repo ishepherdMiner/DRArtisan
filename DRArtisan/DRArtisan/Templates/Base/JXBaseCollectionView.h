@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXAbstractBaseCollectionView.h"
 
 typedef void (^ClickItemBlock)(UICollectionView *collectionView,NSIndexPath *indexPath);
 

@@ -7,6 +7,7 @@
 //
 
 #import "JXSupplementaryViewTableView.h"
+#import "JXGlobal.h"
 
 @interface JXSupplementaryViewTableView ()
 

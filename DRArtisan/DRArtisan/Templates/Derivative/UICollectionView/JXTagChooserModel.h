@@ -7,6 +7,8 @@
 //
 
 
+#import "JXBaseObject.h"
+
 @interface JXTagChooserModel : JXBaseObject
 
 @end

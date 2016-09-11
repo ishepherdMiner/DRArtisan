@@ -7,6 +7,7 @@
 //
 
 #import "JXBaseTableViewCell.h"
+#import "JXGlobal.h"
 
 #define kDefaultTableViewCellHeight 50
 

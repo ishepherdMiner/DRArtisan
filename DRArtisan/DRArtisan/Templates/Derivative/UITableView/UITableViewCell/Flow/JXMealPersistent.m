@@ -7,7 +7,7 @@
 //
 
 #import "JXMealPersistent.h"
-
+#import "JXGlobal.h"
 
 #define kFlowFile [NSString stringWithFormat:@"%@/%@",kDir_Doc,@"JXFlow.plist"]
 
@@ -166,9 +166,9 @@ NSString *kRefreshSource = @"refresh_source";
     
     if (self.cal_settle_date) {
         // 一位数
-        if (@(self.cal_settle_date).stringValue.length == kOne) {
+        if (@(self.cal_settle_date).stringValue.length == 1) {
             return [[@"0" stringByAppendingString:@(self.cal_settle_date).stringValue] stringByAppendingString:@" 日"];
-        }else if(@(self.cal_settle_date).stringValue.length == kTwo) {
+        }else if(@(self.cal_settle_date).stringValue.length == 2) {
             return [@(self.cal_settle_date).stringValue stringByAppendingString:@" 日"];
         }
     }

@@ -7,6 +7,7 @@
 //
 
 #import "JXBaseCollectionViewCell.h"
+#import "JXGlobal.h"
 
 @implementation JXBaseCollectionViewCell
 

@@ -7,7 +7,7 @@
 //
 
 #import "DemoTableViewController.h"
-#import "JXFlexibleHeightTableView.h"
+#import "JXArtisan.h"
 
 @interface DemoTableViewController () <JXServiceTableViewDelegate>
 

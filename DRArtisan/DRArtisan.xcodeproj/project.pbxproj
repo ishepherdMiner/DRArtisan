@@ -235,9 +235,7 @@
 		969E95091D68B6020037EF5A /* JXSetMealTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JXSetMealTableViewCell.m; sourceTree = "<group>"; };
 		969E950C1D68B6020037EF5A /* JASTableViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JASTableViewController.h; sourceTree = "<group>"; };
 		969E950D1D68B6020037EF5A /* JASTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JASTableViewController.m; sourceTree = "<group>"; };
-		969E950E1D68B6020037EF5A /* JXArtisan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXArtisan.h; sourceTree = "<group>"; };
-		969E95101D68B6020037EF5A /* JXGlobalConst.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXGlobalConst.h; sourceTree = "<group>"; };
-		969E95111D68B6020037EF5A /* Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Prefix.pch; sourceTree = "<group>"; };
+		969E95101D68B6020037EF5A /* JXGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXGlobal.h; sourceTree = "<group>"; };
 		969E95141D68B6020037EF5A /* NSArray+Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Coder.h"; sourceTree = "<group>"; };
 		969E95151D68B6020037EF5A /* NSArray+Coder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Coder.m"; sourceTree = "<group>"; };
 		969E95161D68B6020037EF5A /* NSData+Coder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Coder.h"; sourceTree = "<group>"; };
@@ -298,6 +296,11 @@
 		96A3E05D1D4DE32200E8431F /* DemoTableViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoTableViewController.m; sourceTree = "<group>"; };
 		96A3E06F1D4E18BC00E8431F /* DemoFlexibleHeightViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoFlexibleHeightViewController.h; sourceTree = "<group>"; };
 		96A3E0701D4E18BC00E8431F /* DemoFlexibleHeightViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DemoFlexibleHeightViewController.m; sourceTree = "<group>"; };
+		96BB0FE41D85B07E00C53E90 /* JXSwitch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXSwitch.h; sourceTree = "<group>"; };
+		96BB0FE51D85B1EC00C53E90 /* JXClasses.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXClasses.h; sourceTree = "<group>"; };
+		96BB0FE61D85B28300C53E90 /* JXCategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXCategory.h; sourceTree = "<group>"; };
+		96BB0FE71D85B2F600C53E90 /* JXModules.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXModules.h; sourceTree = "<group>"; };
+		96BB0FE81D85B3E600C53E90 /* JXArtisan.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JXArtisan.h; sourceTree = "<group>"; };
 		96E72F031D30A26000D5A3A9 /* DRArtisan.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DRArtisan.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		96E72F071D30A26000D5A3A9 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		96E72F091D30A26000D5A3A9 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -440,7 +443,7 @@
 		969E94B11D68B6020037EF5A /* Templates */ = {
 			isa = PBXGroup;
 			children = (
-				969E950E1D68B6020037EF5A /* JXArtisan.h */,
+				96BB0FE81D85B3E600C53E90 /* JXArtisan.h */,
 				969E94B21D68B6020037EF5A /* Abstract */,
 				969E94B71D68B6020037EF5A /* Base */,
 				969E94F01D68B6020037EF5A /* Core */,
@@ -586,8 +589,11 @@
 		969E950F1D68B6020037EF5A /* Macro */ = {
 			isa = PBXGroup;
 			children = (
-				969E95101D68B6020037EF5A /* JXGlobalConst.h */,
-				969E95111D68B6020037EF5A /* Prefix.pch */,
+				969E95101D68B6020037EF5A /* JXGlobal.h */,
+				96BB0FE41D85B07E00C53E90 /* JXSwitch.h */,
+				96BB0FE51D85B1EC00C53E90 /* JXClasses.h */,
+				96BB0FE61D85B28300C53E90 /* JXCategory.h */,
+				96BB0FE71D85B2F600C53E90 /* JXModules.h */,
 			);
 			path = Macro;
 			sourceTree = "<group>";
@@ -1432,7 +1438,7 @@
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Modules/Encrypt",
 				);
-				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = DRArtisan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1454,7 +1460,7 @@
 					"$(PROJECT_DIR)/DRArtisan/Templates/Core",
 					"$(PROJECT_DIR)/DRArtisan/Templates/Modules/Encrypt",
 				);
-				GCC_PREFIX_HEADER = DRArtisan/Templates/Macro/Prefix.pch;
+				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = DRArtisan/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

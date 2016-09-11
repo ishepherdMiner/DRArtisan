@@ -6,6 +6,8 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
+#import "JXBaseObject.h"
+
 /**
  *  默认类型的cell模型对象
  */

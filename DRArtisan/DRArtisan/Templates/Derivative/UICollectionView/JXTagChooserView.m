@@ -9,6 +9,9 @@
 #import "JXTagChooserView.h"
 #import "JXTagChooserCell.h"
 #import "JXTagChooserModel.h"
+#import "JXWaterFlowHorLayout.h"
+#import "JXBaseCollectionView.h"
+#import "JXGlobal.h"
 
 @interface JXTagChooserView () <JXTagChooserViewDelegate> {
     NSMutableArray  *selectedTags; // 选择的tag数组

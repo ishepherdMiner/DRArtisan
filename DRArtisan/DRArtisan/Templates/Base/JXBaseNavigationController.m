@@ -7,6 +7,7 @@
 //
 
 #import "JXBaseNavigationController.h"
+#import "JXGlobal.h"
 
 @interface JXBaseNavigationController ()
 

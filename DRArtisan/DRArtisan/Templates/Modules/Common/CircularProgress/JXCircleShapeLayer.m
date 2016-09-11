@@ -7,6 +7,8 @@
 //
 
 #import "JXCircleShapeLayer.h"
+#import "JXGlobal.h"
+#import "JXSwitch.h"
 
 @interface JXCircleShapeLayer ()
 

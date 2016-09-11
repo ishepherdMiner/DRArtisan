@@ -7,6 +7,10 @@
 //
 
 #import "JXSetMealTableViewCell.h"
+#import "JXSetMealCellModel.h"
+#import "JXGlobal.h"
+#import "NSString+Coder.h"
+#import "UIView+Coder.h"
 
 @interface JXSetMealTableViewCell ()
 
@@ -26,7 +30,7 @@
     self.desc_field_v.text = _model.meal_answer;
     self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     
-    if (self.indexPath.section == kTwo){
+    if (self.indexPath.section == 2){
         self.cell_type = MealCellTypeCenter;
         self.title_v.textColor = DEFAULT_COLOR;
         self.accessoryType = UITableViewCellAccessoryNone;

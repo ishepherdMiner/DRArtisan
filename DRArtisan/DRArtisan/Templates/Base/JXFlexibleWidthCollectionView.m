@@ -7,6 +7,7 @@
 //
 
 #import "JXFlexibleWidthCollectionView.h"
+#import "JXBaseObject.h"
 
 @implementation JXFlexibleWidthCollectionView
 

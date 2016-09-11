@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JXHTTPSessionManager.h"
 
 /**
  *  对称加密方式

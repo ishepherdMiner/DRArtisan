@@ -7,6 +7,7 @@
 //
 
 #import "JXSupplementaryHeaderTitleMix.h"
+#import "JXGlobal.h"
 
 @implementation JXSupplementaryHeaderTitleMix
 

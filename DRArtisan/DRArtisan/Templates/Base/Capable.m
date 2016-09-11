@@ -7,6 +7,7 @@
 //
 
 #import "Capable.h"
+#import "JXArtisan.h"
 
 @interface Capable ()
 

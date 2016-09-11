@@ -8,6 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
+@class JXBaseCollectionView;
+
 @interface Capable : NSObject
 
 // - instance methods

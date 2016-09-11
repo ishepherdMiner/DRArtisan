@@ -15,6 +15,7 @@
 
 #import "JXMealPersistent.h"
 #import "JXSetMealTableView.h"
+#import "JXGlobal.h"
 
 /**
  *  原来的逻辑有些地方我不太明白,我整理下我现在的业务逻辑,然后着手修改

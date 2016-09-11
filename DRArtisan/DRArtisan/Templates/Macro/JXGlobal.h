@@ -1,21 +1,14 @@
 //
-//  JXGlobalConst.h
+//  JXGlobal.h
 //  NormalCoder
 //
 //  Created by Jason on 7/6/16.
 //  Copyright © 2016 JasCoder. All rights reserved.
 //
 
-#ifndef JXGlobalConst_h
-#define JXGlobalConst_h
+#ifndef JXGlobal_h
+#define JXGlobal_h
 
-/**
- *  Setting frame const
- *
- *  @author  WangDL
- *  @version 1.0
- *  @date    20160617
- */
 #define fRect(x,y,w,h)  CGRectMake(x,y,w,h)
 #define fSize(w,h)      CGSizeMake(w,h)
 #define fPoint(x,y)     CGPointMake(x,y)
@@ -29,25 +22,9 @@
 #define fHeight(frame)  CGRectGetHeight(frame)
 #define fWidth(frame)   CGRectGetWidth(frame)
 
-/**
- *  Setting device version const
- *
- *  @author  WangDL
- *  @version 1.0
- *  @date    20160617
- */
 #define device_version [[UIDevice currentDevice] systemVersion]
 #define device_version_newer(version) [device_version compare:@(version).stringValue options: NSNumericSearch] != NSOrderedAscending
 
-/**
- *  Setting device bounds const
- *
- *  @author WangDL
- *  @version 1.1
- *  @date 20160706
- *  1.add Status,Navbar,Tabbar height const
- *  2.add iphone5 proporiton
- */
 #define Screen_bounds         [UIScreen mainScreen].bounds
 #define Screen_size           [UIScreen mainScreen].bounds.size
 #define Screen_height         [UIScreen mainScreen].bounds.size.height
@@ -59,35 +36,14 @@
 #define Proportion_iPhone5_w  Screen_width / 320.0f
 #define Proporiton_iPhone5_h  Screen_height / 568.0f
 
-/**
- *  Setting constant numbers
- */
 #define kZero  0
-#define kOne   1
-#define kTwo   2
-#define kThree 3
-#define kFour  4
-#define kFive  5
-#define kSix   6
-#define kSeven 7
-#define kEight 8
-#define kNine  9
-#define kTen  10
-#define kTwentyFour  24
-#define kSixty       60
 #define kNegativeOne -1
+#define kOne 1
 #define kMoreMagnitude 1024.0
 
-// description thing status
 #define kStatusSuccess  kZero
 #define kStatusFail     kNegativeOne
 
-/**
- *  Setting color const
- *  Author  WangDL
- *  Version 1.0
- *  Create Date 20160617
- */
 #define HexRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue &0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
 
 #define RGBA(r,g,b,a) [UIColor colorWithRed:r green:g blue:b alpha:a]
@@ -104,12 +60,6 @@
 //判断是否为pad
 #define IS_PAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
 
-/**
- *  Setting network status code const
- *  Author  WangDL
- *  Version 1.0
- *  Create Date 20160617
- */
 /// Success
 #define Network_success_code kZero
 
@@ -158,7 +108,6 @@ userInfo:nil]
 
 /**
  *  Is base object class
- *
  */
 #define kFoundationProperty(property)   ([property isKindOfClass:[NSNumber class]]  \
 || [property isKindOfClass:[NSValue class]]   \
@@ -177,14 +126,14 @@ userInfo:nil]
  * SingletonClassMethod
  */
 #define SingletonClassMethod(classname) \
-+ (instancetype)shared##classname { \
-static id instance; \
-static dispatch_once_t onceToken; \
-dispatch_once(&onceToken, ^{ \
-instance = [[self alloc] init]; \
-}); \
-return instance; \
-}
+        + (instancetype)shared##classname { \
+            static id instance; \
+            static dispatch_once_t onceToken; \
+            dispatch_once(&onceToken, ^{ \
+                instance = [[self alloc] init]; \
+            }); \
+            return instance; \
+        }
 
 /// NavigationBar back
 #define SET_NAV_BTN(__arg__, __item__,__ftn__,__title__) UIButton * __arg__=[UIButton buttonWithType:UIButtonTypeCustom];__arg__.frame=CGRectMake(0, 0, 35, 20);[__arg__ setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];[__arg__ setImageEdgeInsets:UIEdgeInsetsMake(0, 0, 0, 15)];[__arg__ addTarget:self action:@selector(__ftn__) forControlEvents:UIControlEventTouchUpInside];self.navigationItem.__item__=[[UIBarButtonItem alloc]initWithCustomView:__arg__];
@@ -194,13 +143,13 @@ return instance; \
 
 /// return Timestamp
 #define NowTimestamp  NSTimeInterval(^timestamp)() = ^() { \
-                            NSDate* date = [NSDate dateWithTimeIntervalSinceNow:0]; \
+                            NSDate* date = [NSDate date]; \
                             return (NSTimeInterval)[date timeIntervalSince1970]; \
                       };
 
 // ============================================================================
 
-#endif /* JXGlobalConst_h */
+#endif /* JXGlobal_h */
 
 
 

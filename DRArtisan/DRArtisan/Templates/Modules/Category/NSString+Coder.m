@@ -8,6 +8,7 @@
 
 #import "NSString+Coder.h"
 #import <CommonCrypto/CommonCrypto.h>
+#import "JXGlobal.h"
 
 @implementation NSString (Coder)
 

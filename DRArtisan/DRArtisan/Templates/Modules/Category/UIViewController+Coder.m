@@ -8,6 +8,8 @@
 
 #import "UIViewController+Coder.h"
 #import <objc/message.h>
+#import "JXBaseObject.h"
+#import "JXSwitch.h"
 
 #define kTargetVCFromPresent  13579  // 目标控制器是被present的
 #define kTargetVCFromPush     24689  // 目标控制器是被push的

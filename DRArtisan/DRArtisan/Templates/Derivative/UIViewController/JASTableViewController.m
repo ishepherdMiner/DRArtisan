@@ -7,6 +7,7 @@
 //
 
 #import "JASTableViewController.h"
+#import "JXGlobal.h"
 
 @interface JASTableViewController ()
 

@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@class JXTagChooserView;
+@class JXTagChooserView,JXBaseCollectionView;
 
 @protocol JXTagChooserViewDelegate <NSObject>
 

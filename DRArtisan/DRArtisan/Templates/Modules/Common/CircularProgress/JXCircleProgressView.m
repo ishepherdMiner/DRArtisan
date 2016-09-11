@@ -8,6 +8,7 @@
 
 #import "JXCircleProgressView.h"
 #import "JXCircleShapeLayer.h"
+#import "JXGlobal.h"
 
 @interface JXCircleProgressView ()
 

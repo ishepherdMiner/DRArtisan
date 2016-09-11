@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "JXAbstractBaseCollectionView.h"
 /**
  *  竖直方向上的瀑布流的布局
  *  使用方法

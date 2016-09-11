@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "JXArtisan.h"
 
 @interface NewsCollectionCell : JXBaseCollectionViewCell
 

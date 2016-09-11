@@ -7,6 +7,7 @@
 //
 
 #import "JXSupplementaryHeaderViewMix.h"
+#import "JXGlobal.h"
 
 @implementation JXSupplementaryHeaderViewMix
 

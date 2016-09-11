@@ -6,6 +6,8 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
+#import "JXBaseObject.h"
+
 @interface JXValue2CellModel : JXBaseObject
 
 /// cell的标识id

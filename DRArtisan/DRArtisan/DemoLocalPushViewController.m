@@ -7,6 +7,8 @@
 //
 
 #import "DemoLocalPushViewController.h"
+#import "JXUtils.h"
+
 // 本地通知的key
 static const NSString *kNotificationKey = @"localNotification";
 @implementation DemoLocalPushViewController

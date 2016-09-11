@@ -7,6 +7,7 @@
 //
 
 #import "UIImage+Coder.h"
+#import "JXSwitch.h"
 
 @implementation UIImage (Coder)
 

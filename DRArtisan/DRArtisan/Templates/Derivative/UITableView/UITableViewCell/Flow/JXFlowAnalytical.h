@@ -6,6 +6,7 @@
 //  Copyright © 2015年 刘瑞龙. All rights reserved.
 //
 
+#import <UIKit/UIKit.h>
 
 @class JXMealPersistent;
 

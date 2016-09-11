@@ -7,6 +7,7 @@
 //
 
 #import "JXAbstractBaseCollectionView.h"
+#import "JXGlobal.h"
 
 @interface JXAbstractBaseCollectionView ()
 

@@ -7,6 +7,7 @@
 //
 
 #import "JXFlexibleHeightTableView.h"
+#import "JXBaseObject.h"
 
 #define kDefaultCellHeight 60
 
@@ -21,13 +22,13 @@
     }
     
     if (self.sourceType == JXTableViewDataSourceTypeSingle) {
-        if ([self.dataList[indexPath.row] calculateHeight] == kZero) {
-            return self.rowHeight == kZero ? kDefaultCellHeight : self.rowHeight;
+        if ([self.dataList[indexPath.row] calculateHeight] == 0) {
+            return self.rowHeight == 0 ? kDefaultCellHeight : self.rowHeight;
         }
         return [self.dataList[indexPath.row] calculateHeight];
     }else {
-        if ([self.dataList[indexPath.section][indexPath.row] calculateHeight] == kZero) {
-            return self.rowHeight == kZero ? kDefaultCellHeight : self.rowHeight;
+        if ([self.dataList[indexPath.section][indexPath.row] calculateHeight] == 0) {
+            return self.rowHeight == 0 ? kDefaultCellHeight : self.rowHeight;
         }
         return [self.dataList[indexPath.section][indexPath.row] calculateHeight];
     }

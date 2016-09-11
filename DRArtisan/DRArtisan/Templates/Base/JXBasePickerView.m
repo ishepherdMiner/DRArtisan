@@ -7,6 +7,7 @@
 //
 
 #import "JXBasePickerView.h"
+#import "JXGlobal.h"
 
 #define kDefaultRowHeight 40
 

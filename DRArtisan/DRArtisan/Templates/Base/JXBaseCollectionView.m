@@ -6,6 +6,9 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
+#import "JXGlobal.h"
+#import "JXSwitch.h"
+#import "JXBaseObject.h"
 #import "JXBaseCollectionView.h"
 #import "JXBaseCollectionViewCell.h"
 

@@ -6,7 +6,9 @@
 //  Copyright © 2016 DR. All rights reserved.
 //
 
-#import "JXBaseTableView.h"
+#import "JXGlobal.h"
+#import "JXSwitch.h"
+#import "JXClasses.h"
 
 #define kSlack      kZero
 #define kStrict     kOne

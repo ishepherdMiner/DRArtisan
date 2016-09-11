@@ -7,6 +7,7 @@
 //
 
 #import "JXAbstractBaseTableView.h"
+#import "JXGlobal.h"
 
 #define kDefaultCellHeight 60
 

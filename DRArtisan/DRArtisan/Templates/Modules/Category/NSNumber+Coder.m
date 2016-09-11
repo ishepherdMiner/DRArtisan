@@ -7,6 +7,7 @@
 //
 
 #import "NSNumber+Coder.h"
+#import "JXGlobal.h"
 
 @implementation NSNumber (Coder)
 + (instancetype)randomNumber:(NSUInteger)from to:(NSUInteger)to {

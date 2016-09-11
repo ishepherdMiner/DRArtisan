@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "JXBaseTableViewCell.h"
+
 typedef NS_ENUM(NSUInteger,MealCellType){
     MealCellTypeLeft,
     MealCellTypeCenter,
