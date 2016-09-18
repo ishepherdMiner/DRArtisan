@@ -11,6 +11,7 @@
 #import "DemoFlexibleHeightViewController.h"
 #import "DemoFlexibleWidthViewController.h"
 #import "DemoLocalPushViewController.h"
+#import "DemoHorCollectionViewController.h"
 #import "JXArtisan.h"
 
 @interface DemoRootViewController () <JXServiceTableViewDelegate>
@@ -51,6 +52,10 @@
             NavigationPush(DemoLocalPushViewController);
         }
             break;
+        case 4:{
+            NavigationPush(DemoHorCollectionViewController);
+        }
+            break;
     }
 }
 
@@ -74,6 +79,11 @@
                                                 @{
                                                     @"id":@4,
                                                     @"title":@"本地推送",
+                                                    @"icon":@"demo_tableview_02"
+                                                    },
+                                                @{
+                                                    @"id":@5,
+                                                    @"title":@"水平布局",
                                                     @"icon":@"demo_tableview_02"
                                                     },
                                                 ]];

@@ -10,9 +10,6 @@
 #import "JXSwitch.h"
 #import "JXClasses.h"
 
-#define kSlack      kZero
-#define kStrict     kOne
-
 @interface JXBaseTableView ()
 
 @property (nonatomic,assign) JXTableViewDataSourceType sourceType;
@@ -182,16 +179,11 @@
 
 - (JXTableViewDataSourceType)dataSourceTypeWithDataList:(NSArray *)dataList {
     _sourceType = JXTableViewDataSourceTypeSingle;
-    if (kTypecheck == kStrict) {
-        for (id subList in dataList) {
-            if ([subList isKindOfClass:[NSArray class]]) {
-                _sourceType = JXTableViewDataSourceTypeMulti;
-                break;
-            }
-        }
-    }else if(kTypecheck == kSlack) {
-        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
+    
+    for (id subList in dataList) {
+        if ([subList isKindOfClass:[NSArray class]]) {
             _sourceType = JXTableViewDataSourceTypeMulti;
+            break;
         }
     }
     

@@ -20,6 +20,14 @@
 
 @implementation JXBaseObject
 
+
+/**
+ Modeling a set of dictionary objects
+
+ @param dics a set of dictionary objects
+
+ @return a set of model objects
+ */
 + (NSArray *)modelsWithDics:(NSArray *)dics {
     NSMutableArray *models = [NSMutableArray arrayWithCapacity:[dics count]];
     for (NSDictionary *dic in dics) {

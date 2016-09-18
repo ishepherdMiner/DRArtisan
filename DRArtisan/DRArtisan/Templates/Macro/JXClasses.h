@@ -48,13 +48,13 @@
 #import "JXBaseCollectionViewFlowLayout.h"
 #import "JXWaterFlowVerLayout.h"
 #import "JXWaterFlowHorLayout.h"
-#import "WaterfallFlowLayout.h"
 #import "JXTagChooserView.h"
 
 #import "Capable.h"
 
 // CollectionViewCell
 #import "JXBaseCollectionViewCell.h"
+#import "JXHorCollectionViewCell.h"
 
 // PickerView
 #import "JXBasePickerView.h"

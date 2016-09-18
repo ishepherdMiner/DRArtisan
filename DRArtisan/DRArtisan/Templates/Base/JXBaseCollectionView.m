@@ -12,9 +12,6 @@
 #import "JXBaseCollectionView.h"
 #import "JXBaseCollectionViewCell.h"
 
-#define kSlack      kZero
-#define kStrict     kOne
-
 @interface JXBaseCollectionView ()
 
 @property (nonatomic,copy) ClickItemBlock clickItemBlock;
@@ -142,16 +139,12 @@
 
 - (JXCollectionViewDataSourceType)dataSourceTypeWithDataList:(NSArray *)dataList {
     _sourceType = JXCollectionViewDataSourceTypeSingle;
-    if (kTypecheck == kStrict) {
-        for (id subList in dataList) {
-            if ([subList isKindOfClass:[NSArray class]]) {
-                _sourceType = JXCollectionViewDataSourceTypeMulti;
-                break;
-            }
-        }
-    }else if(kTypecheck == kSlack) {
-        if ([dataList.firstObject isKindOfClass:[NSArray class]]) {
+    
+    // If the subList is an array, the dataList will be a multi array
+    for (id subList in dataList) {
+        if ([subList isKindOfClass:[NSArray class]]) {
             _sourceType = JXCollectionViewDataSourceTypeMulti;
+            break;
         }
     }
     

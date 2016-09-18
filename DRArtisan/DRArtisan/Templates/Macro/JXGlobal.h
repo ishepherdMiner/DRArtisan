@@ -9,18 +9,19 @@
 #ifndef JXGlobal_h
 #define JXGlobal_h
 
-#define fRect(x,y,w,h)  CGRectMake(x,y,w,h)
-#define fSize(w,h)      CGSizeMake(w,h)
-#define fPoint(x,y)     CGPointMake(x,y)
-#define fRange(loc,len) NSMakeRange(loc,len)
-#define fMaxX(frame)    CGRectGetMaxX(frame)
-#define fMidX(frame)    CGRectGetMidX(frame)
-#define fMinX(frame)    CGRectGetMinX(frame)
-#define fMaxY(frame)    CGRectGetMaxY(frame)
-#define fMidY(frame)    CGRectGetMidY(frame)
-#define fMinY(frame)    CGRectGetMinY(frame)
-#define fHeight(frame)  CGRectGetHeight(frame)
-#define fWidth(frame)   CGRectGetWidth(frame)
+#define fRect(x,y,w,h)   CGRectMake(x,y,w,h)
+#define fSize(w,h)       CGSizeMake(w,h)
+#define fPoint(x,y)      CGPointMake(x,y)
+#define fRange(loc,len)  NSMakeRange(loc,len)
+#define fMaxX(frame)     CGRectGetMaxX(frame)
+#define fMidX(frame)     CGRectGetMidX(frame)
+#define fMinX(frame)     CGRectGetMinX(frame)
+#define fMaxY(frame)     CGRectGetMaxY(frame)
+#define fMidY(frame)     CGRectGetMidY(frame)
+#define fMinY(frame)     CGRectGetMinY(frame)
+#define fHeight(frame)   CGRectGetHeight(frame)
+#define fWidth(frame)    CGRectGetWidth(frame)
+#define fInsets(t,l,b,r) UIEdgeInsetsMake(t,l,b,r)
 
 #define device_version [[UIDevice currentDevice] systemVersion]
 #define device_version_newer(version) [device_version compare:@(version).stringValue options: NSNumericSearch] != NSOrderedAscending
@@ -92,9 +93,6 @@
             _XCTRegisterFailure(_XCTFailureDescription(_XCTAssertion_True, 1, @#expression, [exception reason]),format); \
         }\
     })
-
-/// Type check is strict,if kTypecheck is equal to 1
-#define kTypecheck  kOne
 
 // ============================================================================
 // Approach simplifies macro

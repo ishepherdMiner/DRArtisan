@@ -23,10 +23,4 @@
     }
 }
 
-//- (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView {
-//    if (scrollView.contentOffset.y > 0) {
-//        [self reloadData];
-//    }
-//}
-
 @end
