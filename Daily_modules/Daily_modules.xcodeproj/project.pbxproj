@@ -14,6 +14,13 @@
 		9627CEFB1E19FA9800F4AC7E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9627CEFA1E19FA9800F4AC7E /* Assets.xcassets */; };
 		9627CEFE1E19FA9800F4AC7E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9627CEFC1E19FA9800F4AC7E /* LaunchScreen.storyboard */; };
 		9627CF091E19FA9800F4AC7E /* Daily_modulesTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF081E19FA9800F4AC7E /* Daily_modulesTests.m */; };
+		9627CF281E19FCC700F4AC7E /* ComConfig.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF271E19FCC700F4AC7E /* ComConfig.m */; };
+		9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */; };
+		9627CF2F1E1A10DC00F4AC7E /* JANoticeService.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF2E1E1A10DC00F4AC7E /* JANoticeService.m */; };
+		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
+		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
+		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
+		96A2CDE11E1B08700011AE02 /* invited_3_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +47,20 @@
 		9627CF041E19FA9800F4AC7E /* Daily_modulesTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = Daily_modulesTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		9627CF081E19FA9800F4AC7E /* Daily_modulesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Daily_modulesTests.m; sourceTree = "<group>"; };
 		9627CF0A1E19FA9800F4AC7E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9627CF261E19FCC700F4AC7E /* ComConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComConfig.h; sourceTree = "<group>"; };
+		9627CF271E19FCC700F4AC7E /* ComConfig.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComConfig.m; sourceTree = "<group>"; };
+		9627CF2A1E1A10BD00F4AC7E /* NoticeServiceController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NoticeServiceController.h; sourceTree = "<group>"; };
+		9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NoticeServiceController.m; sourceTree = "<group>"; };
+		9627CF2D1E1A10DC00F4AC7E /* JANoticeService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeService.h; sourceTree = "<group>"; };
+		9627CF2E1E1A10DC00F4AC7E /* JANoticeService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JANoticeService.m; sourceTree = "<group>"; };
+		9627CF301E1A35FC00F4AC7E /* JANoticeServiceNative.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceNative.h; sourceTree = "<group>"; };
+		9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JANoticeServiceNative.m; sourceTree = "<group>"; };
+		9627CF331E1A361800F4AC7E /* JANoticeServiceJPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceJPush.h; sourceTree = "<group>"; };
+		9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JANoticeServiceJPush.m; sourceTree = "<group>"; };
+		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
+		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
+		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
+		96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invited_3_02@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,10 +102,15 @@
 		9627CEED1E19FA9800F4AC7E /* Daily_modules */ = {
 			isa = PBXGroup;
 			children = (
+				9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */,
+				9627CF291E1A10A200F4AC7E /* Demo */,
+				9627CF151E19FC0A00F4AC7E /* Classes */,
 				9627CEF11E19FA9800F4AC7E /* AppDelegate.h */,
 				9627CEF21E19FA9800F4AC7E /* AppDelegate.m */,
 				9627CEF41E19FA9800F4AC7E /* ViewController.h */,
 				9627CEF51E19FA9800F4AC7E /* ViewController.m */,
+				9627CF261E19FCC700F4AC7E /* ComConfig.h */,
+				9627CF271E19FCC700F4AC7E /* ComConfig.m */,
 				9627CEF71E19FA9800F4AC7E /* Main.storyboard */,
 				9627CEFA1E19FA9800F4AC7E /* Assets.xcassets */,
 				9627CEFC1E19FA9800F4AC7E /* LaunchScreen.storyboard */,
@@ -97,6 +123,8 @@
 		9627CEEE1E19FA9800F4AC7E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */,
+				9627CF3A1E1A5BD300F4AC7E /* sound.caf */,
 				9627CEEF1E19FA9800F4AC7E /* main.m */,
 			);
 			name = "Supporting Files";
@@ -109,6 +137,37 @@
 				9627CF0A1E19FA9800F4AC7E /* Info.plist */,
 			);
 			path = Daily_modulesTests;
+			sourceTree = "<group>";
+		};
+		9627CF151E19FC0A00F4AC7E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				9627CF161E19FC0A00F4AC7E /* NoticeService */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		9627CF161E19FC0A00F4AC7E /* NoticeService */ = {
+			isa = PBXGroup;
+			children = (
+				9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */,
+				9627CF2D1E1A10DC00F4AC7E /* JANoticeService.h */,
+				9627CF2E1E1A10DC00F4AC7E /* JANoticeService.m */,
+				9627CF301E1A35FC00F4AC7E /* JANoticeServiceNative.h */,
+				9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */,
+				9627CF331E1A361800F4AC7E /* JANoticeServiceJPush.h */,
+				9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */,
+			);
+			path = NoticeService;
+			sourceTree = "<group>";
+		};
+		9627CF291E1A10A200F4AC7E /* Demo */ = {
+			isa = PBXGroup;
+			children = (
+				9627CF2A1E1A10BD00F4AC7E /* NoticeServiceController.h */,
+				9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */,
+			);
+			name = Demo;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -162,6 +221,14 @@
 						CreatedOnToolsVersion = 8.2.1;
 						DevelopmentTeam = ZEY359R7A4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.BackgroundModes = {
+								enabled = 0;
+							};
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 					9627CF031E19FA9800F4AC7E = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -197,6 +264,8 @@
 			files = (
 				9627CEFE1E19FA9800F4AC7E /* LaunchScreen.storyboard in Resources */,
 				9627CEFB1E19FA9800F4AC7E /* Assets.xcassets in Resources */,
+				9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */,
+				96A2CDE11E1B08700011AE02 /* invited_3_02@2x.png in Resources */,
 				9627CEF91E19FA9800F4AC7E /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -215,9 +284,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9627CF2F1E1A10DC00F4AC7E /* JANoticeService.m in Sources */,
+				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
+				9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */,
 				9627CEF61E19FA9800F4AC7E /* ViewController.m in Sources */,
 				9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */,
+				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,
 				9627CEF01E19FA9800F4AC7E /* main.m in Sources */,
+				9627CF281E19FCC700F4AC7E /* ComConfig.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,11 +425,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Daily_modules/Daily_modules.entitlements;
 				DEVELOPMENT_TEAM = ZEY359R7A4;
 				INFOPLIST_FILE = Daily_modules/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coder.Daily-modules";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coder.flow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -364,11 +439,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Daily_modules/Daily_modules.entitlements;
 				DEVELOPMENT_TEAM = ZEY359R7A4;
 				INFOPLIST_FILE = Daily_modules/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.coder.Daily-modules";
+				PRODUCT_BUNDLE_IDENTIFIER = com.coder.flow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
@@ -418,6 +494,7 @@
 				9627CF0F1E19FA9800F4AC7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9627CF101E19FA9800F4AC7E /* Build configuration list for PBXNativeTarget "Daily_modulesTests" */ = {
 			isa = XCConfigurationList;
@@ -426,6 +503,7 @@
 				9627CF121E19FA9800F4AC7E /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

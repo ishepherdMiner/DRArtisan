@@ -7,8 +7,10 @@
 //
 
 #import "AppDelegate.h"
+#import "JANoticeServiceKit.h"
 
 @interface AppDelegate ()
+@property (nonatomic,strong) JANoticeService *service;
 
 @end
 
@@ -16,9 +18,25 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    JANoticeServiceNative *native = [[JANoticeServiceNative alloc] init];
+    
+    // 默认选择注册sound,badge,alert
+    [JANoticeService registerNoticeServiceWithDelegate:native];
+    
+    // 选择注册服务
+    //  [JANoticeService registerNoticeServiceWithTypes:JANoticeServiceTypeAll
+    //                                         delegate:native];
     return YES;
 }
+
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    // 去头尾<>,去空格
+    NSString *deviceTokenString = [JANoticeService deviceToken:deviceToken];
+    // 注册deviceToken
+    // 发送给服务器
+}
+
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
@@ -46,6 +64,5 @@
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
-
 
 @end

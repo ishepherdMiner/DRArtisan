@@ -1,46 +1,21 @@
-# 日常系列
+//
+//  NoticeServiceController.m
+//  Daily_modules
+//
+//  Created by Jason on 02/01/2017.
+//  Copyright © 2017 Jason. All rights reserved.
+//
 
-模块
-
-# 列表
-
-|功能|文件名|进度|
-|:-:|:-:|:-:|:-:|:-:|
-|推送|*NoticeService*|已支持原生*iOS8,9,10*本地推送|
+#import "NoticeServiceController.h"
+#import "JANoticeServiceKit.h"
 
 
-# 用法
+@interface NoticeServiceController ()
 
-## NoticeService
+@end
 
-*AppDelegate.m*
+@implementation NoticeServiceController
 
-```objc
-- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    
-    JANoticeServiceNative *native = [[JANoticeServiceNative alloc] init];
-    
-    // 默认选择注册sound,badge,alert
-    [JANoticeService registerNoticeServiceWithDelegate:native];
-    
-    // 选择注册服务
-    //  [JANoticeService registerNoticeServiceWithTypes:JANoticeServiceTypeAll
-    //                                         delegate:native];
-    return YES;
-}
-
-- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
-    // 去头尾<>,去空格
-    NSString *deviceTokenString = [JANoticeService deviceToken:deviceToken];
-    // 注册deviceToken
-    // 发送给服务器
-}
-
-```
-
-*NoticeServiceController.m*
-
-```objc
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.view.backgroundColor = [UIColor whiteColor];
@@ -80,7 +55,10 @@
         [service postNoticeWithTitle:@"嘿" body:@"大牛" fireDate:[NSDate dateWithTimeIntervalSinceNow:7]];
     }
 }
-```
 
+- (void)didReceiveMemoryWarning {
+    [super didReceiveMemoryWarning];
+    // Dispose of any resources that can be recreated.
+}
 
-
+@end
