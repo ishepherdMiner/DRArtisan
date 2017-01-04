@@ -59,7 +59,7 @@ typedef NS_ENUM(NSUInteger,JANoticeServiceType){
  */
 - (UILocalNotification *)noticeServiceWithTitle:(NSString *)title
                                            body:(NSString *)body
-                                       fireDate:(NSDate *)date __IOS_DEPRECATED(7.0, 9.0, "iOS10上使用noticeServiceWithTitle:body:attachment:trigger:requestid:request:withCompletionHandler:");
+                                       fireDate:(NSDate *)date __IOS_DEPRECATED(7.0, 9.0, "iOS10上使用noticeServiceWithTitle:body:attachment:trigger:requestid:withCompletionHandler:");
 
 /**
  发送通知
