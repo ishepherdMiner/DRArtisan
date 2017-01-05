@@ -7,7 +7,16 @@
 //
 
 #import "JANoticeServiceJPush.h"
+#import "JPUSHService.h"
 
 @implementation JANoticeServiceJPush
+
+- (void)noticeServiceWithTypes:(JANoticeServiceType)types {
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(receiverNotice:) name:kJPFNetworkIsConnectingNotification object:nil];
+    
+    
+    
+}
 
 @end

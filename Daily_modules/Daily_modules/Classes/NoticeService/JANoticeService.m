@@ -75,16 +75,16 @@
                 attachments:(NSArray<UNNotificationAttachment *>*)attachments
                     trigger:(UNNotificationTrigger *)trigger
                   requestId:(NSString *)requestId
-                recvHandler:(void (^)())recvHandler
-            selectedHandler:(void (^)())selectedHandler
+             presentHandler:(void (^)(UNNotification *noticaiton))presentHandler
+            receiverHandler:(void (^)(UNNotificationResponse *reponse))receiverHandler
       withCompletionHandler:(void (^)(NSError *error))handler{
     
     if ([[UIDevice currentDevice].systemVersion doubleValue] >=10.0) {
         if ([self.delegate respondsToSelector:@selector(noticeServiceWithTitle:body:attachments:trigger:requestId:withCompletionHandler:)]) {
             [self.delegate noticeServiceWithTitle:title body:body attachments:attachments trigger:trigger requestId:requestId withCompletionHandler:handler];
             
-            if ([self.delegate respondsToSelector:@selector(launchWithRecv:selected:)]) {
-                [self.delegate launchWithRecv:recvHandler selected:selectedHandler];
+            if ([self.delegate respondsToSelector:@selector(launchWithPresented:received:)]) {
+                [self.delegate launchWithPresented:presentHandler received:receiverHandler];
             }
             
         }

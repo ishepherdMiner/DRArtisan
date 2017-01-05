@@ -43,11 +43,11 @@ typedef NS_ENUM(NSUInteger,JANoticeServiceType){
 /**
  发送
  
- @param recvHandler 收到通知的回调
- @param selectedHandler  点击通知的回调
+ @param presentHandler   收到通知的回调
+ @param receivedHandler  点击通知的回调
  */
-- (void)launchWithRecv:(void (^)())recvHandler
-              selected:(void (^)())selectedHandler __IOS_AVAILABLE(10.0);
+- (void)launchWithPresented:(void (^)(UNNotification *notification))presentHandler
+                   received:(void (^)(UNNotificationResponse *response))receivedHandler  __IOS_AVAILABLE(10.0);
 
 /**
  配置本地通知
@@ -64,7 +64,7 @@ typedef NS_ENUM(NSUInteger,JANoticeServiceType){
 /**
  发送通知
  */
-- (void)launchWithLocalNoti:(UILocalNotification *)noti __IOS_DEPRECATED(7.0, 9.0,"iOS10上使用launchWithRecv:selected替代");
+- (void)launchWithLocalNoti:(UILocalNotification *)noti __IOS_DEPRECATED(7.0, 9.0,"iOS10上使用launchWithPresented:received:替代");
 
 @end
 
@@ -110,8 +110,8 @@ typedef NS_ENUM(NSUInteger,JANoticeServiceType){
  @param attachments 附件
  @param trigger 通知触发器
  @param requestId 通知请求
- @param recvHandler 收到通知的回调(应用要处于前台)
- @param selectedHandler 点击通知的回调
+ @param presentHandler 收到通知的回调(应用要处于前台)
+ @param receiverHandler 点击通知的回调
  @param handler 回调
  */
 - (void)postNoticeWithTitle:(NSString *)title
@@ -119,8 +119,8 @@ typedef NS_ENUM(NSUInteger,JANoticeServiceType){
                 attachments:(NSArray<UNNotificationAttachment *>*)attachments
                     trigger:(UNNotificationTrigger *)trigger
                   requestId:(NSString *)requestId
-                recvHandler:(void (^)())recvHandler
-            selectedHandler:(void (^)())selectedHandler
+             presentHandler:(void (^)(UNNotification *noticaiton))presentHandler
+            receiverHandler:(void (^)(UNNotificationResponse *reponse))receiverHandler
       withCompletionHandler:(void (^)(NSError *error))handler __IOS_AVAILABLE(10.0);
 
 /**

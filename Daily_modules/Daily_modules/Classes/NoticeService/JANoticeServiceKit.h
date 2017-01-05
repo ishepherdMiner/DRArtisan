@@ -11,6 +11,7 @@
 
 #import "JANoticeService.h"
 #import "JANoticeServiceNative.h"
+
 #import "JANoticeServiceJPush.h"
 
 #endif /* JANoticeServiceKit_h */

@@ -7,7 +7,8 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "JANoticeService.h"
 
-@interface JANoticeServiceJPush : NSObject
+@interface JANoticeServiceJPush : NSObject <JANoticeServcieDelegate>
 
 @end

@@ -27,6 +27,7 @@
     // 选择注册服务
     //  [JANoticeService registerNoticeServiceWithTypes:JANoticeServiceTypeAll
     //                                         delegate:native];
+    NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSBundle mainBundle].bundlePath error:nil]);
     return YES;
 }
 

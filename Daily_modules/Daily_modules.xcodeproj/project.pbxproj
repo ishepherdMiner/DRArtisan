@@ -20,6 +20,20 @@
 		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
 		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
+		967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */; };
+		967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */; };
+		967F0C721E1F116D00E744A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C711E1F116D00E744A1 /* CFNetwork.framework */; };
+		967F0C741E1F118200E744A1 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C731E1F118200E744A1 /* CoreFoundation.framework */; };
+		967F0C761E1F118E00E744A1 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C751E1F118E00E744A1 /* CoreTelephony.framework */; };
+		967F0C781E1F119A00E744A1 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C771E1F119A00E744A1 /* SystemConfiguration.framework */; };
+		967F0C7A1E1F11A500E744A1 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C791E1F11A500E744A1 /* CoreGraphics.framework */; };
+		967F0C7C1E1F11B000E744A1 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C7B1E1F11B000E744A1 /* Foundation.framework */; };
+		967F0C7E1E1F11B900E744A1 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C7D1E1F11B900E744A1 /* UIKit.framework */; };
+		967F0C801E1F11C400E744A1 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C7F1E1F11C400E744A1 /* Security.framework */; };
+		967F0C821E1F11CF00E744A1 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C811E1F11CF00E744A1 /* libz.tbd */; };
+		967F0C841E1F11DA00E744A1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C831E1F11DA00E744A1 /* AdSupport.framework */; };
+		967F0C861E1F11E600E744A1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C851E1F11E600E744A1 /* UserNotifications.framework */; };
+		967F0C881E1F11F400E744A1 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C871E1F11F400E744A1 /* libresolv.tbd */; };
 		96A2CDE11E1B08700011AE02 /* invited_3_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -60,6 +74,21 @@
 		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
 		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
 		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
+		967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
+		967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.0.a"; sourceTree = "<group>"; };
+		967F0C6D1E1F076400E744A1 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		967F0C711E1F116D00E744A1 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		967F0C731E1F118200E744A1 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		967F0C751E1F118E00E744A1 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		967F0C771E1F119A00E744A1 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		967F0C791E1F11A500E744A1 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		967F0C7B1E1F11B000E744A1 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		967F0C7D1E1F11B900E744A1 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		967F0C7F1E1F11C400E744A1 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		967F0C811E1F11CF00E744A1 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		967F0C831E1F11DA00E744A1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		967F0C851E1F11E600E744A1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		967F0C871E1F11F400E744A1 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
 		96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invited_3_02@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -68,6 +97,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				967F0C881E1F11F400E744A1 /* libresolv.tbd in Frameworks */,
+				967F0C861E1F11E600E744A1 /* UserNotifications.framework in Frameworks */,
+				967F0C841E1F11DA00E744A1 /* AdSupport.framework in Frameworks */,
+				967F0C821E1F11CF00E744A1 /* libz.tbd in Frameworks */,
+				967F0C801E1F11C400E744A1 /* Security.framework in Frameworks */,
+				967F0C7E1E1F11B900E744A1 /* UIKit.framework in Frameworks */,
+				967F0C7C1E1F11B000E744A1 /* Foundation.framework in Frameworks */,
+				967F0C7A1E1F11A500E744A1 /* CoreGraphics.framework in Frameworks */,
+				967F0C781E1F119A00E744A1 /* SystemConfiguration.framework in Frameworks */,
+				967F0C761E1F118E00E744A1 /* CoreTelephony.framework in Frameworks */,
+				967F0C741E1F118200E744A1 /* CoreFoundation.framework in Frameworks */,
+				967F0C721E1F116D00E744A1 /* CFNetwork.framework in Frameworks */,
+				967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */,
+				967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +130,7 @@
 				9627CEED1E19FA9800F4AC7E /* Daily_modules */,
 				9627CF071E19FA9800F4AC7E /* Daily_modulesTests */,
 				9627CEEC1E19FA9800F4AC7E /* Products */,
+				967F0C701E1F116D00E744A1 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -157,6 +201,7 @@
 				9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */,
 				9627CF331E1A361800F4AC7E /* JANoticeServiceJPush.h */,
 				9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */,
+				967F0C6A1E1F076400E744A1 /* JPush */,
 			);
 			path = NoticeService;
 			sourceTree = "<group>";
@@ -168,6 +213,35 @@
 				9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */,
 			);
 			name = Demo;
+			sourceTree = "<group>";
+		};
+		967F0C6A1E1F076400E744A1 /* JPush */ = {
+			isa = PBXGroup;
+			children = (
+				967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */,
+				967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */,
+				967F0C6D1E1F076400E744A1 /* JPUSHService.h */,
+			);
+			path = JPush;
+			sourceTree = "<group>";
+		};
+		967F0C701E1F116D00E744A1 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				967F0C871E1F11F400E744A1 /* libresolv.tbd */,
+				967F0C851E1F11E600E744A1 /* UserNotifications.framework */,
+				967F0C831E1F11DA00E744A1 /* AdSupport.framework */,
+				967F0C811E1F11CF00E744A1 /* libz.tbd */,
+				967F0C7F1E1F11C400E744A1 /* Security.framework */,
+				967F0C7D1E1F11B900E744A1 /* UIKit.framework */,
+				967F0C7B1E1F11B000E744A1 /* Foundation.framework */,
+				967F0C791E1F11A500E744A1 /* CoreGraphics.framework */,
+				967F0C771E1F119A00E744A1 /* SystemConfiguration.framework */,
+				967F0C751E1F118E00E744A1 /* CoreTelephony.framework */,
+				967F0C731E1F118200E744A1 /* CoreFoundation.framework */,
+				967F0C711E1F116D00E744A1 /* CFNetwork.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -430,6 +504,10 @@
 				INFOPLIST_FILE = Daily_modules/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Daily_modules/Classes/NoticeService/JPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.coder.flow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
@@ -444,6 +522,10 @@
 				INFOPLIST_FILE = Daily_modules/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Daily_modules/Classes/NoticeService/JPush",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.coder.flow;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};

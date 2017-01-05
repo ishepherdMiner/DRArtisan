@@ -35,18 +35,19 @@
         
         UNTimeIntervalNotificationTrigger *trigger = [UNTimeIntervalNotificationTrigger triggerWithTimeInterval:5 repeats:NO];;
         
-        [service postNoticeWithTitle:@"嘿" body:@"小妞" attachments:@[attach] trigger:trigger requestId:@"go" recvHandler:^{
-
+        [service postNoticeWithTitle:@"嘿" body:@"小妞" attachments:@[attach] trigger:trigger requestId:@"go" presentHandler:^(UNNotification *noticaiton) {
+            
             NSLog(@"展现通知");
             
-        } selectedHandler:^{
+        } receiverHandler:^(UNNotificationResponse *reponse) {
             
             NSLog(@"点击通知");
             
         } withCompletionHandler:^(NSError *error) {
             
-            NSLog(@"%@",error);
-            
+            if(error) {
+                NSLog(@"%@",error);
+            }
         }];
         
     }else if ([[UIDevice currentDevice].systemVersion doubleValue] < 10.0) {

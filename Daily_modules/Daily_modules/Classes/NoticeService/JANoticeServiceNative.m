@@ -14,8 +14,8 @@
 
 @interface JANoticeServiceNative () <UNUserNotificationCenterDelegate>
 
-@property (nonatomic,copy) void (^recvHandler)();
-@property (nonatomic,copy) void (^selectedHandler)();
+@property (nonatomic,copy) void (^presentHandler)(UNNotification *notification);
+@property (nonatomic,copy) void (^receiveHandler)(UNNotificationResponse *response);
 @property (nonatomic,strong) UILocalNotification *noti;
 @property (nonatomic) UNAuthorizationOptions options;
 @property (nonatomic) BOOL canSound;
@@ -115,12 +115,12 @@
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(UNNotificationPresentationOptions))completionHandler {
     UNNotificationPresentationOptions preOptions = [JANoticeServiceNative reverseOptions:self.options];
     completionHandler(preOptions);
-    self.recvHandler();
+    self.presentHandler(notification);
 }
 
 - (void)userNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     completionHandler();
-    self.selectedHandler();
+    self.receiveHandler(response);
 }
 
 - (UILocalNotification *)noticeServiceWithTitle:(NSString *)title
@@ -207,9 +207,9 @@
     [center addNotificationRequest:request withCompletionHandler:handler];
 }
 
-- (void)launchWithRecv:(void (^)())recvHandler selected:(void (^)())selectedHandler {
-    self.recvHandler = recvHandler;
-    self.selectedHandler = selectedHandler;
+- (void)launchWithPresented:(void (^)(UNNotification *notification))presentHandler received:(void (^)(UNNotificationResponse *response))receivedHandler {
+    self.presentHandler = presentHandler;
+    self.receiveHandler = receivedHandler;
 }
 
 - (void)launchWithLocalNoti:(UILocalNotification *)noti {
