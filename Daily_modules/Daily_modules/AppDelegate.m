@@ -20,6 +20,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
     JANoticeServiceNative *native = [[JANoticeServiceNative alloc] init];
+    JANoticeServiceJPush *jpush = [[JANoticeServiceJPush alloc] init];
     
     // 默认选择注册sound,badge,alert
     [JANoticeService registerNoticeServiceWithDelegate:native];

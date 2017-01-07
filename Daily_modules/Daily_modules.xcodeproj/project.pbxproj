@@ -187,6 +187,7 @@
 			isa = PBXGroup;
 			children = (
 				9627CF161E19FC0A00F4AC7E /* NoticeService */,
+				96CCDA921E1FD1E00032C78A /* LaunchDynamic */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -242,6 +243,13 @@
 				967F0C711E1F116D00E744A1 /* CFNetwork.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		96CCDA921E1FD1E00032C78A /* LaunchDynamic */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = LaunchDynamic;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
