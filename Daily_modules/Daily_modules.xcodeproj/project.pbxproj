@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 960ECEAD1E22FD48001E11B9 /* JAUtils.m */; };
 		9627CEF01E19FA9800F4AC7E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CEEF1E19FA9800F4AC7E /* main.m */; };
 		9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CEF21E19FA9800F4AC7E /* AppDelegate.m */; };
 		9627CEF61E19FA9800F4AC7E /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CEF51E19FA9800F4AC7E /* ViewController.m */; };
@@ -48,6 +49,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		960ECEAC1E22FD48001E11B9 /* JAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAUtils.h; sourceTree = "<group>"; };
+		960ECEAD1E22FD48001E11B9 /* JAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAUtils.m; sourceTree = "<group>"; };
 		9627CEEB1E19FA9800F4AC7E /* Daily_modules.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Daily_modules.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9627CEEF1E19FA9800F4AC7E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		9627CEF11E19FA9800F4AC7E /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -124,6 +127,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		960ECEAA1E22FC96001E11B9 /* Category */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		960ECEAB1E22FD29001E11B9 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				960ECEAC1E22FD48001E11B9 /* JAUtils.h */,
+				960ECEAD1E22FD48001E11B9 /* JAUtils.m */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
 		9627CEE21E19FA9800F4AC7E = {
 			isa = PBXGroup;
 			children = (
@@ -188,6 +207,8 @@
 			children = (
 				9627CF161E19FC0A00F4AC7E /* NoticeService */,
 				96CCDA921E1FD1E00032C78A /* LaunchDynamic */,
+				960ECEAA1E22FC96001E11B9 /* Category */,
+				960ECEAB1E22FD29001E11B9 /* Utils */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -368,6 +389,7 @@
 			files = (
 				9627CF2F1E1A10DC00F4AC7E /* JANoticeService.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
+				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
 				9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */,
 				9627CEF61E19FA9800F4AC7E /* ViewController.m in Sources */,
 				9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */,
