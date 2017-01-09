@@ -35,6 +35,11 @@
 		967F0C841E1F11DA00E744A1 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C831E1F11DA00E744A1 /* AdSupport.framework */; };
 		967F0C861E1F11E600E744A1 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C851E1F11E600E744A1 /* UserNotifications.framework */; };
 		967F0C881E1F11F400E744A1 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C871E1F11F400E744A1 /* libresolv.tbd */; };
+		969A574D1E2390AD00DBA8C0 /* NSObject+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A574C1E2390AD00DBA8C0 /* NSObject+JACoder.m */; };
+		969A57501E23937600DBA8C0 /* UIView+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A574F1E23937600DBA8C0 /* UIView+JACoder.m */; };
+		969A57531E23942E00DBA8C0 /* NSString+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A57521E23942E00DBA8C0 /* NSString+JACoder.m */; };
+		969A57561E2397C000DBA8C0 /* NSArray+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A57551E2397C000DBA8C0 /* NSArray+JACoder.m */; };
+		969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A57581E2398FC00DBA8C0 /* NSDictionary+JACoder.m */; };
 		96A2CDE11E1B08700011AE02 /* invited_3_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */; };
 /* End PBXBuildFile section */
 
@@ -92,6 +97,16 @@
 		967F0C831E1F11DA00E744A1 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		967F0C851E1F11E600E744A1 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
 		967F0C871E1F11F400E744A1 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		969A574B1E2390AD00DBA8C0 /* NSObject+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+JACoder.h"; sourceTree = "<group>"; };
+		969A574C1E2390AD00DBA8C0 /* NSObject+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+JACoder.m"; sourceTree = "<group>"; };
+		969A574E1E23937600DBA8C0 /* UIView+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JACoder.h"; sourceTree = "<group>"; };
+		969A574F1E23937600DBA8C0 /* UIView+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JACoder.m"; sourceTree = "<group>"; };
+		969A57511E23942E00DBA8C0 /* NSString+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+JACoder.h"; sourceTree = "<group>"; };
+		969A57521E23942E00DBA8C0 /* NSString+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+JACoder.m"; sourceTree = "<group>"; };
+		969A57541E2397C000DBA8C0 /* NSArray+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+JACoder.h"; sourceTree = "<group>"; };
+		969A57551E2397C000DBA8C0 /* NSArray+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+JACoder.m"; sourceTree = "<group>"; };
+		969A57571E2398FC00DBA8C0 /* NSDictionary+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JACoder.h"; sourceTree = "<group>"; };
+		969A57581E2398FC00DBA8C0 /* NSDictionary+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JACoder.m"; sourceTree = "<group>"; };
 		96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invited_3_02@2x.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -130,6 +145,16 @@
 		960ECEAA1E22FC96001E11B9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				969A574B1E2390AD00DBA8C0 /* NSObject+JACoder.h */,
+				969A574C1E2390AD00DBA8C0 /* NSObject+JACoder.m */,
+				969A574E1E23937600DBA8C0 /* UIView+JACoder.h */,
+				969A574F1E23937600DBA8C0 /* UIView+JACoder.m */,
+				969A57511E23942E00DBA8C0 /* NSString+JACoder.h */,
+				969A57521E23942E00DBA8C0 /* NSString+JACoder.m */,
+				969A57541E2397C000DBA8C0 /* NSArray+JACoder.h */,
+				969A57551E2397C000DBA8C0 /* NSArray+JACoder.m */,
+				969A57571E2398FC00DBA8C0 /* NSDictionary+JACoder.h */,
+				969A57581E2398FC00DBA8C0 /* NSDictionary+JACoder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -391,9 +416,14 @@
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
 				9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */,
+				969A57531E23942E00DBA8C0 /* NSString+JACoder.m in Sources */,
+				969A574D1E2390AD00DBA8C0 /* NSObject+JACoder.m in Sources */,
+				969A57561E2397C000DBA8C0 /* NSArray+JACoder.m in Sources */,
 				9627CEF61E19FA9800F4AC7E /* ViewController.m in Sources */,
 				9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */,
+				969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */,
 				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,
+				969A57501E23937600DBA8C0 /* UIView+JACoder.m in Sources */,
 				9627CEF01E19FA9800F4AC7E /* main.m in Sources */,
 				9627CF281E19FCC700F4AC7E /* ComConfig.m in Sources */,
 			);
