@@ -21,6 +21,7 @@
 		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
 		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
+		965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D617D1E278BA50022597D /* UIImage+JACoder.m */; };
 		967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */; };
 		967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */; };
 		967F0C721E1F116D00E744A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C711E1F116D00E744A1 /* CFNetwork.framework */; };
@@ -82,6 +83,8 @@
 		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
 		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
 		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
+		965D617C1E278BA50022597D /* UIImage+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JACoder.h"; sourceTree = "<group>"; };
+		965D617D1E278BA50022597D /* UIImage+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JACoder.m"; sourceTree = "<group>"; };
 		967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
 		967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.0.a"; sourceTree = "<group>"; };
 		967F0C6D1E1F076400E744A1 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
@@ -155,6 +158,8 @@
 				969A57551E2397C000DBA8C0 /* NSArray+JACoder.m */,
 				969A57571E2398FC00DBA8C0 /* NSDictionary+JACoder.h */,
 				969A57581E2398FC00DBA8C0 /* NSDictionary+JACoder.m */,
+				965D617C1E278BA50022597D /* UIImage+JACoder.h */,
+				965D617D1E278BA50022597D /* UIImage+JACoder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -414,6 +419,7 @@
 			files = (
 				9627CF2F1E1A10DC00F4AC7E /* JANoticeService.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
+				965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
 				9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */,
 				969A57531E23942E00DBA8C0 /* NSString+JACoder.m in Sources */,
