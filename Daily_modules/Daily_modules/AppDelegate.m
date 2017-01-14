@@ -24,7 +24,7 @@
     JANoticeServiceJPush *jpush = [[JANoticeServiceJPush alloc] init];
     UIImage *image = [UIImage imageNamed:@"invited_3_02"];
     UIImage *img2 = [image imageWithCorner:image.size.width * 0.5];
-    [img2 imageType];
+    
     // 默认选择注册sound,badge,alert
     [JANoticeService registerNoticeServiceWithDelegate:native];
     
