@@ -37,21 +37,6 @@
     return newImage;
 }
 
-//+ (NSString *)imageTypeWithPath:(NSString *)path {
-//    NSString *type = nil;
-//    NSData *imgData = [NSData dataWithContentsOfURL:[NSURL URLWithString:path]];
-//    uint8_t c;
-//    [imgData getBytes:&c length:1];
-//    
-//    switch (c) {
-//        case 0xFF:
-//            type = @"image/jpeg";
-//        case 0x89:
-//            type = @"image/png";
-//    }
-//    return nil;
-//}
-
 + (instancetype)imageWithUIColor:(UIColor *)color size:(CGSize)size{
     return [self imageWithCGColor:color.CGColor size:size];
 }

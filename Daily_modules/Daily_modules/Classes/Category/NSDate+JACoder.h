@@ -12,7 +12,7 @@
 /**
  *  字符串转NSDate
  *
- *  @param theTime 字符串时间
+ *  @param timeStr 字符串时间
  *  @param format  转化格式 如yyyy-MM-dd HH:mm:ss,即2015-07-15 15:00:00
  *
  *  @return 日期格式
@@ -68,5 +68,5 @@
  *  @return NSDateComponents
  */
 + (NSDateComponents *)currentComponents;
-@end
+
 @end

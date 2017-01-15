@@ -38,5 +38,4 @@
  */
 - (UIImage *)cropImageWithSize:(CGSize)size;
 
-- (NSString *)imageType;
 @end
