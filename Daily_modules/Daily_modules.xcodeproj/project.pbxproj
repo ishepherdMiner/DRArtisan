@@ -23,6 +23,8 @@
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
 		965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D617D1E278BA50022597D /* UIImage+JACoder.m */; };
 		965FDA721E284ADD004C0F8D /* NSDate+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965FDA711E284ADD004C0F8D /* NSDate+JACoder.m */; };
+		9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9661B0DF1E2B98F2009AD0C9 /* JATimerCenter.m */; };
+		9661B0E31E2B98F2009AD0C9 /* JATimerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9661B0E11E2B98F2009AD0C9 /* JATimerProvider.m */; };
 		9665CFD81E2A6EC5005759EA /* UIDevice+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */; };
 		967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */; };
 		967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */; };
@@ -89,6 +91,10 @@
 		965D617D1E278BA50022597D /* UIImage+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JACoder.m"; sourceTree = "<group>"; };
 		965FDA701E284ADD004C0F8D /* NSDate+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JACoder.h"; sourceTree = "<group>"; };
 		965FDA711E284ADD004C0F8D /* NSDate+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+JACoder.m"; sourceTree = "<group>"; };
+		9661B0DE1E2B98F2009AD0C9 /* JATimerCenter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JATimerCenter.h; sourceTree = "<group>"; };
+		9661B0DF1E2B98F2009AD0C9 /* JATimerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATimerCenter.m; sourceTree = "<group>"; };
+		9661B0E01E2B98F2009AD0C9 /* JATimerProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JATimerProvider.h; sourceTree = "<group>"; };
+		9661B0E11E2B98F2009AD0C9 /* JATimerProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATimerProvider.m; sourceTree = "<group>"; };
 		9665CFD61E2A6EC5005759EA /* UIDevice+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JACoder.h"; sourceTree = "<group>"; };
 		9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JACoder.m"; sourceTree = "<group>"; };
 		967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
@@ -177,6 +183,10 @@
 		960ECEAB1E22FD29001E11B9 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				9661B0DE1E2B98F2009AD0C9 /* JATimerCenter.h */,
+				9661B0DF1E2B98F2009AD0C9 /* JATimerCenter.m */,
+				9661B0E01E2B98F2009AD0C9 /* JATimerProvider.h */,
+				9661B0E11E2B98F2009AD0C9 /* JATimerProvider.m */,
 				960ECEAC1E22FD48001E11B9 /* JAUtils.h */,
 				960ECEAD1E22FD48001E11B9 /* JAUtils.m */,
 			);
@@ -437,6 +447,7 @@
 				969A57561E2397C000DBA8C0 /* NSArray+JACoder.m in Sources */,
 				9627CEF61E19FA9800F4AC7E /* ViewController.m in Sources */,
 				9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */,
+				9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */,
 				969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */,
 				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,
 				969A57501E23937600DBA8C0 /* UIView+JACoder.m in Sources */,
@@ -444,6 +455,7 @@
 				965FDA721E284ADD004C0F8D /* NSDate+JACoder.m in Sources */,
 				9627CEF01E19FA9800F4AC7E /* main.m in Sources */,
 				9627CF281E19FCC700F4AC7E /* ComConfig.m in Sources */,
+				9661B0E31E2B98F2009AD0C9 /* JATimerProvider.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

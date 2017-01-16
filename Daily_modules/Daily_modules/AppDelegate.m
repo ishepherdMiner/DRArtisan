@@ -11,6 +11,7 @@
 #import "UIImage+JACoder.h"
 #import <CoreMotion/CoreMotion.h>
 #import "UIDevice+JACoder.h"
+#import "NSDate+JACoder.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) JANoticeService *service;
@@ -26,7 +27,9 @@
     JANoticeServiceJPush *jpush = [[JANoticeServiceJPush alloc] init];
     UIImage *image = [UIImage imageNamed:@"invited_3_02"];
     UIImage *img2 = [image imageWithCorner:image.size.width * 0.5];
-    
+    if ([NSDate isDiffDay]) {
+        NSLog(@"test");
+    }
     // 默认选择注册sound,badge,alert
     [JANoticeService registerNoticeServiceWithDelegate:native];
     

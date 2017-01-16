@@ -69,4 +69,12 @@
  */
 + (NSDateComponents *)currentComponents;
 
+
+/**
+ 判断是否同一天(依赖本地时间)
+
+ @return 是否是同一个天
+ */
++ (BOOL)isDiffDay;
+
 @end

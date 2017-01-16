@@ -64,4 +64,30 @@ static NSDateFormatter *dateFormatter;
     return [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
 }
 
++ (BOOL)isDiffDay {
+    NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
+    NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
+    [formater setTimeZone:timeZone];
+    
+    // 获取当前日期
+    NSDate *curDate = [NSDate date];
+    [formater setDateFormat:@"yyyy-MM-dd"];
+    NSString * curTime = [formater stringFromDate:curDate];
+    
+    NSString *bid = [[NSBundle mainBundle].infoDictionary objectForKey:@"CFBundleIdentifier"];
+    NSString *currentDate = [[[NSUserDefaults alloc] initWithSuiteName:bid] objectForKey:@"currentDate"];
+    
+    // 首次
+    if (currentDate == nil) {
+        [[[NSUserDefaults alloc] initWithSuiteName:bid] setObject:curTime forKey:@"currentDate"];
+    }
+    
+    // 是否是同一天
+    if ([curTime isEqualToString:currentDate]) {
+        return false;
+    }
+    
+    return true;
+}
+
 @end
