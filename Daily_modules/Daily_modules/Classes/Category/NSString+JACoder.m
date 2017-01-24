@@ -118,6 +118,21 @@
     
 }
 
+- (NSAttributedString *)matchWithRegex:(NSString *)regex
+                                 attrs:(NSDictionary *)attrs{
+    NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:self];
+    // NSString *regex = @"[0-9.]";
+    NSPredicate *pred = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+    for (int i = 0; i < self.length; ++i) {
+        NSString *tmp = [self substringWithRange:NSMakeRange(i, 1)];
+        if ([pred evaluateWithObject:tmp]) {
+            // [hogan addAttribute:NSForegroundColorAttributeName value:[UIColor redColor] range:NSMakeRange(i, 1)];
+            [hogan addAttributes:attrs range:NSMakeRange(i, 1)];
+        }
+    }
+    return hogan;
+}
+
 - (NSString *)base64encode {
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data base64EncodedStringWithOptions:0];

@@ -94,6 +94,17 @@
                 withinWidth:(CGFloat)width
                     options:(NSStringDrawingOptions)options __IOS_AVAILABLE(7.0);
 
+
+/**
+ 设置字符串属性
+
+ @param regex 正则表达式
+ @param attrs 要设置的属性
+ @return 根据正则处理后的NSAttributeString对象
+ */
+- (NSAttributedString *)matchWithRegex:(NSString *)regex
+                                 attrs:(NSDictionary *)attrs;
+
 /**
  *  返回base64编码的字符串内容
  */
