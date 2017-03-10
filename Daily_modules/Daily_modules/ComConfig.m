@@ -16,7 +16,11 @@
                       @{
                           @"name":@"推送",
                           @"ctrl":@"NoticeServiceController",
-                        },                      
+                        },
+                      @{
+                          @"name":@"摇一摇",
+                          @"ctrl":@"ShakeController"
+                          }
                       ];
     }
     return _dataList;

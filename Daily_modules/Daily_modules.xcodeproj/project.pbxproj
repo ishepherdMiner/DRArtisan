@@ -25,6 +25,7 @@
 		965FDA721E284ADD004C0F8D /* NSDate+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965FDA711E284ADD004C0F8D /* NSDate+JACoder.m */; };
 		9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9661B0DF1E2B98F2009AD0C9 /* JATimerCenter.m */; };
 		9661B0E31E2B98F2009AD0C9 /* JATimerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9661B0E11E2B98F2009AD0C9 /* JATimerProvider.m */; };
+		96620BFA1E7235620019F616 /* ShakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96620BF91E7235620019F616 /* ShakeController.m */; };
 		9665CFD81E2A6EC5005759EA /* UIDevice+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */; };
 		967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */; };
 		967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */; };
@@ -95,6 +96,8 @@
 		9661B0DF1E2B98F2009AD0C9 /* JATimerCenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATimerCenter.m; sourceTree = "<group>"; };
 		9661B0E01E2B98F2009AD0C9 /* JATimerProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JATimerProvider.h; sourceTree = "<group>"; };
 		9661B0E11E2B98F2009AD0C9 /* JATimerProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATimerProvider.m; sourceTree = "<group>"; };
+		96620BF81E7235620019F616 /* ShakeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ShakeController.h; sourceTree = "<group>"; };
+		96620BF91E7235620019F616 /* ShakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShakeController.m; sourceTree = "<group>"; };
 		9665CFD61E2A6EC5005759EA /* UIDevice+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JACoder.h"; sourceTree = "<group>"; };
 		9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JACoder.m"; sourceTree = "<group>"; };
 		967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
@@ -256,6 +259,7 @@
 			isa = PBXGroup;
 			children = (
 				9627CF161E19FC0A00F4AC7E /* NoticeService */,
+				96620BF71E72351B0019F616 /* Shake */,
 				960ECEAA1E22FC96001E11B9 /* Category */,
 				960ECEAB1E22FD29001E11B9 /* Utils */,
 			);
@@ -284,6 +288,15 @@
 				9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */,
 			);
 			name = Demo;
+			sourceTree = "<group>";
+		};
+		96620BF71E72351B0019F616 /* Shake */ = {
+			isa = PBXGroup;
+			children = (
+				96620BF81E7235620019F616 /* ShakeController.h */,
+				96620BF91E7235620019F616 /* ShakeController.m */,
+			);
+			path = Shake;
 			sourceTree = "<group>";
 		};
 		967F0C6A1E1F076400E744A1 /* JPush */ = {
@@ -433,6 +446,7 @@
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
 				965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
+				96620BFA1E7235620019F616 /* ShakeController.m in Sources */,
 				9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */,
 				969A57531E23942E00DBA8C0 /* NSString+JACoder.m in Sources */,
 				969A574D1E2390AD00DBA8C0 /* NSObject+JACoder.m in Sources */,
