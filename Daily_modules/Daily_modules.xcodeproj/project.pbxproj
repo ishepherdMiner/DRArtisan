@@ -27,6 +27,8 @@
 		9661B0E31E2B98F2009AD0C9 /* JATimerProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 9661B0E11E2B98F2009AD0C9 /* JATimerProvider.m */; };
 		96620BFA1E7235620019F616 /* ShakeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96620BF91E7235620019F616 /* ShakeController.m */; };
 		9665CFD81E2A6EC5005759EA /* UIDevice+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */; };
+		966A4AFC1E821C8400B096D5 /* PeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A4AFB1E821C8400B096D5 /* PeekViewController.m */; };
+		966A4AFF1E821D1200B096D5 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A4AFE1E821D1200B096D5 /* PreviewViewController.m */; };
 		967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */; };
 		967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */; };
 		967F0C721E1F116D00E744A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C711E1F116D00E744A1 /* CFNetwork.framework */; };
@@ -100,6 +102,10 @@
 		96620BF91E7235620019F616 /* ShakeController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ShakeController.m; sourceTree = "<group>"; };
 		9665CFD61E2A6EC5005759EA /* UIDevice+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIDevice+JACoder.h"; sourceTree = "<group>"; };
 		9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIDevice+JACoder.m"; sourceTree = "<group>"; };
+		966A4AFA1E821C8400B096D5 /* PeekViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PeekViewController.h; sourceTree = "<group>"; };
+		966A4AFB1E821C8400B096D5 /* PeekViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PeekViewController.m; sourceTree = "<group>"; };
+		966A4AFD1E821D1200B096D5 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
+		966A4AFE1E821D1200B096D5 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
 		967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.0.a"; sourceTree = "<group>"; };
 		967F0C6D1E1F076400E744A1 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 			children = (
 				9627CF161E19FC0A00F4AC7E /* NoticeService */,
 				96620BF71E72351B0019F616 /* Shake */,
+				966A4AF91E821C5A00B096D5 /* Peek */,
 				960ECEAA1E22FC96001E11B9 /* Category */,
 				960ECEAB1E22FD29001E11B9 /* Utils */,
 			);
@@ -297,6 +304,17 @@
 				96620BF91E7235620019F616 /* ShakeController.m */,
 			);
 			path = Shake;
+			sourceTree = "<group>";
+		};
+		966A4AF91E821C5A00B096D5 /* Peek */ = {
+			isa = PBXGroup;
+			children = (
+				966A4AFA1E821C8400B096D5 /* PeekViewController.h */,
+				966A4AFB1E821C8400B096D5 /* PeekViewController.m */,
+				966A4AFD1E821D1200B096D5 /* PreviewViewController.h */,
+				966A4AFE1E821D1200B096D5 /* PreviewViewController.m */,
+			);
+			path = Peek;
 			sourceTree = "<group>";
 		};
 		967F0C6A1E1F076400E744A1 /* JPush */ = {
@@ -457,7 +475,9 @@
 				969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */,
 				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,
 				969A57501E23937600DBA8C0 /* UIView+JACoder.m in Sources */,
+				966A4AFF1E821D1200B096D5 /* PreviewViewController.m in Sources */,
 				9665CFD81E2A6EC5005759EA /* UIDevice+JACoder.m in Sources */,
+				966A4AFC1E821C8400B096D5 /* PeekViewController.m in Sources */,
 				965FDA721E284ADD004C0F8D /* NSDate+JACoder.m in Sources */,
 				9627CEF01E19FA9800F4AC7E /* main.m in Sources */,
 				9627CF281E19FCC700F4AC7E /* ComConfig.m in Sources */,

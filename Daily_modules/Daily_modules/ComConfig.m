@@ -20,6 +20,10 @@
                       @{
                           @"name":@"摇一摇",
                           @"ctrl":@"ShakeController"
+                          },
+                      @{
+                          @"name":@"3D-Touch Peek",
+                          @"ctrl":@"PeekViewController"
                           }
                       ];
     }
