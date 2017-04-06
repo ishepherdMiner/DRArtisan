@@ -10,7 +10,7 @@
 
 @implementation UIImage (JACoder)
 
-- (UIImage *)cropImageWithSize:(CGSize)size {
+- (UIImage *)ja_cropImageWithSize:(CGSize)size {
     CGFloat WH = MIN(size.width, size.height);
     CGRect rect = CGRectMake(0, 0, WH, WH);
     UIGraphicsBeginImageContextWithOptions(size, false, 0);
@@ -20,7 +20,7 @@
     return newImage;
 }
 
-- (UIImage *)imageWithCorner:(CGFloat)corner{
+- (UIImage *)ja_imageWithCorner:(CGFloat)corner{
     CGFloat WH = MIN(self.size.width, self.size.height);
     CGRect rect = CGRectMake(0, 0, WH, WH);
     UIGraphicsBeginImageContextWithOptions(self.size, false, 0);
@@ -37,10 +37,10 @@
     return newImage;
 }
 
-+ (instancetype)imageWithUIColor:(UIColor *)color size:(CGSize)size{
-    return [self imageWithCGColor:color.CGColor size:size];
++ (instancetype)ja_imageWithUIColor:(UIColor *)color size:(CGSize)size{
+    return [self ja_imageWithCGColor:color.CGColor size:size];
 }
-+ (instancetype)imageWithCGColor:(CGColorRef)colorref size:(CGSize)size{
++ (instancetype)ja_imageWithCGColor:(CGColorRef)colorref size:(CGSize)size{
     CGRect rect = CGRectMake(0, 0, size.width, size.height);
     UIGraphicsBeginImageContext(rect.size);
     CGContextRef context = UIGraphicsGetCurrentContext();

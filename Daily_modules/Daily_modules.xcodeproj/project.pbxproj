@@ -21,6 +21,8 @@
 		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
 		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
+		96409D0C1E96388C003775B2 /* NSNumber+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */; };
+		96409D0F1E963CDD003775B2 /* NSURL+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */; };
 		965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D617D1E278BA50022597D /* UIImage+JACoder.m */; };
 		965FDA721E284ADD004C0F8D /* NSDate+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965FDA711E284ADD004C0F8D /* NSDate+JACoder.m */; };
 		9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 9661B0DF1E2B98F2009AD0C9 /* JATimerCenter.m */; };
@@ -90,6 +92,11 @@
 		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
 		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
 		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
+		96409D0A1E96388C003775B2 /* NSNumber+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+JACoder.h"; sourceTree = "<group>"; };
+		96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+JACoder.m"; sourceTree = "<group>"; };
+		96409D0D1E963CDD003775B2 /* NSURL+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+JACoder.h"; sourceTree = "<group>"; };
+		96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+JACoder.m"; sourceTree = "<group>"; };
+		96409D101E9640D6003775B2 /* JACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JACategory.h; sourceTree = "<group>"; };
 		965D617C1E278BA50022597D /* UIImage+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JACoder.h"; sourceTree = "<group>"; };
 		965D617D1E278BA50022597D /* UIImage+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JACoder.m"; sourceTree = "<group>"; };
 		965FDA701E284ADD004C0F8D /* NSDate+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JACoder.h"; sourceTree = "<group>"; };
@@ -169,6 +176,7 @@
 		960ECEAA1E22FC96001E11B9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
+				96409D101E9640D6003775B2 /* JACategory.h */,
 				969A574B1E2390AD00DBA8C0 /* NSObject+JACoder.h */,
 				969A574C1E2390AD00DBA8C0 /* NSObject+JACoder.m */,
 				969A574E1E23937600DBA8C0 /* UIView+JACoder.h */,
@@ -185,6 +193,10 @@
 				965FDA711E284ADD004C0F8D /* NSDate+JACoder.m */,
 				9665CFD61E2A6EC5005759EA /* UIDevice+JACoder.h */,
 				9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */,
+				96409D0A1E96388C003775B2 /* NSNumber+JACoder.h */,
+				96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */,
+				96409D0D1E963CDD003775B2 /* NSURL+JACoder.h */,
+				96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -461,6 +473,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9627CF2F1E1A10DC00F4AC7E /* JANoticeService.m in Sources */,
+				96409D0F1E963CDD003775B2 /* NSURL+JACoder.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
 				965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
@@ -471,6 +484,7 @@
 				969A57561E2397C000DBA8C0 /* NSArray+JACoder.m in Sources */,
 				9627CEF61E19FA9800F4AC7E /* ViewController.m in Sources */,
 				9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */,
+				96409D0C1E96388C003775B2 /* NSNumber+JACoder.m in Sources */,
 				9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */,
 				969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */,
 				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,

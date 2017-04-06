@@ -11,7 +11,7 @@
 
 @implementation NSString (JACoder)
 
-- (const char *)cString{
+- (const char *)ja_cString{
     const char *resultCString = NULL;
     if ([self canBeConvertedToEncoding:NSUTF8StringEncoding]) {
         resultCString = [self cStringUsingEncoding:NSUTF8StringEncoding];
@@ -20,7 +20,7 @@
     return resultCString;
 }
 
-- (NSString *)ocString:(const char*)cString {
+- (NSString *)ja_ocString:(const char*)cString {
     return [NSString stringWithCString:cString encoding:NSUTF8StringEncoding];
 }
 
@@ -34,18 +34,18 @@
     return [strM copy];
 }
 
-- (NSString *)trim{
+- (NSString *)ja_trim{
     NSCharacterSet  *set = [NSCharacterSet whitespaceAndNewlineCharacterSet];
     return [self stringByTrimmingCharactersInSet:set];
 }
 
-- (instancetype)accuracyDigital:(NSUInteger)pos {
+- (instancetype)ja_accuracyDigital:(NSUInteger)pos {
     // 找到小数点位置
     NSRange pointRange = [self rangeOfString:@"."];
     return [self substringToIndex:(pointRange.location + 1 + pos)];
 }
 
-+ (NSString *)encodeToPercentEscapeString:(NSString *)input{
++ (NSString *)ja_encodeToPercentEscapeString:(NSString *)input{
     
     // Encode all the reserved characters, per RFC 3986
     
@@ -73,7 +73,7 @@
     return outputStr;
 }
 
-+ (NSString *)decodeToUrlString:(NSString *)input{
++ (NSString *)ja_decodeToUrlString:(NSString *)input{
     NSMutableString *outputStr = [NSMutableString stringWithString:input];
     [outputStr replaceOccurrencesOfString:@"+"
                                withString:@" "
@@ -87,7 +87,7 @@
 #endif
 }
 
-- (CGSize)singleLineWithFont:(UIFont *)font {
+- (CGSize)ja_singleLineWithFont:(UIFont *)font {
     
     CGRect textRect = [self boundingRectWithSize:CGSizeMake(MAXFLOAT, font.pointSize)
                                          options:NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading
@@ -97,15 +97,15 @@
     return textRect.size;
 }
 
-- (CGSize)multiLineWithFont:(UIFont *)font
+- (CGSize)ja_multiLineWithFont:(UIFont *)font
                 withinWidth:(CGFloat)width {
     
-    return [self multiLineWithFont:font
-                       withinWidth:width
-                           options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading];
+    return [self ja_multiLineWithFont:font
+                          withinWidth:width
+                              options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading];
 }
 
-- (CGSize)multiLineWithFont:(UIFont *)font
+- (CGSize)ja_multiLineWithFont:(UIFont *)font
                 withinWidth:(CGFloat)width
                     options:(NSStringDrawingOptions)options {
     
@@ -118,7 +118,7 @@
     
 }
 
-- (NSAttributedString *)matchWithRegex:(NSString *)regex
+- (NSAttributedString *)ja_matchWithRegex:(NSString *)regex
                                  attrs:(NSDictionary *)attrs{
     NSMutableAttributedString *hogan = [[NSMutableAttributedString alloc] initWithString:self];
     // NSString *regex = @"[0-9.]";
@@ -133,18 +133,18 @@
     return hogan;
 }
 
-- (NSString *)base64encode {
+- (NSString *)ja_base64encode {
     NSData *data = [self dataUsingEncoding:NSUTF8StringEncoding];
     return [data base64EncodedStringWithOptions:0];
 }
 
-- (NSString *)base64decode {
+- (NSString *)ja_base64decode {
     NSData *data = [[NSData alloc] initWithBase64EncodedString:self options:0];
     return [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 }
 
 #pragma mark - 散列函数
-- (NSString *)md5String {
+- (NSString *)ja_md5String {
     const char *str = self.UTF8String;
     uint8_t buffer[CC_MD5_DIGEST_LENGTH];
     
@@ -153,7 +153,7 @@
     return [self stringWithBytes:buffer length:CC_MD5_DIGEST_LENGTH];
 }
 
-- (NSString *)sha1String {
+- (NSString *)ja_sha1String {
     const char *str = self.UTF8String;
     uint8_t buffer[CC_SHA1_DIGEST_LENGTH];
     
@@ -162,7 +162,7 @@
     return [self stringWithBytes:buffer length:CC_SHA1_DIGEST_LENGTH];
 }
 
-- (NSString *)sha256String {
+- (NSString *)ja_sha256String {
     const char *str = self.UTF8String;
     uint8_t buffer[CC_SHA256_DIGEST_LENGTH];
     
@@ -171,7 +171,7 @@
     return [self stringWithBytes:buffer length:CC_SHA256_DIGEST_LENGTH];
 }
 
-- (NSString *)sha512String {
+- (NSString *)ja_sha512String {
     const char *str = self.UTF8String;
     uint8_t buffer[CC_SHA512_DIGEST_LENGTH];
     
@@ -181,7 +181,7 @@
 }
 
 #pragma mark - HMAC 散列函数
-- (NSString *)hmacMD5StringWithKey:(NSString *)key {
+- (NSString *)ja_hmacMD5StringWithKey:(NSString *)key {
     const char *keyData = key.UTF8String;
     const char *strData = self.UTF8String;
     uint8_t buffer[CC_MD5_DIGEST_LENGTH];
@@ -191,7 +191,7 @@
     return [self stringWithBytes:buffer length:CC_MD5_DIGEST_LENGTH];
 }
 
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key {
+- (NSString *)ja_hmacSHA1StringWithKey:(NSString *)key {
     const char *keyData = key.UTF8String;
     const char *strData = self.UTF8String;
     uint8_t buffer[CC_SHA1_DIGEST_LENGTH];
@@ -201,7 +201,7 @@
     return [self stringWithBytes:buffer length:CC_SHA1_DIGEST_LENGTH];
 }
 
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key {
+- (NSString *)ja_hmacSHA256StringWithKey:(NSString *)key {
     const char *keyData = key.UTF8String;
     const char *strData = self.UTF8String;
     uint8_t buffer[CC_SHA256_DIGEST_LENGTH];
@@ -211,7 +211,7 @@
     return [self stringWithBytes:buffer length:CC_SHA256_DIGEST_LENGTH];
 }
 
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key {
+- (NSString *)ja_hmacSHA512StringWithKey:(NSString *)key {
     const char *keyData = key.UTF8String;
     const char *strData = self.UTF8String;
     uint8_t buffer[CC_SHA512_DIGEST_LENGTH];
@@ -225,7 +225,7 @@
 
 #define FileHashDefaultChunkSizeForReadingData 4096
 
-- (NSString *)fileMD5Hash {
+- (NSString *)ja_fileMD5Hash {
     NSFileHandle *fp = [NSFileHandle fileHandleForReadingAtPath:self];
     if (fp == nil) {
         return nil;
@@ -253,7 +253,7 @@
     return [self stringWithBytes:buffer length:CC_MD5_DIGEST_LENGTH];
 }
 
-- (NSString *)fileSHA1Hash {
+- (NSString *)ja_fileSHA1Hash {
     NSFileHandle *fp = [NSFileHandle fileHandleForReadingAtPath:self];
     if (fp == nil) {
         return nil;
@@ -281,7 +281,7 @@
     return [self stringWithBytes:buffer length:CC_SHA1_DIGEST_LENGTH];
 }
 
-- (NSString *)fileSHA256Hash {
+- (NSString *)ja_fileSHA256Hash {
     NSFileHandle *fp = [NSFileHandle fileHandleForReadingAtPath:self];
     if (fp == nil) {
         return nil;
@@ -309,7 +309,7 @@
     return [self stringWithBytes:buffer length:CC_SHA256_DIGEST_LENGTH];
 }
 
-- (NSString *)fileSHA512Hash {
+- (NSString *)ja_fileSHA512Hash {
     NSFileHandle *fp = [NSFileHandle fileHandleForReadingAtPath:self];
     if (fp == nil) {
         return nil;

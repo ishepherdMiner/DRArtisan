@@ -26,8 +26,8 @@
     JANoticeServiceNative *native = [[JANoticeServiceNative alloc] init];
     JANoticeServiceJPush *jpush = [[JANoticeServiceJPush alloc] init];
     UIImage *image = [UIImage imageNamed:@"invited_3_02"];
-    UIImage *img2 = [image imageWithCorner:image.size.width * 0.5];
-    if ([NSDate isDiffDay]) {
+    UIImage *img2 = [image ja_imageWithCorner:image.size.width * 0.5];
+    if ([NSDate ja_isDiffDay]) {
         NSLog(@"test");
     }
     // 默认选择注册sound,badge,alert

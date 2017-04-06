@@ -17,8 +17,8 @@
  *
  *  @return 日期格式
  */
-+ (NSDate *)dateFromString:(NSString *)timeStr
-                    format:(NSString *)format;
++ (NSDate *)ja_dateFromString:(NSString *)timeStr
+                       format:(NSString *)format;
 
 /**
  *  NSDate转时间戳
@@ -27,7 +27,7 @@
  *
  *  @return 返回时间戳
  */
-+ (NSInteger)cTimestampFromDate:(NSDate *)date;
++ (NSInteger)ja_cTimestampFromDate:(NSDate *)date;
 
 /**
  *  时间戳转字符串
@@ -37,8 +37,8 @@
  *
  *  @return 返回字符串格式时间
  */
-+ (NSString *)dateStrFromCstampTime:(NSInteger)timeStamp
-                     withDateFormat:(NSString *)format;
++ (NSString *)ja_dateStrFromCstampTime:(NSInteger)timeStamp
+                        withDateFormat:(NSString *)format;
 
 /**
  *  字符串转时间戳
@@ -48,7 +48,7 @@
  *
  *  @return 返回时间戳的字符串
  */
-+(NSInteger)cTimestampFromString:(NSString *)timeStr
++ (NSInteger)ja_cTimestampFromString:(NSString *)timeStr
                           format:(NSString *)format;
 
 /**
@@ -59,15 +59,15 @@
  *
  *  @return 返回字符串格式时间
  */
-+ (NSString *)datestrFromDate:(NSDate *)date
-               withDateFormat:(NSString *)format;
++ (NSString *)ja_datestrFromDate:(NSDate *)date
+                  withDateFormat:(NSString *)format;
 
 /**
  *  返回当前的日期信息
  *
  *  @return NSDateComponents
  */
-+ (NSDateComponents *)currentComponents;
++ (NSDateComponents *)ja_currentComponents;
 
 
 /**
@@ -75,6 +75,6 @@
 
  @return 是否是同一个天
  */
-+ (BOOL)isDiffDay;
++ (BOOL)ja_isDiffDay;
 
 @end

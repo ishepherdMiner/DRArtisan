@@ -13,7 +13,9 @@
 
 #if JADEBUG
 
-+ (void)hookMethod:(Class)cls OriginSelector:(SEL)originSel SwizzledSelector:(SEL)swizzlSel
++ (void)ja_hookMethod:(Class)cls
+       OriginSelector:(SEL)originSel
+     SwizzledSelector:(SEL)swizzlSel
 {
     Method originalMethod = class_getInstanceMethod(cls, originSel);
     Method swizzledMethod = class_getInstanceMethod(cls, swizzlSel);
@@ -37,7 +39,7 @@ const void* propertiesKey = "com.coder.lldb-exclusive.propertiesKey";
 const void* ivarKey = "com.coder.lldb-exclusive.ivarKey";
 const void* methodKey = "com.coder.lldb-exclusive.methodKey";
 
-- (NSArray *)p_propertyList:(BOOL)recursive {
+- (NSArray *)ja_propertyList:(BOOL)recursive {
     
     NSArray *glist = objc_getAssociatedObject([self class], propertiesKey);
     
@@ -64,7 +66,7 @@ const void* methodKey = "com.coder.lldb-exclusive.methodKey";
     }() : glist;
 }
 
-- (NSArray *)p_ivarList:(BOOL)recursive{
+- (NSArray *)ja_ivarList:(BOOL)recursive{
     
     NSArray *glist = objc_getAssociatedObject([self class], ivarKey);
     
@@ -92,7 +94,7 @@ const void* methodKey = "com.coder.lldb-exclusive.methodKey";
     }() : glist;
 }
 
-- (NSArray *)p_methodList:(BOOL)recursive {
+- (NSArray *)ja_methodList:(BOOL)recursive {
     
     NSArray *glist = objc_getAssociatedObject([self class], methodKey);
     
@@ -128,7 +130,7 @@ const void* methodKey = "com.coder.lldb-exclusive.methodKey";
     }() : glist;
 }
 
-- (void)p_cleanCacheList {
+- (void)ja_cleanCacheList {
     objc_removeAssociatedObjects([self class]);
 }
 

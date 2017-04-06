@@ -10,17 +10,15 @@
 
 @implementation UIView (JACoder)
 
-- (UIView*)findViewRecursively:(BOOL(^)(UIView* subview, BOOL* stop))recurse
-{
+- (UIView*)ja_findViewRecursively:(BOOL(^)(UIView* subview, BOOL* stop))recurse{
     for( UIView* subview in self.subviews ) {
         BOOL stop = true;
         if(recurse(subview,&stop)) {
-            return [subview findViewRecursively:recurse];
+            return [subview ja_findViewRecursively:recurse];
         } else if( stop ) {
             return subview;
         }
-    }
-    
+    }    
     return nil;
 }
 
@@ -96,15 +94,64 @@
 /** 
  * 水平居中 
  */
-- (void)alignHor{
+- (void)ja_alignHor{
     self.x = (self.superview.w - self.w) * 0.5;
 }
 
 /** 
  * 垂直居中 
  */
-- (void)alignVer{
+- (void)ja_alignVer{
     self.y = (self.superview.h - self.h) * 0.5;
+}
+
+@end
+
+@implementation UIView (JAAnimation)
+
+- (void)ja_swingAnimation:(CFTimeInterval)duration
+                direction:(JASwingDirection)direction {
+    
+    CAKeyframeAnimation *animation = [CAKeyframeAnimation animation];
+    if (direction == JASwingDirectionAround) {
+        animation.keyPath = @"position.x";
+    }else {
+        animation.keyPath = @"position.y";
+    }
+    
+    animation.values = @[@0, @10, @(-10), @10, @0];
+    animation.keyTimes = @[ @0, @(1 / 6.0), @(3 / 6.0), @(5 / 6.0), @1];
+    animation.duration = duration;
+    animation.additive = true;
+    [self.layer addAnimation:animation forKey:@"ja_swing"];
+}
+
+- (void)ja_trackingAnimation:(CGRect)boundingRect
+                    duration:(CFTimeInterval)duration
+                 repeatCount:(float)repeatCount
+             calculationMode:(NSString *)calculationMode
+                rotationMode:(NSString *)rotationMode {
+    
+    CAKeyframeAnimation *orbit = [CAKeyframeAnimation animation];
+    orbit.keyPath = @"position";
+    orbit.path = CFAutorelease(CGPathCreateWithEllipseInRect(boundingRect, NULL));
+    orbit.duration = duration;
+    orbit.additive = true;
+    orbit.repeatCount = HUGE_VALF;
+    orbit.calculationMode = calculationMode;
+    orbit.rotationMode = rotationMode;
+    [self.layer addAnimation:orbit forKey:@"ja_track"];
+}
+
+- (void)ja_trackingAnimation:(CGRect)boundingRect
+                 duration:(CFTimeInterval)duration
+              repeatCount:(float)repeatCount {
+    
+    [self ja_trackingAnimation:boundingRect
+                      duration:duration
+                   repeatCount:repeatCount
+               calculationMode:kCAAnimationPaced
+                  rotationMode:nil]; // kCAAnimationRotateAutoReverse
 }
 
 @end

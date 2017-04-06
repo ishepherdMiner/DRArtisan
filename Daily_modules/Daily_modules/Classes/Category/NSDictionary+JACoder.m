@@ -9,16 +9,6 @@
 #import "NSDictionary+JACoder.h"
 
 @implementation NSDictionary (JACoder)
-- (NSDictionary *)splitUrlQuery:(NSURL *)url {
-    NSArray *qS = [url.query componentsSeparatedByString:@"&"];
-    
-    NSMutableDictionary *qSDicM = [NSMutableDictionary dictionaryWithCapacity:qS.count];
-    [qS enumerateObjectsUsingBlock:^(id  _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
-        NSArray *paramPair = [obj componentsSeparatedByString:@"="];
-        [qSDicM setObject:paramPair.lastObject forKey:paramPair.firstObject];
-    }];
-    return [qSDicM copy];
-}
 
 #if DEBUG
 - (NSString *)descriptionWithLocale:(id)locale indent:(NSUInteger)level {

@@ -16,7 +16,7 @@
  *
  *  @return 所有文件
  */
-- (NSArray *)allFilesAtPath:(NSString*)dirString;
+- (NSArray *)ja_allFilesAtPath:(NSString*)dirString;
 
 /**
  *  交集:数组A与数组B共同拥有的集合元素
@@ -25,7 +25,7 @@
  *
  *  @return 交集
  */
-- (NSArray *)interSet:(NSArray *)listB;
+- (NSArray *)ja_interSet:(NSArray *)listB;
 
 /**
  *  并集:既属于集合A又属于集合B的元素
@@ -34,7 +34,7 @@
  *
  *  @return 并集
  */
-- (NSArray *)unionSet:(NSArray *)listB;
+- (NSArray *)ja_unionSet:(NSArray *)listB;
 
 /**
  *  差集:属于本身却不属于listB数组的集合 元素
@@ -43,7 +43,7 @@
  *
  *  @return 差集
  */
-- (NSArray *)differenceSet:(NSArray *)listB;
+- (NSArray *)ja_differenceSet:(NSArray *)listB;
 
 /**
  *  指定数组是否内含于本身
@@ -52,6 +52,6 @@
  *
  *  @return 是否内含
  */
-- (BOOL)isContains:(NSArray *)listB;
+- (BOOL)ja_isContains:(NSArray *)listB;
 
 @end

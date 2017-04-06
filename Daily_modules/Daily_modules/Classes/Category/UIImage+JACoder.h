@@ -18,7 +18,7 @@
  @param corner 圆角弧度
  @return 圆角图片
  */
-- (UIImage *)imageWithCorner:(CGFloat)corner;
+- (UIImage *)ja_imageWithCorner:(CGFloat)corner;
 
 /**
  生成UIImage对象
@@ -27,8 +27,8 @@
  @param size 尺寸
  @return UIImage对象
  */
-+ (instancetype)imageWithUIColor:(UIColor *)color size:(CGSize)size;
-+ (instancetype)imageWithCGColor:(CGColorRef)colorref size:(CGSize)size;
++ (instancetype)ja_imageWithUIColor:(UIColor *)color size:(CGSize)size;
++ (instancetype)ja_imageWithCGColor:(CGColorRef)colorref size:(CGSize)size;
 
 /**
  裁剪UIImage对象
@@ -36,6 +36,6 @@
  @param size 裁剪后尺寸
  @return UIImage对象
  */
-- (UIImage *)cropImageWithSize:(CGSize)size;
+- (UIImage *)ja_cropImageWithSize:(CGSize)size;
 
 @end

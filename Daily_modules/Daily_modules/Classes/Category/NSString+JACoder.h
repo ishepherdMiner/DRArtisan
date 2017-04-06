@@ -15,7 +15,7 @@
  *
  *  @return C语言字符串
  */
-- (const char *)cString;
+- (const char *)ja_cString;
 
 /**
  *  C语言字符串转换成OC字符串
@@ -24,14 +24,14 @@
  *
  *  @return OC字符串
  */
-- (NSString *)ocString:(const char*)cString;
+- (NSString *)ja_ocString:(const char*)cString;
 
 /**
  *  去除字符串两端空格后的字符串
  *
  *  @return 去除字符串两端空格后的字符串
  */
-- (NSString *)trim;
+- (NSString *)ja_trim;
 
 /**
  *  保留指定精度
@@ -40,7 +40,7 @@
  *
  *  @return double类型的数据
  */
-- (instancetype)accuracyDigital:(NSUInteger)value;
+- (instancetype)ja_accuracyDigital:(NSUInteger)value;
 
 /**
  *  对网络请求的特殊字符进行编码
@@ -50,7 +50,7 @@
  *  @return 编码后的字符串
  *
  */
-+ (NSString *)encodeToPercentEscapeString:(NSString *)input;
++ (NSString *)ja_encodeToPercentEscapeString:(NSString *)input;
 
 /**
  *  将已经编码后的特殊字符进行解码
@@ -59,7 +59,7 @@
  *
  *  @return 解码后的字符串
  */
-+ (NSString *)decodeToUrlString:(NSString *)input;
++ (NSString *)ja_decodeToUrlString:(NSString *)input;
 
 /**
  *  单行文本 自适应内容
@@ -68,7 +68,7 @@
  *
  *  @return 文本所需尺寸
  */
-- (CGSize)singleLineWithFont:(UIFont *)font __IOS_AVAILABLE(7.0);
+- (CGSize)ja_singleLineWithFont:(UIFont *)font __IOS_AVAILABLE(7.0);
 
 /**
  *  多行文本 指定宽度 自适应内容
@@ -78,7 +78,7 @@
  *
  *  @return 文本尺寸
  */
-- (CGSize)multiLineWithFont:(UIFont *)font
+- (CGSize)ja_multiLineWithFont:(UIFont *)font
                 withinWidth:(CGFloat)width __IOS_AVAILABLE(7.0);
 
 /**
@@ -90,7 +90,7 @@
  *
  *  @return 文本尺寸
  */
-- (CGSize)multiLineWithFont:(UIFont *)font
+- (CGSize)ja_multiLineWithFont:(UIFont *)font
                 withinWidth:(CGFloat)width
                     options:(NSStringDrawingOptions)options __IOS_AVAILABLE(7.0);
 
@@ -102,18 +102,18 @@
  @param attrs 要设置的属性
  @return 根据正则处理后的NSAttributeString对象
  */
-- (NSAttributedString *)matchWithRegex:(NSString *)regex
+- (NSAttributedString *)ja_matchWithRegex:(NSString *)regex
                                  attrs:(NSDictionary *)attrs;
 
 /**
  *  返回base64编码的字符串内容
  */
-- (NSString *)base64encode;
+- (NSString *)ja_base64encode;
 
 /**
  *  返回base64解码的字符串内容
  */
-- (NSString *)base64decode;
+- (NSString *)ja_base64decode;
 
 /**
  *  计算MD5散列结果
@@ -125,7 +125,7 @@
  *
  *  @return 32个字符的MD5散列字符串
  */
-- (NSString *)md5String;
+- (NSString *)ja_md5String;
 
 /**
  *  计算SHA1散列结果
@@ -137,7 +137,7 @@
  *
  *  @return 40个字符的SHA1散列字符串
  */
-- (NSString *)sha1String;
+- (NSString *)ja_sha1String;
 
 /**
  *  计算SHA256散列结果
@@ -149,7 +149,7 @@
  *
  *  @return 64个字符的SHA256散列字符串
  */
-- (NSString *)sha256String;
+- (NSString *)ja_sha256String;
 
 /**
  *  计算SHA 512散列结果
@@ -161,7 +161,7 @@
  *
  *  @return 128个字符的SHA 512散列字符串
  */
-- (NSString *)sha512String;
+- (NSString *)ja_sha512String;
 
 // Refer
 // https://en.wikipedia.org/wiki/Hash-based_message_authentication_code
@@ -176,7 +176,7 @@
  *
  *  @return 32个字符的HMAC MD5散列字符串
  */
-- (NSString *)hmacMD5StringWithKey:(NSString *)key;
+- (NSString *)ja_hmacMD5StringWithKey:(NSString *)key;
 
 /**
  *  计算HMAC SHA1散列结果
@@ -188,7 +188,7 @@
  *
  *  @return 40个字符的HMAC SHA1散列字符串
  */
-- (NSString *)hmacSHA1StringWithKey:(NSString *)key;
+- (NSString *)ja_hmacSHA1StringWithKey:(NSString *)key;
 
 /**
  *  计算HMAC SHA256散列结果
@@ -200,7 +200,7 @@
  *
  *  @return 64个字符的HMAC SHA256散列字符串
  */
-- (NSString *)hmacSHA256StringWithKey:(NSString *)key;
+- (NSString *)ja_hmacSHA256StringWithKey:(NSString *)key;
 
 /**
  *  计算HMAC SHA512散列结果
@@ -212,7 +212,7 @@
  *
  *  @return 128个字符的HMAC SHA512散列字符串
  */
-- (NSString *)hmacSHA512StringWithKey:(NSString *)key;
+- (NSString *)ja_hmacSHA512StringWithKey:(NSString *)key;
 
 /**
  *  计算文件的MD5散列结果
@@ -224,7 +224,7 @@
  *
  *  @return 32个字符的MD5散列字符串
  */
-- (NSString *)fileMD5Hash;
+- (NSString *)ja_fileMD5Hash;
 
 /**
  *  计算文件的SHA1散列结果
@@ -236,7 +236,7 @@
  *
  *  @return 40个字符的SHA1散列字符串
  */
-- (NSString *)fileSHA1Hash;
+- (NSString *)ja_fileSHA1Hash;
 
 /**
  *  计算文件的SHA256散列结果
@@ -248,7 +248,7 @@
  *
  *  @return 64个字符的SHA256散列字符串
  */
-- (NSString *)fileSHA256Hash;
+- (NSString *)ja_fileSHA256Hash;
 
 /**
  *  计算文件的SHA512散列结果
@@ -260,6 +260,6 @@
  *
  *  @return 128个字符的SHA512散列字符串
  */
-- (NSString *)fileSHA512Hash;
+- (NSString *)ja_fileSHA512Hash;
 
 @end

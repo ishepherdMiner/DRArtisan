@@ -31,7 +31,7 @@
 }
 
 + (instancetype)registerNoticeServiceWithTypes:(JANoticeServiceType)types delegate:(id<JANoticeServcieDelegate>)delegate {
-    JANoticeService *service = [JANoticeService sharedNoticeService]; // [[JANoticeService alloc] init];
+    JANoticeService *service = [JANoticeService sharedNoticeService];
     service.delegate = delegate;
     service.types = types;
     

@@ -32,7 +32,7 @@
  @param originSel 原始方法
  @param swizzlSel 目标方法
  */
-+ (void)hookMethod:(Class)cls OriginSelector:(SEL)originSel SwizzledSelector:(SEL)swizzlSel;
++ (void)ja_hookMethod:(Class)cls OriginSelector:(SEL)originSel SwizzledSelector:(SEL)swizzlSel;
 
 /**
  属性列表
@@ -40,7 +40,7 @@
  @param recursive 是否递归
  @return 属性列表
  */
-- (NSArray *)p_propertyList:(BOOL)recursive;
+- (NSArray *)ja_propertyList:(BOOL)recursive;
 
 /**
  变量列表
@@ -48,20 +48,20 @@
  @param recursive 是否递归
  @return 变量列表
  */
-- (NSArray *)p_ivarList:(BOOL)recursive;
+- (NSArray *)ja_ivarList:(BOOL)recursive;
 
 /**
  * 方法列表
  *
  * @param recursive 是否递归
  */
-- (NSArray *)p_methodList:(BOOL)recursive;
+- (NSArray *)ja_methodList:(BOOL)recursive;
 
 
 /**
  清空缓存列表
  */
-- (void)p_cleanCacheList;
+- (void)ja_cleanCacheList;
 
 #endif
 

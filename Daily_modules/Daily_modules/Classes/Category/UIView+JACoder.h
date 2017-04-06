@@ -23,17 +23,59 @@
 /**
  * 水平居中
  */
-- (void)alignHor;
+- (void)ja_alignHor;
 
 /** 
  * 垂直居中 
  */
-- (void)alignVer;
+- (void)ja_alignVer;
 
 /**
  *  Return YES from the block to recurse into the subview.
  *  Set stop to YES to return the subview.
  */
-- (UIView*)findViewRecursively:(BOOL(^)(UIView* subview, BOOL* stop))recurse;
+- (UIView*)ja_findViewRecursively:(BOOL(^)(UIView* subview, BOOL* stop))recurse;
 
+@end
+
+typedef NS_ENUM(NSUInteger,JASwingDirection){
+    JASwingDirectionAround,  // 左右摇摆
+    JASwingDirectionUpdown   // 上下摇摆
+};
+
+@interface UIView (JAAnimation)
+
+/**
+ *  摇摆动画
+ *
+ *  @param duration   动画时间
+ *  @param direction  摇摆方向
+ */
+- (void)ja_swingAnimation:(CFTimeInterval)duration
+                direction:(JASwingDirection)direction;
+
+/**
+ *  轨迹动画
+ *
+ *  @param boundingRect    轨迹 - 矩形
+ *  @param duration        动画时间
+ *  @param repeatCount     重复次数
+ */
+- (void)ja_trackingAnimation:(CGRect)boundingRect
+                 duration:(CFTimeInterval)duration
+              repeatCount:(float)repeatCount;
+/**
+ *  轨迹动画
+ *
+ *  @param boundingRect    轨迹 - 矩形
+ *  @param duration        动画时间
+ *  @param repeatCount     重复次数
+ *  @param calculationMode 动画计算模式
+ *  @param rotationMode    动画旋转模式
+ */
+- (void)ja_trackingAnimation:(CGRect)boundingRect
+                    duration:(CFTimeInterval)duration
+                 repeatCount:(float)repeatCount
+             calculationMode:(NSString *)calculationMode
+                rotationMode:(NSString *)rotationMode;
 @end

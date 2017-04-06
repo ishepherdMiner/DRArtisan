@@ -26,8 +26,14 @@
  
  @param handler 开始监测后的回调
  */
-+ (void)gyroWithStartBlock:(void (^)(CMGyroData *gyroData,NSError *error))handler;
++ (void)ja_gyroWithStartBlock:(void (^)(CMGyroData *gyroData,NSError *error))handler;
 
 #endif
 
+/**
+ *  获取内网地址
+ *
+ *  @return ip地址
+ */
+- (NSDictionary *)ja_ipAddr;
 @end

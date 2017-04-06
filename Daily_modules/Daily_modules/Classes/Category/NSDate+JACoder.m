@@ -9,9 +9,10 @@
 #import "NSDate+JACoder.h"
 
 @implementation NSDate (JACoder)
+
 static NSDateFormatter *dateFormatter;
 
-+ (NSDateFormatter *)defaultFormatter {
++ (NSDateFormatter *)ja_defaultFormatter {
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         dateFormatter = [[NSDateFormatter alloc] init];
@@ -23,28 +24,28 @@ static NSDateFormatter *dateFormatter;
     return dateFormatter;
 }
 
-+ (NSDate *)dateFromString:(NSString *)timeStr
-                    format:(NSString *)format
++ (NSDate *)ja_dateFromString:(NSString *)timeStr
+                       format:(NSString *)format
 {
-    NSDateFormatter *dateFormatter = [NSDate defaultFormatter];
+    NSDateFormatter *dateFormatter = [NSDate ja_defaultFormatter];
     [dateFormatter setDateFormat:format];
     NSDate *date = [dateFormatter dateFromString:timeStr];
     return date;
 }
 
-+ (NSInteger)cTimestampFromDate:(NSDate *)date{
++ (NSInteger)ja_cTimestampFromDate:(NSDate *)date{
     return (long)[date timeIntervalSince1970];
 }
 
 + (NSInteger)cTimestampFromString:(NSString *)timeStr
                            format:(NSString *)format
 {
-    NSDate *date = [NSDate dateFromString:timeStr format:format];
-    return [NSDate cTimestampFromDate:date];
+    NSDate *date = [NSDate ja_dateFromString:timeStr format:format];
+    return [NSDate ja_cTimestampFromDate:date];
 }
 
-+ (NSString *)dateStrFromCstampTime:(NSInteger)timeStamp
-                     withDateFormat:(NSString *)format
++ (NSString *)ja_dateStrFromCstampTime:(NSInteger)timeStamp
+                        withDateFormat:(NSString *)format
 {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp];
     return [NSDate datestrFromDate:date withDateFormat:format];
@@ -53,18 +54,18 @@ static NSDateFormatter *dateFormatter;
 + (NSString *)datestrFromDate:(NSDate *)date
                withDateFormat:(NSString *)format
 {
-    NSDateFormatter* dateFormat = [NSDate defaultFormatter];
+    NSDateFormatter* dateFormat = [NSDate ja_defaultFormatter];
     [dateFormat setDateFormat:format];
     return [dateFormat stringFromDate:date];
 }
 
-+ (NSDateComponents *)currentComponents {
++ (NSDateComponents *)ja_currentComponents {
     NSDate *now = [NSDate date];
     NSCalendar *cal = [NSCalendar currentCalendar];
     return [cal components:NSCalendarUnitYear | NSCalendarUnitMonth | NSCalendarUnitDay fromDate:now];
 }
 
-+ (BOOL)isDiffDay {
++ (BOOL)ja_isDiffDay {
     NSDateFormatter *formater = [[ NSDateFormatter alloc] init];
     NSTimeZone* timeZone = [NSTimeZone timeZoneWithName:@"Asia/Shanghai"];
     [formater setTimeZone:timeZone];

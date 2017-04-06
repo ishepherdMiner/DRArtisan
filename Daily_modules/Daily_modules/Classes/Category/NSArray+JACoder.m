@@ -9,6 +9,8 @@
 #import "NSArray+JACoder.h"
 
 @implementation NSArray (JACoder)
+
+#if DEBUG
 - (NSString *)descriptionWithLocale:(id)locale{
     NSMutableString *strM = [NSMutableString stringWithString:@"(\n"];
     [self enumerateObjectsUsingBlock:^(id obj, NSUInteger idx, BOOL *stop) {
@@ -18,8 +20,9 @@
     [strM appendString:@")"];
     return strM;
 }
+#endif
 
-- (NSArray *)allFilesAtPath:(NSString*)dirString {
+- (NSArray *)ja_allFilesAtPath:(NSString*)dirString {
     
     NSMutableArray* array = [NSMutableArray arrayWithCapacity:10];
     NSFileManager* fileMgr = [NSFileManager defaultManager];
@@ -31,14 +34,14 @@
             if (!flag) {
                 [array addObject:fullPath];
             }else {
-                [self allFilesAtPath:fullPath];
+                [self ja_allFilesAtPath:fullPath];
             }
         }
     }
     return array;
 }
 
-- (NSArray *)interSet:(NSArray *)listB {
+- (NSArray *)ja_interSet:(NSArray *)listB {
     NSArray *listA = self;
     NSMutableArray *listC = [NSMutableArray arrayWithCapacity:[listB count] + [listA count]];
     for (id obj  in listB) {
@@ -49,7 +52,7 @@
     return [listC copy];
 }
 
-- (NSArray *)unionSet:(NSArray *)listB {
+- (NSArray *)ja_unionSet:(NSArray *)listB {
     NSArray *listA = self;
     NSMutableArray *listC = [NSMutableArray arrayWithArray:listA];
     for (id obj in listB) {
@@ -60,7 +63,7 @@
     return [listC copy];
 }
 
-- (NSArray *)differenceSet:(NSArray *)listB {
+- (NSArray *)ja_differenceSet:(NSArray *)listB {
     NSArray *listA = self;
     NSMutableArray *listC = [NSMutableArray arrayWithArray:listA];
     for (id obj in listB) {
@@ -72,7 +75,7 @@
     return [listC copy];
 }
 
-- (BOOL)isContains:(NSArray *)listB {
+- (BOOL)ja_isContains:(NSArray *)listB {
     NSArray *listA = self;
     for (id obj in listB) {
         if ([listA indexOfObject:obj] == NSNotFound) {
