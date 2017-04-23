@@ -21,6 +21,8 @@
 		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
 		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
+		96334F121EA8FBA200EE294D /* JATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96334F111EA8FBA200EE294D /* JATabBarController.m */; };
+		96334F181EA9049B00EE294D /* UINavigationController+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96334F171EA9049B00EE294D /* UINavigationController+JACoder.m */; };
 		96409D0C1E96388C003775B2 /* NSNumber+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */; };
 		96409D0F1E963CDD003775B2 /* NSURL+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */; };
 		965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D617D1E278BA50022597D /* UIImage+JACoder.m */; };
@@ -92,6 +94,10 @@
 		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
 		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
 		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
+		96334F101EA8FBA200EE294D /* JATabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JATabBarController.h; sourceTree = "<group>"; };
+		96334F111EA8FBA200EE294D /* JATabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATabBarController.m; sourceTree = "<group>"; };
+		96334F161EA9049B00EE294D /* UINavigationController+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UINavigationController+JACoder.h"; sourceTree = "<group>"; };
+		96334F171EA9049B00EE294D /* UINavigationController+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UINavigationController+JACoder.m"; sourceTree = "<group>"; };
 		96409D0A1E96388C003775B2 /* NSNumber+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSNumber+JACoder.h"; sourceTree = "<group>"; };
 		96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSNumber+JACoder.m"; sourceTree = "<group>"; };
 		96409D0D1E963CDD003775B2 /* NSURL+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+JACoder.h"; sourceTree = "<group>"; };
@@ -197,6 +203,8 @@
 				96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */,
 				96409D0D1E963CDD003775B2 /* NSURL+JACoder.h */,
 				96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */,
+				96334F161EA9049B00EE294D /* UINavigationController+JACoder.h */,
+				96334F171EA9049B00EE294D /* UINavigationController+JACoder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -276,6 +284,7 @@
 		9627CF151E19FC0A00F4AC7E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				96334F0F1EA8FBA200EE294D /* TabBar */,
 				9627CF161E19FC0A00F4AC7E /* NoticeService */,
 				96620BF71E72351B0019F616 /* Shake */,
 				966A4AF91E821C5A00B096D5 /* Peek */,
@@ -307,6 +316,15 @@
 				9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */,
 			);
 			name = Demo;
+			sourceTree = "<group>";
+		};
+		96334F0F1EA8FBA200EE294D /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				96334F101EA8FBA200EE294D /* JATabBarController.h */,
+				96334F111EA8FBA200EE294D /* JATabBarController.m */,
+			);
+			path = TabBar;
 			sourceTree = "<group>";
 		};
 		96620BF71E72351B0019F616 /* Shake */ = {
@@ -476,7 +494,9 @@
 				96409D0F1E963CDD003775B2 /* NSURL+JACoder.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
 				965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */,
+				96334F181EA9049B00EE294D /* UINavigationController+JACoder.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
+				96334F121EA8FBA200EE294D /* JATabBarController.m in Sources */,
 				96620BFA1E7235620019F616 /* ShakeController.m in Sources */,
 				9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */,
 				969A57531E23942E00DBA8C0 /* NSString+JACoder.m in Sources */,

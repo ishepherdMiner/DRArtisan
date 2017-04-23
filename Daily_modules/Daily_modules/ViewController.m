@@ -23,7 +23,7 @@
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-    [self.view addSubview:self.tableView];
+    [self.view addSubview:self.tableView];    
 }
 
 

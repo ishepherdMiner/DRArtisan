@@ -12,6 +12,7 @@
 #import <CoreMotion/CoreMotion.h>
 #import "UIDevice+JACoder.h"
 #import "NSDate+JACoder.h"
+#import "JATabBarController.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) JANoticeService *service;
@@ -22,31 +23,91 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
     JANoticeServiceNative *native = [[JANoticeServiceNative alloc] init];
-    JANoticeServiceJPush *jpush = [[JANoticeServiceJPush alloc] init];
-    UIImage *image = [UIImage imageNamed:@"invited_3_02"];
-    UIImage *img2 = [image ja_imageWithCorner:image.size.width * 0.5];
-    if ([NSDate ja_isDiffDay]) {
-        NSLog(@"test");
-    }
+    // JANoticeServiceJPush *jpush = [[JANoticeServiceJPush alloc] init];
+    
     // 默认选择注册sound,badge,alert
     [JANoticeService registerNoticeServiceWithDelegate:native];
     
     // 选择注册服务
     //  [JANoticeService registerNoticeServiceWithTypes:JANoticeServiceTypeAll
     //                                         delegate:native];
-    NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSBundle mainBundle].bundlePath error:nil]);
+    // NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSBundle mainBundle].bundlePath error:nil]);
+    
+    self.window.rootViewController = [self getRootViewController];
+    [self.window makeKeyAndVisible];
     return YES;
 }
 
 - (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
     // 去头尾<>,去空格
-    NSString *deviceTokenString = [JANoticeService deviceToken:deviceToken];
+    // NSString *deviceTokenString = [JANoticeService deviceToken:deviceToken];
     // 注册deviceToken
     // 发送给服务器
 }
 
+- (UITabBarController *)getRootViewController {
+    NSDictionary *tabBarDic = @{
+                                @"列表":@{
+                                            @"image":@"tabicon_01",
+                                            @"selectedImage":@"tabicon_01_pressed",
+                                            @"vc":@"ViewController",
+                                        },
+                                @"交易":@{
+                                            @"image":@"tabicon_02",
+                                            @"selectedImage":@"tabicon_02_pressed",
+                                            @"vc":@"UIViewController",
+                                        },
+                                @"我的":@{
+                                            @"image":@"tabicon_03",
+                                            @"selectedImage":@"tabicon_03_pressed",
+                                            @"vc":@"UIViewController",
+                                        },
+                                @"工具":@{
+                                            @"image":@"tabicon_04",
+                                            @"selectedImage":@"tabicon_04_pressed",
+                                            @"vc":@"UIViewController",
+                                        }
+                                };
+    NSArray *titles = [tabBarDic allKeys];
+    NSMutableArray *imagesM = [NSMutableArray arrayWithCapacity:titles.count];
+    NSMutableArray *selectedImagesM = [NSMutableArray arrayWithCapacity:titles.count];
+    NSMutableArray *vcs = [NSMutableArray arrayWithCapacity:titles.count];
+    for (NSString *title in titles) {
+        UIImage *image = [UIImage imageNamed:[[tabBarDic objectForKey:title] objectForKey:@"image"]];
+        [imagesM addObject:image];
+        UIImage *selectedImage = [UIImage imageNamed:[[tabBarDic objectForKey:title] objectForKey:@"selectedImage"]];
+        [selectedImagesM addObject:selectedImage];
+        
+        UIViewController *vc = [[NSClassFromString([[tabBarDic objectForKey:title] objectForKey:@"vc"]) alloc] init];
+        vc.title = title;        
+        
+        UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
+        [vcs addObject:navC];
+    }
+    
+    JATabBarController *tabBarVC = [[JATabBarController alloc] init];
+    
+    [tabBarVC customizeTabBarWithTitles:titles images:[imagesM copy] selectedImages:[selectedImagesM copy]];
+    [tabBarVC customizeTabBarWithControllers:vcs];
+    
+    [tabBarVC.viewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        
+        NSMutableParagraphStyle *paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+        paragraphStyle.lineSpacing = 5;
+        
+        // 未选中状态下文字颜色
+        [[obj tabBarItem] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithWhite:0.572549 alpha:1.0], NSFontAttributeName:[UIFont systemFontOfSize:10],NSBaselineOffsetAttributeName:@5} forState:UIControlStateNormal];
+        [[obj tabBarItem] setTitlePositionAdjustment:UIOffsetMake(0, -3)];
+        
+        // 选中状态下的文字颜色
+        [[obj tabBarItem] setTitleTextAttributes:@{NSForegroundColorAttributeName: [UIColor colorWithRed:1.0 green:0 blue:19/255.0 alpha:1.0]} forState:UIControlStateSelected];
+    }];
+    
+    return tabBarVC;
+}
 
 
 - (void)applicationWillResignActive:(UIApplication *)application {
