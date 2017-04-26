@@ -24,6 +24,10 @@
                       @{
                           @"name":@"3D-Touch Peek",
                           @"ctrl":@"PeekViewController"
+                          },
+                      @{
+                          @"name":@"Touch ID",
+                          @"ctrl":@"_TtC13Daily_modules21TouchIDViewController"
                           }
                       ];
     }

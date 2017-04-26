@@ -71,6 +71,14 @@
 
 
 /**
+ 将16进制的字符串转换为NSData对象
+
+ @param str 16进制字符串
+ @return NSData对象
+ */
++ (NSData *)ja_dataWithHexString:(NSString *)str;
+
+/**
  判断是否同一天(依赖本地时间)
 
  @return 是否是同一个天

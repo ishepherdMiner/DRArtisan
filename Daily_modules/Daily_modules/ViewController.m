@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "ComConfig.h"
+#import "Daily_modules-Swift.h"
 
 @interface ViewController () <UITableViewDelegate,UITableViewDataSource>
 
@@ -19,6 +20,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [[TouchIDViewController alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
