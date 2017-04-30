@@ -24,6 +24,10 @@
 
 - (UIViewController *)ja_popViewControllerAnimated:(BOOL)animated {
     NSUInteger index = [self.viewControllers indexOfObject:self.topViewController];
+    
+    // TabBar 中的 viewControllers 也会触发, index == 0 导致崩溃
+    if (index <= 0) {return [self ja_popViewControllerAnimated:true];}
+    
     if (index == 1) {
         self.viewControllers[index - 1].hidesBottomBarWhenPushed = false;
     }else {

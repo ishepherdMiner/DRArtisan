@@ -19,5 +19,6 @@
 #import "UIDevice+JACoder.h"
 #import "NSNumber+JACoder.h"
 #import "NSURL+JACoder.h"
+#import "UINavigationController+JACoder.h"
 
 #endif /* JACategory_h */

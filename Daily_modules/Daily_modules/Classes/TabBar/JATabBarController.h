@@ -23,7 +23,7 @@
                            images:(NSArray <UIImage *> *)imgs
                    selectedImages:(NSArray <UIImage *> *)selectedImgs;
 
-/**
+/**˜
  提供``RMTabBarViewController``的控制器数组
  
  @param vcs tabBarController的控制器数组
