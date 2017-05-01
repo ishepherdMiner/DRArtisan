@@ -37,7 +37,7 @@ static NSDateFormatter *dateFormatter;
     return (long)[date timeIntervalSince1970];
 }
 
-+ (NSInteger)cTimestampFromString:(NSString *)timeStr
++ (NSInteger)ja_cTimestampFromString:(NSString *)timeStr
                            format:(NSString *)format
 {
     NSDate *date = [NSDate ja_dateFromString:timeStr format:format];
@@ -48,10 +48,10 @@ static NSDateFormatter *dateFormatter;
                         withDateFormat:(NSString *)format
 {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:timeStamp];
-    return [NSDate datestrFromDate:date withDateFormat:format];
+    return [NSDate ja_datestrFromDate:date withDateFormat:format];
 }
 
-+ (NSString *)datestrFromDate:(NSDate *)date
++ (NSString *)ja_datestrFromDate:(NSDate *)date
                withDateFormat:(NSString *)format
 {
     NSDateFormatter* dateFormat = [NSDate ja_defaultFormatter];

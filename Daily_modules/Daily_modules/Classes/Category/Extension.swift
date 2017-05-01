@@ -23,7 +23,7 @@ extension NSObject {
     
     public class func getPropertiesInfo(cls:AnyClass?, recursive:Bool) -> Any! {
         
-        var clsM = cls
+        var clsM :AnyClass? = cls
         var glist = [String]()
         var outCount:UInt32 = 0;
         

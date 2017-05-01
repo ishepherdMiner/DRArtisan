@@ -137,7 +137,6 @@ typedef NS_OPTIONS(NSUInteger, JPAuthorizationOptions) {
  * @param appKey 一个JPush 应用必须的,唯一的标识. 请参考 JPush 相关说明文档来获取这个标识.
  * @param channel 发布渠道. 可选.
  * @param isProduction 是否生产环境. 如果为开发状态,设置为 NO; 如果为生产状态,应改为 YES.
- * @param advertisingIdentifier 广告标识符（IDFA） 如果不需要使用IDFA，传nil.
  *
  * @discussion 提供SDK启动必须的参数, 来启动 SDK.
  * 此接口必须在 App 启动时调用, 否则 JPush SDK 将无法正常工作.
@@ -147,7 +146,18 @@ typedef NS_OPTIONS(NSUInteger, JPAuthorizationOptions) {
                 channel:(NSString *)channel
        apsForProduction:(BOOL)isProduction;
 
-
+/*!
+ * @abstract 启动SDK
+ *
+ * @param launchingOption 启动参数.
+ * @param appKey 一个JPush 应用必须的,唯一的标识. 请参考 JPush 相关说明文档来获取这个标识.
+ * @param channel 发布渠道. 可选.
+ * @param isProduction 是否生产环境. 如果为开发状态,设置为 NO; 如果为生产状态,应改为 YES.
+ * @param advertisingIdentifier 广告标识符（IDFA） 如果不需要使用IDFA，传nil.
+ *
+ * @discussion 提供SDK启动必须的参数, 来启动 SDK.
+ * 此接口必须在 App 启动时调用, 否则 JPush SDK 将无法正常工作.
+ */
 + (void)setupWithOption:(NSDictionary *)launchingOption
                  appKey:(NSString *)appKey
                 channel:(NSString *)channel

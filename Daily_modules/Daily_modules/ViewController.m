@@ -20,7 +20,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [[TouchIDViewController alloc] init];
 }
 
 - (void)viewWillAppear:(BOOL)animated {

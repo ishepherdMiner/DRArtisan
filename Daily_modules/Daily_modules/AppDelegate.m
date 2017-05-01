@@ -7,12 +7,11 @@
 //
 
 #import "AppDelegate.h"
-#import "JANoticeServiceKit.h"
-#import "UIImage+JACoder.h"
 #import <CoreMotion/CoreMotion.h>
-#import "UIDevice+JACoder.h"
-#import "NSDate+JACoder.h"
+#import <Intents/Intents.h>
+#import "JANoticeServiceKit.h"
 #import "JATabBarController.h"
+#import "JACategory.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) JANoticeService *service;
@@ -37,6 +36,12 @@
     // NSLog(@"%@",[[NSFileManager defaultManager] contentsOfDirectoryAtPath:[NSBundle mainBundle].bundlePath error:nil]);
     
     self.window.rootViewController = [self getRootViewController];
+    
+    // 申请Siri权限
+    [INPreferences requestSiriAuthorization:^(INSiriAuthorizationStatus status) {
+        NSLog(@"%ld",status);
+    }];
+    
     [self.window makeKeyAndVisible];
     return YES;
 }
