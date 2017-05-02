@@ -999,6 +999,7 @@
 				96264DBC1EB7292F00E338E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		96264DBD1EB7292F00E338E1 /* Build configuration list for PBXNativeTarget "SiriExtension" */ = {
 			isa = XCConfigurationList;
@@ -1007,6 +1008,7 @@
 				96264DBF1EB7292F00E338E1 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		9627CEE61E19FA9800F4AC7E /* Build configuration list for PBXProject "Daily_modules" */ = {
 			isa = XCConfigurationList;

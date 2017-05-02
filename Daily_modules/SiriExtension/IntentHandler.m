@@ -41,6 +41,7 @@
         // handler = [[MyVideoCallHandler alloc] init];
     }
     
+    NSLog(@"%@",intent);
     return self;
 }
 
