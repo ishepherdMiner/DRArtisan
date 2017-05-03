@@ -12,6 +12,8 @@
 #import "JANoticeServiceKit.h"
 #import "JATabBarController.h"
 #import "JACategory.h"
+#import "ViewController.h"
+#import "ComConfig.h"
 
 @interface AppDelegate ()
 @property (nonatomic,strong) JANoticeService *service;
@@ -54,44 +56,41 @@
 }
 
 - (UITabBarController *)getRootViewController {
-    NSDictionary *tabBarDic = @{
-                                @"列表":@{
-                                            @"image":@"tabicon_01",
-                                            @"selectedImage":@"tabicon_01_pressed",
-                                            @"vc":@"ViewController",
-                                        },
-                                @"交易":@{
-                                            @"image":@"tabicon_02",
-                                            @"selectedImage":@"tabicon_02_pressed",
-                                            @"vc":@"UIViewController",
-                                        },
-                                @"我的":@{
-                                            @"image":@"tabicon_03",
-                                            @"selectedImage":@"tabicon_03_pressed",
-                                            @"vc":@"UIViewController",
-                                        },
-                                @"工具":@{
-                                            @"image":@"tabicon_04",
-                                            @"selectedImage":@"tabicon_04_pressed",
-                                            @"vc":@"UIViewController",
-                                        }
-                                };
-    NSArray *titles = [tabBarDic allKeys];
+    
+    NSArray *titles = @[@"应用",@"系统",@"其他"];
+    NSArray *tabbarImag = @[@{
+                                @"image":@"tabicon_01",
+                                @"selectedImage":@"tabicon_01_pressed",
+                                @"vc":@"ViewController",
+                                },
+                            @{
+                                @"image":@"tabicon_02",
+                                @"selectedImage":@"tabicon_02_pressed",
+                                @"vc":@"ViewController",
+                                },
+                            @{
+                                @"image":@"tabicon_03",
+                                @"selectedImage":@"tabicon_03_pressed",
+                                @"vc":@"ViewController",
+                                }];
+    NSDictionary *tabBarDic = [NSDictionary dictionaryWithObjects:tabbarImag forKeys:titles];
     NSMutableArray *imagesM = [NSMutableArray arrayWithCapacity:titles.count];
     NSMutableArray *selectedImagesM = [NSMutableArray arrayWithCapacity:titles.count];
     NSMutableArray *vcs = [NSMutableArray arrayWithCapacity:titles.count];
-    for (NSString *title in titles) {
+    NSArray *items = @[@"app",@"system",@"frameworks"];
+    [titles enumerateObjectsUsingBlock:^(id  _Nonnull title, NSUInteger idx, BOOL * _Nonnull stop) {
         UIImage *image = [UIImage imageNamed:[[tabBarDic objectForKey:title] objectForKey:@"image"]];
         [imagesM addObject:image];
         UIImage *selectedImage = [UIImage imageNamed:[[tabBarDic objectForKey:title] objectForKey:@"selectedImage"]];
         [selectedImagesM addObject:selectedImage];
         
-        UIViewController *vc = [[NSClassFromString([[tabBarDic objectForKey:title] objectForKey:@"vc"]) alloc] init];
-        vc.title = title;        
-        
+        ViewController *vc = [[NSClassFromString([[tabBarDic objectForKey:title] objectForKey:@"vc"]) alloc] init];
+        vc.title = title;
+        vc.models = [[ComConfig sharedConfig].menu objectForKey:items[idx]];
         UINavigationController *navC = [[UINavigationController alloc] initWithRootViewController:vc];
         [vcs addObject:navC];
-    }
+    }];
+
     
     JATabBarController *tabBarVC = [[JATabBarController alloc] init];
     

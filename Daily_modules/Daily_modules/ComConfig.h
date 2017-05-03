@@ -10,7 +10,7 @@
 
 @interface ComConfig : NSObject
 
-@property (nonatomic,strong) NSArray *dataList;
+@property (nonatomic,strong) NSDictionary *menu;
 @property (nonatomic,copy) NSString *moduleName;
 
 + (instancetype)sharedConfig;

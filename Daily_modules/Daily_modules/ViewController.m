@@ -14,6 +14,7 @@
 
 @property (nonatomic) NSInteger sections;
 @property (nonatomic,strong) UITableView *tableView;
+
 @end
 
 @implementation ViewController
@@ -38,7 +39,7 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return [ComConfig sharedConfig].dataList.count;
+    return self.models.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -46,19 +47,18 @@
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:[ComConfig sharedConfig].moduleName];
     }
-    cell.textLabel.text = [ComConfig sharedConfig].dataList[indexPath.row][@"name"];
+    cell.textLabel.text = self.models[indexPath.row][@"name"];
     return cell;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    UIViewController *containViewController = [[NSClassFromString([ComConfig sharedConfig].dataList[indexPath.row][@"ctrl"]) alloc] init];
-    containViewController.title = [ComConfig sharedConfig].dataList[indexPath.row][@"name"];
+    UIViewController *containViewController = [[NSClassFromString(self.models[indexPath.row][@"ctrl"]) alloc] init];
+    containViewController.title = self.models[indexPath.row][@"name"];
     [self.navigationController pushViewController:containViewController animated:true];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
 }
 
 
