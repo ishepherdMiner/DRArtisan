@@ -61,6 +61,7 @@ NSString *const kJAServiceErrorNotification = @"kJPFServiceErrorNotification";
        apsForProduction:(BOOL)isProduction {
     
     [JPUSHService setupWithOption:launchingOption appKey:appKey channel:channel apsForProduction:isProduction];
+    
 }
 
 
