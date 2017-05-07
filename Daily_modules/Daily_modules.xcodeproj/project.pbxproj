@@ -43,6 +43,7 @@
 		966A4AFC1E821C8400B096D5 /* PeekViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A4AFB1E821C8400B096D5 /* PeekViewController.m */; };
 		966A4AFF1E821D1200B096D5 /* PreviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 966A4AFE1E821D1200B096D5 /* PreviewViewController.m */; };
 		9677DACC1EB03E5B00AE091E /* LocalAuthentication.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9677DACB1EB03E5B00AE091E /* LocalAuthentication.framework */; };
+		967DD6531EBE238600263688 /* UIColor+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 967DD6521EBE238600263688 /* UIColor+JACoder.m */; };
 		967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */; };
 		967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */; };
 		967F0C721E1F116D00E744A1 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 967F0C711E1F116D00E744A1 /* CFNetwork.framework */; };
@@ -172,6 +173,8 @@
 		966A4AFD1E821D1200B096D5 /* PreviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PreviewViewController.h; sourceTree = "<group>"; };
 		966A4AFE1E821D1200B096D5 /* PreviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PreviewViewController.m; sourceTree = "<group>"; };
 		9677DACB1EB03E5B00AE091E /* LocalAuthentication.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = LocalAuthentication.framework; path = System/Library/Frameworks/LocalAuthentication.framework; sourceTree = SDKROOT; };
+		967DD6511EBE238600263688 /* UIColor+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+JACoder.h"; sourceTree = "<group>"; };
+		967DD6521EBE238600263688 /* UIColor+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+JACoder.m"; sourceTree = "<group>"; };
 		967F0C6B1E1F076400E744A1 /* jcore-ios-1.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jcore-ios-1.0.0.a"; sourceTree = "<group>"; };
 		967F0C6C1E1F076400E744A1 /* jpush-ios-3.0.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-3.0.0.a"; sourceTree = "<group>"; };
 		967F0C6D1E1F076400E744A1 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
@@ -276,6 +279,8 @@
 				9665CFD71E2A6EC5005759EA /* UIDevice+JACoder.m */,
 				96334F161EA9049B00EE294D /* UINavigationController+JACoder.h */,
 				96334F171EA9049B00EE294D /* UINavigationController+JACoder.m */,
+				967DD6511EBE238600263688 /* UIColor+JACoder.h */,
+				967DD6521EBE238600263688 /* UIColor+JACoder.m */,
 				96601B451EB03B4E008D67CD /* Extension.swift */,
 			);
 			path = Category;
@@ -683,6 +688,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9627CF2F1E1A10DC00F4AC7E /* JANoticeService.m in Sources */,
+				967DD6531EBE238600263688 /* UIColor+JACoder.m in Sources */,
 				96601B1B1EAEBB37008D67CD /* TouchIDViewController.swift in Sources */,
 				96409D0F1E963CDD003775B2 /* NSURL+JACoder.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
