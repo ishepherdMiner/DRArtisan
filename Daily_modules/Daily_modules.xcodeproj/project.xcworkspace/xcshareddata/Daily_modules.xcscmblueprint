@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "18D730DFC6BA0834DCD3E85B9E5B3267F084C338",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "E57B22777DB52932A7F132B9DCEFD4F9C1E28510" : 9223372036854775807,
+    "18D730DFC6BA0834DCD3E85B9E5B3267F084C338" : 9223372036854775807
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "2747831A-C9CA-4164-8172-1B768EDE49D2",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "E57B22777DB52932A7F132B9DCEFD4F9C1E28510" : "Daily_modules\/Daily_modules\/Daily_modules\/Classes\/DataTransfer\/",
+    "18D730DFC6BA0834DCD3E85B9E5B3267F084C338" : "Daily_modules\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Daily_modules",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "Daily_modules\/Daily_modules.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ishepherdMiner\/Daily_modules",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "18D730DFC6BA0834DCD3E85B9E5B3267F084C338"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/ishepherdMiner\/DataTransfer",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "E57B22777DB52932A7F132B9DCEFD4F9C1E28510"
+    }
+  ]
+}
