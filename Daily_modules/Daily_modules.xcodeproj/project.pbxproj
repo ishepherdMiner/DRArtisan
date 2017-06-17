@@ -32,6 +32,7 @@
 		96334F181EA9049B00EE294D /* UINavigationController+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96334F171EA9049B00EE294D /* UINavigationController+JACoder.m */; };
 		96409D0C1E96388C003775B2 /* NSNumber+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96409D0B1E96388C003775B2 /* NSNumber+JACoder.m */; };
 		96409D0F1E963CDD003775B2 /* NSURL+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */; };
+		964E289F1EF57D72002F44BF /* BackgroundAudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E289E1EF57D72002F44BF /* BackgroundAudioPlay.m */; };
 		965D617E1E278BA50022597D /* UIImage+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965D617D1E278BA50022597D /* UIImage+JACoder.m */; };
 		965FDA721E284ADD004C0F8D /* NSDate+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 965FDA711E284ADD004C0F8D /* NSDate+JACoder.m */; };
 		96601B1B1EAEBB37008D67CD /* TouchIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96601B1A1EAEBB37008D67CD /* TouchIDViewController.swift */; };
@@ -153,6 +154,8 @@
 		96409D0D1E963CDD003775B2 /* NSURL+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSURL+JACoder.h"; sourceTree = "<group>"; };
 		96409D0E1E963CDD003775B2 /* NSURL+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSURL+JACoder.m"; sourceTree = "<group>"; };
 		96409D101E9640D6003775B2 /* JACategory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JACategory.h; sourceTree = "<group>"; };
+		964E289D1EF57D72002F44BF /* BackgroundAudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAudioPlay.h; sourceTree = "<group>"; };
+		964E289E1EF57D72002F44BF /* BackgroundAudioPlay.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BackgroundAudioPlay.m; sourceTree = "<group>"; };
 		965D617C1E278BA50022597D /* UIImage+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+JACoder.h"; sourceTree = "<group>"; };
 		965D617D1E278BA50022597D /* UIImage+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+JACoder.m"; sourceTree = "<group>"; };
 		965FDA701E284ADD004C0F8D /* NSDate+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+JACoder.h"; sourceTree = "<group>"; };
@@ -385,6 +388,7 @@
 		9627CF151E19FC0A00F4AC7E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				964E289C1EF57D72002F44BF /* BackgroundAudio */,
 				96601B181EAEBB12008D67CD /* TouchID */,
 				96334F0F1EA8FBA200EE294D /* TabBar */,
 				9627CF161E19FC0A00F4AC7E /* NoticeService */,
@@ -427,6 +431,15 @@
 				96334F111EA8FBA200EE294D /* JATabBarController.m */,
 			);
 			path = TabBar;
+			sourceTree = "<group>";
+		};
+		964E289C1EF57D72002F44BF /* BackgroundAudio */ = {
+			isa = PBXGroup;
+			children = (
+				964E289D1EF57D72002F44BF /* BackgroundAudioPlay.h */,
+				964E289E1EF57D72002F44BF /* BackgroundAudioPlay.m */,
+			);
+			path = BackgroundAudio;
 			sourceTree = "<group>";
 		};
 		96601B181EAEBB12008D67CD /* TouchID */ = {
@@ -705,6 +718,7 @@
 				9627CEF31E19FA9800F4AC7E /* AppDelegate.m in Sources */,
 				96409D0C1E96388C003775B2 /* NSNumber+JACoder.m in Sources */,
 				9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */,
+				964E289F1EF57D72002F44BF /* BackgroundAudioPlay.m in Sources */,
 				969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */,
 				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,
 				969A57501E23937600DBA8C0 /* UIView+JACoder.m in Sources */,
