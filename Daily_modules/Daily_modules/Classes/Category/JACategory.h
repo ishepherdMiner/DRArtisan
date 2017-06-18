@@ -21,5 +21,6 @@
 #import "NSURL+JACoder.h"
 #import "UINavigationController+JACoder.h"
 #import "UIColor+JACoder.h"
+#import "NSData+JACoder.h"
 
 #endif /* JACategory_h */

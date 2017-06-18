@@ -65,6 +65,7 @@
 		969A57561E2397C000DBA8C0 /* NSArray+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A57551E2397C000DBA8C0 /* NSArray+JACoder.m */; };
 		969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 969A57581E2398FC00DBA8C0 /* NSDictionary+JACoder.m */; };
 		96A2CDE11E1B08700011AE02 /* invited_3_02@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */; };
+		96C5839B1EF6BC450042A132 /* NSData+JACoder.m in Sources */ = {isa = PBXBuildFile; fileRef = 96C5839A1EF6BC450042A132 /* NSData+JACoder.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -204,6 +205,8 @@
 		969A57571E2398FC00DBA8C0 /* NSDictionary+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDictionary+JACoder.h"; sourceTree = "<group>"; };
 		969A57581E2398FC00DBA8C0 /* NSDictionary+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDictionary+JACoder.m"; sourceTree = "<group>"; };
 		96A2CDE01E1B08700011AE02 /* invited_3_02@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "invited_3_02@2x.png"; sourceTree = "<group>"; };
+		96C583991EF6BC450042A132 /* NSData+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+JACoder.h"; sourceTree = "<group>"; };
+		96C5839A1EF6BC450042A132 /* NSData+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+JACoder.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -285,6 +288,8 @@
 				967DD6511EBE238600263688 /* UIColor+JACoder.h */,
 				967DD6521EBE238600263688 /* UIColor+JACoder.m */,
 				96601B451EB03B4E008D67CD /* Extension.swift */,
+				96C583991EF6BC450042A132 /* NSData+JACoder.h */,
+				96C5839A1EF6BC450042A132 /* NSData+JACoder.m */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -719,6 +724,7 @@
 				96409D0C1E96388C003775B2 /* NSNumber+JACoder.m in Sources */,
 				9661B0E21E2B98F2009AD0C9 /* JATimerCenter.m in Sources */,
 				964E289F1EF57D72002F44BF /* BackgroundAudioPlay.m in Sources */,
+				96C5839B1EF6BC450042A132 /* NSData+JACoder.m in Sources */,
 				969A57591E2398FC00DBA8C0 /* NSDictionary+JACoder.m in Sources */,
 				9627CF2C1E1A10BD00F4AC7E /* NoticeServiceController.m in Sources */,
 				969A57501E23937600DBA8C0 /* UIView+JACoder.m in Sources */,
