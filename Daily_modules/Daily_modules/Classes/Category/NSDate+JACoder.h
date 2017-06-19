@@ -30,7 +30,7 @@
 + (NSInteger)ja_cTimestampFromDate:(NSDate *)date;
 
 /**
- *  时间戳转字符串
+ *  时间戳转Date字符串
  *
  *  @param timeStamp 时间戳
  *  @param format    转化格式 如yyyy-MM-dd HH:mm:ss,即2015-07-15 15:00:00

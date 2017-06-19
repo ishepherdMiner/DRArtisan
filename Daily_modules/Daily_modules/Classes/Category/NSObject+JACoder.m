@@ -11,8 +11,6 @@
 
 @implementation NSObject (JACoder)
 
-#if JADEBUG
-
 + (void)ja_hookMethod:(Class)cls
        OriginSelector:(SEL)originSel
      SwizzledSelector:(SEL)swizzlSel
@@ -38,6 +36,7 @@
 const void* propertiesKey = "com.coder.lldb-exclusive.propertiesKey";
 const void* ivarKey = "com.coder.lldb-exclusive.ivarKey";
 const void* methodKey = "com.coder.lldb-exclusive.methodKey";
+const void* propertyAndEncodeTypeKey = "com.coder.lldb-excelusive.propertyAndEncodeTypeKey";
 
 - (NSArray *)ja_propertyList:(BOOL)recursive {
     
@@ -60,11 +59,63 @@ const void* methodKey = "com.coder.lldb-exclusive.methodKey";
             cls = [cls superclass];
         } while (cls && recursive);
         objc_setAssociatedObject([self class],propertiesKey, plistM, OBJC_ASSOCIATION_COPY_NONATOMIC);
-        NSLog(@"Found %ld properties on %@",(unsigned long)plistM.count,[self class]);
+        
+#if DEBUG
+        NSLog(@"[JA]:Found %ld properties on %@",(unsigned long)plistM.count,[self class]);
+#endif
+        
         return plistM.copy;
         
     }() : glist;
 }
+
+- (NSDictionary *)ja_propertyAndEncodeTypeList:(BOOL)recursive {
+    
+    NSDictionary *glist = objc_getAssociatedObject([self class], propertyAndEncodeTypeKey);
+    
+    return glist == nil ? ^{
+        
+        unsigned int count = 0;
+        NSMutableDictionary *plistDicM = [NSMutableDictionary dictionaryWithCapacity:count];
+        
+        Class cls = [self class];
+        do {
+            objc_property_t *list = class_copyPropertyList(cls, &count);
+            for (int i = 0; i < count; ++i) {
+                objc_property_t pty = list[i];
+                const char *pname = property_getName(pty);
+                const char *pattr = property_getAttributes(pty);
+                NSString *pname_utf8 = [NSString stringWithUTF8String:pname];
+                NSString *pattr_utf8 = [NSString stringWithUTF8String:pattr];
+                
+                // https://developer.apple.com/library/content/documentation/Cocoa/Conceptual/ObjCRuntimeGuide/Articles/ocrtTypeEncodings.html#//apple_ref/doc/uid/TP40008048-CH100-SW1
+                if ([pattr_utf8 rangeOfString:@"NSString"].location != NSNotFound) {
+                    pattr_utf8 = @"NSString";
+                }else if ([pattr_utf8 rangeOfString:@"NSNumber"].location != NSNotFound) {
+                    pattr_utf8 = @"NSNumber";
+                }else if ([pattr_utf8 rangeOfString:@"TQ"].location != NSNotFound) {
+                    pattr_utf8 = @"NSUInteger";
+                }else if ([pattr_utf8 rangeOfString:@"NSArray"].location != NSNotFound) {
+                    pattr_utf8 = @"NSArray";
+                }
+                
+                // ...
+                [plistDicM setObject:pattr_utf8 forKey:pname_utf8];
+            }
+            free(list);
+            cls = [cls superclass];
+        } while (cls && recursive);
+        objc_setAssociatedObject([self class],propertyAndEncodeTypeKey, plistDicM, OBJC_ASSOCIATION_COPY_NONATOMIC);
+        
+#if DEBUG
+        NSLog(@"[JA]:Found %ld properties on %@",(unsigned long)plistDicM.count,[self class]);
+#endif
+        
+        return plistDicM.copy;
+        
+    }() : glist;
+}
+
 
 - (NSArray *)ja_ivarList:(BOOL)recursive{
     
@@ -133,7 +184,5 @@ const void* methodKey = "com.coder.lldb-exclusive.methodKey";
 - (void)ja_cleanCacheList {
     objc_removeAssociatedObjects([self class]);
 }
-
-#endif
 
 @end

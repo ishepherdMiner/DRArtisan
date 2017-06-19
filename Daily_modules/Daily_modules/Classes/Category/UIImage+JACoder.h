@@ -38,4 +38,7 @@
  */
 - (UIImage *)ja_cropImageWithSize:(CGSize)size;
 
+/// 旋转图片
+- (UIImage*)ja_rotate:(UIImageOrientation)orient;
+
 @end

@@ -8,9 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-// Decide by developer
-#define JADEBUG DEBUG
-
 /*============================
  *           列表
  *============================
@@ -22,8 +19,6 @@
  *============================*/
 
 @interface NSObject (JACoder)
-
-#if JADEBUG
 
 /**
  交换方法
@@ -41,6 +36,18 @@
  @return 属性列表
  */
 - (NSArray *)ja_propertyList:(BOOL)recursive;
+
+
+/**
+ 属性与类型列表
+ @{
+    属性1:类型1,
+    属性2:类型2
+ }
+ @param recursive 是否递归
+ @return 保存属性与类型的字典对象
+ */
+- (NSDictionary *)ja_propertyAndEncodeTypeList:(BOOL)recursive;
 
 /**
  变量列表
@@ -62,7 +69,5 @@
  清空缓存列表
  */
 - (void)ja_cleanCacheList;
-
-#endif
 
 @end

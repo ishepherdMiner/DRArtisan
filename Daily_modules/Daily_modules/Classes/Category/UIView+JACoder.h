@@ -33,6 +33,7 @@
 /**
  *  Return YES from the block to recurse into the subview.
  *  Set stop to YES to return the subview.
+ *  回调中返回 YES 继续查找,返回 NO,去检查 stop 的值,如果stop 为 YES,则返回找到的那个视图
  */
 - (UIView*)ja_findViewRecursively:(BOOL(^)(UIView* subview, BOOL* stop))recurse;
 

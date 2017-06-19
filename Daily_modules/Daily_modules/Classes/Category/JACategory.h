@@ -19,8 +19,13 @@
 #import "UIDevice+JACoder.h"
 #import "NSNumber+JACoder.h"
 #import "NSURL+JACoder.h"
+#import "UIScreen+JACoder.h"
 #import "UINavigationController+JACoder.h"
+#import "UITableView+JACoder.h"
+#import "UICollectionView+JACoder.h"
+#import "UINavigationBar+JACoder.h"
 #import "UIColor+JACoder.h"
-#import "NSData+JACoder.h"
+#import "UIButton+JACoder.h"
+#import "NSFileManager+JACoder.h"
 
 #endif /* JACategory_h */
