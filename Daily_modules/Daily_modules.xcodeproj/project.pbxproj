@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		159B33C1A5519F7BF8F5B176 /* libPods-Daily_modules.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 02861009548E11843D3DEB07 /* libPods-Daily_modules.a */; };
 		960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = 960ECEAD1E22FD48001E11B9 /* JAUtils.m */; };
 		96264DA31EB7292E00E338E1 /* IntentHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 96264DA21EB7292E00E338E1 /* IntentHandler.m */; };
 		96264DAB1EB7292F00E338E1 /* IntentsUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 96264DAA1EB7292F00E338E1 /* IntentsUI.framework */; };
@@ -28,6 +29,7 @@
 		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
 		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
+		962A42161EF96E2A0060EAA6 /* JADBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 962A42151EF96E2A0060EAA6 /* JADBManager.m */; };
 		96334F121EA8FBA200EE294D /* JATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96334F111EA8FBA200EE294D /* JATabBarController.m */; };
 		964E289F1EF57D72002F44BF /* BackgroundAudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E289E1EF57D72002F44BF /* BackgroundAudioPlay.m */; };
 		96601B1B1EAEBB37008D67CD /* TouchIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96601B1A1EAEBB37008D67CD /* TouchIDViewController.swift */; };
@@ -114,6 +116,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		02861009548E11843D3DEB07 /* libPods-Daily_modules.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-Daily_modules.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		960ECEAC1E22FD48001E11B9 /* JAUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JAUtils.h; sourceTree = "<group>"; };
 		960ECEAD1E22FD48001E11B9 /* JAUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JAUtils.m; sourceTree = "<group>"; };
 		96264D9F1EB7292E00E338E1 /* SiriExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = SiriExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +155,8 @@
 		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
 		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
 		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
+		962A42141EF96E2A0060EAA6 /* JADBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JADBManager.h; sourceTree = "<group>"; };
+		962A42151EF96E2A0060EAA6 /* JADBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JADBManager.m; sourceTree = "<group>"; };
 		96334F101EA8FBA200EE294D /* JATabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JATabBarController.h; sourceTree = "<group>"; };
 		96334F111EA8FBA200EE294D /* JATabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATabBarController.m; sourceTree = "<group>"; };
 		964E289D1EF57D72002F44BF /* BackgroundAudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAudioPlay.h; sourceTree = "<group>"; };
@@ -225,6 +230,8 @@
 		96F2E1841EF81F0000B9AE1B /* UITableView+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UITableView+JACoder.m"; sourceTree = "<group>"; };
 		96F2E1851EF81F0000B9AE1B /* UIView+JACoder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+JACoder.h"; sourceTree = "<group>"; };
 		96F2E1861EF81F0000B9AE1B /* UIView+JACoder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+JACoder.m"; sourceTree = "<group>"; };
+		B40F800846FB4EFC0A69FB16 /* Pods-Daily_modules.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily_modules.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Daily_modules/Pods-Daily_modules.debug.xcconfig"; sourceTree = "<group>"; };
+		DA99B94B0F07D440052B6D84 /* Pods-Daily_modules.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Daily_modules.release.xcconfig"; path = "Pods/Target Support Files/Pods-Daily_modules/Pods-Daily_modules.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -264,6 +271,7 @@
 				967F0C721E1F116D00E744A1 /* CFNetwork.framework in Frameworks */,
 				967F0C6F1E1F076400E744A1 /* jpush-ios-3.0.0.a in Frameworks */,
 				967F0C6E1E1F076400E744A1 /* jcore-ios-1.0.0.a in Frameworks */,
+				159B33C1A5519F7BF8F5B176 /* libPods-Daily_modules.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -277,6 +285,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		477C564D27EF6B0E83409BC8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B40F800846FB4EFC0A69FB16 /* Pods-Daily_modules.debug.xcconfig */,
+				DA99B94B0F07D440052B6D84 /* Pods-Daily_modules.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		960ECEAA1E22FC96001E11B9 /* Category */ = {
 			isa = PBXGroup;
 			children = (
@@ -367,6 +384,7 @@
 				96264DAC1EB7292F00E338E1 /* SiriExtensionUI */,
 				9627CEEC1E19FA9800F4AC7E /* Products */,
 				967F0C701E1F116D00E744A1 /* Frameworks */,
+				477C564D27EF6B0E83409BC8 /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -423,6 +441,7 @@
 		9627CF151E19FC0A00F4AC7E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				962A42131EF96E2A0060EAA6 /* DB */,
 				964E289C1EF57D72002F44BF /* BackgroundAudio */,
 				96601B181EAEBB12008D67CD /* TouchID */,
 				96334F0F1EA8FBA200EE294D /* TabBar */,
@@ -457,6 +476,15 @@
 				9627CF2B1E1A10BD00F4AC7E /* NoticeServiceController.m */,
 			);
 			name = Demo;
+			sourceTree = "<group>";
+		};
+		962A42131EF96E2A0060EAA6 /* DB */ = {
+			isa = PBXGroup;
+			children = (
+				962A42141EF96E2A0060EAA6 /* JADBManager.h */,
+				962A42151EF96E2A0060EAA6 /* JADBManager.m */,
+			);
+			path = DB;
 			sourceTree = "<group>";
 		};
 		96334F0F1EA8FBA200EE294D /* TabBar */ = {
@@ -534,6 +562,7 @@
 				967F0C731E1F118200E744A1 /* CoreFoundation.framework */,
 				967F0C711E1F116D00E744A1 /* CFNetwork.framework */,
 				96264DAA1EB7292F00E338E1 /* IntentsUI.framework */,
+				02861009548E11843D3DEB07 /* libPods-Daily_modules.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,10 +608,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9627CF0D1E19FA9800F4AC7E /* Build configuration list for PBXNativeTarget "Daily_modules" */;
 			buildPhases = (
+				B06FCED3259E7925730454A1 /* [CP] Check Pods Manifest.lock */,
 				9627CEE71E19FA9800F4AC7E /* Sources */,
 				9627CEE81E19FA9800F4AC7E /* Frameworks */,
 				9627CEE91E19FA9800F4AC7E /* Resources */,
 				96264DC01EB7292F00E338E1 /* Embed App Extensions */,
+				0E601A7DC0CA741D7D442C78 /* [CP] Embed Pods Frameworks */,
+				E92D964F4A91A63CC7CBB390 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -714,6 +746,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0E601A7DC0CA741D7D442C78 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily_modules/Pods-Daily_modules-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B06FCED3259E7925730454A1 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		E92D964F4A91A63CC7CBB390 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Daily_modules/Pods-Daily_modules-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		96264D9B1EB7292E00E338E1 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -741,6 +821,7 @@
 				96601B1B1EAEBB37008D67CD /* TouchIDViewController.swift in Sources */,
 				96F2E18B1EF81F0000B9AE1B /* NSFileManager+JACoder.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
+				962A42161EF96E2A0060EAA6 /* JADBManager.m in Sources */,
 				96F2E1971EF81F0000B9AE1B /* UIScreen+JACoder.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
 				96F2E1891EF81F0000B9AE1B /* NSDate+JACoder.m in Sources */,
@@ -970,6 +1051,7 @@
 		};
 		9627CF0E1E19FA9800F4AC7E /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B40F800846FB4EFC0A69FB16 /* Pods-Daily_modules.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -992,6 +1074,7 @@
 		};
 		9627CF0F1E19FA9800F4AC7E /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = DA99B94B0F07D440052B6D84 /* Pods-Daily_modules.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
