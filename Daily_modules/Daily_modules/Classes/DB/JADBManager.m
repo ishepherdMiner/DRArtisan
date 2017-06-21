@@ -15,18 +15,11 @@
 
 @interface JADBTable ()
 
-@property (nonatomic,weak) Class cls;
-@property (nonatomic,strong) NSArray *fields;
-@property (nonatomic,strong) NSDictionary *fieldValues;
-@property (nonatomic,strong) NSMutableDictionary <NSString *,JADBTable *> *innerTables;
-@property (nonatomic,strong) NSArray <Class> *innerClasses;
-
-///
 @property (nonatomic,copy) NSString *tableName;
 @property (nonatomic,strong) FMDatabaseQueue *dbQueue;
 @property (nonatomic,strong) NSDictionary *fieldsTypePair;
 @property (nonatomic,strong) Class template;
-@property (nonatomic,strong) NSMutableArray <Class> *hostingTemplates;
+@property (nonatomic,strong) NSMutableDictionary *hostingTemplates;
 @property (nonatomic,strong) NSMutableDictionary <NSString *,JADBTable *> *hostingTables;
 
 @end
@@ -35,13 +28,13 @@
 
 - (instancetype)initWithDb:(FMDatabaseQueue *)dbQueue
                  tableName:(NSString *)tableName
-                 templates:(NSArray <Class>*)templates{
+                 templates:(NSArray *)templates{
     
     if (self = [super init]) {
         self.dbQueue = dbQueue;
         self.tableName = tableName;
         NSMutableString *sql = [NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (",self.tableName];
-        if ([templates.firstObject isSubclassOfClass:[NSString class]]) {
+        if ([[templates[0] class] isSubclassOfClass:[NSString class]]) {
             /// 关联表
             for (int i = 0; i < templates.count; ++i) {
                 NSString *k = (NSString *)templates[i];
@@ -54,13 +47,14 @@
         }else {
             self.template = templates[0];
             self.fieldsTypePair = [[[self.template alloc] init] ja_propertyAndEncodeTypeList:false];
-            self.hostingTemplates = [NSMutableArray arrayWithArray:templates];
-            [self.hostingTemplates removeObjectAtIndex:0];
+            if (templates.count == 2) {
+                self.hostingTemplates = templates.lastObject;
+            }
+            
             if (self.hostingTables == nil) {
                 self.hostingTables = [NSMutableDictionary dictionary];
             }
-            
-            NSMutableString *sql = [NSMutableString stringWithFormat:@"CREATE TABLE IF NOT EXISTS %@ (",self.tableName];
+
             NSArray *allKeys = self.fieldsTypePair.allKeys;
             for (int i = 0; i < allKeys.count; ++i) {
                 NSString *k = allKeys[i];
@@ -84,25 +78,50 @@
                         [sql appendString:@" INTEGER"];
                         
                     }else if ([v rangeOfString:@"Model"].location != NSNotFound) {
-                        
                         /// 当属性为模型对象时,
                         /// 创建对应的子表
                         /// 主表: 包含该属性的表,即当前的表
                         /// 子表: 由该属性生成的表 名称为 前缀 + 属性名(首字母大写)
                         /// 策略:
-                        /// !important 主表中该属性保存了在子表的主键值,用于在查找时对模型属性进行赋值
-                        NSString *sonTableName = [NSString stringWithFormat:@"%@%@",[JAConfigure sharedCf].prefix ? [JAConfigure sharedCf].prefix : @"",[k capitalizedString]];
+                        /// !important 主表中该属性保存了在子表的主键值,用于在查找时对模型属性进行赋值，其实就是外键
+                        /// 暂未实现
+                        id kTemplate = [_hostingTemplates objectForKey:k];
+                        NSMutableDictionary *kHostTemplates = [NSMutableDictionary dictionary];
+                        // 模型属性嵌套模型
+                        if ([kTemplate isKindOfClass:[NSDictionary class]]) {
+                            kTemplate = [[_hostingTemplates objectForKey:k] objectForKey:@"this"];
+                            [[_hostingTemplates objectForKey:k] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                                if (![key isEqualToString:@"this"]) {
+                                    [kHostTemplates setObject:obj forKey:key];
+                                }
+                            }];
+                        }
+                        
+                        NSString *kTableName = NSStringFromClass(kTemplate);
+                        if ([[kTableName substringFromIndex:kTableName.length - 5] isEqualToString:@"Model"]) {
+                            // 去掉结尾的model
+                            kTableName = [kTableName substringToIndex:kTableName.length - 5];
+                        }
+                        
+                        NSString *sonTableName = [NSString stringWithFormat:@"%@",kTableName];
+                        
+                        NSArray *kTemplates = nil;
+                        if (kHostTemplates.count == 0) {
+                            kTemplates = @[kTemplate];
+                        }else {
+                            kTemplates = @[kTemplate,kHostTemplates];
+                        }
                         
                         JADBTable *sonTable = [[JADBTable alloc] initWithDb:_dbQueue
                                                                   tableName:sonTableName
-                                                                  templates:@[v.class]];
+                                                                  templates:kTemplates];
                         
                         [_hostingTables setObject:sonTable forKey:sonTableName];
                         
                         /// 创建关联表
-                        NSString *relateTableName = [NSString stringWithFormat:@"%@_RELATE_%@",_tableName,[k capitalizedString]];
-                        NSString *parentPk = [_template primaryKey];
-                        NSString *sonPk = [NSClassFromString(v) primaryKey];
+                        NSString *relateTableName = [NSString stringWithFormat:@"%@_RELATE_%@",_tableName,kTableName];
+                        NSString *parentPk = [_template pK];
+                        NSString *sonPk = [NSClassFromString(v) pK];
                         
                         JADBTable *relateTable = [[JADBTable alloc] initWithDb:_dbQueue
                                                                      tableName:relateTableName
@@ -114,34 +133,58 @@
                         
                     }else if ([v isEqualToString:@"NSArray"]) {
                         
-                        /// 当属性为数组时
-                        for (int i = 0; i < _hostingTemplates.count; ++i) {
-                            
-                            NSString *hostTableName = [NSString stringWithFormat:@"%@%@",[JAConfigure sharedCf].prefix,[k capitalizedString]];
-                            
-                            JADBTable *hostTable = [[JADBTable alloc] initWithDb:_dbQueue
-                                                                       tableName:hostTableName
-                                                                       templates:@[_hostingTemplates[i]]];
-                            
-                            [_hostingTables setObject:hostTable forKey:hostTableName];
-                            
-                            /// 创建关联表
-                            NSString *relateTableName = [NSString stringWithFormat:@"%@_RELATE_%@",_tableName,[k capitalizedString]];
-                            NSString *parentPk = [_template primaryKey];
-                            NSString *sonPk = [NSClassFromString(v) primaryKey];
-                            
-                            JADBTable *relateTable = [[JADBTable alloc] initWithDb:_dbQueue
-                                                                         tableName:relateTableName
-                                                                         templates:@[parentPk,sonPk]];
-                            
-                            [_hostingTables setObject:relateTable forKey:relateTableName];
-                            
-                            [sql appendString:@" TEXT"];
+                        id kTemplate = [_hostingTemplates objectForKey:k];
+                        NSMutableDictionary *kHostTemplates = [NSMutableDictionary dictionary];
+                        // NSLog(@"%@",kTemplate);
+                        if ([kTemplate isKindOfClass:[NSDictionary class]] ) {
+                            kTemplate = [[_hostingTemplates objectForKey:k] objectForKey:@"this"];
+                            [[_hostingTemplates objectForKey:k] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                                if (![key isEqualToString:@"this"]) {
+                                    [kHostTemplates setObject:obj forKey:key];
+                                }
+                            }];
                         }
+                        
+                        NSArray *kTemplates = nil;
+                        if (kHostTemplates.count == 0) {
+                            kTemplates = @[kTemplate];
+                        }else {
+                            kTemplates = @[kTemplate,kHostTemplates];
+                        }
+                        
+                        NSString *kTableName = NSStringFromClass(kTemplate);
+                        if ([[kTableName substringFromIndex:kTableName.length - 5] isEqualToString:@"Model"]) {
+                            // 去掉结尾的model
+                            kTableName = [kTableName substringToIndex:kTableName.length - 5];
+                            // 可数复数
+                            if ([[kTableName substringFromIndex:kTableName.length - 1] isEqualToString:@"s"]) {
+                                kTableName = [kTableName substringToIndex:kTableName.length - 1];
+                            }
+                        }
+                        
+                        JADBTable *hostTable = [[JADBTable alloc] initWithDb:_dbQueue
+                                                                   tableName:kTableName
+                                                                   templates:kTemplates];
+                        
+                        [_hostingTables setObject:hostTable forKey:kTableName];
+                        
+                        /// 创建关联表
+                        NSString *relateTableName = [NSString stringWithFormat:@"%@_RELATE_%@",_tableName,kTableName];
+                        NSString *parentPk = [_template pK];
+                        NSString *sonPk = [kTemplate pK];
+                        
+                        JADBTable *relateTable = [[JADBTable alloc] initWithDb:_dbQueue
+                                                                     tableName:relateTableName
+                                                                     templates:@[parentPk,sonPk]];
+                        
+                        [_hostingTables setObject:relateTable forKey:relateTableName];
+                        
+                        [sql appendString:@" TEXT"];
                         
                     }else if ([v isEqualToString:@"NSDictionary"]) {
                         
-                        /// 当属性为字典时 --
+                        /// 当属性为字典时 -- 暂时没碰到
+                        NSLog(@"%@",v);
                     }
                 }
                 
@@ -154,7 +197,7 @@
         [sql appendString:@")"];
         
 
-        [self executeUpateWithSql:sql okLog:@"[JA]:表创建成功" failLog:@"[JA]:表创建失败"];
+        [self executeUpateWithSql:sql okLog:@"表创建成功" failLog:@"表创建失败"];
     }
     return self;
 }
@@ -164,230 +207,274 @@
                     failLog:(NSString *)failLog {
     
 #if DEBUG
-    NSLog(@"%@",sql);
+    NSLog(@"[JA]:%@",sql);
 #endif
     
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         
         BOOL r = [db executeUpdate:sql];
         if(r) {
-            NSLog(@"%@",okLog);
+            NSLog(@"[JA]:%@",okLog);
         }else {
-            NSLog(@"%@",failLog);
+            NSLog(@"[JA]:%@",failLog);
             *rollback = true;
             return ;
         }
     }];
 }
-// ---
 
 - (void)insertWithModel:(JAModel *)model {
     
     NSMutableString *sql = [NSMutableString stringWithString:[NSString stringWithFormat:@"INSERT INTO %@ (",self.tableName]];
     
-    NSUInteger count = self.fields.count;
-    NSMutableArray *property = [NSMutableArray arrayWithCapacity:2];
-    for (NSString *key in self.fields) {
-        [sql appendString:key];
-        if (--count > 0) {
+    NSArray *allKeys = self.fieldsTypePair.allKeys;
+    for (int i = 0; i < allKeys.count; ++i) {
+        NSString *k = allKeys[i];
+        [sql appendString:k];
+        if (i != (allKeys.count - 1)) {
             [sql appendString:@","];
         }
-        [property addObject:key];
     }
-    [sql appendString:@")"];
-    [sql appendString:@" VALUES("];
-    count = self.fields.count;
-    for (NSString *key in property) {
+    
+    [sql appendString:@") VALUES("];
+    for (int i = 0; i < allKeys.count; ++i) {
+        NSString *k = allKeys[i];
         [sql appendString:@"'"];
-        if ([[self.fieldValues objectForKey:key] isEqualToString:@"NSString"]) {
-            if ([model valueForKeyPath:key]) {
-                [sql appendString:[model valueForKeyPath:key]];
+        NSString *t = [_fieldsTypePair objectForKey:k];
+        id v = [model valueForKeyPath:k];
+        if ([t isEqualToString:@"NSString"]) {
+            if (v) {
+                [sql appendString:v];
             }else {
                 [sql appendString:@""];
             }
-        }else if([[self.fieldValues objectForKey:key] isEqualToString:@"NSNumber"]) {
-            [sql appendString:[[model valueForKeyPath:key] stringValue]];
-        }else if([[self.fieldValues objectForKey:key] isEqualToString:@"NSArray"]) {
-            // 在关联表中添加相关的记录
-            NSString *relateTName = [NSString stringWithFormat:@"%@_JOIN_%@",self.tableName,[key capitalizedString]];
-            NSString *subTName = [NSString stringWithFormat:@"%@%@",[JAConfigure sharedCf].prefix ? [JAConfigure sharedCf].prefix : @"",[key capitalizedString]];
-            JADBTable *innerTModel = [self.innerTables objectForKey:subTName];
+        }else if ([t isEqualToString:@"NSNumber"]) {
+            [sql appendString:[v stringValue]];
+        }else if ([t rangeOfString:@"Model"].location != NSNotFound) {
+            NSString *hostK = [[v class] pK];
+            NSNumber *hostV = [v valueForKeyPath:hostK];
+#warning Wait
+            // 比如所有章节表中为 [1,6]
+            // 当为这本书添加新章节时,只能在上面的 [1,6] 中选择
+            // 预先查询,因为查询的方法,还未写,先 PASS
+            //
+            //
+            [sql appendString:hostV.stringValue];
+        }else if ([t isEqualToString:@"NSArray"]) {
             
-            // 预先查询子表中是否存在对应的记录，如果没有，关联表不能插入，直接断言就好了
-            NSArray *subTableRecords = [model valueForKeyPath:key];
-            for (int i = 0; i < subTableRecords.count; ++i) {
-                NSString *primaryKey = [[subTableRecords[i] class] primaryKey];
-                JAModel *innerModel = [innerTModel selectWithField:primaryKey
-                                                 relationship:@"="
-                                                        value:[(id)subTableRecords[i] valueForKeyPath:primaryKey]name:subTName];
-                NSAssert(innerModel, @"[JA]:无法添加,因为子表中没有对应的记录");
+            /// 在关联表中添加相关的记录
+            id kTemplate = [_hostingTemplates objectForKey:k];
+            NSMutableDictionary *kHostTemplates = [NSMutableDictionary dictionary];
+            
+            if ([kTemplate isKindOfClass:[NSDictionary class]] ) {
+                kTemplate = [[_hostingTemplates objectForKey:k] objectForKey:@"this"];
+                [[_hostingTemplates objectForKey:k] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+                    if (![key isEqualToString:@"this"]) {
+                        [kHostTemplates setObject:obj forKey:key];
+                    }
+                }];
+            }
+            
+            // 子表表名
+            NSString *kTableName = NSStringFromClass(kTemplate);
+            if ([[kTableName substringFromIndex:kTableName.length - 5] isEqualToString:@"Model"]) {
+                // 去掉结尾的model
+                kTableName = [kTableName substringToIndex:kTableName.length - 5];
+                // 可数复数
+                if ([[kTableName substringFromIndex:kTableName.length - 1] isEqualToString:@"s"]) {
+                    kTableName = [kTableName substringToIndex:kTableName.length - 1];
+                }
+            }
+            
+            /// 子表对象
+            JADBTable *hostTable = [_hostingTables objectForKey:kTableName];
+            
+            /// 关联表表名
+            NSString *relateTableName = [NSString stringWithFormat:@"%@_RELATE_%@",_tableName,kTableName];
+            
+            /// 关联表的属性名称
+            /// 来自主表
+            NSString *parentPk = [_template pK];
+            /// 来自子表
+            NSString *sonPk = [kTemplate pK];
+            
+            /// 关联表对象
+            JADBTable *relateTable = [_hostingTables objectForKey:relateTableName];
+
+            /// 子表中是否存在对应记录
+            NSArray *vs = (NSArray *)v;
+            for (int i = 0; i < vs.count; ++i) {
+                NSString *pk = [[vs[i] class] pK];
+                id value = [vs[i] valueForKeyPath:pk];
+                // 主键为索引查询子表
+
+                // PASS 查询语句暂时这么写
+                JAModel *hostModel = [hostTable selectWithValue:value field:pk relationship:@"="];
+                                      
                 
-                JADBTable *relateTModel = [self.innerTables objectForKey:relateTName];                
-                [relateTModel insertWithTableName:relateTName propertiesDic:@{
-                                                                        [model.class primaryKey]:
-                                                                            [model valueForKeyPath:[model.class primaryKey]],
-                                                                        [innerModel.class primaryKey]:
-                                                                            [innerModel valueForKeyPath:[innerModel.class primaryKey]]
-                                                                        }];
+                NSAssert([hostModel valueForKey:pk],([NSString stringWithFormat:@"[JA]:无法添加,因为 %@ 表中没有对应的记录",kTableName]));
                 
-                NSString *innerPkeys = [NSString stringWithFormat:@"%@",[innerModel valueForKeyPath:primaryKey]];
-                [sql appendString:innerPkeys];
+                /// 添加值(子表主键1,子表主键2...)
+                NSString *hostPk = [NSString stringWithFormat:@"%@",[hostModel valueForKeyPath:pk]];
+                [sql appendString:hostPk];
                 
-                if (i != (subTableRecords.count - 1)) {
+                /// 为关联表添加记录                
+                id hostModelPkValue = [hostModel valueForKeyPath:sonPk];
+                id modelPkValue = [model valueForKeyPath:parentPk];
+                [relateTable insertWithTableName:relateTableName propertiesDic:@{
+                                                                                 parentPk:hostModelPkValue,
+                                                                                 sonPk:modelPkValue
+                                                                                 }];
+                
+                if (i != (vs.count - 1)) {
                     [sql appendString:@","];
                 }
             }
+            
         }
         [sql appendString:@"'"];
-        if (--count >0) {
+        if (i != (allKeys.count - 1)) {
             [sql appendString:@","];
         }
     }
     [sql appendString:@")"];
-    NSLog(@"[JA]:%@",[NSString stringWithFormat:@"%@",sql]);
     
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-       
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:数据插入成功");
-        }else {
-            NSLog(@"[JA]:数据插入失败");
-            *rollback = true;
-            return ;
-        }
-        
-    }];
+    [self executeUpateWithSql:sql okLog:@"数据插入成功" failLog:@"数据插入失败"];
 }
 
 - (void)insertWithTableName:(NSString *)name
               propertiesDic:(NSDictionary <NSString *,id> *)propertiesDic {
     
-    NSMutableString *sql = [NSMutableString stringWithString:@"INSERT INTO "];
-    [sql appendString:name ? name : self.tableName];
-    [sql appendString:@"("];
+    NSMutableString *sql = [NSMutableString stringWithString:[NSString stringWithFormat:@"INSERT INTO %@ (",self.tableName]];
     
-    NSUInteger count = [propertiesDic allKeys].count;
-    NSMutableArray *property = [NSMutableArray arrayWithCapacity:count];
-    NSArray *properties = [propertiesDic allKeys];
-    for (NSString *key in properties) {
-        [sql appendString:key];
-        if (--count > 0) {
+    NSArray *properties = propertiesDic.allKeys;
+    
+    for (int i = 0; i < properties.count; ++i) {
+        NSString *k = properties[i];
+        [sql appendString:k];
+        if (i != (properties.count - 1)) {
             [sql appendString:@","];
         }
-        [property addObject:key];
     }
-    [sql appendString:@")"];
-    [sql appendString:@" VALUES("];
-    count = [propertiesDic allKeys].count;
-    for (NSString *key in properties) {
+    
+    [sql appendString:@") VALUES("];
+    
+    for (int i = 0; i < properties.count; ++i) {
         [sql appendString:@"'"];
-        id property = [propertiesDic objectForKey:key];
+        NSString *k = properties[i];
+        id property = [propertiesDic objectForKey:k];
         if ([property isKindOfClass:[NSNumber class]]) {
-            [sql appendString:[(NSNumber *)property stringValue]];
+            [sql appendString:[property stringValue]];
         }else {
             [sql appendString:property];
         }
         [sql appendString:@"'"];
-        if (--count >0) {
+        if (i != (properties.count - 1)) {
             [sql appendString:@","];
         }
     }
     
     [sql appendString:@")"];
-    NSLog(@"[JA]:%@",[NSString stringWithFormat:@"%@",sql]);
     
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:数据插入成功");
-        }else {
-            NSLog(@"[JA]:数据插入失败");
-            *rollback = true;
-            return ;
-        }
-        
-    }];
+    [self executeUpateWithSql:sql okLog:@"数据插入成功" failLog:@"数据插入失败"];
 }
+
+#pragma mark -
+#pragma mark - 需要优化
 
 - (void)updateWithModel:(JAModel *)model {
     NSMutableString *sql = [NSMutableString stringWithString:@"UPDATE "];
     [sql appendString:self.tableName];
     [sql appendString:@" SET "];
-    NSUInteger count = self.fields.count;
-    for (NSString *key in self.fields) {
-        if (![key isEqualToString:[model.class primaryKey]]) {
-            [sql appendString:key];
+    NSArray *allKeys = self.fieldsTypePair.allKeys;
+    for (int i = 0; i < allKeys.count; ++i) {
+        NSString *k = allKeys[i];
+        if (![k isEqualToString:[[model class] pK]]) {
+            [sql appendString:k];
             [sql appendString:@" = '"];
-            if ([[model valueForKeyPath:key] isKindOfClass:[NSNumber class]]) {
+            
+            if ([[model valueForKeyPath:k] isKindOfClass:[NSNumber class]]) {
                 
-            }else if ([[model valueForKeyPath:key] isKindOfClass:[NSString class]]){
-                [sql appendString:[model valueForKeyPath:key]];
+            }else if ([[model valueForKeyPath:k] isKindOfClass:[NSString class]]){
+                
+                [sql appendString:[model valueForKeyPath:k]];
                 [sql appendString:@"'"];
+                
+            }else if ([[model valueForKeyPath:k] isKindOfClass:[NSArray class]]) {
+                
+                // 数组类型
+                
+            }else if([[model valueForKeyPath:k] isKindOfClass:[JAModel class]]) {
+                
+                // 模型类型
             }
             
-            // 排除主键
-            if (--count > 1) {
-                [sql appendString:@","];
-            }
+            [sql appendString:@","];
         }
     }
-    [sql appendString:@" WHERE "];
-    [sql appendString:[model.class primaryKey]];
-    [sql appendString:@" = "];
-    if ([[model valueForKeyPath:[model.class primaryKey]] isKindOfClass:[NSNumber class]]) {
-        NSNumber *n = [model valueForKeyPath:[model.class primaryKey]];
-        [sql appendString:n.stringValue];
-    }    
     
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-       
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:数据更新成功");
-        }else {
-            NSLog(@"[JA]:数据更新失败");
-            *rollback = true;
-            return ;
-        }
-    }];
+    [sql appendString:@" WHERE "];
+    [sql appendString:[model.class pK]];
+    [sql appendString:@" = "];
+    
+    // 主键
+    if ([[model valueForKeyPath:[model.class pK]] isKindOfClass:[NSNumber class]]) {
+        NSNumber *n = [model valueForKeyPath:[model.class pK]];
+        [sql appendString:n.stringValue];
+    }
+    
+    [self executeUpateWithSql:sql okLog:@"数据更新成功" failLog:@"数据更新失败"];
 }
 
 - (JAModel *)selectWithValue:(NSString *)value {
-    return [self selectWithField:[self.cls primaryKey]
-                    relationship:@"="
-                           value:value];
+    return [self selectWithValue:value
+                           field:[self.template pK]
+                    relationship:@"="];
 }
 
-- (JAModel *)selectWithField:(NSString *)field
-                relationship:(NSString *)rs
-                       value:(id)value {
+- (JAModel *)selectWithValue:(id)value
+                       field:(NSString *)field
+                relationship:(NSString *)rs {
     
-    return [self selectWithField:field
+    return [self selectWithValue:value
+                           field:field
                     relationship:rs
-                           value:value
                             name:self.tableName];
 }
 
-- (JAModel *)selectWithField:(NSString *)field
+#pragma mark -
+#pragma mark - 需要优化
+- (JAModel *)selectWithValue:(id)value
+                       field:(NSString *)field
                 relationship:(NSString *)rs
-                       value:(id)value
-                        name:(NSString *)name{
+                        name:(NSString *)name {
     
     NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@ WHERE %@ %@ '%@'",name,field,rs,value];
     
     NSLog(@"[JA]:%@",[NSString stringWithFormat:@"%@",sql]);
-    __block JAModel *m = nil;
+    
+    JAModel *m = [[self.template alloc] init];
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         FMResultSet *rs = [db executeQuery:sql];
         while ([rs next]) {
-            m = [[self.cls alloc] init];
-            for (NSString *k in self.fields) {
-                if ([[self.fieldValues objectForKey:k] isEqualToString:@"NSString"]) {
+            NSArray *fieldKeys = self.fieldsTypePair.allKeys;
+            for (NSString *k in fieldKeys) {
+                if ([[_fieldsTypePair objectForKey:k] isEqualToString:@"NSString"]) {
+                    
                     [m setValue:[rs stringForColumn:k] forKey:k];
-                }else if ([[self.fieldValues objectForKey:k] isEqualToString:@"NSNumber"]) {
+                    
+                }else if ([[_fieldsTypePair objectForKey:k] isEqualToString:@"NSNumber"]) {
+                    
                     [m setValue:@([[rs stringForColumn:k] doubleValue]) forKey:k];
+                    
+                }else if ([[_fieldsTypePair objectForKey:k] isEqualToString:@"NSArray"]) {
+                    
+                    NSLog(@"select NSArray");
+                    
+                }else if ([[_fieldsTypePair objectForKey:k] rangeOfString:@"Model"].location != NSNotFound) {
+                    
+                    NSLog(@"select Model");
+                    
                 }
             }
         }
@@ -396,219 +483,114 @@
     return m;
 }
 
+#pragma mark -
+#pragma mark - 需要优化
+
 - (NSArray <JAModel *> *)selectAll {
-    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",self.tableName];
+    NSString *sql = [NSString stringWithFormat:@"SELECT * FROM %@",_tableName];
     NSMutableArray *models = [NSMutableArray array];
+    
+    NSMutableDictionary *kIsDic = [NSMutableDictionary dictionary];
+    
     [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
         FMResultSet *rs = [db executeQuery:sql];
+        int i = 0;
         while ([rs next]) {
-            JAModel *m = [[self.cls alloc] init];
-            for (NSString *k in self.fields) {
-                if ([[self.fieldValues objectForKey:k] isEqualToString:@"NSString"]) {
+            JAModel *m = [[self.template alloc] init];
+            NSArray *filedKeys = self.fieldsTypePair.allKeys;
+            for (NSString *k in filedKeys) {
+                NSString *v = [self.fieldsTypePair objectForKey:k];
+                if ([v isEqualToString:@"NSString"]) {
+                    
                     [m setValue:[rs stringForColumn:k] forKey:k];
-                }else if ([[self.fieldValues objectForKey:k] isEqualToString:@"NSNumber"]) {
+                    
+                }else if ([v isEqualToString:@"NSNumber"]) {
+                    
                     [m setValue:@([[rs stringForColumn:k] doubleValue]) forKey:k];
-                }else if ([[self.fieldValues objectForKey:k] isEqualToString:@"NSArray"]) {
-                    // 子表中读取模型进行赋值
-                    NSArray *records = [[rs stringForColumn:k] componentsSeparatedByString:@","];
-                    NSString *keyOfTableName = [NSString stringWithFormat:@"%@%@",[JAConfigure sharedCf].prefix ? [JAConfigure sharedCf].prefix : @"",[k capitalizedString]];
-                    JADBTable *t = [self.innerTables objectForKey:keyOfTableName];
-                    NSMutableArray *imm = [NSMutableArray arrayWithCapacity:records.count];
-                    for (int i = 0; i < records.count; ++i) {
-                        JAModel *im = [t selectWithField:[t.cls primaryKey] relationship:@"=" value:records[i]];
-                        [imm addObject:im];
-                    }
-                    [m setValue:[imm copy] forKey:k];
-                }else if ([[self.fieldValues objectForKey:k] rangeOfString:@"Model"].location != NSNotFound) {
+                    
+                }else if ([v isEqualToString:@"NSArray"]) {
+                    
+                    /// 对于数组属性,通过分割主表中的数组属性的字符串,到子表中查询得到模型对象,然后进行KVC赋值操作
+                    /// 但是fmdb内嵌方式的情况下,运行会崩溃,大约还是锁的问题先记录下来,然后再处理
+                    NSArray *kHostPks = [[rs stringForColumn:k] componentsSeparatedByString:@","];
+                    [kIsDic setValue:@[kHostPks,k] forKey:@(i).stringValue];
+                    
+                }else if ([v rangeOfString:@"Model"].location != NSNotFound) {
+                    
+                    // 与 NSArray 时类似处理
                     
                 }
             }
             [models addObject:m];
+            i++;
         }
     }];
     
+    /// 这一段挺混乱的,目前想不出比较棒的数据组织方式,命名也挺糟糕
+    NSArray *allKeys = [kIsDic allKeys];
+    for (int i = 0; i < allKeys.count; ++i) {
+        JAModel *m = [models objectAtIndex:[allKeys[i] doubleValue]];
+        NSArray *list = [kIsDic objectForKey:allKeys[i]];
+        NSArray *kHostPks = list[0];
+        NSString *k = list[1];
+        NSString *kTableName = [self createNameWithKey:k];
+        JADBTable *table = [self.hostingTables objectForKey:kTableName];
+        NSMutableArray *imm = [NSMutableArray arrayWithCapacity:kHostPks.count];
+        for (NSString *pkValue in kHostPks) {
+            JAModel *im = [table selectWithValue:pkValue field:[table.template pK] relationship:@"="];
+            [imm addObject:im];
+        }
+        [m setValue:[imm copy] forKey:k];
+    }
     return [models copy];
 }
 
-- (void)deleteWithValue:(NSString *)value {
-    [self deleteWithField:[self.cls primaryKey]
-             relationship:@"="
-                    value:value];    
+- (void)deleteWithValue:(id)value {
+    [self deleteWithValue:value
+                    field:[self.template pK]
+             relationship:@"="];
 }
 
-- (void)deleteWithField:(NSString *)field
-           relationship:(NSString *)rs
-                  value:(id)value {
+- (void)deleteWithValue:(id)value
+                  field:(NSString *)field
+           relationship:(NSString *)rs {
     
     NSString *sql = [NSString stringWithFormat:@"DELETE  FROM %@ WHERE %@ %@ '%@'",self.tableName,field,rs,value];
-    
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-       
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:数据删除成功");
-        }else {
-            NSLog(@"[JA]:数据删除失败");
-            *rollback = true;
-            return ;
-        }
-        
-    }];
+    [self executeUpateWithSql:sql okLog:@"数据删除成功" failLog:@"数据删除失败"];
 }
 
 - (void)deleteAll {
     NSString *sql = [NSString stringWithFormat:@"DELETE FROM %@",self.tableName];
-    
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:数据删除成功");
-        }else {
-            NSLog(@"[JA]:数据删除失败");
-            *rollback = true;
-            return ;
-        }
-        
-    }];
+    [self executeUpateWithSql:sql okLog:@"数据删除成功" failLog:@"数据删除失败"];
 }
 
-- (NSMutableDictionary<NSString *,JADBTable *> *)innerTables {
-    if (_innerTables == nil) {
-        _innerTables = [NSMutableDictionary dictionary];
-    }
-    return _innerTables;
-}
-
-
-+ (instancetype)tableWithDb:(FMDatabaseQueue *)dbQueue
-                       name:(NSString *)name
-              templateClass:(Class)cls
-         templateInnerClass:(NSArray <Class>*)innerClasses{
+#pragma mark -
+#pragma mark - 需要优化
+- (NSString *)createNameWithKey:(NSString *)k {
+    id kTemplate = [_hostingTemplates objectForKey:k];
+    NSMutableDictionary *kHostTemplates = [NSMutableDictionary dictionary];
     
-    JADBTable *m = [[JADBTable alloc] init];
-    m.dbQueue = dbQueue;
-    m.cls = cls;
-    m.tableName = name;
-    m.fieldValues = [[[cls alloc] init] ja_propertyAndEncodeTypeList:false];
-    m.fields = [m.fieldValues allKeys];
-    
-    NSMutableString *sql = [NSMutableString stringWithString:@"CREATE TABLE IF NOT EXISTS "];
-    [sql appendString:name];
-    [sql appendString:@"("];
-    
-    NSUInteger count = m.fields.count;
-    for (NSString *key in m.fields) {
-        [sql appendString:key];
-        if ([[m.cls primaryKey] isEqualToString:key]) {
-            [sql appendString:@" INTEGER PRIMARY KEY NOT NULL"];
-        }else if ([[m.fieldValues objectForKey:key] isEqualToString:@"NSString"]) {
-            [sql appendString:@" TEXT"];
-        }else if ([[m.fieldValues objectForKey:key] isEqualToString:@"NSNumber"]) {
-            [sql appendString:@" INTEGER"];
-        }else if ([[m.fieldValues objectForKey:key] rangeOfString:@"Model"].location != NSNotFound) {
-            //
-            NSString *innerTName = [NSString stringWithFormat:@"%@%@",[JAConfigure sharedCf].prefix ? [JAConfigure sharedCf].prefix : @"",[key capitalizedString]];
-            JADBTable *innerModel = [JADBTable tableWithDb:m.dbQueue
-                                                      name:innerTName
-                                             templateClass:NSClassFromString([m.fieldValues objectForKey:key])
-                                        templateInnerClass:nil];
-            
-            [m.innerTables setObject:innerModel forKey:innerTName];
-            
-            NSString *innerJoinTName = [NSString stringWithFormat:@"%@_JOIN_%@",name,[key capitalizedString]];
-            NSString *outerPrimaryKey = [NSString stringWithFormat:@"%@",[cls primaryKey]];
-            NSString *innerPrimaryKey = [NSString stringWithFormat:@"%@",[NSClassFromString([m.fieldValues objectForKey:key]) primaryKey]];
-            
-            JADBTable *joinModel = [self tableWithDb:m.dbQueue
-                                                name:innerJoinTName
-                                          properties:@[outerPrimaryKey,innerPrimaryKey]];
-            
-            [m.innerTables setObject:joinModel forKey:innerJoinTName];
-            
-            
-        }
-        
-        if (--count > 0) {
-            [sql appendString:@","];
-        }
-        
-        if ([[m.fieldValues objectForKey:key] isEqualToString:@"NSArray"]) {
-            
-            for (int i = 0; i < innerClasses.count; ++i) {
-                /// 创建依赖的子表
-                /// 一般模型生成的表都会有主键，关联表可以没有主键
-                if (![innerClasses[i] isKindOfClass:[NSArray class]]) {
-                    NSString *innerTName = [NSString stringWithFormat:@"%@%@",[JAConfigure sharedCf].prefix ? [JAConfigure sharedCf].prefix : @"",[key capitalizedString]];
-                    JADBTable *innerModel = [JADBTable tableWithDb:m.dbQueue
-                                                              name:innerTName
-                                                     templateClass:innerClasses[i]
-                                                templateInnerClass:nil];
-                    
-                    [m.innerTables setObject:innerModel forKey:innerTName];
-                    
-                    NSString *innerJoinTName = [NSString stringWithFormat:@"%@_JOIN_%@",name,[key capitalizedString]];
-                    NSString *outerPrimaryKey = [NSString stringWithFormat:@"%@",[cls primaryKey]];
-                    NSString *innerPrimaryKey = [NSString stringWithFormat:@"%@",[innerClasses[i] primaryKey]];
-                    
-                    JADBTable *joinModel = [self tableWithDb:m.dbQueue
-                                                        name:innerJoinTName
-                                                  properties:@[outerPrimaryKey,innerPrimaryKey]];
-                    
-                    [m.innerTables setObject:joinModel forKey:innerJoinTName];
-                }
+    if ([kTemplate isKindOfClass:[NSDictionary class]] ) {
+        kTemplate = [[_hostingTemplates objectForKey:k] objectForKey:@"this"];
+        [[_hostingTemplates objectForKey:k] enumerateKeysAndObjectsUsingBlock:^(id  _Nonnull key, id  _Nonnull obj, BOOL * _Nonnull stop) {
+            if (![key isEqualToString:@"this"]) {
+                [kHostTemplates setObject:obj forKey:key];
             }
-        }
+        }];
     }
-    [sql appendString:@")"];
     
-    NSLog(@"[JA]:%@",sql);
-    
-    [m.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        BOOL r = [db executeUpdate:sql];
-        if(r) {
-            NSLog(@"[JA]:表创建成功");
-        }else {
-            NSLog(@"[JA]:表创建失败");
-            *rollback = true;
-            return ;
-        }
-    }];
-    return m;
-}
-
-+ (instancetype)tableWithDb:(FMDatabaseQueue *)dbQueue
-                       name:(NSString *)tName
-                 properties:(NSArray *)propertys {
-    
-    JADBTable *m = [[JADBTable alloc] init];
-    NSMutableString *sql = [NSMutableString stringWithString:@"CREATE TABLE IF NOT EXISTS "];
-    [sql appendString:tName];
-    [sql appendString:@"("];
-    NSUInteger count = propertys.count;
-    for (int i = 0; i < propertys.count; ++i) {
-        [sql appendString:propertys[i]];
-        if (--count > 0) {
-            [sql appendString:@","];
+    // 子表表名
+    NSString *kTableName = NSStringFromClass(kTemplate);
+    if ([[kTableName substringFromIndex:kTableName.length - 5] isEqualToString:@"Model"]) {
+        // 去掉结尾的model
+        kTableName = [kTableName substringToIndex:kTableName.length - 5];
+        // 可数复数
+        if ([[kTableName substringFromIndex:kTableName.length - 1] isEqualToString:@"s"]) {
+            kTableName = [kTableName substringToIndex:kTableName.length - 1];
         }
     }
     
-    [sql appendString:@")"];
-    NSLog(@"[JA]:%@",sql);
-    [dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        
-        BOOL r = [db executeUpdate:sql];
-        if(r) {
-            NSLog(@"[JA]:表创建成功");
-        }else {
-            NSLog(@"[JA]:表创建失败");
-            *rollback = true;
-            return ;
-        }
-    }];
-    
-    return m;
+    return kTableName;
 }
 
 @end
@@ -683,38 +665,44 @@
                                            templates:templates];
     
     [self.tables setObject:table forKey:tableName];
+    [self pushWithTable:table];
+    return table;
+}
+
+- (void)pushWithTable:(JADBTable *)table {
     [table.hostingTables enumerateKeysAndObjectsUsingBlock:^(NSString * _Nonnull key, JADBTable * _Nonnull obj, BOOL * _Nonnull stop) {
+        
+        if (obj.hostingTables.count > 0) {
+            [self pushWithTable:obj];
+        }
+        
         [self.tables setObject:obj forKey:key];
     }];
-    return table;
+}
+
+- (JADBTable *)selectTableWithName:(NSString *)tableName {
+    return [self.tables objectForKey:tableName];
 }
 
 - (void)deleteTable {
     NSString *sql = [NSString stringWithFormat:@" DROP TABLE %@",self.curTableName];
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:%@表被成功删除",self.curTableName);
-        }else {
-            NSLog(@"[JA]:数据删除失败");
-            *rollback = true;
-            return ;
-        }
-    }];
+    [[self.tables objectForKey:self.curTableName] executeUpateWithSql:sql okLog:[NSString stringWithFormat:@"%@表被成功删除",self.curTableName] failLog:[NSString stringWithFormat:@"%@ 表删除失败",self.curTableName]];
 }
 
 - (void)deleteTableWithName:(NSString *)name {
     NSString *sql = [NSString stringWithFormat:@" DROP TABLE %@",name];
-    [self.dbQueue inTransaction:^(FMDatabase *db, BOOL *rollback) {
-        BOOL r = [db executeUpdate:sql];
-        if (r) {
-            NSLog(@"[JA]:%@表被成功删除",name);
-        }else {
-            NSLog(@"[JA]:数据删除失败");
-            *rollback = true;
-            return ;
-        }
-    }];
+    [[self.tables objectForKey:name] executeUpateWithSql:sql okLog:[NSString stringWithFormat:@"%@表被成功删除",name] failLog:[NSString stringWithFormat:@"%@ 表删除失败",name]];
+}
+
+- (NSArray *)allTables {
+    return [self.tables allKeys];
+}
+
+- (NSMutableDictionary<NSString *,JADBTable *> *)tables {
+    if (_tables == nil) {
+        _tables = [NSMutableDictionary dictionary];
+    }
+    return _tables;
 }
 
 @end

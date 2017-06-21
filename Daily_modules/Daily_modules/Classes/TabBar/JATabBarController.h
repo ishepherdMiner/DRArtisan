@@ -1,5 +1,5 @@
 //
-//  RMTabBarViewController.h
+//  JATabBarViewController.h
 //  RssMoney
 //
 //  Created by Jason on 11/04/2017.
@@ -13,7 +13,7 @@
 @required
 
 /**
- 提供``RMTabBarViewController``的TabBar的内容元素
+ 提供``JATabBarViewController``的TabBar的内容元素
  
  @param titles 标题数组
  @param imgs 正常状态下的图片数组
@@ -24,7 +24,7 @@
                    selectedImages:(NSArray <UIImage *> *)selectedImgs;
 
 /**˜
- 提供``RMTabBarViewController``的控制器数组
+ 提供``JATabBarViewController``的控制器数组
  
  @param vcs tabBarController的控制器数组
  */

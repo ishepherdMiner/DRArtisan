@@ -29,7 +29,7 @@
 		9627CF321E1A35FC00F4AC7E /* JANoticeServiceNative.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF311E1A35FC00F4AC7E /* JANoticeServiceNative.m */; };
 		9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */ = {isa = PBXBuildFile; fileRef = 9627CF341E1A361800F4AC7E /* JANoticeServiceJPush.m */; };
 		9627CF3B1E1A5BD300F4AC7E /* sound.caf in Resources */ = {isa = PBXBuildFile; fileRef = 9627CF3A1E1A5BD300F4AC7E /* sound.caf */; };
-		962A42161EF96E2A0060EAA6 /* JADBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 962A42151EF96E2A0060EAA6 /* JADBManager.m */; };
+		962A42201EFAC01A0060EAA6 /* JADBManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 962A421F1EFAC01A0060EAA6 /* JADBManager.m */; };
 		96334F121EA8FBA200EE294D /* JATabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 96334F111EA8FBA200EE294D /* JATabBarController.m */; };
 		964E289F1EF57D72002F44BF /* BackgroundAudioPlay.m in Sources */ = {isa = PBXBuildFile; fileRef = 964E289E1EF57D72002F44BF /* BackgroundAudioPlay.m */; };
 		96601B1B1EAEBB37008D67CD /* TouchIDViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 96601B1A1EAEBB37008D67CD /* TouchIDViewController.swift */; };
@@ -155,8 +155,8 @@
 		9627CF361E1A3F1000F4AC7E /* JANoticeServiceKit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JANoticeServiceKit.h; sourceTree = "<group>"; };
 		9627CF371E1A4AF900F4AC7E /* Daily_modules.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Daily_modules.entitlements; sourceTree = "<group>"; };
 		9627CF3A1E1A5BD300F4AC7E /* sound.caf */ = {isa = PBXFileReference; lastKnownFileType = file; name = sound.caf; path = ../sound.caf; sourceTree = "<group>"; };
-		962A42141EF96E2A0060EAA6 /* JADBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JADBManager.h; sourceTree = "<group>"; };
-		962A42151EF96E2A0060EAA6 /* JADBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JADBManager.m; sourceTree = "<group>"; };
+		962A421E1EFAC01A0060EAA6 /* JADBManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JADBManager.h; sourceTree = "<group>"; };
+		962A421F1EFAC01A0060EAA6 /* JADBManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JADBManager.m; sourceTree = "<group>"; };
 		96334F101EA8FBA200EE294D /* JATabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JATabBarController.h; sourceTree = "<group>"; };
 		96334F111EA8FBA200EE294D /* JATabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JATabBarController.m; sourceTree = "<group>"; };
 		964E289D1EF57D72002F44BF /* BackgroundAudioPlay.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BackgroundAudioPlay.h; sourceTree = "<group>"; };
@@ -441,7 +441,7 @@
 		9627CF151E19FC0A00F4AC7E /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				962A42131EF96E2A0060EAA6 /* DB */,
+				962A421D1EFAC01A0060EAA6 /* DB */,
 				964E289C1EF57D72002F44BF /* BackgroundAudio */,
 				96601B181EAEBB12008D67CD /* TouchID */,
 				96334F0F1EA8FBA200EE294D /* TabBar */,
@@ -478,11 +478,11 @@
 			name = Demo;
 			sourceTree = "<group>";
 		};
-		962A42131EF96E2A0060EAA6 /* DB */ = {
+		962A421D1EFAC01A0060EAA6 /* DB */ = {
 			isa = PBXGroup;
 			children = (
-				962A42141EF96E2A0060EAA6 /* JADBManager.h */,
-				962A42151EF96E2A0060EAA6 /* JADBManager.m */,
+				962A421E1EFAC01A0060EAA6 /* JADBManager.h */,
+				962A421F1EFAC01A0060EAA6 /* JADBManager.m */,
 			);
 			path = DB;
 			sourceTree = "<group>";
@@ -821,7 +821,7 @@
 				96601B1B1EAEBB37008D67CD /* TouchIDViewController.swift in Sources */,
 				96F2E18B1EF81F0000B9AE1B /* NSFileManager+JACoder.m in Sources */,
 				9627CF351E1A361800F4AC7E /* JANoticeServiceJPush.m in Sources */,
-				962A42161EF96E2A0060EAA6 /* JADBManager.m in Sources */,
+				962A42201EFAC01A0060EAA6 /* JADBManager.m in Sources */,
 				96F2E1971EF81F0000B9AE1B /* UIScreen+JACoder.m in Sources */,
 				960ECEAE1E22FD48001E11B9 /* JAUtils.m in Sources */,
 				96F2E1891EF81F0000B9AE1B /* NSDate+JACoder.m in Sources */,

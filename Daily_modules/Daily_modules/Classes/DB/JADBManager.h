@@ -16,85 +16,102 @@ NS_ASSUME_NONNULL_BEGIN
 
 - (void)insertWithModel:(JAModel *)model;
 - (void)updateWithModel:(JAModel *)model;
-- (JAModel *)selectWithValue:(NSString *)value;
-- (void)deleteWithValue:(NSString *)value;
 
+
+- (JAModel *)selectWithValue:(id)value;
 /// 多个的情况下,会取最后一个 [暂时]
-- (JAModel *)selectWithField:(NSString *)field
-                relationship:(NSString *)rs
-                       value:(id)value;
-
-- (void)deleteWithField:(NSString *)field
-           relationship:(NSString *)rs
-                  value:(id)value;
-
+- (JAModel *)selectWithValue:(id)value
+                       field:(NSString *)field
+                relationship:(NSString *)rs;
 - (NSArray <JAModel *> *)selectAll;
+
+- (void)deleteWithValue:(id)value;
+- (void)deleteWithValue:(id)value
+                  field:(NSString *)field
+           relationship:(NSString *)rs;
+
 - (void)deleteAll;
 
 @end
 
+/// 测试
+/*
+ // 创建数据库
+ JADBManager *dbMg = [JADBManager sharedDBManager];
+ [dbMg open];
+ 
+ // 创建表
+ JADBTable *table = [dbMg createTableWithName:@"MSUser" templates:@[
+ [MSUserModel class],@{
+                        @"profile":[MSProfileModel class],
+                        @"bookshelf":@{
+                            @"this":[MSBookModel class],
+                            @"charters":[MSCharterModel class]
+                        }
+                     },
+ ]];
+ 
+ // NSLog(@"%@",[dbMg allTables]);
+ table = [dbMg selectTableWithName:@"MSCharter"];
+ 
+ // 添加数据
+ MSCharterModel *cm1 = [[MSCharterModel alloc] init];
+ cm1.charterid = @1;
+ cm1.charterTitle = @"第1章";
+ cm1.pageCount = @"5";
+ cm1.content = @"你好好好大沙发沙发撒发大水";
+ 
+ [table insertWithModel:cm1];
+ 
+ MSCharterModel *cm2 = [[MSCharterModel alloc] init];
+ cm2.charterid = @2;
+ cm2.charterTitle = @"第2章";
+ cm2.pageCount = @"5";
+ cm2.content = @"你好好好大沙发沙发撒发大水";
+ 
+ [table insertWithModel:cm2];
+ 
+ MSCharterModel *cm3 = [[MSCharterModel alloc] init];
+ cm3.charterid = @3;
+ cm3.charterTitle = @"第3章";
+ cm3.pageCount = @"10";
+ cm3.content = @"你好好好大沙发沙发撒发大水dfafdafafafaafdasf";
+ [table insertWithModel:cm3];
+ 
+ // NSLog(@"%@",[table selectAll]);
+ 
+ table = [dbMg selectTableWithName:@"MSBook"];
+ 
+ MSBookModel *b1 = [[MSBookModel alloc] init];
+ b1.bookid = @1;
+ b1.bookname = @"哈姆雷特";
+ b1.charters = @[cm1,cm2,cm3];
+ 
+ [table insertWithModel:b1];
+ NSLog(@"%@",[table selectAll]);
+ 
+ table = [dbMg selectTableWithName:@"MSProfile"];
+ 
+ MSProfileModel *p1 = [[MSProfileModel alloc] init];
+ p1.profileid = @1;
+ p1.username = @"wdl";
+ 
+ [table insertWithModel:p1];
+ 
+ table = [dbMg selectTableWithName:@"MSUser"];
+ 
+ MSUserModel *u1 = [[MSUserModel alloc] init];
+ u1.userid = @1;
+ u1.profile = p1;
+ u1.bookshelf = @[b1];
+ 
+ [table insertWithModel:u1];
+ */
+///
+
 @interface JADBManager : NSObject
 
 + (instancetype)sharedDBManager;
-
-/// 测试
-/*
- // [JAConfigure sharedCf].prefix = @"MS";
- //
- // 创建数据库
- // JADBManager *dbMg = [JADBManager sharedDBManager];
- //
- // 方式1: 默认方式
- // [dbMg open];
- //
- // 方式2: 数据库名
- // [[JADBManager sharedDBManager] openWithDbName:@"LSY"];
- //
- // 方式3: 数据库全路径
- // NSString *executable = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleExecutable"];
- // NSString *dbDirectory = [[NSFileManager defaultManager] createDirectoryAtDocumentWithName:executable];
- // NSString *path = [NSString stringWithFormat:@"%@/%@.sqlite",dbDirectory,executable];
- // [[JADBManager sharedDBManager] openWithDbPath:path];
- //
- // 关闭数据库
- // [[JADBManager sharedDBManager] close];
- //
- // 存在依赖时，表名要求是依赖表的属性名
- // JADBTable *table = [dbMg createTableWithName:@"MSCharters" modelClass:[MSCharterModel class]];
- //
- // MSCharterModel *m = [[MSCharterModel alloc] init];
- // m.charterid = @1;
- // m.charterTitle = @"标题";
- // m.pageCount = @"3";
- // m.content = @"123 432";
- // [table insertWithModel:m];
- //
- // MSCharterModel *m2 = [[MSCharterModel alloc] init];
- // m2.charterid = @2;
- // m2.charterTitle = @"标题";
- // m2.pageCount = @"3";
- // m2.content = @"123 432";
- // [table insertWithModel:m2];
- //
- // JADBTable *table2 = [dbMg createTableWithName:@"MSBookModel"
- //                                    modelClass:[MSBookModel class]
- //                             innerModelClasses:@[[MSCharterModel class]]];
- //
- // MSBookModel *b = [[MSBookModel alloc] init];
- // b.bookid = @1;
- // b.bookname = @"哈姆雷特";
- // b.charters = @[m,m2];
- //
- // [table2 insertWithModel:b];
- // NSArray *bs = [table2 selectAll];
- // NSLog(@"%@",bs);
-
- // 需要预先建立好所有的数据库结构
- // 
- // [dbMg deleteTable];
- // [table selectAll];
- */
-///
 
 /**
  创建 || 连接 数据库
@@ -131,9 +148,14 @@ NS_ASSUME_NONNULL_BEGIN
  @param templates 绑定的模型
  @return 表对象
  */
-
 - (JADBTable *)createTableWithName:(NSString *)tableName
                          templates:(NSArray <Class> *)templates;
+
+
+- (JADBTable *)selectTableWithName:(NSString *)tableName;
+
+/// 所有的表名
+- (NSArray *)allTables;
 
 - (void)deleteTable;
 - (void)deleteTableWithName:(NSString *)name;
