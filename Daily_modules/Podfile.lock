@@ -1,14 +1,37 @@
 PODS:
+  - AFNetworking (3.1.0):
+    - AFNetworking/NSURLSession (= 3.1.0)
+    - AFNetworking/Reachability (= 3.1.0)
+    - AFNetworking/Security (= 3.1.0)
+    - AFNetworking/Serialization (= 3.1.0)
+    - AFNetworking/UIKit (= 3.1.0)
+  - AFNetworking/NSURLSession (3.1.0):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.1.0)
+  - AFNetworking/Security (3.1.0)
+  - AFNetworking/Serialization (3.1.0)
+  - AFNetworking/UIKit (3.1.0):
+    - AFNetworking/NSURLSession
   - FMDB (2.6.2):
     - FMDB/standard (= 2.6.2)
   - FMDB/standard (2.6.2)
+  - JACarouselView (0.0.6)
+  - JAProgressBar (0.0.3):
+    - AFNetworking
 
 DEPENDENCIES:
   - FMDB (~> 2.6.2)
+  - JACarouselView
+  - JAProgressBar
 
 SPEC CHECKSUMS:
+  AFNetworking: 5e0e199f73d8626b11e79750991f5d173d1f8b67
   FMDB: 854a0341b4726e53276f2a8996f06f1b80f9259a
+  JACarouselView: 72dd3673a87cf09862cd343f7f9423926cf9f6d0
+  JAProgressBar: 1a1b9ed6bb3ab34614abe44d84c67b5c3e92583f
 
-PODFILE CHECKSUM: 792ac44879f369ca70cc5e3d4ac42325e1ef8a25
+PODFILE CHECKSUM: b89bd2c4c98f868d7cb09c53207602557feb5d0a
 
 COCOAPODS: 1.2.1
